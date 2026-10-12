@@ -561,12 +561,6 @@ export class BaseReelUnit extends UICtrl {
         let symbolNode = null;
         let symbolCompent = null;
         for( let child of allSymbolUnits ){
-            console.log("---------> getSymbolNode 11111111 ");
-            let compent = child.getComponent( this.m_levelConfig.BundleName +"_Symbol_Ctrl" ) as BaseSymbolUnit;
-            let data = compent.getData();
-            console.log("---------> getSymbolNode 22222222 data = ",data);
-        }
-        for( let child of allSymbolUnits ){
             let compent = child.getComponent( this.m_levelConfig.BundleName +"_Symbol_Ctrl" ) as BaseSymbolUnit;
             let data = compent.getData();
             if ( data.posType == SymbolViewType.View && data.row == row ){

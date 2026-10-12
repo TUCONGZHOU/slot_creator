@@ -26,7 +26,6 @@ export class LevelWF_RespinReelUnit_Ctrl extends BaseMutilReelUnit {
     // 数字增长动画
     public bonusGrowUpAction( row:number,list:StoredIconStruct[] ):void{
         let reelUnit = this.getReelUnitCompent( row ) as BaseReelUnit;
-        console.log("---------> bonusGrowUpAction row = ",row," list = ",list);
         let symbolNode = reelUnit.getSymbolNode( 0 );
         if ( symbolNode ){
             let symbolCompent = symbolNode.getComponent( this.m_levelConfig.BundleName +"_Symbol_Ctrl" ) as LevelWF_Symbol_Ctrl;
