@@ -1,0 +1,48 @@
+
+skeleton.png
+size: 1098,463
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+IMG_Streak_Phoenix
+  rotate: true
+  xy: 470, 17
+  size: 16, 256
+  orig: 16, 256
+  offset: 0, 0
+  index: -1
+di
+  rotate: true
+  xy: 2, 2
+  size: 459, 466
+  orig: 459, 466
+  offset: 0, 0
+  index: -1
+di2
+  rotate: false
+  xy: 964, 54
+  size: 132, 132
+  orig: 133, 135
+  offset: 0, 3
+  index: -1
+font
+  rotate: true
+  xy: 470, 142
+  size: 319, 276
+  orig: 319, 299
+  offset: 0, 8
+  index: -1
+guang
+  rotate: true
+  xy: 748, 188
+  size: 273, 260
+  orig: 298, 268
+  offset: 25, 4
+  index: -1
+yun
+  rotate: false
+  xy: 470, 35
+  size: 492, 105
+  orig: 498, 105
+  offset: 3, 0
+  index: -1

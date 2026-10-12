@@ -1,0 +1,54 @@
+{
+"skeleton": {
+	"hash": "EYnMBV4hOx8VqVLyKphQAeJYAJE",
+	"spine": "3.8.99",
+	"x": -54.45,
+	"y": -9.65,
+	"width": 115.89,
+	"height": 118.15,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "gongju", "bone": "root", "attachment": "gongju" },
+	{ "name": "g", "bone": "root", "color": "ff9a00ff", "attachment": "g", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"g": {
+				"g": { "x": 3.5, "y": 50, "scaleX": 2.5754, "scaleY": 2.6002, "width": 45, "height": 45 }
+			},
+			"gongju": {
+				"gongju": { "x": 4, "y": 44, "scaleX": 0.4175, "scaleY": 0.4175, "width": 272, "height": 257 }
+			}
+		}
+	}
+],
+"animations": {
+	"Game3-gj": {
+		"slots": {
+			"g": {
+				"color": [
+					{ "color": "ff9a00cd" },
+					{ "time": 0.6667, "color": "ff9a001f" },
+					{ "time": 1.3333, "color": "ff9a00cd" }
+				]
+			}
+		}
+	},
+	"Game3-gj-idle": {
+		"slots": {
+			"g": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	}
+}
+}

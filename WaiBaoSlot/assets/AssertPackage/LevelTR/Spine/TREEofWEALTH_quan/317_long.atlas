@@ -1,0 +1,321 @@
+
+317_long.png
+size: 729,729
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+imagine/(103)
+  rotate: false
+  xy: 176, 402
+  size: 59, 67
+  orig: 59, 67
+  offset: 0, 0
+  index: -1
+imagine/(48)
+  rotate: false
+  xy: 2, 161
+  size: 123, 134
+  orig: 123, 134
+  offset: 0, 0
+  index: -1
+imagine/(54)
+  rotate: false
+  xy: 514, 366
+  size: 34, 37
+  orig: 34, 37
+  offset: 0, 0
+  index: -1
+imagine/(55)
+  rotate: true
+  xy: 507, 115
+  size: 30, 35
+  orig: 30, 35
+  offset: 0, 0
+  index: -1
+imagine/(57)
+  rotate: false
+  xy: 54, 6
+  size: 39, 56
+  orig: 39, 56
+  offset: 0, 0
+  index: -1
+imagine/(60)
+  rotate: false
+  xy: 657, 647
+  size: 68, 80
+  orig: 68, 80
+  offset: 0, 0
+  index: -1
+imagine/(67)
+  rotate: true
+  xy: 657, 530
+  size: 54, 56
+  orig: 54, 56
+  offset: 0, 0
+  index: -1
+imagine/(74)
+  rotate: false
+  xy: 657, 586
+  size: 63, 59
+  orig: 63, 59
+  offset: 0, 0
+  index: -1
+imagine/(85)
+  rotate: false
+  xy: 263, 561
+  size: 167, 166
+  orig: 167, 166
+  offset: 0, 0
+  index: -1
+imagine/(88)
+  rotate: false
+  xy: 2, 471
+  size: 259, 256
+  orig: 259, 256
+  offset: 0, 0
+  index: -1
+imagine/(90)
+  rotate: false
+  xy: 2, 297
+  size: 172, 172
+  orig: 172, 172
+  offset: 0, 0
+  index: -1
+imagine/(93)
+  rotate: true
+  xy: 461, 313
+  size: 52, 32
+  orig: 52, 32
+  offset: 0, 0
+  index: -1
+imagine/(94)
+  rotate: false
+  xy: 461, 367
+  size: 51, 36
+  orig: 51, 36
+  offset: 0, 0
+  index: -1
+imagine/(95)
+  rotate: false
+  xy: 2, 2
+  size: 50, 60
+  orig: 50, 60
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00003
+  rotate: false
+  xy: 2, 64
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00006
+  rotate: false
+  xy: 562, 632
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00009
+  rotate: true
+  xy: 263, 466
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00012
+  rotate: false
+  xy: 360, 464
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00015
+  rotate: false
+  xy: 455, 502
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00018
+  rotate: false
+  xy: 127, 200
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00021
+  rotate: false
+  xy: 127, 103
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00024
+  rotate: false
+  xy: 455, 405
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00027
+  rotate: false
+  xy: 176, 305
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00030
+  rotate: false
+  xy: 222, 208
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00033
+  rotate: false
+  xy: 222, 111
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00036
+  rotate: false
+  xy: 562, 535
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00039
+  rotate: false
+  xy: 550, 438
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00042
+  rotate: false
+  xy: 550, 341
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00045
+  rotate: true
+  xy: 97, 8
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00048
+  rotate: false
+  xy: 194, 6
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00051
+  rotate: false
+  xy: 289, 14
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00054
+  rotate: false
+  xy: 271, 308
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00057
+  rotate: false
+  xy: 317, 211
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00060
+  rotate: false
+  xy: 317, 114
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00063
+  rotate: false
+  xy: 366, 308
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00066
+  rotate: false
+  xy: 412, 211
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00069
+  rotate: false
+  xy: 412, 114
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00072
+  rotate: false
+  xy: 384, 17
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00075
+  rotate: false
+  xy: 479, 17
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00078
+  rotate: false
+  xy: 507, 244
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00081
+  rotate: false
+  xy: 507, 147
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00084
+  rotate: false
+  xy: 602, 244
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00087
+  rotate: false
+  xy: 602, 147
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/dd/star_00090
+  rotate: false
+  xy: 574, 50
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+imagine/heiquan
+  rotate: false
+  xy: 432, 599
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1

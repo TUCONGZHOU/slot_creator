@@ -1,0 +1,197 @@
+{
+"skeleton": {
+	"hash": "YH/mpCXKFHFq6AXfzzKDHo6jqEU",
+	"spine": "3.8.99",
+	"x": -72.25,
+	"y": -40.91,
+	"width": 152.85,
+	"height": 175.12,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{
+		"name": "Tree",
+		"parent": "root",
+		"length": 20.57,
+		"rotation": 66.54,
+		"x": 20.32,
+		"y": 38.29,
+		"color": "ffeb00ff"
+	},
+	{
+		"name": "jinbi-3",
+		"parent": "Tree",
+		"length": 20.3,
+		"rotation": -157.55,
+		"x": 18.04,
+		"y": -8.47,
+		"color": "001bffff"
+	},
+	{
+		"name": "jinbi-4",
+		"parent": "Tree",
+		"length": 25.67,
+		"rotation": -159.72,
+		"x": -11.47,
+		"y": 35.38,
+		"color": "001bffff"
+	},
+	{
+		"name": "jinbi-1",
+		"parent": "Tree",
+		"length": 28.13,
+		"rotation": -157.99,
+		"x": 37.88,
+		"y": -13.06,
+		"color": "001bffff"
+	},
+	{
+		"name": "jinbi-2",
+		"parent": "Tree",
+		"length": 23.15,
+		"rotation": -158.3,
+		"x": 6.17,
+		"y": 72.53,
+		"color": "001bffff"
+	},
+	{ "name": "image 1", "parent": "root", "x": 5.98, "y": 48.37, "scaleX": 1.2268, "scaleY": 1.0983 }
+],
+"slots": [
+	{ "name": "di", "bone": "root", "attachment": "di" },
+	{ "name": "di-g", "bone": "root", "attachment": "di-g", "blend": "additive" },
+	{ "name": "tree-1", "bone": "root", "attachment": "tree-1" },
+	{ "name": "tree-2", "bone": "Tree", "attachment": "tree-2" },
+	{ "name": "jinbi-4", "bone": "jinbi-4", "attachment": "jinbi-4" },
+	{ "name": "jinbi-1", "bone": "jinbi-1", "attachment": "jinbi-1" },
+	{ "name": "jinbi-2", "bone": "jinbi-2", "attachment": "jinbi-2" },
+	{ "name": "jinbi-3", "bone": "jinbi-3", "attachment": "jinbi-3" },
+	{ "name": "ye-3", "bone": "Tree", "attachment": "ye-3" },
+	{ "name": "ye-2", "bone": "Tree", "attachment": "ye-2" },
+	{ "name": "ye-1", "bone": "Tree", "attachment": "ye-1" },
+	{ "name": "image 1", "bone": "image 1", "attachment": "image 1", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"di": {
+				"di": { "x": -3.59, "y": -11.51, "width": 133, "height": 51 }
+			},
+			"di-g": {
+				"di-g": { "x": -1.25, "y": -9.91, "width": 142, "height": 62 }
+			},
+			"image 1": {
+				"image 1": { "x": 0.82, "y": 18.15, "width": 120, "height": 120 },
+				"image 3": { "x": 0.82, "y": 18.15, "width": 120, "height": 120 },
+				"image 5": { "x": 0.82, "y": 18.15, "width": 120, "height": 120 },
+				"image 7": { "x": 0.82, "y": 18.15, "width": 120, "height": 120 },
+				"image 9": { "x": 0.82, "y": 18.15, "width": 120, "height": 120 },
+				"image 11": { "x": 0.82, "y": 18.15, "width": 120, "height": 120 },
+				"image 13": { "x": 0.82, "y": 18.15, "width": 120, "height": 120 },
+				"image 15": { "x": 0.82, "y": 18.15, "width": 120, "height": 120 },
+				"image 17": { "x": 0.82, "y": 18.15, "width": 120, "height": 120 },
+				"image 19": { "x": 0.82, "y": 18.15, "width": 120, "height": 120 }
+			},
+			"jinbi-1": {
+				"jinbi-1": { "x": 27.24, "y": 0.31, "rotation": 91.45, "width": 18, "height": 60 }
+			},
+			"jinbi-2": {
+				"jinbi-2": { "x": 33.77, "y": 1.75, "rotation": 91.76, "width": 18, "height": 72 }
+			},
+			"jinbi-3": {
+				"jinbi-3": { "x": 17.95, "y": 1.27, "rotation": 91.01, "width": 23, "height": 50 }
+			},
+			"jinbi-4": {
+				"jinbi-4": { "x": 16.63, "y": -0.04, "rotation": 93.18, "width": 19, "height": 38 }
+			},
+			"tree-1": {
+				"tree-1": { "x": -2.15, "y": 11.1, "width": 99, "height": 73 }
+			},
+			"tree-2": {
+				"tree-2": { "x": 18.14, "y": 33.87, "rotation": -66.54, "width": 125, "height": 66 }
+			},
+			"ye-1": {
+				"ye-1": { "x": 20.14, "y": 30.79, "rotation": -66.54, "width": 77, "height": 48 }
+			},
+			"ye-2": {
+				"ye-2": { "x": 12.93, "y": 25.34, "rotation": -66.54, "width": 133, "height": 98 }
+			},
+			"ye-3": {
+				"ye-3": { "x": 10.32, "y": 33.78, "rotation": -66.54, "width": 104, "height": 77 }
+			}
+		}
+	}
+],
+"animations": {
+	"Game2-tree": {
+		"slots": {
+			"di-g": {
+				"color": [
+					{ "color": "ffffff05" },
+					{ "time": 1, "color": "ffffffff" },
+					{ "time": 1.6667, "color": "ffffff05" }
+				]
+			},
+			"image 1": {
+				"color": [
+					{ "time": 0.5, "color": "ffffff02" },
+					{ "time": 0.7, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.5667, "color": "ffffffff" },
+					{ "time": 1.6667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.8, "name": "image 3" },
+					{ "time": 0.9, "name": "image 5" },
+					{ "time": 1, "name": "image 7" },
+					{ "time": 1.1, "name": "image 9" },
+					{ "time": 1.2, "name": "image 11" },
+					{ "time": 1.2667, "name": "image 13" },
+					{ "time": 1.3667, "name": "image 15" },
+					{ "time": 1.4667, "name": "image 17" },
+					{ "time": 1.5667, "name": "image 19" }
+				]
+			}
+		},
+		"bones": {
+			"Tree": {
+				"rotate": [
+					{},
+					{ "time": 1, "angle": -6.19 },
+					{ "time": 1.6667 }
+				]
+			},
+			"jinbi-4": {
+				"rotate": [
+					{},
+					{ "time": 1, "angle": 8 },
+					{ "time": 1.6667 }
+				]
+			},
+			"jinbi-3": {
+				"rotate": [
+					{},
+					{ "time": 1, "angle": 8 },
+					{ "time": 1.6667 }
+				]
+			},
+			"jinbi-2": {
+				"rotate": [
+					{},
+					{ "time": 1, "angle": 8 },
+					{ "time": 1.6667 }
+				]
+			},
+			"jinbi-1": {
+				"rotate": [
+					{},
+					{ "time": 1, "angle": 8 },
+					{ "time": 1.6667 }
+				]
+			}
+		}
+	}
+}
+}

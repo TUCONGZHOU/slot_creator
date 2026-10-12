@@ -1,0 +1,293 @@
+
+TREEofWEALTH_xyx_chooseboom.png
+size: 1374,1374
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+book/book_00013
+  rotate: false
+  xy: 2, 982
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+book/book_00019
+  rotate: false
+  xy: 214, 1178
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+book/book_00026
+  rotate: false
+  xy: 2, 786
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+book/book_00032
+  rotate: false
+  xy: 214, 982
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+book/book_00038
+  rotate: false
+  xy: 426, 1178
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+book/book_00045
+  rotate: false
+  xy: 2, 590
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+book/book_00051
+  rotate: false
+  xy: 214, 786
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+book/book_00057
+  rotate: false
+  xy: 426, 982
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+flower/flower_00008
+  rotate: false
+  xy: 638, 1178
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+flower/flower_00016
+  rotate: false
+  xy: 2, 394
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+flower/flower_00024
+  rotate: false
+  xy: 214, 590
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+flower/flower_00032
+  rotate: false
+  xy: 426, 786
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+flower/flower_00040
+  rotate: false
+  xy: 638, 982
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+flower/flower_00047
+  rotate: false
+  xy: 850, 1178
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+flower/flower_00055
+  rotate: false
+  xy: 2, 198
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+flower/flower_00063
+  rotate: false
+  xy: 214, 394
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+flower/flower_00075
+  rotate: false
+  xy: 426, 590
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+money/money_00006
+  rotate: false
+  xy: 638, 786
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+money/money_00012
+  rotate: false
+  xy: 850, 982
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+money/money_00018
+  rotate: false
+  xy: 1062, 1178
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+money/money_00024
+  rotate: false
+  xy: 2, 2
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+money/money_00030
+  rotate: false
+  xy: 214, 198
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+money/money_00036
+  rotate: false
+  xy: 426, 394
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+money/money_00042
+  rotate: false
+  xy: 638, 590
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+money/money_00048
+  rotate: false
+  xy: 850, 786
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+money/money_00054
+  rotate: false
+  xy: 1062, 982
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+shanzi/shanzi_00022
+  rotate: false
+  xy: 214, 2
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+shanzi/shanzi_00029
+  rotate: false
+  xy: 426, 198
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+shanzi/shanzi_00036
+  rotate: false
+  xy: 638, 394
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+shanzi/shanzi_00044
+  rotate: false
+  xy: 850, 590
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+shanzi/shanzi_00051
+  rotate: false
+  xy: 1062, 786
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+shanzi/shanzi_00058
+  rotate: false
+  xy: 426, 2
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+shanzi/shanzi_00065
+  rotate: false
+  xy: 2, 1178
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+yuanbao/yuanbao_00013
+  rotate: false
+  xy: 638, 198
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+yuanbao/yuanbao_00019
+  rotate: false
+  xy: 850, 394
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+yuanbao/yuanbao_00026
+  rotate: false
+  xy: 1062, 590
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+yuanbao/yuanbao_00032
+  rotate: false
+  xy: 638, 2
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+yuanbao/yuanbao_00038
+  rotate: false
+  xy: 850, 198
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+yuanbao/yuanbao_00045
+  rotate: false
+  xy: 1062, 394
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+yuanbao/yuanbao_00051
+  rotate: false
+  xy: 850, 2
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1
+yuanbao/yuanbao_00057
+  rotate: false
+  xy: 1062, 198
+  size: 210, 194
+  orig: 210, 194
+  offset: 0, 0
+  index: -1

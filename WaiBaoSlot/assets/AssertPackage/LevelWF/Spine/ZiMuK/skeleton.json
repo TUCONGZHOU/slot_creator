@@ -1,0 +1,57 @@
+{
+"skeleton": {
+	"hash": "1unGfo4DeKcQE6gEb7JhXdsA9Mo",
+	"spine": "3.8.99",
+	"x": -77.5,
+	"y": -68.5,
+	"width": 155,
+	"height": 137,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "ZONG", "parent": "root" }
+],
+"slots": [
+	{ "name": "K", "bone": "ZONG", "attachment": "K" },
+	{ "name": "K2", "bone": "ZONG", "attachment": "K", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"K": {
+				"K": { "width": 133, "height": 130 }
+			},
+			"K2": {
+				"K": { "width": 133, "height": 130 }
+			}
+		}
+	}
+],
+"animations": {
+	"Game2-K": {
+		"slots": {
+			"K2": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 1.3333, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"ZONG": {
+				"scale": [
+					{},
+					{ "time": 0.5, "x": 1.1, "y": 1.1 },
+					{ "time": 0.8333, "x": 1.12, "y": 1.12 },
+					{ "time": 1.3333 }
+				]
+			}
+		}
+	}
+}
+}

@@ -1,0 +1,226 @@
+{
+"skeleton": {
+	"hash": "kKMm00al19LDo1V673be7ZdOQ7A",
+	"spine": "3.8.99",
+	"x": -75.02,
+	"y": -66,
+	"width": 609.17,
+	"height": 215.05,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{
+		"name": "bird-a-1",
+		"parent": "root",
+		"length": 27.07,
+		"rotation": 94.24,
+		"x": 10,
+		"y": 51.5,
+		"scaleX": 0.4048,
+		"scaleY": 0.4048,
+		"color": "1eff00ff"
+	},
+	{
+		"name": "bianpao",
+		"parent": "bird-a-1",
+		"length": 187.02,
+		"rotation": -82.39,
+		"x": -93.69,
+		"y": 65.13,
+		"color": "1eff00ff"
+	},
+	{ "name": "bone", "parent": "root", "x": 460.13, "y": 69.73, "scaleX": 0.5288, "scaleY": 0.5288 },
+	{ "name": "guang", "parent": "root", "color": "ff0000ff" }
+],
+"slots": [
+	{ "name": "bird-a-1", "bone": "bird-a-1", "attachment": "bird-a-1" },
+	{ "name": "bianpao", "bone": "bianpao", "attachment": "bianpao" },
+	{ "name": "bird-b-1", "bone": "bone", "attachment": "bird-b-1" },
+	{ "name": "bird-g-1", "bone": "guang", "attachment": "bird-g-5" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"bianpao": {
+				"bianpao": { "x": 55.16, "y": -24.6, "rotation": -11.85, "width": 396, "height": 202 }
+			},
+			"bird-a-1": {
+				"bird-a-1": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-2": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-3": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-4": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-5": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-6": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-7": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-8": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-9": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-10": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-11": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-12": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-13": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-14": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 },
+				"bird-a-15": { "x": 61.07, "y": 5.5, "rotation": -94.24, "width": 400, "height": 300 }
+			},
+			"bird-b-1": {
+				"bird-b-1": { "width": 280, "height": 300 },
+				"bird-b-2": { "width": 280, "height": 300 },
+				"bird-b-3": { "width": 280, "height": 300 },
+				"bird-b-4": { "width": 280, "height": 300 },
+				"bird-b-5": { "width": 280, "height": 300 },
+				"bird-b-6": { "width": 280, "height": 300 },
+				"bird-b-7": { "width": 280, "height": 300 },
+				"bird-b-8": { "width": 280, "height": 300 },
+				"bird-b-9": { "width": 280, "height": 300 },
+				"bird-b-10": { "width": 280, "height": 300 },
+				"bird-b-11": { "width": 280, "height": 300 },
+				"bird-b-12": { "width": 280, "height": 300 },
+				"bird-b-13": { "width": 280, "height": 300 },
+				"bird-b-14": { "width": 280, "height": 300 },
+				"bird-b-15": { "width": 280, "height": 300 },
+				"bird-b-16": { "width": 280, "height": 300 }
+			},
+			"bird-g-1": {
+				"bird-g-1": { "width": 115, "height": 108 },
+				"bird-g-2": { "width": 111, "height": 120 },
+				"bird-g-3": { "width": 124, "height": 135 },
+				"bird-g-4": { "width": 200, "height": 209 },
+				"bird-g-5": { "width": 111, "height": 132 }
+			}
+		}
+	}
+],
+"animations": {
+	"Game3-SMbird-1": {
+		"slots": {
+			"bird-a-1": {
+				"attachment": [
+					{ "time": 0.0667, "name": "bird-a-2" },
+					{ "time": 0.1333, "name": "bird-a-3" },
+					{ "time": 0.2, "name": "bird-a-4" },
+					{ "time": 0.2667, "name": "bird-a-5" },
+					{ "time": 0.3333, "name": "bird-a-6" },
+					{ "time": 0.4, "name": "bird-a-7" },
+					{ "time": 0.4667, "name": "bird-a-8" },
+					{ "time": 0.5333, "name": "bird-a-9" },
+					{ "time": 0.6, "name": "bird-a-10" },
+					{ "time": 0.6667, "name": "bird-a-11" },
+					{ "time": 0.7333, "name": "bird-a-12" },
+					{ "time": 0.8, "name": "bird-a-13" },
+					{ "time": 0.8667, "name": "bird-a-14" },
+					{ "time": 0.9333, "name": "bird-a-15" }
+				]
+			},
+			"bird-b-1": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"bird-g-1": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		},
+		"bones": {
+			"bird-a-1": {
+				"translate": [
+					{},
+					{ "time": 0.4667, "y": -12.34 },
+					{ "time": 0.9333 }
+				]
+			}
+		}
+	},
+	"Game3-SMbird-2": {
+		"slots": {
+			"bianpao": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"bird-a-1": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"bird-b-1": {
+				"attachment": [
+					{ "time": 0.0333, "name": "bird-b-2" },
+					{ "time": 0.0667, "name": "bird-b-3" },
+					{ "time": 0.1, "name": "bird-b-4" },
+					{ "time": 0.1333, "name": "bird-b-5" },
+					{ "time": 0.1667, "name": "bird-b-6" },
+					{ "time": 0.2, "name": "bird-b-7" },
+					{ "time": 0.2333, "name": "bird-b-8" },
+					{ "time": 0.2667, "name": "bird-b-9" },
+					{ "time": 0.3, "name": "bird-b-10" },
+					{ "time": 0.3333, "name": "bird-b-11" },
+					{ "time": 0.3667, "name": "bird-b-12" },
+					{ "time": 0.4, "name": "bird-b-13" },
+					{ "time": 0.4333, "name": "bird-b-14" },
+					{ "time": 0.4667, "name": "bird-b-15" },
+					{ "time": 0.5, "name": "bird-b-16" }
+				]
+			},
+			"bird-g-1": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		},
+		"bones": {
+			"bone": {
+				"translate": [
+					{ "x": -474.88, "y": 22.02 },
+					{ "time": 0.5, "x": -476.16, "y": 29.7 }
+				]
+			},
+			"bird-a-1": {
+				"translate": [
+					{ "x": -10 }
+				]
+			}
+		}
+	},
+	"Game3-SMbird-3": {
+		"slots": {
+			"bianpao": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"bird-a-1": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"bird-b-1": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"bird-g-1": {
+				"attachment": [
+					{ "name": "bird-g-1" },
+					{ "time": 0.1, "name": "bird-g-2" },
+					{ "time": 0.1667, "name": "bird-g-3" },
+					{ "time": 0.2667, "name": "bird-g-4" },
+					{ "time": 0.4333, "name": "bird-g-5" },
+					{ "time": 0.5, "name": "bird-g-5" }
+				]
+			}
+		},
+		"bones": {
+			"guang": {
+				"scale": [
+					{},
+					{ "time": 0.3333, "x": 1.611, "y": 1.611 }
+				]
+			}
+		}
+	}
+}
+}

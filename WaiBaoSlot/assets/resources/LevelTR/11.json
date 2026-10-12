@@ -1,0 +1,57 @@
+{
+	"bet": 1000,
+	"lines": [
+		[
+			[
+				{
+					"id": 92,
+					"row": 1,
+					"col": 0
+				},
+				{
+					"id": 4,
+					"row": 0,
+					"col": 1
+				},
+				{
+					"id": 4,
+					"row": 0,
+					"col": 2
+				}
+			],
+			[
+				{
+					"id": 92,
+					"row": 1,
+					"col": 0
+				},
+				{
+					"id": 6,
+					"row": 2,
+					"col": 1
+				},
+				{
+					"id": 6,
+					"row": 1,
+					"col": 2
+				}
+			]
+		]
+	],
+	"action": "FREESPIN",
+	"storedIcons": {
+		
+	},
+	"jackpots": [10000,20000,30000,40000],
+	"lastAction": "FREESPIN",
+	"winAmount": 10000,
+	"freeSpinReels": [[[7,92,0],[4,5,6],[4,6,7],[1,3,4],[5,6,7]]],
+	"freespin": {
+		"freeSpinsTotalCount": 10,
+		"freeSpinNewCount": 0,
+		"freeSpinsLeftCount": 4
+	},
+	"nextAction": "FREESPIN",
+	"betList": [10000,20000,50000,1000000],
+	"reels": [[[2,4,5],[9,90,92],[92,93,0],[9,90,92],[90,0,1]]]
+}

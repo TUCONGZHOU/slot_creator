@@ -1,0 +1,241 @@
+{
+"skeleton": {
+	"hash": "5JFUVRkYS7RWCSQ/u6dNlYLRv2Q",
+	"spine": "3.8.99",
+	"x": -77.5,
+	"y": -68.5,
+	"width": 155,
+	"height": 137,
+	"images": "../../动画2/3字母AJK/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "ZONG", "parent": "root" }
+],
+"slots": [
+	{ "name": "A", "bone": "ZONG", "attachment": "A" },
+	{ "name": "A2", "bone": "ZONG", "attachment": "A", "blend": "additive" },
+	{ "name": "J", "bone": "ZONG" },
+	{ "name": "J2", "bone": "ZONG", "blend": "additive" },
+	{ "name": "K", "bone": "ZONG", "attachment": "K" },
+	{ "name": "K2", "bone": "ZONG", "attachment": "K", "blend": "additive" },
+	{ "name": "Q", "bone": "ZONG" },
+	{ "name": "Q2", "bone": "ZONG", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"A": {
+				"A": { "width": 155, "height": 137 }
+			},
+			"A2": {
+				"A": { "width": 155, "height": 137 }
+			},
+			"J": {
+				"J": { "width": 101, "height": 126 }
+			},
+			"J2": {
+				"J": { "width": 101, "height": 126 }
+			},
+			"K": {
+				"K": { "width": 133, "height": 130 }
+			},
+			"K2": {
+				"K": { "width": 133, "height": 130 }
+			},
+			"Q": {
+				"Q": { "width": 126, "height": 126 }
+			},
+			"Q2": {
+				"Q": { "width": 126, "height": 126 }
+			}
+		}
+	}
+],
+"animations": {
+	"Game2-A": {
+		"slots": {
+			"A2": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 1.3333, "color": "ffffff00" }
+				]
+			},
+			"K": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"K2": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		},
+		"bones": {
+			"ZONG": {
+				"scale": [
+					{},
+					{ "time": 0.5, "x": 1.1, "y": 1.1 },
+					{ "time": 0.8333, "x": 1.12, "y": 1.12 },
+					{ "time": 1.3333 }
+				]
+			}
+		}
+	},
+	"Game2-J": {
+		"slots": {
+			"A": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"A2": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 1.3333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"J": {
+				"attachment": [
+					{ "name": "J" }
+				]
+			},
+			"J2": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 1.3333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "J" }
+				]
+			},
+			"K": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"K2": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		},
+		"bones": {
+			"ZONG": {
+				"scale": [
+					{},
+					{ "time": 0.5, "x": 1.1, "y": 1.1 },
+					{ "time": 0.8333, "x": 1.12, "y": 1.12 },
+					{ "time": 1.3333 }
+				]
+			}
+		}
+	},
+	"Game2-K": {
+		"slots": {
+			"A": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"A2": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 1.3333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"K2": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 1.3333, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"ZONG": {
+				"scale": [
+					{},
+					{ "time": 0.5, "x": 1.1, "y": 1.1 },
+					{ "time": 0.8333, "x": 1.12, "y": 1.12 },
+					{ "time": 1.3333 }
+				]
+			}
+		}
+	},
+	"Game2-Q": {
+		"slots": {
+			"A": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"A2": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 1.3333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"K": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"K2": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"Q": {
+				"attachment": [
+					{ "name": "Q" }
+				]
+			},
+			"Q2": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 1.3333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "Q" }
+				]
+			}
+		},
+		"bones": {
+			"ZONG": {
+				"scale": [
+					{},
+					{ "time": 0.5, "x": 1.1, "y": 1.1 },
+					{ "time": 0.8333, "x": 1.12, "y": 1.12 },
+					{ "time": 1.3333 }
+				]
+			}
+		}
+	}
+}
+}

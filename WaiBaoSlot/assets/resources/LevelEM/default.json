@@ -1,0 +1,20 @@
+{
+    "betList":[10000,20000,30000,40000],
+    "bet":1000,
+    "lastAction":"NORMAL",
+    "action":"NORMAL",
+    "nextAction":"NORMAL",
+    "jackpots":[500000,400000,30000,10000],
+    "reels":[
+        [
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0]
+        ]
+    ],
+    "storedIcons":[],
+    "lines":[],
+    "winAmount":0
+}

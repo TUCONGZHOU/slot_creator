@@ -1,0 +1,41 @@
+
+Px_gskh.png
+size: 440,513
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Gskh/gygy_00000
+  rotate: true
+  xy: 2, 223
+  size: 288, 292
+  orig: 301, 310
+  offset: 7, 9
+  index: -1
+Gskh/ttg5_0000
+  rotate: false
+  xy: 296, 323
+  size: 93, 93
+  orig: 93, 93
+  offset: 0, 0
+  index: -1
+Gskh/ttg8_0001
+  rotate: false
+  xy: 296, 418
+  size: 101, 93
+  orig: 106, 101
+  offset: 5, 0
+  index: -1
+Gskh/tx11_0010
+  rotate: false
+  xy: 222, 2
+  size: 216, 219
+  orig: 216, 219
+  offset: 0, 0
+  index: -1
+Gskh/tx11_0011
+  rotate: false
+  xy: 2, 2
+  size: 218, 219
+  orig: 218, 219
+  offset: 0, 0
+  index: -1

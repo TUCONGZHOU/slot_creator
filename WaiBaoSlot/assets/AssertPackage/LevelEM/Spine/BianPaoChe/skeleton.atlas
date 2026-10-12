@@ -1,0 +1,104 @@
+
+skeleton.png
+size: 1684,558
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BOSS_Attack_TX_00000
+  rotate: true
+  xy: 1401, 269
+  size: 287, 277
+  orig: 400, 400
+  offset: 66, 62
+  index: -1
+BOSS_Attack_TX_00001
+  rotate: false
+  xy: 718, 205
+  size: 335, 351
+  orig: 400, 400
+  offset: 30, 14
+  index: -1
+BOSS_Attack_TX_00002
+  rotate: false
+  xy: 2, 182
+  size: 358, 374
+  orig: 400, 400
+  offset: 18, 4
+  index: -1
+BOSS_Attack_TX_00003
+  rotate: false
+  xy: 362, 193
+  size: 354, 363
+  orig: 400, 400
+  offset: 17, 20
+  index: -1
+BOSS_Attack_TX_00004
+  rotate: false
+  xy: 1055, 236
+  size: 344, 320
+  orig: 400, 400
+  offset: 32, 24
+  index: -1
+BOSS_Attack_TX_00005
+  rotate: true
+  xy: 1055, 12
+  size: 222, 223
+  orig: 400, 400
+  offset: 94, 102
+  index: -1
+BOSS_Attack_TX_00006
+  rotate: false
+  xy: 837, 24
+  size: 174, 179
+  orig: 400, 400
+  offset: 102, 138
+  index: -1
+bianpao
+  rotate: false
+  xy: 2, 10
+  size: 232, 170
+  orig: 232, 174
+  offset: 0, 4
+  index: -1
+car
+  rotate: false
+  xy: 1401, 19
+  size: 281, 248
+  orig: 285, 255
+  offset: 1, 5
+  index: -1
+car-lun
+  rotate: false
+  xy: 1280, 92
+  size: 54, 62
+  orig: 55, 62
+  offset: 0, 0
+  index: -1
+car1
+  rotate: false
+  xy: 629, 9
+  size: 206, 182
+  orig: 206, 182
+  offset: 0, 0
+  index: -1
+car2
+  rotate: false
+  xy: 236, 17
+  size: 108, 163
+  orig: 108, 163
+  offset: 0, 0
+  index: -1
+car3
+  rotate: false
+  xy: 362, 2
+  size: 265, 189
+  orig: 265, 190
+  offset: 0, 0
+  index: -1
+luntai
+  rotate: false
+  xy: 1280, 156
+  size: 76, 78
+  orig: 77, 82
+  offset: 1, 4
+  index: -1

@@ -1,0 +1,22 @@
+{
+	"bet": 1000,
+	"lines": {
+		
+	},
+	"action": "FREESPIN",
+	"storedIcons": {
+		
+	},
+	"jackpots": [10000,20000,30000,40000],
+	"lastAction": "FREESPIN",
+	"winAmount": 16000,
+	"freeSpinReels": [[[0,3,5],[5,6,7],[0,1,2],[90,92,0],[0,1,2]]],
+	"freespin": {
+		"freeSpinsTotalCount": 10,
+		"freeSpinNewCount": 0,
+		"freeSpinsLeftCount": 0
+	},
+	"nextAction": "NORMAL",
+	"betList": [10000,20000,50000,1000000],
+	"reels": [[[2,4,5],[9,90,92],[92,93,0],[9,90,92],[90,0,1]]]
+}

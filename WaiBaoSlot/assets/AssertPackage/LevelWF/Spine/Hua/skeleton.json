@@ -1,0 +1,75 @@
+{
+"skeleton": {
+	"hash": "v3Gu+Vx2Ly8nNeWmNVG9f0O1Pbw",
+	"spine": "3.8.99",
+	"x": -51.37,
+	"y": -34.34,
+	"width": 102.75,
+	"height": 68.67,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "hua", "parent": "root", "scaleX": 0.4162, "scaleY": 0.4162, "color": "ff0000ff" },
+	{ "name": "hua-1", "parent": "hua", "color": "ff0000ff" }
+],
+"slots": [
+	{ "name": "hua-2", "bone": "hua", "attachment": "hua-2" },
+	{ "name": "hua-3", "bone": "hua", "color": "ac2bffff", "blend": "additive" },
+	{ "name": "hua-1", "bone": "hua-1", "attachment": "hua-1", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"hua-1": {
+				"hua-1": { "scaleX": 1.2595, "scaleY": 1.2595, "width": 196, "height": 131 }
+			},
+			"hua-2": {
+				"hua-2": { "width": 223, "height": 150 }
+			},
+			"hua-3": {
+				"hua-3": { "width": 196, "height": 148 }
+			}
+		}
+	}
+],
+"animations": {
+	"Game1-hua": {
+		"slots": {
+			"hua-1": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1.6667, "color": "ffffff00" }
+				]
+			},
+			"hua-3": {
+				"color": [
+					{ "color": "ff3ffa00" },
+					{ "time": 1, "color": "ffffff00" },
+					{ "time": 1.3333, "color": "ffffffff" },
+					{ "time": 1.6667, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"scale": [
+					{},
+					{ "time": 0.5, "x": 1.094, "y": 1.094 },
+					{ "time": 1 }
+				]
+			},
+			"hua-1": {
+				"scale": [
+					{},
+					{ "time": 0.6667, "x": 1.195, "y": 1.195 },
+					{ "time": 1.6667 }
+				]
+			}
+		}
+	}
+}
+}

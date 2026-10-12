@@ -1,0 +1,240 @@
+{
+"skeleton": {
+	"hash": "sKbt14lATRKz09o6PwLizwx5OkE",
+	"spine": "3.8.99",
+	"x": -65.53,
+	"y": -6.5,
+	"width": 120.52,
+	"height": 160.75,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root", "scaleX": 0.4229, "scaleY": 0.4229 },
+	{ "name": "boss", "parent": "root", "x": -28.64, "y": 27.96, "color": "ff0000ff" },
+	{ "name": "car", "parent": "root", "y": 86.73, "color": "af00ffff" },
+	{ "name": "car1", "parent": "car", "x": 28.39, "y": 11.35, "color": "af00ffff" },
+	{ "name": "car3", "parent": "car", "x": -91.96, "y": -1.1, "color": "af00ffff" },
+	{ "name": "car-lun2", "parent": "car", "x": -13.52, "y": -72.07, "color": "af00ffff" },
+	{ "name": "car-lun", "parent": "car", "x": 57.03, "y": -18.53, "color": "af00ffff" },
+	{
+		"name": "luntai",
+		"parent": "root",
+		"rotation": -108.54,
+		"x": -49.36,
+		"y": 330.92,
+		"scaleX": 0.6156,
+		"scaleY": 0.6156
+	},
+	{
+		"name": "luntai2",
+		"parent": "root",
+		"rotation": 72.31,
+		"x": -102.42,
+		"y": 288.41,
+		"scaleX": 0.6156,
+		"scaleY": 0.6156
+	}
+],
+"slots": [
+	{ "name": "car", "bone": "car", "attachment": "car" },
+	{ "name": "bianpao", "bone": "car", "attachment": "bianpao" },
+	{ "name": "car-lun", "bone": "car-lun", "attachment": "car-lun" },
+	{ "name": "car-lun2", "bone": "car-lun2", "attachment": "car-lun" },
+	{ "name": "car2", "bone": "car3", "attachment": "car2" },
+	{ "name": "car1", "bone": "car1", "attachment": "car1" },
+	{ "name": "car3", "bone": "root" },
+	{ "name": "luntai", "bone": "luntai", "attachment": "luntai" },
+	{ "name": "luntai2", "bone": "luntai2", "attachment": "luntai" },
+	{ "name": "BOSS_Attack_TX_00000", "bone": "boss", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"BOSS_Attack_TX_00000": {
+				"BOSS_Attack_TX_00000": { "width": 400, "height": 400 },
+				"BOSS_Attack_TX_00001": { "width": 400, "height": 400 },
+				"BOSS_Attack_TX_00002": { "width": 400, "height": 400 },
+				"BOSS_Attack_TX_00003": { "width": 400, "height": 400 },
+				"BOSS_Attack_TX_00004": { "width": 400, "height": 400 },
+				"BOSS_Attack_TX_00005": { "width": 400, "height": 400 },
+				"BOSS_Attack_TX_00006": { "width": 400, "height": 400 }
+			},
+			"bianpao": {
+				"bianpao": { "x": -24.55, "y": 64.81, "width": 232, "height": 174 }
+			},
+			"car": {
+				"car": { "x": -12.47, "y": 25.39, "width": 285, "height": 255 }
+			},
+			"car-lun": {
+				"car-lun": { "x": -8.4, "y": 8.66, "scaleX": 0.9433, "scaleY": 0.9433, "width": 55, "height": 62 }
+			},
+			"car-lun2": {
+				"car-lun": { "x": -7.39, "y": 7.96, "scaleX": 0.9433, "scaleY": 0.9433, "width": 55, "height": 62 }
+			},
+			"car1": {
+				"car1": { "x": -4.62, "y": 3.95, "width": 206, "height": 182 }
+			},
+			"car2": {
+				"car2": { "x": -0.38, "y": -8.28, "width": 108, "height": 163 }
+			},
+			"car3": {
+				"car3": { "x": -17.31, "y": 99.5, "width": 265, "height": 190 }
+			},
+			"luntai": {
+				"luntai": { "x": -3.07, "y": -7.98, "width": 77, "height": 82 }
+			},
+			"luntai2": {
+				"luntai": { "x": -3.07, "y": -7.98, "width": 77, "height": 82 }
+			}
+		}
+	}
+],
+"animations": {
+	"Gmae3-BPcar": {
+		"slots": {
+			"BOSS_Attack_TX_00000": {
+				"attachment": [
+					{ "time": 1, "name": "BOSS_Attack_TX_00000" },
+					{ "time": 1.0667, "name": "BOSS_Attack_TX_00001" },
+					{ "time": 1.1333, "name": "BOSS_Attack_TX_00002" },
+					{ "time": 1.2, "name": "BOSS_Attack_TX_00003" },
+					{ "time": 1.2667, "name": "BOSS_Attack_TX_00004" },
+					{ "time": 1.3333, "name": "BOSS_Attack_TX_00005" },
+					{ "time": 1.4, "name": "BOSS_Attack_TX_00006" },
+					{ "time": 1.4667, "name": null }
+				]
+			},
+			"bianpao": {
+				"attachment": [
+					{ "time": 1.1667, "name": null }
+				]
+			},
+			"car": {
+				"attachment": [
+					{ "time": 0.8333, "name": null }
+				]
+			},
+			"car-lun": {
+				"attachment": [
+					{ "time": 1.1667, "name": null }
+				]
+			},
+			"car-lun2": {
+				"attachment": [
+					{ "time": 1.1667, "name": null }
+				]
+			},
+			"car1": {
+				"attachment": [
+					{ "time": 0.8333, "name": null }
+				]
+			},
+			"car2": {
+				"attachment": [
+					{ "time": 0.8333, "name": null }
+				]
+			},
+			"car3": {
+				"attachment": [
+					{ "time": 0.8333, "name": "car3" },
+					{ "time": 1.1667, "name": null }
+				]
+			},
+			"luntai": {
+				"color": [
+					{ "time": 1, "color": "ffffffff" },
+					{ "time": 1.2333, "color": "ffffffac" },
+					{ "time": 1.3333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": null },
+					{ "time": 1, "name": "luntai" },
+					{ "time": 1.1667, "name": null }
+				]
+			},
+			"luntai2": {
+				"color": [
+					{ "time": 1, "color": "ffffffff" },
+					{ "time": 1.2333, "color": "ffffffa9" },
+					{ "time": 1.3333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": null },
+					{ "time": 1, "name": "luntai" },
+					{ "time": 1.1667, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"translate": [
+					{},
+					{ "time": 0.1, "x": -6.01, "y": -7.51 },
+					{ "time": 0.2333 },
+					{ "time": 0.3333, "x": -6.01, "y": -7.51 },
+					{ "time": 0.4333 }
+				]
+			},
+			"car-lun2": {
+				"translate": [
+					{ "time": 0.5 },
+					{ "time": 0.6667, "x": 25.53, "y": -19.53 }
+				]
+			},
+			"car-lun": {
+				"translate": [
+					{ "time": 0.5 },
+					{ "time": 0.6667, "x": 25.53, "y": -19.53 }
+				]
+			},
+			"boss": {
+				"translate": [
+					{ "time": 1, "x": 19.53, "y": 87.12 }
+				]
+			},
+			"luntai2": {
+				"translate": [
+					{ "x": 19.53, "y": -160.71 },
+					{ "time": 1, "x": 60.08, "y": -195.26 },
+					{ "time": 1.3333, "x": -70.59, "y": -292.89 }
+				]
+			},
+			"luntai": {
+				"translate": [
+					{ "x": 111.15, "y": -168.22 },
+					{ "time": 1, "x": 69.09, "y": -201.27 },
+					{ "time": 1.3333, "x": 207.28, "y": -114.15 }
+				]
+			}
+		}
+	},
+	"Gmae3-BPcar-idle": {
+		"slots": {
+			"luntai": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"luntai2": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		},
+		"bones": {
+			"luntai2": {
+				"translate": [
+					{ "x": 19.53, "y": -160.71 }
+				]
+			},
+			"luntai": {
+				"translate": [
+					{ "x": 111.15, "y": -168.22 }
+				]
+			}
+		}
+	}
+}
+}

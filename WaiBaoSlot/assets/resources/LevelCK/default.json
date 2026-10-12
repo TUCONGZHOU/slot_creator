@@ -1,0 +1,26 @@
+{
+    "betList":[10000,20000,30000,40000],
+    "bet":1000,
+    "lastAction":"NORMAL",
+    "action":"NORMAL",
+    "nextAction":"NORMAL",
+    "jackpots":[310689,78466,0,0],
+    "reels":[
+        [
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0]
+        ]
+    ],
+    "storedIcons":[],
+    "collect":{
+        "collectCount":0,
+        "collectTotalCount":20,
+        "newCollect":[],
+        "collectPosition":[]
+    },
+    "lines":[],
+    "winAmount":0
+}

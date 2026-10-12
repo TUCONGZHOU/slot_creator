@@ -1,0 +1,265 @@
+
+TREEofWEALTH_banner.png
+size: 1289,1287
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MatchGlow
+  rotate: true
+  xy: 1162, 1014
+  size: 84, 80
+  orig: 84, 80
+  offset: 0, 0
+  index: -1
+Sparkle_Purple_EightPoint
+  rotate: false
+  xy: 603, 55
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+banner/1
+  rotate: true
+  xy: 2, 11
+  size: 232, 249
+  orig: 232, 249
+  offset: 0, 0
+  index: -1
+banner/2
+  rotate: false
+  xy: 2, 1024
+  size: 264, 261
+  orig: 264, 261
+  offset: 0, 0
+  index: -1
+banner/3
+  rotate: false
+  xy: 268, 1024
+  size: 262, 261
+  orig: 262, 261
+  offset: 0, 0
+  index: -1
+banner/4
+  rotate: false
+  xy: 2, 761
+  size: 264, 261
+  orig: 264, 261
+  offset: 0, 0
+  index: -1
+banner/Grand_FuBabyCoin
+  rotate: false
+  xy: 1040, 881
+  size: 107, 108
+  orig: 107, 108
+  offset: 0, 0
+  index: -1
+banner/Grand_LeftEyes
+  rotate: false
+  xy: 253, 36
+  size: 23, 22
+  orig: 23, 22
+  offset: 0, 0
+  index: -1
+banner/Grand_RightEyes
+  rotate: false
+  xy: 669, 97
+  size: 23, 22
+  orig: 23, 22
+  offset: 0, 0
+  index: -1
+banner/Major_LeftEyes
+  rotate: false
+  xy: 436, 60
+  size: 22, 15
+  orig: 22, 15
+  offset: 0, 0
+  index: -1
+banner/Major_RightEyes
+  rotate: false
+  xy: 1162, 994
+  size: 28, 18
+  orig: 28, 18
+  offset: 0, 0
+  index: -1
+banner/Mini_FuBaby_eye
+  rotate: false
+  xy: 733, 228
+  size: 31, 21
+  orig: 31, 21
+  offset: 0, 0
+  index: -1
+banner/Mini_FuBaby_eyel
+  rotate: false
+  xy: 1252, 1243
+  size: 23, 20
+  orig: 23, 20
+  offset: 0, 0
+  index: -1
+banner/Mini_FuBabyprop
+  rotate: false
+  xy: 1046, 991
+  size: 114, 107
+  orig: 114, 107
+  offset: 0, 0
+  index: -1
+banner/Minor_LeftEyes
+  rotate: false
+  xy: 1252, 1265
+  size: 28, 20
+  orig: 28, 20
+  offset: 0, 0
+  index: -1
+banner/Minor_RightEyes
+  rotate: false
+  xy: 733, 210
+  size: 28, 16
+  orig: 28, 16
+  offset: 0, 0
+  index: -1
+dfdg/MajorFuBabySparkles_Bunch
+  rotate: false
+  xy: 1040, 781
+  size: 96, 98
+  orig: 96, 98
+  offset: 0, 0
+  index: -1
+heiquan
+  rotate: false
+  xy: 603, 121
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+xyx/CoinFlip
+  rotate: false
+  xy: 1231, 1101
+  size: 19, 184
+  orig: 19, 184
+  offset: 0, 0
+  index: -1
+xyx/CoinGlow
+  rotate: false
+  xy: 436, 77
+  size: 165, 166
+  orig: 165, 166
+  offset: 0, 0
+  index: -1
+xyx/DLcoin
+  rotate: false
+  xy: 1046, 1100
+  size: 183, 185
+  orig: 183, 185
+  offset: 0, 0
+  index: -1
+xyx/TreeCoin
+  rotate: false
+  xy: 253, 60
+  size: 181, 183
+  orig: 181, 183
+  offset: 0, 0
+  index: -1
+yanhua/1
+  rotate: false
+  xy: 2, 503
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+yanhua/10
+  rotate: false
+  xy: 783, 771
+  size: 255, 256
+  orig: 255, 256
+  offset: 0, 0
+  index: -1
+yanhua/11
+  rotate: false
+  xy: 774, 508
+  size: 255, 256
+  orig: 255, 256
+  offset: 0, 0
+  index: -1
+yanhua/12
+  rotate: true
+  xy: 517, 251
+  size: 255, 256
+  orig: 255, 256
+  offset: 0, 0
+  index: -1
+yanhua/13
+  rotate: false
+  xy: 775, 250
+  size: 255, 256
+  orig: 255, 256
+  offset: 0, 0
+  index: -1
+yanhua/14
+  rotate: false
+  xy: 1031, 513
+  size: 255, 256
+  orig: 255, 256
+  offset: 0, 0
+  index: -1
+yanhua/15
+  rotate: false
+  xy: 1032, 255
+  size: 255, 256
+  orig: 255, 256
+  offset: 0, 0
+  index: -1
+yanhua/2
+  rotate: false
+  xy: 268, 766
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+yanhua/3
+  rotate: false
+  xy: 532, 1029
+  size: 255, 256
+  orig: 255, 256
+  offset: 0, 0
+  index: -1
+yanhua/4
+  rotate: false
+  xy: 2, 245
+  size: 255, 256
+  orig: 255, 256
+  offset: 0, 0
+  index: -1
+yanhua/5
+  rotate: false
+  xy: 789, 1029
+  size: 255, 256
+  orig: 255, 256
+  offset: 0, 0
+  index: -1
+yanhua/6
+  rotate: false
+  xy: 260, 503
+  size: 255, 256
+  orig: 255, 256
+  offset: 0, 0
+  index: -1
+yanhua/7
+  rotate: false
+  xy: 259, 245
+  size: 255, 256
+  orig: 255, 256
+  offset: 0, 0
+  index: -1
+yanhua/8
+  rotate: false
+  xy: 526, 766
+  size: 255, 256
+  orig: 255, 256
+  offset: 0, 0
+  index: -1
+yanhua/9
+  rotate: false
+  xy: 517, 508
+  size: 255, 256
+  orig: 255, 256
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,83 @@
+
+skeleton.png
+size: 2048,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bianpao
+  rotate: true
+  xy: 2, 23
+  size: 487, 195
+  orig: 487, 195
+  offset: 0, 0
+  index: -1
+bianpao-dikuang
+  rotate: false
+  xy: 591, 7
+  size: 544, 231
+  orig: 544, 231
+  offset: 0, 0
+  index: -1
+bianpao-g
+  rotate: false
+  xy: 199, 240
+  size: 603, 270
+  orig: 608, 279
+  offset: 0, 5
+  index: -1
+bianpao-xian
+  rotate: false
+  xy: 1018, 402
+  size: 84, 108
+  orig: 111, 108
+  offset: 0, 0
+  index: -1
+bianpao-xian2
+  rotate: false
+  xy: 804, 241
+  size: 34, 30
+  orig: 34, 30
+  offset: 0, 0
+  index: -1
+bz-1
+  rotate: true
+  xy: 199, 2
+  size: 236, 199
+  orig: 238, 200
+  offset: 1, 0
+  index: -1
+bz-2
+  rotate: false
+  xy: 804, 273
+  size: 212, 237
+  orig: 212, 240
+  offset: 0, 2
+  index: -1
+bz-3
+  rotate: false
+  xy: 400, 4
+  size: 189, 234
+  orig: 190, 236
+  offset: 1, 2
+  index: -1
+g-1
+  rotate: true
+  xy: 1018, 290
+  size: 51, 45
+  orig: 57, 50
+  offset: 4, 3
+  index: -1
+g-2
+  rotate: true
+  xy: 1018, 343
+  size: 57, 55
+  orig: 63, 65
+  offset: 3, 5
+  index: -1
+g-3
+  rotate: true
+  xy: 1018, 243
+  size: 45, 50
+  orig: 46, 55
+  offset: 1, 4
+  index: -1

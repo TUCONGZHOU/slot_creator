@@ -1,0 +1,20 @@
+
+TREEofWEALTH_piao.png
+size: 123,123
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+21
+  rotate: false
+  xy: 2, 32
+  size: 89, 89
+  orig: 89, 89
+  offset: 0, 0
+  index: -1
+62
+  rotate: false
+  xy: 2, 2
+  size: 95, 28
+  orig: 95, 28
+  offset: 0, 0
+  index: -1

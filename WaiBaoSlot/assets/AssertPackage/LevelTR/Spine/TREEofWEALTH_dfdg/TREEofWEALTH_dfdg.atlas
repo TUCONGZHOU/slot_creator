@@ -1,0 +1,90 @@
+
+TREEofWEALTH_dfdg.png
+size: 434,434
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+dfdg/BG_SYM_WildA
+  rotate: false
+  xy: 2, 2
+  size: 213, 214
+  orig: 213, 214
+  offset: 0, 0
+  index: -1
+dfdg/BG_SYM_WildB
+  rotate: false
+  xy: 2, 218
+  size: 214, 214
+  orig: 214, 214
+  offset: 0, 0
+  index: -1
+dfdg/GoldSpriteDotAdd
+  rotate: false
+  xy: 301, 24
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+dfdg/Letter_1
+  rotate: true
+  xy: 340, 147
+  size: 38, 39
+  orig: 38, 39
+  offset: 0, 0
+  index: -1
+dfdg/Letter_11
+  rotate: true
+  xy: 381, 147
+  size: 38, 39
+  orig: 38, 39
+  offset: 0, 0
+  index: -1
+dfdg/Letter_2
+  rotate: false
+  xy: 340, 187
+  size: 39, 39
+  orig: 39, 39
+  offset: 0, 0
+  index: -1
+dfdg/Letter_22
+  rotate: false
+  xy: 381, 187
+  size: 39, 39
+  orig: 39, 39
+  offset: 0, 0
+  index: -1
+dfdg/Letter_3
+  rotate: false
+  xy: 217, 18
+  size: 40, 38
+  orig: 40, 38
+  offset: 0, 0
+  index: -1
+dfdg/Letter_33
+  rotate: false
+  xy: 259, 18
+  size: 40, 38
+  orig: 40, 38
+  offset: 0, 0
+  index: -1
+dfdg/MajorFuBabySparkles_Bunch
+  rotate: false
+  xy: 217, 58
+  size: 96, 98
+  orig: 96, 98
+  offset: 0, 0
+  index: -1
+dfdg/Ring
+  rotate: false
+  xy: 218, 228
+  size: 205, 204
+  orig: 205, 204
+  offset: 0, 0
+  index: -1
+dfdg/X3
+  rotate: false
+  xy: 218, 158
+  size: 120, 68
+  orig: 120, 68
+  offset: 0, 0
+  index: -1

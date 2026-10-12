@@ -1,0 +1,153 @@
+{
+	"bet": 1000,
+	"lines": [
+		[
+			[
+				{
+					"id": 90,
+					"row": 2,
+					"col": 0
+				},
+				{
+					"id": 90,
+					"row": 2,
+					"col": 1
+				},
+				{
+					"id": 8,
+					"row": 2,
+					"col": 2
+				}
+			],
+			[
+				{
+					"id": 90,
+					"row": 2,
+					"col": 0
+				},
+				{
+					"id": 90,
+					"row": 2,
+					"col": 1
+				},
+				{
+					"id": 7,
+					"row": 1,
+					"col": 2
+				}
+			],
+			[
+				{
+					"id": 90,
+					"row": 2,
+					"col": 0
+				},
+				{
+					"id": 90,
+					"row": 2,
+					"col": 1
+				},
+				{
+					"id": 6,
+					"row": 0,
+					"col": 2
+				},
+				{
+					"id": 6,
+					"row": 2,
+					"col": 3
+				}
+			],
+			[
+				{
+					"id": 90,
+					"row": 2,
+					"col": 0
+				},
+				{
+					"id": 7,
+					"row": 0,
+					"col": 1
+				},
+				{
+					"id": 7,
+					"row": 1,
+					"col": 2
+				}
+			]
+		]
+	],
+	"action": "NORMAL",
+	"storedIcons": [
+		[
+			{
+				"Multiple": 3,
+				"row": 1,
+				"col": 4
+			},
+			{
+				"Multiple": 3,
+				"row": 2,
+				"col": 4
+			},
+			{
+				"Multiple": 2,
+				"row": 0,
+				"col": 0
+			}
+		],
+		[
+			{
+				"Multiple": 3,
+				"row": 1,
+				"col": 4
+			},
+			{
+				"Multiple": 3,
+				"row": 2,
+				"col": 4
+			},
+			{
+				"Multiple": 2,
+				"row": 0,
+				"col": 0
+			}
+		]
+	],
+	"jackpots": [10000,20000,30000,40000],
+	"lastAction": "NORMAL",
+	"respin": {
+		"type": 5,
+		"reSpinCurCount": 0,
+		"reSpinsTotalCount": 5,
+		"riseUpBet": 3,
+		"curRewardSignals": {
+			
+		}
+	},
+	"respinReels": [
+		[
+			[94,4,4],
+			[3,3,3],
+			[3,3,3],
+			[3,3,3],
+			[3,94,94]
+		],
+		[
+			[94,3,3],
+			[3,3,3],
+			[3,3,3],
+			[3,3,3],
+			[3,94,94]
+		]
+	],
+	"winAmount": 4000,
+	"betList": [10000,20000,50000,1000000],
+	"nextAction": "RESPIN",
+	"reels": [[[94,9,90],[7,9,90],[6,7,8],[4,5,6],[6,94,94]]],
+	"bonus": {
+		"content": {
+			
+		}
+	}
+}

@@ -1,0 +1,77 @@
+{
+	"bet": 1000,
+	"lines": {
+		
+	},
+	"action": "RESPIN",
+	"storedIcons": [
+		[
+			{
+				"Multiple": 4.5,
+				"row": 2,
+				"col": 0
+			},
+			{
+				"Multiple": 0.5,
+				"row": 2,
+				"col": 1
+			},
+			{
+				"Multiple": 0.5,
+				"row": 0,
+				"col": 2
+			},
+			{
+				"Multiple": 8,
+				"row": 1,
+				"col": 2
+			},
+			{
+				"Multiple": 1.5,
+				"row": 2,
+				"col": 2
+			},
+			{
+				"Multiple": 2,
+				"row": 0,
+				"col": 3
+			},
+			{
+				"Multiple": 2,
+				"row": 1,
+				"col": 3
+			},
+			{
+				"Multiple": 1.5,
+				"row": 2,
+				"col": 3
+			},
+			{
+				"Multiple": 10,
+				"row": 5,
+				"col": 3
+			},
+			{
+				"Multiple": 4.5,
+				"row": 0,
+				"col": 4
+			},
+			{
+				"Multiple": 2,
+				"row": 4,
+				"col": 4
+			}
+		]
+	],
+	"jackpots": [10000,20000,30000,40000],
+	"lastAction": "RESPIN",
+	"respin": {
+		"reSpinsTotalCount": 3,
+		"reSpinCurCount": 3
+	},
+	"respinReels": [[[95,95,94],[95,95,94,95],[94,94,94,95,95],[94,94,94,95,95,94],[94,95,95,95,94,95,95]]],
+	"winAmount": 0,
+	"nextAction": "RESPIN",
+	"betList": [10000,20000,50000,1000000],
+	"reels": [[[7,8,0],[7,8,94],[94,94,94],[94,94,4],[94,1,2]]]
+}

@@ -1,0 +1,146 @@
+
+skeleton.png
+size: 587,529
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+a-e
+  rotate: true
+  xy: 533, 389
+  size: 39, 52
+  orig: 39, 52
+  offset: 0, 0
+  index: -1
+a-h
+  rotate: true
+  xy: 533, 430
+  size: 43, 52
+  orig: 43, 52
+  offset: 0, 0
+  index: -1
+a-l
+  rotate: true
+  xy: 533, 351
+  size: 36, 51
+  orig: 36, 51
+  offset: 0, 0
+  index: -1
+a-w
+  rotate: false
+  xy: 533, 475
+  size: 52, 52
+  orig: 52, 52
+  offset: 0, 0
+  index: -1
+b-a
+  rotate: false
+  xy: 465, 15
+  size: 28, 33
+  orig: 28, 33
+  offset: 0, 0
+  index: -1
+b-e
+  rotate: true
+  xy: 37, 4
+  size: 24, 32
+  orig: 26, 32
+  offset: 2, 0
+  index: -1
+b-e-1
+  rotate: true
+  xy: 71, 4
+  size: 24, 32
+  orig: 24, 32
+  offset: 0, 0
+  index: -1
+b-f
+  rotate: true
+  xy: 173, 5
+  size: 23, 31
+  orig: 23, 31
+  offset: 0, 0
+  index: -1
+b-r
+  rotate: true
+  xy: 2, 2
+  size: 26, 33
+  orig: 26, 33
+  offset: 0, 0
+  index: -1
+b-t
+  rotate: true
+  xy: 139, 5
+  size: 23, 32
+  orig: 23, 32
+  offset: 0, 0
+  index: -1
+b-u
+  rotate: false
+  xy: 495, 15
+  size: 27, 33
+  orig: 27, 33
+  offset: 0, 0
+  index: -1
+big-g
+  rotate: true
+  xy: 2, 30
+  size: 497, 223
+  orig: 502, 243
+  offset: 2, 19
+  index: -1
+c-1
+  rotate: false
+  xy: 468, 272
+  size: 117, 37
+  orig: 117, 37
+  offset: 0, 0
+  index: -1
+c-13
+  rotate: false
+  xy: 468, 235
+  size: 116, 35
+  orig: 116, 35
+  offset: 0, 0
+  index: -1
+c-2
+  rotate: false
+  xy: 105, 4
+  size: 32, 24
+  orig: 32, 24
+  offset: 0, 0
+  index: -1
+di
+  rotate: false
+  xy: 227, 125
+  size: 239, 203
+  orig: 242, 205
+  offset: 0, 0
+  index: -1
+g
+  rotate: false
+  xy: 533, 311
+  size: 38, 38
+  orig: 45, 45
+  offset: 4, 3
+  index: -1
+kuangdong
+  rotate: false
+  xy: 227, 330
+  size: 304, 197
+  orig: 311, 198
+  offset: 0, 1
+  index: -1
+kuangdong-c1
+  rotate: true
+  xy: 468, 50
+  size: 183, 108
+  orig: 183, 108
+  offset: 0, 0
+  index: -1
+kuangdong-c2
+  rotate: false
+  xy: 227, 15
+  size: 236, 108
+  orig: 272, 116
+  offset: 8, 0
+  index: -1

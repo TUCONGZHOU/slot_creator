@@ -1,0 +1,120 @@
+{
+"skeleton": {
+	"hash": "DwOQX8ui5EUFr3xVwbPiwnAblmA",
+	"spine": "3.8.99",
+	"x": -77.7,
+	"y": -29.63,
+	"width": 159,
+	"height": 147.96,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "Zong", "parent": "root", "y": 4.95 },
+	{
+		"name": "body",
+		"parent": "Zong",
+		"x": -5.92,
+		"y": 42.34,
+		"scaleX": 0.7,
+		"scaleY": 0.7,
+		"color": "ff0000ff"
+	},
+	{
+		"name": "weiba",
+		"parent": "body",
+		"length": 14.4,
+		"rotation": -4.76,
+		"x": 67.89,
+		"y": -26.14,
+		"color": "ff0000ff"
+	},
+	{
+		"name": "zhi",
+		"parent": "body",
+		"length": 30.87,
+		"rotation": -135.78,
+		"x": -15.04,
+		"y": -23.48,
+		"color": "ff0000ff"
+	}
+],
+"slots": [
+	{ "name": "di", "bone": "Zong", "attachment": "di" },
+	{ "name": "di-guang", "bone": "Zong", "attachment": "di-guang", "blend": "additive" },
+	{ "name": "weiba", "bone": "weiba", "attachment": "weiba" },
+	{ "name": "body", "bone": "body", "attachment": "body" },
+	{ "name": "toufa", "bone": "body", "attachment": "toufa" },
+	{ "name": "zhi", "bone": "zhi", "attachment": "zhi" },
+	{ "name": "ere", "bone": "body", "attachment": "ere" },
+	{ "name": "shizi-gunag", "bone": "Zong", "attachment": "shizi-gunag", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"body": {
+				"body": { "x": 5.5, "y": 6, "width": 155, "height": 148 }
+			},
+			"di": {
+				"di": { "width": 141, "height": 54 }
+			},
+			"di-guang": {
+				"di-guang": { "x": 1.8, "y": 2.43, "width": 159, "height": 74 }
+			},
+			"ere": {
+				"ere": { "x": -17.55, "y": 58.44, "width": 33, "height": 30 }
+			},
+			"shizi-gunag": {
+				"shizi-gunag": { "x": 0.48, "y": 48.39, "width": 132, "height": 130 }
+			},
+			"toufa": {
+				"toufa": { "x": 3.94, "y": 28.87, "width": 114, "height": 119 }
+			},
+			"weiba": {
+				"weiba": { "x": 6.05, "y": 24.2, "rotation": 4.76, "width": 46, "height": 73 }
+			},
+			"zhi": {
+				"zhi": { "x": 23.86, "y": -6.85, "rotation": 135.78, "width": 72, "height": 54 }
+			}
+		}
+	}
+],
+"animations": {
+	"Game2-shizi": {
+		"slots": {
+			"di-guang": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 1.6667, "color": "ffffff00" }
+				]
+			},
+			"shizi-gunag": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 1.6667, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"zhi": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "angle": -28.8 },
+					{ "time": 1.6667 }
+				]
+			},
+			"weiba": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "angle": 6.56 },
+					{ "time": 1.6667 }
+				]
+			}
+		}
+	}
+}
+}

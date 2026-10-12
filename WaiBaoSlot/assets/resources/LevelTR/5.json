@@ -1,0 +1,150 @@
+{
+	"bet": 1000,
+	"lines": [
+		[
+			[
+				{
+					"id": 5,
+					"row": 2,
+					"col": 0
+				},
+				{
+					"id": 92,
+					"row": 2,
+					"col": 1
+				},
+				{
+					"id": 93,
+					"row": 1,
+					"col": 2
+				}
+			],
+			[
+				{
+					"id": 4,
+					"row": 1,
+					"col": 0
+				},
+				{
+					"id": 92,
+					"row": 2,
+					"col": 1
+				},
+				{
+					"id": 93,
+					"row": 1,
+					"col": 2
+				},
+				{
+					"id": 92,
+					"row": 2,
+					"col": 3
+				}
+			],
+			[
+				{
+					"id": 5,
+					"row": 2,
+					"col": 0
+				},
+				{
+					"id": 92,
+					"row": 2,
+					"col": 1
+				},
+				{
+					"id": 92,
+					"row": 0,
+					"col": 2
+				},
+				{
+					"id": 92,
+					"row": 2,
+					"col": 3
+				}
+			],
+			[
+				{
+					"id": 4,
+					"row": 1,
+					"col": 0
+				},
+				{
+					"id": 92,
+					"row": 2,
+					"col": 1
+				},
+				{
+					"id": 92,
+					"row": 0,
+					"col": 2
+				},
+				{
+					"id": 92,
+					"row": 2,
+					"col": 3
+				}
+			],
+			[
+				{
+					"id": 2,
+					"row": 0,
+					"col": 0
+				},
+				{
+					"id": 92,
+					"row": 2,
+					"col": 1
+				},
+				{
+					"id": 92,
+					"row": 0,
+					"col": 2
+				},
+				{
+					"id": 92,
+					"row": 2,
+					"col": 3
+				}
+			],
+			[
+				{
+					"id": 2,
+					"row": 0,
+					"col": 0
+				},
+				{
+					"id": 92,
+					"row": 2,
+					"col": 1
+				},
+				{
+					"id": 93,
+					"row": 1,
+					"col": 2
+				},
+				{
+					"id": 92,
+					"row": 2,
+					"col": 3
+				}
+			]
+		]
+	],
+	"action": "NORMAL",
+	"storedIcons": {
+		
+	},
+	"jackpots": [10000,20000,30000,40000],
+	"lastAction": "NORMAL",
+	"freeSpinReels": [[[5,6,7],[3,4,6],[4,5,6],[6,7,8],[7,8,90]]],
+	"freespin": {
+		"freeSpinsTotalCount": 10,
+		"freeSpinNewCount": 10,
+		"freeSpinsLeftCount": 10
+	},
+	"winAmount": 6000,
+	"nextAction": "FREESPIN",
+	"betList": [10000,20000,50000,1000000],
+	"reels": [[[2,4,5],[9,90,92],[92,93,0],[9,90,92],[90,0,1]]]
+}

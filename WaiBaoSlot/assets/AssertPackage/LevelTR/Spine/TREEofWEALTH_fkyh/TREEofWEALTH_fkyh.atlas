@@ -1,0 +1,216 @@
+
+TREEofWEALTH_fkyh.png
+size: 1241,1241
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fkyh_00008
+  rotate: false
+  xy: 2, 611
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00011
+  rotate: false
+  xy: 149, 926
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00015
+  rotate: false
+  xy: 2, 296
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00019
+  rotate: false
+  xy: 149, 611
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00022
+  rotate: false
+  xy: 296, 926
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00026
+  rotate: false
+  xy: 149, 296
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00029
+  rotate: false
+  xy: 296, 611
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00033
+  rotate: false
+  xy: 443, 926
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00037
+  rotate: false
+  xy: 296, 296
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00040
+  rotate: true
+  xy: 2, 149
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00044
+  rotate: false
+  xy: 443, 611
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00047
+  rotate: false
+  xy: 590, 926
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00051
+  rotate: true
+  xy: 2, 2
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00055
+  rotate: false
+  xy: 443, 296
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00058
+  rotate: false
+  xy: 590, 611
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00062
+  rotate: false
+  xy: 737, 926
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00065
+  rotate: false
+  xy: 590, 296
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00069
+  rotate: true
+  xy: 317, 149
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00073
+  rotate: false
+  xy: 737, 611
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00076
+  rotate: false
+  xy: 884, 926
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00080
+  rotate: true
+  xy: 317, 2
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00083
+  rotate: false
+  xy: 737, 296
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00087
+  rotate: false
+  xy: 884, 611
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00091
+  rotate: false
+  xy: 1031, 926
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00094
+  rotate: false
+  xy: 884, 296
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00098
+  rotate: true
+  xy: 632, 149
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00101
+  rotate: false
+  xy: 1031, 611
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00105
+  rotate: true
+  xy: 632, 2
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00109
+  rotate: false
+  xy: 1031, 296
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1
+fkyh_00112
+  rotate: false
+  xy: 2, 926
+  size: 145, 313
+  orig: 145, 313
+  offset: 0, 0
+  index: -1

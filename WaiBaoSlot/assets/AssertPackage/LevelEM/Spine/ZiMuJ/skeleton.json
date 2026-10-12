@@ -1,0 +1,66 @@
+{
+"skeleton": {
+	"hash": "B3Kr1LnDChxGC4/DjW/3Aoj+8UY",
+	"spine": "3.8.99",
+	"x": -55.5,
+	"y": -57,
+	"width": 111,
+	"height": 114,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "ZONG", "parent": "root" }
+],
+"slots": [
+	{ "name": "A", "bone": "ZONG", "attachment": "A" },
+	{ "name": "A2", "bone": "ZONG", "attachment": "A", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"A": {
+				"A": { "width": 111, "height": 114 }
+			},
+			"A2": {
+				"A": { "width": 111, "height": 114 }
+			}
+		}
+	}
+],
+"animations": {
+	"Game2-J": {
+		"slots": {
+			"A2": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 1.3333, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"ZONG": {
+				"scale": [
+					{},
+					{ "time": 0.5, "x": 1.1, "y": 1.1 },
+					{ "time": 0.8333, "x": 1.12, "y": 1.12 },
+					{ "time": 1.3333 }
+				]
+			}
+		}
+	},
+	"Game2-J-idle": {
+		"slots": {
+			"A2": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			}
+		}
+	}
+}
+}

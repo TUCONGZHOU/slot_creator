@@ -1,0 +1,27 @@
+
+skeleton.png
+size: 1070,282
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Men-YOU-1
+  rotate: false
+  xy: 498, 2
+  size: 284, 278
+  orig: 284, 278
+  offset: 0, 0
+  index: -1
+Men-ZUO-1
+  rotate: false
+  xy: 784, 2
+  size: 284, 278
+  orig: 284, 278
+  offset: 0, 0
+  index: -1
+guang
+  rotate: false
+  xy: 2, 2
+  size: 494, 278
+  orig: 540, 960
+  offset: 24, 387
+  index: -1

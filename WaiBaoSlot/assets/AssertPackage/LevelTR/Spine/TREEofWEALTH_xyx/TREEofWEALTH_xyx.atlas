@@ -1,0 +1,181 @@
+
+TREEofWEALTH_xyx.png
+size: 2005,2005
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MatchGlow
+  rotate: false
+  xy: 1610, 717
+  size: 84, 80
+  orig: 84, 80
+  offset: 0, 0
+  index: -1
+Sparkle_Purple_EightPoint
+  rotate: false
+  xy: 1610, 651
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+baokai/baokai_00008
+  rotate: false
+  xy: 2, 806
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00011
+  rotate: false
+  xy: 724, 1603
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00015
+  rotate: false
+  xy: 2, 404
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00019
+  rotate: false
+  xy: 1126, 1603
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00022
+  rotate: false
+  xy: 2, 2
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00026
+  rotate: false
+  xy: 1528, 1603
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00029
+  rotate: false
+  xy: 724, 1201
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00033
+  rotate: false
+  xy: 1126, 1201
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00037
+  rotate: false
+  xy: 1528, 1201
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00040
+  rotate: false
+  xy: 697, 799
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00044
+  rotate: false
+  xy: 1099, 799
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00047
+  rotate: false
+  xy: 1501, 799
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00051
+  rotate: false
+  xy: 404, 397
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00055
+  rotate: false
+  xy: 806, 397
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+baokai/baokai_00058
+  rotate: false
+  xy: 1208, 397
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+xyx/Batch_Scroll
+  rotate: false
+  xy: 562, 321
+  size: 66, 74
+  orig: 66, 74
+  offset: 0, 0
+  index: -1
+xyx/Paper
+  rotate: false
+  xy: 1930, 1866
+  size: 32, 137
+  orig: 32, 137
+  offset: 0, 0
+  index: -1
+xyx/PickemBG_1
+  rotate: false
+  xy: 2, 1208
+  size: 720, 795
+  orig: 720, 795
+  offset: 0, 0
+  index: -1
+xyx/Scroll
+  rotate: false
+  xy: 404, 248
+  size: 156, 147
+  orig: 156, 147
+  offset: 0, 0
+  index: -1
+xyx/Scroll_1
+  rotate: false
+  xy: 404, 837
+  size: 125, 35
+  orig: 125, 35
+  offset: 0, 0
+  index: -1
+xyx/Scroll_2
+  rotate: false
+  xy: 404, 120
+  size: 33, 126
+  orig: 33, 126
+  offset: 0, 0
+  index: -1
+xyx/Thread_Scroll
+  rotate: false
+  xy: 1903, 1160
+  size: 19, 39
+  orig: 19, 39
+  offset: 0, 0
+  index: -1
+xyx/Tree_Glow
+  rotate: true
+  xy: 404, 874
+  size: 332, 291
+  orig: 332, 291
+  offset: 0, 0
+  index: -1
