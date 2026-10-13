@@ -1,0 +1,62 @@
+{
+	"bet": 1000,
+	"lines": [
+		[
+			[
+				{
+					"id": 0,
+					"row": 0,
+					"col": 0
+				},
+				{
+					"id": 92,
+					"row": 0,
+					"col": 1
+				},
+				{
+					"id": 0,
+					"row": 0,
+					"col": 2
+				}
+			],
+			[
+				{
+					"id": 0,
+					"row": 0,
+					"col": 0
+				},
+				{
+					"id": 0,
+					"row": 2,
+					"col": 1
+				},
+				{
+					"id": 0,
+					"row": 0,
+					"col": 2
+				}
+			]
+		]
+	],
+	"action": "NORMAL",
+	"storedIcons": [
+		[
+			{
+				"Multiple": 10,
+				"row": 1,
+				"col": 1
+			},
+			{
+				"Multiple": 0.5,
+				"row": 1,
+				"col": 4
+			}
+		]
+	],
+	"jackpots":[310689,78466,64456,35151],
+	"lastAction": "NORMAL",
+	"winAmount": 2000,
+	"nextAction": "NORMAL",
+	"betList": [10000,20000,50000,1000000],
+	"reels": [[[0,3,5],[92,94,0],[0,1,2],[1,2,3],[94,94,0]]]
+}

@@ -1,0 +1,13 @@
+
+all_xfj_sj.png
+size: 72,72
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+CEL_Fu_Bat
+  rotate: false
+  xy: 2, 2
+  size: 65, 68
+  orig: 65, 68
+  offset: 0, 0
+  index: -1

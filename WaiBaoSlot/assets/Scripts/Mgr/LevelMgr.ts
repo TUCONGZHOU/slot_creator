@@ -6,6 +6,7 @@ import { LevelCK_GameModel } from '../Levels/LevelCK/LevelCK_GameModel';
 import { LevelF_GameModel } from '../Levels/LevelF/LevelF_GameModel';
 import { LevelTR_GameModel } from '../Levels/LevelTR/LevelTR_GameModel';
 import { LevelWF_GameModel } from '../Levels/LevelWF/LevelWF_GameModel';
+import { LevelJT_GameModel } from '../Levels/LevelJT/LevelJT_GameModel';
 import { LevelConfig } from '../InterFace/LevelConfig';
 import { PlayerMgr } from './PlayerMgr';
 import { CKGameCenter } from './CKGameCenter';
@@ -167,6 +168,9 @@ export class LevelMgr extends Component {
         }
         else if(levelName == "LevelEM"){
             return new LevelEM_GameModel();
+        }
+        else if(levelName == "LevelJT"){
+            return new LevelJT_GameModel();
         }
     }
 }

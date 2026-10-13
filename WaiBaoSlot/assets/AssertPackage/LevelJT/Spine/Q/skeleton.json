@@ -1,0 +1,45 @@
+{
+"skeleton": {
+	"hash": "gYS8NoedcApi1tPXDzhya6yVObA",
+	"spine": "3.8.99",
+	"x": -110,
+	"y": -98.5,
+	"width": 220,
+	"height": 197,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "hu-di", "bone": "root", "attachment": "hu-di" },
+	{ "name": "hu", "bone": "root", "attachment": "hu" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"hu": {
+				"hu": { "width": 220, "height": 197 }
+			},
+			"hu-di": {
+				"hu-di": { "width": 220, "height": 197 }
+			}
+		}
+	}
+],
+"animations": {
+	"Game4-q": {
+		"slots": {
+			"hu": {
+				"attachment": [
+					{ "time": 0.4, "name": null },
+					{ "time": 0.8, "name": "hu" }
+				]
+			}
+		}
+	},
+	"Game4-q-idle": {}
+}
+}

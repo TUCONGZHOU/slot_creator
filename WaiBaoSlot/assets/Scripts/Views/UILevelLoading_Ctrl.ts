@@ -152,6 +152,8 @@ export class UILevelLoading_Ctrl extends UICtrl {
         resPkg["GameMain"].urls = [
             "Prefabs/GameBottomNode",
             "Prefabs/GameTopNode",
+            "Prefabs/GameBottomNodeL",
+            "Prefabs/GameTopNodeL",
             "Prefabs/SpinBtnP",
             "Prefabs/BigWin_P",
             "Prefabs/CoinCollectNode",
@@ -210,8 +212,8 @@ export class UILevelLoading_Ctrl extends UICtrl {
         else if(abName == "LevelWF"){
             UIMgr.Instance.showUi(abName,"Prefabs/MainUI","LevelWF_MainUI_Ctrl",UILayer.Normal,targetNode);
         }
-        else if(abName == "LevelEM"){
-            UIMgr.Instance.showUi(abName,"Prefabs/MainUI","LevelEM_MainUI_Ctrl",UILayer.Normal,targetNode);
+        else if(abName == "LevelJT"){
+            UIMgr.Instance.showUi(abName,"Prefabs/MainUI","LevelJT_MainUI_Ctrl",UILayer.Normal,targetNode);
         }
         
         // // 加载GameTopNode
@@ -229,7 +231,8 @@ export class UILevelLoading_Ctrl extends UICtrl {
 
         // 加载GameTopNode
         const targetNode = find("Canvas/TopNode"); 
-        UIMgr.Instance.showUi("GameMain","Prefabs/GameTopNode","GameTopNode_Ctrl",UILayer.Normal,targetNode);
+        // UIMgr.Instance.showUi("GameMain","Prefabs/GameTopNode","GameTopNode_Ctrl",UILayer.Normal,targetNode);
+        UIMgr.Instance.showUi("GameMain","Prefabs/GameTopNodeL","GameTopNode_Ctrl",UILayer.Normal,targetNode);
 
         // const uiTopRoot = targetNode;
         // const visibleSize = view.getVisibleSize();
@@ -242,7 +245,8 @@ export class UILevelLoading_Ctrl extends UICtrl {
     public initBottomNode():void{
         // 加载GameTopNode
         const targetNode = find("Canvas/BottomNode"); 
-        UIMgr.Instance.showUi("GameMain","Prefabs/GameBottomNode","GameBottomNode_Ctrl",UILayer.Normal,targetNode);
+        // UIMgr.Instance.showUi("GameMain","Prefabs/GameBottomNode","GameBottomNode_Ctrl",UILayer.Normal,targetNode);
+        UIMgr.Instance.showUi("GameMain","Prefabs/GameBottomNodeL","GameBottomNode_Ctrl",UILayer.Normal,targetNode);
 
         // const uiBottomRoot = targetNode;
         // const visibleSize = view.getVisibleSize();

@@ -1,0 +1,13 @@
+
+yuanbao.png
+size: 308,308
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+imagine/xyx/yuanbao
+  rotate: false
+  xy: 2, 2
+  size: 235, 304
+  orig: 235, 304
+  offset: 0, 0
+  index: -1

@@ -73,7 +73,8 @@ export class GameBottomNode_Ctrl extends UICtrl {
 
         const uiRoot = this.node; // 所有页面的父节点
         const visibleSize = view.getVisibleSize();
-        const designW = 768;
+        // const designW = 768;
+        const designW = 1370;
         // 计算当前实际可见设计宽度
         const scaleX = visibleSize.width / designW;
         uiRoot.scale.set(scaleX, scaleX, 1);

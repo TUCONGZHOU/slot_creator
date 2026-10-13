@@ -1,0 +1,13 @@
+
+slot_sj_big.png
+size: 254,252
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+CEL_Fu_Bat
+  rotate: false
+  xy: 2, 2
+  size: 250, 248
+  orig: 250, 248
+  offset: 0, 0
+  index: -1

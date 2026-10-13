@@ -1,8 +1,8 @@
 {
-	"BundleName":"LevelEM",
+	"BundleName":"LevelJT",
 	"MainPrefabs":"Prefabs/MainUI",
 	"BgPrefabs":"Prefabs/UIBg",
-	"BgCompent":"LevelEM_UIBg_Ctrl",
+	"BgCompent":"LevelJT_UIBg_Ctrl",
 	"Symbol":[
 		{ "id":0,"file":"Prefabs/Score_1","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
 		{ "id":1,"file":"Prefabs/Score_2","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
@@ -13,120 +13,242 @@
 		{ "id":6,"file":"Prefabs/Score_7","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
 		{ "id":7,"file":"Prefabs/Score_8","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
 		{ "id":8,"file":"Prefabs/Score_9","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },	
+		{ "id":9,"file":"Prefabs/Score_10","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":10,"file":"Prefabs/Score_11","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
 		{ "id":90,"file":"Prefabs/Score_scatter","type":"scatter","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
 		{ "id":92,"file":"Prefabs/Score_wild","type":"wild","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
-		{ "id":94,"file":"Prefabs/Score_bonus","type":"bonus","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },	
-		{ "id":96,"file":"Prefabs/Score_JinPao","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" }
+		{ "id":94,"file":"Prefabs/Socre_linghting_red","type":"bonus","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":95,"file":"Prefabs/Socre_linghting_jin","type":"bonus","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":96,"file":"Prefabs/Socre_linghting_lv","type":"bonus","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":100,"file":"Prefabs/Socre_add","type":"bonus","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" }
 	],
 	"SymbolSize":{
-		"0":1,"1":1,"2":1,"3":1,"4":1,"5":1,"6":1,"7":1,"8":1,"90":1,"92":1,"94":1,"96":1
+		"0":1,"1":1,"2":1,"3":1,"4":1,"5":1,"6":1,"7":1,"8":1,"9":1,"10":1,
+		"90":1,"92":1,"94":1,"95":1,"96":1,"100":1
 	},
 	"ToFeature":{
-		"0":false,"1":false,"2":false,"3":false,"4":false,"5":false,"6":false,"7":false,"8":false,"90":false,"92":false,"94":false,"96":false
+		"0":false,"1":false,"2":false,"3":false,"4":false,"5":false,"6":false,"7":false,"8":false,"9":false,"10":false,
+		"90":true,"92":true,"94":true,"95":true,"96":true,"100":true
 	},
 	"SymbolLineAction":{
-		"0":"Game2-J","1":"Game2-Q","2":"Game2-K","3":"Game2-A","4":"Game3-gj","5":"Game3-km","6":"Gmane3-kc-move",
-		"7":"Gmae3-maolv","8":"Game3-odleman","94":"","90":"Game3-kdsmall-move","92":"Game3-jingeda","96":""
+		"0":"Game4-shuzi9","1":"Game4-shuzi10","2":"Game4-j","3":"Game4-q","4":"Game4-k","5":"Game4-a","6":"Game4-yu","7":"Game4-wg","8":"Game4-hu","9":"Game4-fh","10":"Game4-fh",
+		"90":"Game4-fubi","92":"Game4-bftao","94":"Game4-fubi","95":"Game4-jinbi2","96":"Game4-jinbi2","100":"Game4-spin"
 	},
 	"SymbolIdleAction":{
-		"0":"Game2-J-idle","1":"Game2-Q-idle","2":"Game2-K-idle","3":"Game2-A-idle","4":"Game3-gj-idle","5":"Game3-km-idle","6":"Gmane3-kc-idle",
-		"7":"Game2-maolv-idle","8":"Game3-idle","94":"Game3-bianpao2","90":"Game3-small-idle","92":"Game3-jingeda-idle","96":"Game3-bianpao2"	
+		"0":"Game4-shuzi9-idle","1":"Game4-shuzi10-idle","2":"Game4-j-idle","3":"Game4-q-idle","4":"Game4-k-idle","5":"Game4-a-idle","6":"Game4-yu-idle","7":"Game4-wg-idle","8":"Game4-hu-idle","9":"Game4-fh-idle","10":"Game4-fh-idle",
+		"90":"Game4-idle","92":"Game4-bftao-idle","94":"","95":"Game4-idle","96":"Game4-idle","100":"Game4-spin-idle"
 	},
 	"SymbolStopAction":{
-		"0":"","1":"","2":"","3":"","4":"","5":"","6":"","7":"","8":"","94":"Game3-bianpao2","90":"","92":"","96":"Game3-bianpao2"
+		"0":"","1":"","2":"","3":"","4":"","5":"","6":"","7":"","8":"","9":"","10":"",
+		"90":"Game4-idle","92":"Game4-bftao-small","94":"Game4-idle","95":"Game4-jinbi","96":"Game4-jinbi","100":"Game4-spin-idle"
 	},
 	"GameTable":{
 		"NormalGameTable":{
-			"Compent":"LevelEM_NormalGameTable_Ctrl",
+			"Compent":"LevelJT_NormalGameTable_Ctrl",
 			"Prefabs":"Prefabs/NormalGameTable",
 			"ReelTables":["NormalReelTable"]
 		},
 		"RespinGameTable":{
-			"Compent":"LevelEM_ReSpinGameTable_Ctrl",
+			"Compent":"LevelJT_ReSpinGameTable_Ctrl",
 			"Prefabs":"Prefabs/ReSpinGameTable",
 			"ReelTables":["RespinReelTable"]
+		},
+		"FreeSpinGameTable":{
+			"Compent":"LevelJT_FreeGameTable_Ctrl",
+			"Prefabs":"Prefabs/FreeSpinGameTable",
+			"ReelTables":["FreeSpinReelTable"]
 		}
 	},
 	"ReelTable":{
 		"NormalReelTable":{
 			"ClipType":1,
-			"Compent":"LevelEM_NormalReelTable_Ctrl",
+			"Compent":"LevelJT_NormalReelTable_Ctrl",
 			"Prefabs":"Prefabs/NormalReelTable",
 			"ReelUnits":["NormalReelUnit","NormalReelUnit","NormalReelUnit","NormalReelUnit","NormalReelUnit"],
 			"QuickActionTime":0.1,
 			"RollData":[
-				[90,92,0,1,2,3,4,5,6,8,90,92,0,1,2,3,94,94,4,5,6,7,8,90,96,92,0,1,2,3,4,5,6,7,8,92,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,1,2,3,4],
-				[1,2,3,4,5,6,7,8,90,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,94,94,4,96,5,6,7,8,90,92,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,2,4,5,6,7],
-				[2,3,4,5,6,7,8,90,92,0,1,3,4,5,6,7,8,90,92,0,1,2,3,94,94,4,96,5,6,7,8,90,92,0,1,2,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,6,7,8],
-				[3,4,5,6,7,8,90,92,0,1,2,4,5,6,7,8,90,92,0,1,2,3,94,94,4,5,96,6,7,8,90,92,0,1,2,3,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,8,90],
-				[0,1,2,3,4,5,6,7,8,92,0,1,2,3,4,5,6,7,8,90,92,0,1,94,94,2,3,4,96,5,6,7,8,90,92,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,2,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,3,4,5,6]
+				[94,0,1,3,4,5,6,7,8,9,94,0,1,2,3,4,5,7,8,9,10,94,0,1,2,4,5,6,7,8,9,10,0,1,2,3,4,5,6,8],
+				[9,10,94,0,1,2,3,5,6,7,8,9,94,92,0,1,3,4,5,6,8,9,10,94,0,1,2,3,4,6,7,8,9,94,92,0,1,3,4,5],
+				[5,6,8,9,10,92,94,0,2,3,4,5,7,8,9,94,92,94,1,2,3,5,6,7,9,10,94,94,0,1,3,4,5,7,8,9,94,92,94,1],
+				[9,94,92,0,1,3,4,5,6,8,9,10,94,0,1,2,3,4,6,7,8,9,94,92,0,1,3,4,5,6,8,9,10,94,92,1,2,3,4,6],
+				[3,4,5,7,8,9,10,94,0,1,2,4,5,6,7,8,9,10,0,1,2,3,4,5,6,8,9,10,94,0,1,2,4,5,6,7,8,9,10,0]
+			]
+		},
+		"FreeSpinReelTable":{
+			"ClipType":1,
+			"Compent":"LevelJT_FreeReelTable_Ctrl",
+			"Prefabs":"Prefabs/FreeReelTable",
+			"ReelUnits":["FreeReelUnit","FreeReelUnit","FreeReelUnit","FreeReelUnit","FreeReelUnit"],
+			"QuickActionTime":0.1,
+			"RollData":[
+				[5,6,7,8,9,10,0,1,2,3,4,5,6,7,8,9,10,0,2,3,4,5,6,7,8,9,10,0,1,2,3,4,5,6,7,8,9,10,0,1],
+				[5,6,7,9,10,92,0,1,2,3,5,6,7,8,9,10,92,0,2,3,4,5,6,7,8,10,92,0,1,2,3,4,6,7,8,9,10,92,0,2],
+				[7,8,9,10,94,0,1,2,4,5,6,7,9,10,92,94,0,2,3,4,5,7,8,9,10,94,0,1,2,4,5,6,7,8,10,92,94,0,2,3],
+				[2,3,5,6,7,8,9,10,92,0,2,3,4,5,6,7,8,10,92,0,1,2,3,4,6,7,8,9,10,92,0,2,3,4,5,6,7,8,10,92],
+				[2,3,4,5,6,7,8,9,10,0,2,3,4,5,6,7,8,9,10,0,1,2,3,4,5,6,7,8,9,10,0,1,2,4,5,6,7,8,9,10]
 			]
 		},
 		"RespinReelTable":{
 			"ClipType":3,
-			"Compent":"LevelEM_ReSpinReelTable_Ctrl",
+			"Compent":"LevelJT_ReSpinReelTable_Ctrl",
 			"Prefabs":"Prefabs/ReSpinReelTable",
-			"ReelUnits":["RespinReelUnit","RespinReelUnit","RespinReelUnit","RespinReelUnit","RespinReelUnit"],
+			"ReelUnits":["RespinReelUnit1","RespinReelUnit2","RespinReelUnit3","RespinReelUnit4","RespinReelUnit5"],
 			"RollData":[
-				[1,2,2,3,4,5,6,7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,1,2,3,4,5,6,7,8,0 ],
-				[0,1,2,3,4,5,5,6,7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,2,3,4,4,5,6,7,0 ],
-				[94,0,1,2,3,4,5,6,7,8,94,0,1,2,2,3,4,5,6,7,8,94,0,1,2,3,4,5,6,7,0 ],
-				[7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,2,2,3,4,5,6,7,8,94,0,1,2,3,4,5,0 ],
-				[2,3,4,5,6,7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,1,2,3,4,5,6,7,8,94,0,0]
+				[1,2,2,3,4,5,6,7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,1,2,3,4,5,6,7,8 ],
+				[0,1,2,3,4,5,5,6,7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,2,3,4,4,5,6,7 ],
+				[94,0,1,2,3,4,5,6,7,8,94,0,1,2,2,3,4,5,6,7,8,94,0,1,2,3,4,5,6,7 ],
+				[7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,2,2,3,4,5,6,7,8,94,0,1,2,3,4,5 ],
+				[2,3,4,5,6,7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,1,2,3,4,5,6,7,8,94,0]
 			]
 		}
 	},
 	"ReelUnit":{
 		"NormalReelUnit":{
 			"Width":130,
-			"Height":117,
+			"Height":140,
 			"ViewCount":3,
 			"Speed":2000,
 			"QuickSpeed":2500,
 			"QuickStopSpeed":5000,
-			"Compent":"LevelEM_NormalReelUnit_Ctrl",
+			"Compent":"LevelJT_NormalReelUnit_Ctrl",
 			"BigSize":1
 		},
-		"RespinReelUnit":{
+		"FreeReelUnit":{
 			"Width":130,
-			"Height":117,
+			"Height":140,
+			"ViewCount":3,
+			"Speed":2000,
+			"QuickSpeed":2500,
+			"QuickStopSpeed":5000,
+			"Compent":"LevelJT_FreeReelUnit_Ctrl",
+			"BigSize":1
+		},
+		"RespinReelUnit1":{
+			"Width":130,
+			"Height":140,
 			"ViewCount":3,
 			"Speed":1500,
-			"QuickSpeed":1500,
-			"QuickStopSpeed":1500,
-			"Compent":"LevelEM_RespinReelUnit_Ctrl",
+			"QuickSpeed":600,
+			"QuickStopSpeed":600,
+			"Compent":"LevelJT_RespinReelUnit_Ctrl",
+			"BigSize":1
+		},
+		"RespinReelUnit2":{
+			"Width":130,
+			"Height":140,
+			"ViewCount":3,
+			"Speed":1500,
+			"QuickSpeed":600,
+			"QuickStopSpeed":600,
+			"Compent":"LevelJT_RespinReelUnit_Ctrl",
+			"BigSize":1
+		},
+		"RespinReelUnit3":{
+			"Width":130,
+			"Height":140,
+			"ViewCount":3,
+			"Speed":1500,
+			"QuickSpeed":600,
+			"QuickStopSpeed":600,
+			"Compent":"LevelJT_RespinReelUnit_Ctrl",
+			"BigSize":1
+		},
+		"RespinReelUnit4":{
+			"Width":130,
+			"Height":140,
+			"ViewCount":3,
+			"Speed":1500,
+			"QuickSpeed":600,
+			"QuickStopSpeed":600,
+			"Compent":"LevelJT_RespinReelUnit_Ctrl",
+			"BigSize":1
+		},
+		"RespinReelUnit5":{
+			"Width":130,
+			"Height":140,
+			"ViewCount":3,
+			"Speed":1500,
+			"QuickSpeed":600,
+			"QuickStopSpeed":600,
+			"Compent":"LevelJT_RespinReelUnit_Ctrl",
 			"BigSize":1
 		}
 	},
 	"Effect":[
-		
+		{ "name":"paoMaDeng","file":"Prefabs/PaoMaDeng","count":20,"actionName":"paomadeng" }
 	],
 	"SoundsLineFile":[
-		"Sounds/EDB_Base_Intro"
+		"Sounds/win1",
+		"Sounds/win2",
+		"Sounds/win3",
+		"Sounds/wina"
 	],
 	"SoundsFile":{
-		"ReelStop":"Sounds/reel_stop",
-		"CoinFly":"Sounds/fx_flip_01",
-		"BirdJiao":"Sounds/fx_bird_react",
-		"BirdStartReSpin":"Sounds/fx_resolution_before_explosions",
-		"GuangBao":"Sounds/fx_plus1_game",
-		"BirdReSpinEnter":"Sounds/fx_flyingpig_trigger",
-		"LaoTouReSpinEnter":"Sounds/fx_piggy_intro"
+		"NormalBg":"Sounds/feature_music",
+		"ReelStop":"Sounds/fx_reel_stop",
+		"FreeSpinBg":"Sounds/feature_music",
+		"EnterFreeSpin":"Sounds/free_spins_sound",
+		"Wild":"Sounds/fx_scatter_1",
+		"Scatter":"Sounds/fx_scatter_1",
+		"FreeSpinWin":"Sounds/win10",
+		"Bonus":"Sounds/win10",
+		"GrandBonus":"Sounds/grand_jackpot",
+		"MajorBonus":"Sounds/major_jackpot",
+		"MinorBonus":"Sounds/minor_bonus",
+		"MiniBonus":"Sounds/mini_bonus",
+		"BonusWin":"Sounds/win11",
+		"BonusStop":"Sounds/red_coin_to_bottom_1"
 	},
 	"OtherPrefabs":[
-		"Prefabs/JackpotTitle",
-		"Prefabs/Wheel",
-		"Prefabs/CoinFly",
-		"Prefabs/GuangBao",
-		"Prefabs/LaoTouEnter"
+		"Prefabs/seleegtAFeature",
+		"Prefabs/wan",
+		"Prefabs/Jackpot_minor",
+		"Prefabs/Jackpot_mini",
+		"Prefabs/Jackpot_major",
+		"Prefabs/Jackpot_grand",
+		"Prefabs/diguanglv",
+		"Prefabs/dikuanghong",
+		"Prefabs/coinsTurn",
+		"Prefabs/BounsNode",
+		"Prefabs/JockpotTitle",
+		"Prefabs/ChooseLayer",
+		"Prefabs/FreeSpinView",
+		"Prefabs/FreeJockpotTitle",
+		"Prefabs/NormalCollect",
+		"Prefabs/FreeCollect",
+		"Prefabs/FreeWinView",
+		"Prefabs/ReSpinView",
+		"Prefabs/ReSpinJockpotTitle",
+		"Prefabs/ReSpinNum",
+		"Prefabs/ReSpinWinView"
 	],
 	"SpriteFrame":[
 		
 	],
 	"SpinJson":[
-		"LevelEM/1",
-		"LevelEM/2",
-		"LevelEM/3",
-		"LevelEM/4"
+		"LevelJT/1",
+		"LevelJT/2",
+		"LevelJT/3",
+		"LevelJT/4",
+		"LevelJT/5",
+		"LevelJT/6",
+		"LevelJT/7",
+		"LevelJT/8",
+		"LevelJT/9",
+		"LevelJT/10",
+		"LevelJT/11",
+		"LevelJT/12",
+		"LevelJT/13",
+		"LevelJT/14",
+		"LevelJT/15",
+		"LevelJT/16",
+		"LevelJT/17",
+		"LevelJT/18",
+		"LevelJT/19",
+		"LevelJT/20",
+		"LevelJT/21",
+		"LevelJT/22",
+		"LevelJT/23",
+		"LevelJT/24"
 	]
 }

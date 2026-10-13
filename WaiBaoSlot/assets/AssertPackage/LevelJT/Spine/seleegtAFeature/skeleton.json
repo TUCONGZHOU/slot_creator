@@ -1,0 +1,46 @@
+{
+"skeleton": {
+	"hash": "Dj/tXkmv3eryCeNkKXxS+/MWI+w",
+	"spine": "3.8.99",
+	"x": -254,
+	"y": -36.5,
+	"width": 508,
+	"height": 73,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "seleegt a feature", "bone": "root", "attachment": "seleegt a feature" },
+	{ "name": "seleegt a feature-g", "bone": "root", "attachment": "seleegt a feature-g", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"seleegt a feature": {
+				"seleegt a feature": { "width": 483, "height": 36 }
+			},
+			"seleegt a feature-g": {
+				"seleegt a feature-g": { "width": 508, "height": 73 }
+			}
+		}
+	}
+],
+"animations": {
+	"Game4-seleegt a feature": {
+		"slots": {
+			"seleegt a feature-g": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.6, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.7333, "color": "ffffffff" },
+					{ "time": 1.3333, "color": "ffffff00" }
+				]
+			}
+		}
+	}
+}
+}
