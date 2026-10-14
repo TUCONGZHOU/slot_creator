@@ -79,15 +79,15 @@ export class LevelJT_Symbol_Ctrl extends BaseSymbolUnit {
 
     public addBonusNum( addNum:number ){
         if (this.m_data.id == 95 || this.m_data.id == 96) {
-            if (this.view['lb_text'].active == false){
-                this.view['lb_text'].active = true
-                this.view['lb_text'].getComponent(Label).string = addNum.toString()
+            if (this.m_meta.node.getChildByName("lb_text").active == false){
+                this.m_meta.node.getChildByName("lb_text").active = true
+                this.m_meta.node.getChildByName("lb_text").getComponent(Label).string = addNum.toString()
                 return;
             }
-            let str:string = this.view['lb_text'].getComponent(Label).string
+            let str:string = this.m_meta.node.getChildByName("lb_text").getComponent(Label).string
             let oriNum = Number(str)
             if(!isNaN(oriNum)){
-                this.view['lb_text'].getComponent(Label).string = (oriNum + addNum).toString()
+                this.m_meta.node.getChildByName("lb_text").getComponent(Label).string = (oriNum + addNum).toString()
             }
         }
     }

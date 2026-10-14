@@ -28,7 +28,7 @@
 	},
 	"ToFeature":{
 		"0":false,"1":false,"2":false,"3":false,"4":false,"5":false,"6":false,"7":false,"8":false,"9":false,"10":false,
-		"90":true,"92":true,"94":true,"95":true,"96":true,"100":true
+		"90":true,"92":true,"94":false,"95":false,"96":false,"100":false
 	},
 	"SymbolLineAction":{
 		"0":"Game4-shuzi9","1":"Game4-shuzi10","2":"Game4-j","3":"Game4-q","4":"Game4-k","5":"Game4-a","6":"Game4-yu","7":"Game4-wg","8":"Game4-hu","9":"Game4-fh","10":"Game4-fh",
