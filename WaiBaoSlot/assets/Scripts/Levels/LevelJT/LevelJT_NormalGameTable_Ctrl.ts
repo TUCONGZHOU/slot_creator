@@ -166,7 +166,9 @@ export class LevelJT_NormalGameTable_Ctrl extends BaseGameTable {
             this.m_gameMainCompent.enterFreeSpin();
         }
         else if (nextAction == ActionType.BONUS){
-           this.m_gameMainCompent.enterBonus();
+            Utils.performWithDelay(this.node,()=>{
+                this.m_gameMainCompent.enterBonus();
+            },1)
         }
         else if (nextAction == ActionType.RESPIN){
            this.m_gameMainCompent.enterReSpin();

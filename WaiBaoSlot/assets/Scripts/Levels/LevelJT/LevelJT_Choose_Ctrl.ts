@@ -134,6 +134,9 @@ export class LevelJT_Choose_Ctrl extends UICtrl {
         this.view['317_88'].setSiblingIndex(1)
         this.view['317_topup'].setSiblingIndex(1)
         this.view['SpriteSplash'].setSiblingIndex(10)
+        this.view['skeleton'].setSiblingIndex(11)
+        this.view['317each_wins'].setSiblingIndex(12)
+        this.view['Label'].setSiblingIndex(13)
         button.node.setSiblingIndex(15)
     }
     public showFrameLight(button: Button){

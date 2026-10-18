@@ -141,6 +141,9 @@ export class BaseGameModel {
         else if( this.m_action == ActionType.FREESPIN ){
             return this.m_freeSpinReelsData;
         }
+        else{
+            return this.m_reelsData;
+        }
     }
 
     public getFreeSpinReelData():number[][][]{

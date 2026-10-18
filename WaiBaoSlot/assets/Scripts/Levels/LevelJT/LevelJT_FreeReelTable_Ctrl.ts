@@ -14,7 +14,7 @@ export class LevelJT_FreeReelTable_Ctrl extends BaseReelTable {
     protected initView(): void {
         super.initView();
         let freeSpinInfo = LevelMgr.Instance.getLevelModel().getFreeSpinInfo();
-        this.view['FreeSpinLabel'].getComponent(Label).string = freeSpinInfo.freeSpinsLeftCount.toString()
+        this.view['317db/FreeSpinLabel'].getComponent(Label).string = freeSpinInfo.freeSpinsLeftCount.toString()
     }
 
 
@@ -29,9 +29,14 @@ export class LevelJT_FreeReelTable_Ctrl extends BaseReelTable {
     // 轮盘滚动
     public startRoll():void {
         let freeSpinInfo = LevelMgr.Instance.getLevelModel().getFreeSpinInfo();
-        this.view['FreeSpinLabel'].getComponent(Label).string = (freeSpinInfo.freeSpinsLeftCount - 1).toString()
+        this.view['317db/FreeSpinLabel'].getComponent(Label).string = (freeSpinInfo.freeSpinsLeftCount - 1).toString()
 
         super.startRoll()
+    }
+
+    public resetFreeSpinNum(){
+        let freeSpinInfo = LevelMgr.Instance.getLevelModel().getFreeSpinInfo();
+        this.view['317db/FreeSpinLabel'].getComponent(Label).string = freeSpinInfo.freeSpinsLeftCount.toString()
     }
 
     public playReelStopDoneSounds():void {

@@ -40,6 +40,12 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
             // 根据数据显示轮盘上的信号块 显示Normal轮盘 
             console.log("=========> 显示GameNormal轮盘")
             this.addNormalGameTableUI();
+        }else if(action == ActionType.BONUS){
+            this.enterBonus()
+        }else if(action == ActionType.FREESPIN){
+            this.enterFreeSpin()
+        }else if(action == ActionType.RESPIN){
+            this.enterReSpin()
         }
     }
 
@@ -101,13 +107,18 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
             SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile ); 
         }
         // 显示bonus界面
-        let bonusSpinCtrl:LevelJT_BonusStartView_Ctrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/BonusStartView","LevelJT_BonusStartView_Ctrl",UILayer.Normal) as LevelJT_BonusStartView_Ctrl;
-        bonusSpinCtrl.initUI( this.m_levelConfig );
+        // let bonusSpinCtrl:LevelJT_BonusStartView_Ctrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/BonusView","LevelJT_BonusStartView_Ctrl",UILayer.Normal) as LevelJT_BonusStartView_Ctrl;
+        // bonusSpinCtrl.initUI( this.m_levelConfig );
+        let prefab = ResMgr.Instance.getAsset("LevelJT","Prefabs/BonusView",Prefab);
+        if(prefab){
+            let bonusNode = instantiate(prefab);
+            this.view["BonusGame"].addChild(bonusNode);
+            const compent:LevelJT_BonusStartView_Ctrl = bonusNode.addComponent( LevelJT_BonusStartView_Ctrl ) as LevelJT_BonusStartView_Ctrl;
+            compent.initUI( this.m_levelConfig );
+        }
     }
     // 进入respin（修复崩溃 + 修复TS报错版本）
     public async enterReSpin(): Promise<void> {
-        // let reSpinEnterActionCtrl: LevelJT_ReSpinEnterAction_Ctrl = null;
-        // let reSpinInfoCtrl: LevelJT_ReStartInfoNode_Ctrl = null;
 
         try {
             // this.view['SpineWan'].active = false
@@ -141,46 +152,7 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
             );
 
             tween(this.node).sequence(...anims).start();
-            // // 1. 播放音效 + 轮盘动画
-            // let soundFile = this.m_levelConfig.SoundsFile["EnterFreeSpin"];
-            // if (soundFile) {
-            //     SoundMgr.Instance.playSound(this.m_levelConfig.BundleName, soundFile);
-            // }
-            // this.m_gameTableCompent.getReelTableCompent(0).playAllBonusAction();
-            // // 2. 延时1秒
-            // await this.delay(1);
-            // // 3. 停止线动画
-            // this.m_gameTableCompent.stopGameTableLineAction();
-            // // 4. 显示respin start界面
-            // reSpinEnterActionCtrl = UIMgr.Instance.showUi("LevelJT", "Prefabs/ReSpinEnterAction", "LevelJT_ReSpinEnterAction_Ctrl", UILayer.Normal) as LevelJT_ReSpinEnterAction_Ctrl;
-            // if (reSpinEnterActionCtrl) {
-            //     reSpinEnterActionCtrl.initUI(this.m_levelConfig);
-            // }
-            // // 5. 延时1.5秒
-            // await this.delay(1.5);
-            // // 6. 移除当前轮盘
-            // this.removeGameTable();
-            // // 8. 添加respin轮盘
-            // this.addRespinGameTableUI();
-            // SoundMgr.Instance.setBGMVolume(0.01);
-            // // 9. 延时2秒
-            // await this.delay(2.0);
-            // // 10. 显示respin信息界面
-            // reSpinInfoCtrl = UIMgr.Instance.showUi("LevelJT", "Prefabs/ReStartInfoNode", "LevelJT_ReStartInfoNode_Ctrl", UILayer.Normal) as LevelJT_ReStartInfoNode_Ctrl;
-            // reSpinInfoCtrl.startAction(this.m_levelConfig);
-            // // 音效
-            // soundFile = this.m_levelConfig.SoundsFile["ReSpinInfo"];
-            // if (soundFile) {
-            //     SoundMgr.Instance.playSound(this.m_levelConfig.BundleName, soundFile);
-            // }
-            // SoundMgr.Instance.setBGMVolume(0.3);
-            // // 11. 延时3秒
-            // await this.delay(3);
-            // // 12. 收尾操作
-            // SoundMgr.Instance.setBGMVolume(0.5);
-            // UIMgr.Instance.closeUi("LevelJT_ReSpinEnterAction_Ctrl");
-            // UIMgr.Instance.closeUi("LevelJT_ReStartInfoNode_Ctrl");
-            // GlEventMgr.Instance.emit(EventName.RecoverSpinBtn);
+
         } catch (err) {
             console.error("enterReSpin执行异常:", err);
             throw err; // 向外抛出异常，与原 reject 行为一致

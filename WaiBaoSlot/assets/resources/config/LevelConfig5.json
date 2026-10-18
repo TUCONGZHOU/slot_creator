@@ -40,7 +40,7 @@
 	},
 	"SymbolStopAction":{
 		"0":"","1":"","2":"","3":"","4":"","5":"","6":"","7":"","8":"","9":"","10":"",
-		"90":"Game4-idle","92":"Game4-bftao-small","94":"Game4-idle","95":"Game4-jinbi","96":"Game4-jinbi","100":"Game4-spin-idle"
+		"90":"Game4-idle","92":"Game4-bftao-idle","94":"Game4-idle","95":"Game4-jinbi","96":"Game4-jinbi","100":"Game4-spin-idle"
 	},
 	"GameTable":{
 		"NormalGameTable":{
@@ -209,7 +209,7 @@
 		"Prefabs/diguanglv",
 		"Prefabs/dikuanghong",
 		"Prefabs/coinsTurn",
-		"Prefabs/BounsNode",
+		"Prefabs/BonusNode",
 		"Prefabs/JockpotTitle",
 		"Prefabs/ChooseLayer",
 		"Prefabs/FreeSpinView",
@@ -220,7 +220,9 @@
 		"Prefabs/ReSpinView",
 		"Prefabs/ReSpinJockpotTitle",
 		"Prefabs/ReSpinNum",
-		"Prefabs/ReSpinWinView"
+		"Prefabs/ReSpinWinView",
+		"Prefabs/BonusView",
+		"Prefabs/BonusOverView"
 	],
 	"SpriteFrame":[
 		
@@ -249,6 +251,11 @@
 		"LevelJT/21",
 		"LevelJT/22",
 		"LevelJT/23",
-		"LevelJT/24"
+		"LevelJT/24",
+		"LevelJT/201",
+		"LevelJT/202",
+		"LevelJT/203",
+		"LevelJT/204",
+		"LevelJT/205"
 	]
 }

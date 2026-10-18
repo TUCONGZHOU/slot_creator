@@ -2,12 +2,12 @@
   "ver": "1.1.50",
   "importer": "prefab",
   "imported": true,
-  "uuid": "200a51d7-8033-4ac6-a8f8-44f65769ce1a",
+  "uuid": "6d446168-0021-4068-aba0-51278e11bad1",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "BounsNode"
+    "syncNodeName": "BonusOverView"
   }
 }

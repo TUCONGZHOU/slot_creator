@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, sp,instantiate,Prefab, Vec3, UIOpacity, tween, utils } from 'cc';
+import { _decorator, Component, Node, sp,instantiate,Prefab, Vec3, UIOpacity, tween, utils, Tween } from 'cc';
 const { ccclass, property } = _decorator;
 
 import { UICtrl, UILayer, UIMgr } from '../../Mgr/UIMgr';
@@ -11,6 +11,7 @@ import { LevelMgr } from '../../Mgr/LevelMgr';
 import { EventName } from '../../Mgr/EventName';
 import { GlEventMgr } from '../../Mgr/GlEventMgr';
 import { LevelJT_BonusOverView_Ctrl } from './LevelJT_BonusOverView_Ctrl';
+import { LevelJT_BonusNode_Ctrl } from './LevelJT_BonusNode_Ctrl';
 
 export interface BonusWinNodeState {
     Name: string;
@@ -24,85 +25,136 @@ export class LevelJT_BonusStartView_Ctrl extends UICtrl {
     public m_index:number = -1;
 
     public m_winNode:BonusWinNodeState[] = [];
+    public m_bonusNodes:Node[] = [];
+    public m_endPosList:Vec3[] = [];
 
-    private m_spinName1:Record<string,string> = {
-        Grand:"TREE of WEALTH_xyx_childgrand",
-        Major:"TREE of WEALTH_xyx_childmajor",
-        Minor:"TREE of WEALTH_xyx_childminor",
-        Mini:"TREE of WEALTH_xyx_childmini",
-        A:"TREE of WEALTH_xyx_money2",
-    };
-
-    private m_spinName2:Record<string,string> = {
-        Grand:"TREE of WEALTH_xyx_childgrand2",
-        Major:"TREE of WEALTH_xyx_childmajor2",
-        Minor:"TREE of WEALTH_xyx_childminor2",
-        Mini:"TREE of WEALTH_xyx_childmini2",
-        A:"TREE of WEALTH_xyx_money3",
-    };
+    m_canTouch: boolean = false;
 
     protected initView(): void {
         // 添加监听
         GlEventMgr.Instance.on(EventName.View_LevelSpin_bonus, this.responseBonusSpin, this);
 
-        for( let i = 1; i <= 15; i++ ){
-            this.addButtonClick("Bonus1/xyx" + i, this, ()=> this.clickSpin(i));
+        for( let i = 1; i <= 12; i++ ){
+            this.addButtonClick("bonusNode" + i, this, ()=> this.clickSpin(i));
+            this.addBonusNode( i );
         }
     }
-
-    start() 
-    {
-        // 先隐藏所有的xyx
-        for( let i = 1; i <= 15; i++ ){
-            this.view["Bonus1/xyx" + i].active = false;
-        }
-
-        // 播放背景出现动画
-        let spineNode = this.view["Bonus1/xyx_di"]
-        let spine = spineNode.getComponent(sp.Skeleton) as sp.Skeleton;
-        if (spine) {
-            spine.setCompleteListener((entry: sp.spine.TrackEntry) => {
-                spine.setCompleteListener(null); // 清除监听器
-                for( let i = 1; i <= 15; i++ ){
-                    this.view["Bonus1/xyx" + i].active = true;
+    public addBonusNode( id:number ){
+        let prefab = ResMgr.Instance.getAsset("LevelJT","Prefabs/BonusNode",Prefab);
+        let bonusInfo = LevelMgr.Instance.getLevelModel().getBonus();
+        
+        if(prefab){
+            let bonusNode = instantiate(prefab);
+            this.node.addChild(bonusNode);
+            const compent:LevelJT_BonusNode_Ctrl = bonusNode.addComponent( LevelJT_BonusNode_Ctrl ) as LevelJT_BonusNode_Ctrl;
+            let pos:Vec3 = this.view["bonusNode" + id].position
+            bonusNode.position = pos;
+            this.m_endPosList.push( pos );
+            let spine = compent.view['skeleton'].getComponent(sp.Skeleton) as sp.Skeleton;
+            spine.setAnimation(0, "Game4-idle", true);
+            this.m_bonusNodes.push(bonusNode);
+            // jackpot
+            let has = false;
+            let data;
+            for (let info of bonusInfo){
+                if (id == info.id){
+                    has = true;
+                    data = info;
+                    break;
                 }
-
-                // 隐藏背景spine
-                this.view["Bonus1/315_SGBG"].active = true;
-                this.view["Bonus1/xyx_di"].active = false;
-            });
-            spine.setAnimation(0, "xyx_jzbaokai", false);
+            }
+            if ( !has ){
+                return;
+            }
+            // 初始化组件
+            compent.initUI( data );
+            // 存入节点
+            let meta:BonusWinNodeState = {
+                Name: data.type,
+                Node: bonusNode
+            };
+            this.m_winNode.push( meta )
         }
+        
+    }
 
-        this.view["SpriteSplash2"].active = false;
-        this.view["Bonus1/315_SGBG"].active = false;
-        // this.view["SpriteSplash1"].active = false;
+    start()
+    {
+        let bonusInfo = LevelMgr.Instance.getLevelModel().getBonus();
+        if (bonusInfo.length == 0 ){
+            let startPos = this.view['SpineWan'].position
+            let endPosList:Vec3[] = [];
+            for (let i = 0; i < this.m_bonusNodes.length; i++){
+                let index = i;
+                let curNode = this.m_bonusNodes[index]
+                let endPos = curNode.position.clone();
+                endPosList.push( endPos )
+
+                const jumpHeight = 120;
+                const midPos = new Vec3(
+                    (startPos.x + endPos.x)/2,
+                    Math.max(startPos.y, endPos.y) + jumpHeight,
+                    0
+                );
+
+                // 【重点】直接链式写sequence，不要数组push tween实例！
+                tween(curNode)
+                    .call(()=>{
+                        curNode.position = startPos;
+                        let spine = curNode.getChildByName("skeleton").getComponent(sp.Skeleton) as sp.Skeleton;
+                        spine.setAnimation(0, "Game4-FZjinbi", true);
+                        curNode.scale = new Vec3(0,0,1)
+                    })
+                    .delay(index * 0.15)
+                    .to(0.2, {position: midPos,scale:new Vec3(0.3,0.3,1)}, {easing: "quadOut"}) // 上升
+                    .to(0.3, {position: endPosList[index],scale:new Vec3(1,1,1)}, {easing: "quadIn"})  // 下落
+                    .call(()=>{
+                        let spine = curNode.getChildByName("skeleton").getComponent(sp.Skeleton) as sp.Skeleton;
+                        spine.setAnimation(0, "Game4-idle", true);
+                        // 最后一个金币落地才解锁触摸
+                        if(index === this.m_bonusNodes.length -1)
+                        {
+                            this.m_canTouch = true;
+                            this.setButtonZOrderUp()
+                        }
+                    })
+                    .start();
+            }
+        }else{
+            this.m_canTouch = true;
+            this.setButtonZOrderUp()
+        }
+    }
+    public setButtonZOrderUp(){
+        for( let i = 1; i <= 12; i++ ){
+            this.view["bonusNode" + i].setSiblingIndex( 100 );
+        }
     }
 
     // 收到回复消息
     public responseBonusSpin():void
     {
-        let spineNode = this.view[ "Bonus1/xyx" + this.m_index ]
-        let spine = spineNode.getComponent(sp.Skeleton) as sp.Skeleton;
-        if (spine) {
-            spine.setCompleteListener((entry: sp.spine.TrackEntry) => {
-                spine.setCompleteListener(null); // 清除监听器
-                spineNode.active = false; // 隐藏当前的spine节点
-            });
-            spine.setAnimation(0, "guashi_open", false);
+        // let spineNode = this.m_bonusNodes[this.m_index]
+        // let spine = spineNode.getChildByName("skeleton").getComponent(sp.Skeleton) as sp.Skeleton;
+        // if (spine) {
+        //     spine.setCompleteListener((entry: sp.spine.TrackEntry) => {
+        //         spine.setCompleteListener(null); // 清除监听器
+        //         spineNode.active = false; // 隐藏当前的spine节点
+        //     });
+        //     spine.setAnimation(0, "Game4-FZjinbi", false);
 
-            Utils.performWithDelay(this.node,()=>{  
-                let pos:Vec3 = spineNode.position;
-                // 添加spine
-                this.addBonusSpine(pos);
-            },0.4); 
+            // Utils.performWithDelay(this.node,()=>{  
+                // // 添加spine
+                this.showBonusChange();
+                
+            // },0.3); 
 
             // bonus出现音效
             let soundFile = this.m_levelConfig.SoundsFile["Bonus"];
             if (soundFile){
                 SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile ); 
             }
-        }
+        // }
     }
 
     public initUI(levelConfig:LevelConfig): void{
@@ -112,14 +164,14 @@ export class LevelJT_BonusStartView_Ctrl extends UICtrl {
     }
 
     public createOtherUI():void{
-        let prefab = ResMgr.Instance.getAsset("LevelJT","Prefabs/JockpotTitle",Prefab);
-        if(prefab){
-            let jackpot = instantiate(prefab);
-            this.view["NodeJackPot"].addChild(jackpot);
-            const compent:LevelJT_Jackpot_Ctrl = jackpot.addComponent( LevelJT_Jackpot_Ctrl ) as LevelJT_Jackpot_Ctrl;
-            // 初始化组件
-            compent.initUI( this.m_levelConfig );
-        }
+        // let prefab = ResMgr.Instance.getAsset("LevelJT","Prefabs/JockpotTitle",Prefab);
+        // if(prefab){
+        //     let jackpot = instantiate(prefab);
+        //     this.view["NodeJackPot"].addChild(jackpot);
+        //     const compent:LevelJT_Jackpot_Ctrl = jackpot.addComponent( LevelJT_Jackpot_Ctrl ) as LevelJT_Jackpot_Ctrl;
+        //     // 初始化组件
+        //     compent.initUI( this.m_levelConfig );
+        // }
     }
 
     update(deltaTime: number) {
@@ -128,6 +180,9 @@ export class LevelJT_BonusStartView_Ctrl extends UICtrl {
 
     public clickSpin(i: number)
     {
+        if (this.m_canTouch == false){
+            return
+        }
         if (this.m_index == -1) {
             this.m_index = i;
             // -- 请求数据
@@ -135,67 +190,47 @@ export class LevelJT_BonusStartView_Ctrl extends UICtrl {
         }
     }
 
-    public addBonusSpine( pos:Vec3 ):void
+    public showBonusChange():void
     {
         let bonusInfo = LevelMgr.Instance.getLevelModel().getBonus();
-        let content = bonusInfo.content;
         // 取最后一个元素
-        const lastItem = content[content.length - 1];
-        let actionName1 = this.m_spinName1[lastItem];
-        let actionName2 = this.m_spinName2[lastItem];
+        let info = bonusInfo[bonusInfo.length - 1];
+        let bonusNode = this.m_bonusNodes[this.m_index - 1]
 
-        // 添加一个spine
-        let spBonusPrefab = ResMgr.Instance.getAsset("LevelJT","Prefabs/BounsNode",Prefab);
-        if(spBonusPrefab){
-            let bonusNode = instantiate(spBonusPrefab);
-            this.view["Bonus1"].addChild(bonusNode);
+        // 存入节点
+        let meta:BonusWinNodeState = {
+            Name: info.type,
+            Node: bonusNode
+        };
+        this.m_winNode.push(meta);
 
-            // 存入节点
-            if (lastItem == "A"){
-                //不存入
-            }else {
-                let meta:BonusWinNodeState = {
-                    Name: lastItem,
-                    Node: bonusNode
-                };
-                this.m_winNode.push(meta);
-            }
-
-            bonusNode.position = pos; // 设置位置
-            bonusNode.scale = new Vec3(0.5,0.5,1); // 设置初始缩放
-            // -- 播放spine动画
-            let spIcon1 = bonusNode.getChildByName("spIcon1")
-            spIcon1.active = false; // 隐藏spIcon1
-            let spIcon2 = bonusNode.getChildByName("spIcon2")
-            if (spIcon2) {
-                let bonusSpine = spIcon2.getComponent(sp.Skeleton) as sp.Skeleton;
-                if (bonusSpine) {
-                    bonusSpine.setCompleteListener((entry: sp.spine.TrackEntry) => {
-                        bonusSpine.setCompleteListener(null); // 清除监听器
-                        if (lastItem == "A"){
-                            // nothing to do here !!
-                        }else{
-                            bonusSpine.setAnimation(0, actionName2, true);
-                        }
-                        // 判断是否结束
-                        let nextAction = LevelMgr.Instance.getLevelModel().getNextAction();
-                        if (nextAction == ActionType.NORMAL){
-                            // 结束了
-                            this.bonusOver();
-                        }else 
-                        {
-                            // 重置
-                            this.m_index = -1;
-                        }
-                    });
-                    if (lastItem == "A"){
-                        bonusSpine.setAnimation(0, actionName1, true);
-                    }else{
-                        bonusSpine.setAnimation(0, actionName1, false);
-                    }
+        
+        let compent = bonusNode.getComponent(LevelJT_BonusNode_Ctrl) as LevelJT_BonusNode_Ctrl
+        
+        tween(bonusNode)
+            .call(()=>{
+                // bonusNode.scale = new Vec3(0,1,1); // 设置初始缩放
+            })
+            // .delay(index * 0.15)
+            .to(0.5, {scale:new Vec3(0,1,1)}) // 
+            .call(()=>{
+                compent.resetUI( info )
+            })
+            .to(0.5, {scale:new Vec3(1,1,1)})  // 
+            .call(()=>{
+                // 判断是否结束
+                let nextAction = LevelMgr.Instance.getLevelModel().getNextAction();
+                if (nextAction == ActionType.NORMAL){
+                    // 结束了
+                    this.bonusOver();
+                }else 
+                {
+                    // 重置
+                    this.m_index = -1;
                 }
-            }
-        }
+            })
+            .start();
+        
     }
 
     public bonusOver():void{
@@ -215,7 +250,7 @@ export class LevelJT_BonusStartView_Ctrl extends UICtrl {
                 grandNode.push(meta.Node);
             }else if (meta.Name == "Major"){
                 majorNode.push(meta.Node);
-            }else if (meta.Name == "Minor"){
+            }else if (meta.Name == "Major"){
                 minorNode.push(meta.Node);
             }else if (meta.Name == "Mini"){
                 miniNode.push(meta.Node);
@@ -229,55 +264,35 @@ export class LevelJT_BonusStartView_Ctrl extends UICtrl {
         if (grandNode.length === 3) {
             targetArray = grandNode;
             targetName = "Grand";
-            guangName = "TREE of WEALTH_xyx_back_grand";
         } else if (majorNode.length === 3) {
             targetArray = majorNode;
             targetName = "Major";
-            guangName = "TREE of WEALTH_xyx_back_major";
         } else if (minorNode.length === 3) {
             targetArray = minorNode;
             targetName = "Minor";
-            guangName = "TREE of WEALTH_xyx_back_minor";
         } else if (miniNode.length === 3) {
             targetArray = miniNode;
             targetName = "Mini";
-            guangName = "TREE of WEALTH_xyx_back_mini";
         }
-
-        this.view["SpriteSplash1"].active = false;
-        this.view["SpriteSplash2"].active = true;
-        
-        const uiOpacity = this.view["SpriteSplash2"].getComponent(UIOpacity)
-        uiOpacity.opacity = 0;
-        tween(uiOpacity)
-        .to(1, { opacity: 255 })
-        .start();
-
-        if (targetArray) {
-            for (const bonusNode of targetArray) 
-            {
-                let worldPos = new Vec3();
-                bonusNode.getWorldPosition( worldPos );
-                let localPos = new Vec3();
-                this.view["SpriteSplash2"].inverseTransformPoint(localPos,worldPos);
-                bonusNode.parent = this.view["SpriteSplash2"]; // 将bonusNode设置为SpriteSplash2的子节点
-                bonusNode.position = localPos;
-                
-                let spIcon1 = bonusNode.getChildByName("spIcon1")
-                spIcon1.active = true; // 显示spIcon1
-                let spIcon1Spine = spIcon1.getComponent(sp.Skeleton) as sp.Skeleton;
-                spIcon1Spine.setAnimation(0, guangName, true);
-            }
+        let prefab = ResMgr.Instance.getAsset("LevelJT","Prefabs/BonusOverView",Prefab);
+        if(prefab){
+            let bonusOverNode = instantiate(prefab);
+            this.node.addChild(bonusOverNode);
+            bonusOverNode.setSiblingIndex( 200 );
+            const compent:LevelJT_BonusOverView_Ctrl = bonusOverNode.addComponent( LevelJT_BonusOverView_Ctrl ) as LevelJT_BonusOverView_Ctrl;
+            compent.initUI( this.m_levelConfig,targetName,this );
         }
+ 
 
-        Utils.performWithDelay(this.node,()=>{  
-            this.view["SpriteSplash2"].active = false;
-            // 显示bonusover界面
-            let bonusOverSpinCtrl = UIMgr.Instance.showUi(this.m_levelConfig.BundleName,"Prefabs/BonusOverView","LevelJT_BonusOverView_Ctrl",UILayer.Normal) as LevelJT_BonusOverView_Ctrl;
-            bonusOverSpinCtrl.initUI( this.m_levelConfig,targetName );
-        },4); 
+            // // 显示bonusover界面
+            // let bonusOverSpinCtrl = UIMgr.Instance.showUi(this.m_levelConfig.BundleName,"Prefabs/BonusOverView","LevelJT_BonusWinView_Ctrl",UILayer.Normal) as LevelJT_BonusOverView_Ctrl;
+            // bonusOverSpinCtrl.initUI( this.m_levelConfig,targetName );
+
     }
-
+    public closeUI(){
+        this.node.removeFromParent();
+        this.node.destroy();
+    }
     
 }
 

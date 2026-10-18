@@ -29,6 +29,7 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
     public m_reSpinJackpot:LevelJT_ReSpinJackpot_Ctrl = null;
     public m_storedIcons;
     public m_gameMainCompent:LevelJT_MainUI_Ctrl = null; // GameMain的组件指针
+    public m_reSpinWinCtrl:LevelJT_ReSpinWinCtrl = null;
 
     protected initView(): void {
         super.initView();
@@ -213,7 +214,7 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
         if (action == ActionType.RESPIN && nextAction == ActionType.NORMAL) {
             // 显示freespin结束的界面
             const anims: Array<ReturnType<typeof tween>> = [];
-            let reSpinCtrl:LevelJT_ReSpinWinCtrl = null;
+            
             anims.push(
                 tween(this.node).delay(0.5)
             );
@@ -226,8 +227,17 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
                         SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
                     }
                     // 显示freespin界面
-                    reSpinCtrl = UIMgr.Instance.showUi("LevelJT","Prefabs/ReSpinWinView","LevelJT_ReSpinWinCtrl",UILayer.Normal) as LevelJT_ReSpinWinCtrl;
-                    reSpinCtrl.initUI(this.m_levelConfig);
+                    // this.m_reSpinWinCtrl = UIMgr.Instance.showUi("LevelJT","Prefabs/ReSpinWinView","LevelJT_ReSpinWinCtrl",UILayer.Normal) as LevelJT_ReSpinWinCtrl;
+                    // this.m_reSpinWinCtrl.initUI(this.m_levelConfig);
+
+                    let prefab = ResMgr.Instance.getAsset("LevelJT","Prefabs/ReSpinWinView",Prefab);
+                    if(prefab){
+                        let freeWinNode = instantiate(prefab);
+                        this.node.addChild(freeWinNode);
+                        this.m_reSpinWinCtrl = freeWinNode.addComponent( LevelJT_ReSpinWinCtrl ) as LevelJT_ReSpinWinCtrl;
+                        // 初始化组件
+                        this.m_reSpinWinCtrl.initUI( this.m_levelConfig );
+                    }
                 })
             );
             anims.push(
@@ -303,7 +313,7 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
             SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
         }
         // 播放动画
-        this.view["SpOverMoney"].active = true;
+        // this.view["SpOverMoney"].active = true;
         // 发送消息 金币滚动
         GlEventMgr.Instance.emit( EventName.StartAmountScroll,0,diffNum,15 );
         // 发送消息增长进度条
@@ -315,6 +325,11 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
     
 
     public enterOtherGame() {
+        if (this.m_reSpinWinCtrl && this.m_reSpinWinCtrl.node){
+            this.m_reSpinWinCtrl.node.removeFromParent();
+            this.m_reSpinWinCtrl.node.destroy();
+            this.m_reSpinWinCtrl = null;
+        }
         let action = LevelMgr.Instance.getLevelModel().getAction();
         let nextAction = LevelMgr.Instance.getLevelModel().getNextAction();
         if (action == ActionType.RESPIN && nextAction == ActionType.NORMAL) {
