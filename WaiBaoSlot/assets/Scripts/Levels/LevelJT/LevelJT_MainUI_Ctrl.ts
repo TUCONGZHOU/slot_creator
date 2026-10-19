@@ -317,21 +317,6 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
                     if(this.m_gameTableCompent instanceof LevelJT_ReSpinGameTable_Ctrl)
                     {
                         // let symbolNode = this.m_gameTableCompent.getSymbolNode(0,endCol,endRow);
-                        // let symbolNode00 = this.m_gameTableCompent.getSymbolNode(0,0,0);
-                        // let symbolNode01 = this.m_gameTableCompent.getSymbolNode(0,0,1);
-                        // let symbolNode02 = this.m_gameTableCompent.getSymbolNode(0,0,2);
-                        // let symbolNode10 = this.m_gameTableCompent.getSymbolNode(0,1,0);
-                        // let symbolNode11 = this.m_gameTableCompent.getSymbolNode(0,1,1);
-                        // let symbolNode12 = this.m_gameTableCompent.getSymbolNode(0,1,2);
-                        // let symbolNode20 = this.m_gameTableCompent.getSymbolNode(0,2,0);
-                        // let symbolNode21 = this.m_gameTableCompent.getSymbolNode(0,2,1);
-                        // let symbolNode22 = this.m_gameTableCompent.getSymbolNode(0,2,2);
-                        // let symbolNode30 = this.m_gameTableCompent.getSymbolNode(0,3,0);
-                        // let symbolNode31 = this.m_gameTableCompent.getSymbolNode(0,3,1);
-                        // let symbolNode32 = this.m_gameTableCompent.getSymbolNode(0,3,2);
-                        // let symbolNode40 = this.m_gameTableCompent.getSymbolNode(0,4,0);
-                        // let symbolNode41 = this.m_gameTableCompent.getSymbolNode(0,4,1);
-                        // let symbolNode42 = this.m_gameTableCompent.getSymbolNode(0,4,2);
                         // if (symbolNode){
                         //     symbolNode.getComponent(LevelJT_Symbol_Ctrl).addBonusNum( mulit );
                         // }
