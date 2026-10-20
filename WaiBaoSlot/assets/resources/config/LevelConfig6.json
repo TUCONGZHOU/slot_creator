@@ -1,0 +1,132 @@
+{
+	"BundleName":"LevelEM",
+	"MainPrefabs":"Prefabs/MainUI",
+	"BgPrefabs":"Prefabs/UIBg",
+	"BgCompent":"LevelEM_UIBg_Ctrl",
+	"Symbol":[
+		{ "id":0,"file":"Prefabs/Score_1","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":1,"file":"Prefabs/Score_2","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":2,"file":"Prefabs/Score_3","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":3,"file":"Prefabs/Score_4","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":4,"file":"Prefabs/Score_5","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":5,"file":"Prefabs/Score_6","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":6,"file":"Prefabs/Score_7","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":7,"file":"Prefabs/Score_8","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":8,"file":"Prefabs/Score_9","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },	
+		{ "id":90,"file":"Prefabs/Score_scatter","type":"scatter","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":92,"file":"Prefabs/Score_wild","type":"wild","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
+		{ "id":94,"file":"Prefabs/Score_bonus","type":"bonus","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },	
+		{ "id":96,"file":"Prefabs/Score_JinPao","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" }
+	],
+	"SymbolSize":{
+		"0":1,"1":1,"2":1,"3":1,"4":1,"5":1,"6":1,"7":1,"8":1,"90":1,"92":1,"94":1,"96":1
+	},
+	"ToFeature":{
+		"0":false,"1":false,"2":false,"3":false,"4":false,"5":false,"6":false,"7":false,"8":false,"90":false,"92":false,"94":false,"96":false
+	},
+	"SymbolLineAction":{
+		"0":"Game2-J","1":"Game2-Q","2":"Game2-K","3":"Game2-A","4":"Game3-gj","5":"Game3-km","6":"Gmane3-kc-move",
+		"7":"Gmae3-maolv","8":"Game3-odleman","94":"","90":"Game3-kdsmall-move","92":"Game3-jingeda","96":""
+	},
+	"SymbolIdleAction":{
+		"0":"Game2-J-idle","1":"Game2-Q-idle","2":"Game2-K-idle","3":"Game2-A-idle","4":"Game3-gj-idle","5":"Game3-km-idle","6":"Gmane3-kc-idle",
+		"7":"Game2-maolv-idle","8":"Game3-idle","94":"Game3-bianpao2","90":"Game3-small-idle","92":"Game3-jingeda-idle","96":"Game3-bianpao2"	
+	},
+	"SymbolStopAction":{
+		"0":"","1":"","2":"","3":"","4":"","5":"","6":"","7":"","8":"","94":"Game3-bianpao2","90":"","92":"","96":"Game3-bianpao2"
+	},
+	"GameTable":{
+		"NormalGameTable":{
+			"Compent":"LevelEM_NormalGameTable_Ctrl",
+			"Prefabs":"Prefabs/NormalGameTable",
+			"ReelTables":["NormalReelTable"]
+		},
+		"RespinGameTable":{
+			"Compent":"LevelEM_ReSpinGameTable_Ctrl",
+			"Prefabs":"Prefabs/ReSpinGameTable",
+			"ReelTables":["RespinReelTable"]
+		}
+	},
+	"ReelTable":{
+		"NormalReelTable":{
+			"ClipType":1,
+			"Compent":"LevelEM_NormalReelTable_Ctrl",
+			"Prefabs":"Prefabs/NormalReelTable",
+			"ReelUnits":["NormalReelUnit","NormalReelUnit","NormalReelUnit","NormalReelUnit","NormalReelUnit"],
+			"QuickActionTime":0.1,
+			"RollData":[
+				[90,92,0,1,2,3,4,5,6,8,90,92,0,1,2,3,94,94,4,5,6,7,8,90,96,92,0,1,2,3,4,5,6,7,8,92,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,1,2,3,4],
+				[1,2,3,4,5,6,7,8,90,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,94,94,4,96,5,6,7,8,90,92,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,2,4,5,6,7],
+				[2,3,4,5,6,7,8,90,92,0,1,3,4,5,6,7,8,90,92,0,1,2,3,94,94,4,96,5,6,7,8,90,92,0,1,2,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,6,7,8],
+				[3,4,5,6,7,8,90,92,0,1,2,4,5,6,7,8,90,92,0,1,2,3,94,94,4,5,96,6,7,8,90,92,0,1,2,3,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,8,90],
+				[0,1,2,3,4,5,6,7,8,92,0,1,2,3,4,5,6,7,8,90,92,0,1,94,94,2,3,4,96,5,6,7,8,90,92,1,2,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,2,3,4,5,6,7,8,90,92,0,1,2,3,4,5,6,7,8,90,92,0,1,3,4,5,6]
+			]
+		},
+		"RespinReelTable":{
+			"ClipType":3,
+			"Compent":"LevelEM_ReSpinReelTable_Ctrl",
+			"Prefabs":"Prefabs/ReSpinReelTable",
+			"ReelUnits":["RespinReelUnit","RespinReelUnit","RespinReelUnit","RespinReelUnit","RespinReelUnit"],
+			"RollData":[
+				[1,2,2,3,4,5,6,7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,1,2,3,4,5,6,7,8,0 ],
+				[0,1,2,3,4,5,5,6,7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,2,3,4,4,5,6,7,0 ],
+				[94,0,1,2,3,4,5,6,7,8,94,0,1,2,2,3,4,5,6,7,8,94,0,1,2,3,4,5,6,7,0 ],
+				[7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,2,2,3,4,5,6,7,8,94,0,1,2,3,4,5,0 ],
+				[2,3,4,5,6,7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,1,2,3,4,5,6,7,8,94,0,0]
+			]
+		}
+	},
+	"ReelUnit":{
+		"NormalReelUnit":{
+			"Width":130,
+			"Height":117,
+			"ViewCount":3,
+			"Speed":2000,
+			"QuickSpeed":2500,
+			"QuickStopSpeed":5000,
+			"Compent":"LevelEM_NormalReelUnit_Ctrl",
+			"BigSize":1
+		},
+		"RespinReelUnit":{
+			"Width":130,
+			"Height":117,
+			"ViewCount":3,
+			"Speed":1500,
+			"QuickSpeed":1500,
+			"QuickStopSpeed":1500,
+			"Compent":"LevelEM_RespinReelUnit_Ctrl",
+			"BigSize":1
+		}
+	},
+	"Effect":[
+		
+	],
+	"SoundsLineFile":[
+		"Sounds/EDB_Base_Intro"
+	],
+	"SoundsFile":{
+		"ReelStop":"Sounds/reel_stop",
+		"CoinFly":"Sounds/fx_flip_01",
+		"BirdJiao":"Sounds/fx_bird_react",
+		"BirdStartReSpin":"Sounds/fx_resolution_before_explosions",
+		"GuangBao":"Sounds/fx_plus1_game",
+		"BirdReSpinEnter":"Sounds/fx_flyingpig_trigger",
+		"LaoTouReSpinEnter":"Sounds/fx_piggy_intro"
+	},
+	"OtherPrefabs":[
+		"Prefabs/JackpotTitle",
+		"Prefabs/Wheel",
+		"Prefabs/CoinFly",
+		"Prefabs/GuangBao",
+		"Prefabs/LaoTouEnter"
+	],
+	"SpriteFrame":[
+		
+	],
+	"SpinJson":[
+		"LevelEM/1",
+		"LevelEM/2",
+		"LevelEM/3",
+		"LevelEM/4"
+	]
+}
