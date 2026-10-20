@@ -164,13 +164,13 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 27,
-      "b": 68,
+      "r": 214,
+      "g": 179,
+      "b": 231,
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "6b8e1fde-fd55-40ab-b1a1-0c356c449c2d@f9941",
+      "__uuid__": "9eb65f3d-b083-4c3b-ab50-4aa9496e426b@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -214,7 +214,7 @@
       "__id__": 1
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 9
@@ -343,14 +343,14 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "BounsBg",
+    "_name": "ReSpinBg",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
       "__id__": 1
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 15

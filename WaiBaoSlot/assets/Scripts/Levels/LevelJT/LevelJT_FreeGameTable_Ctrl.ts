@@ -15,6 +15,7 @@ import { LevelJT_FreeJackpot_Ctrl } from './LevelJT_FreeJackpot_Ctrl';
 import { UILayer, UIMgr } from '../../Mgr/UIMgr';
 import { LevelJT_FreeWinCtrl } from './LevelJT_FreeWinCtrl';
 import { LevelJT_GameModel } from './LevelJT_GameModel';
+import { LevelJT_MainUI_Ctrl } from './LevelJT_MainUI_Ctrl';
 
 @ccclass('LevelJT_FreeGameTable_Ctrl')
 export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
@@ -49,7 +50,7 @@ export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
         }
     }
     public resetJackpotTitle(){
-        if (!this.m_jackpotCompent){
+        if (!this.m_jackpotCompent || !this.m_jackpotCompent.node.isValid){
             return
         }
         this.m_jackpotCompent.resetJackpotTitle()
@@ -161,6 +162,7 @@ export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
             this.m_freeWinCtrl.node.destroy();
             this.m_freeWinCtrl = null;
         }
+        
         let action = LevelMgr.Instance.getLevelModel().getAction();
         let nextAction = LevelMgr.Instance.getLevelModel().getNextAction();
         if (action == ActionType.FREESPIN && nextAction == ActionType.NORMAL) {
@@ -183,6 +185,7 @@ export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
         }
         let reelData = LevelMgr.Instance.getLevelModel().getSpinReelData();
         let bonusData = [];
+        let bonusIndex:number = 0;
         for (let i = 0; i < reelData.length; i++){
             let table = reelData[i]
             for (let j = 0;j < table.length; j++){
@@ -191,7 +194,8 @@ export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
                     if (reel[k] == 94 || reel[k] == 95 || reel[k] == 96 ){
                         bonusData.push({row:k,col:j,id:reel[k]})
                         // 播放spine动画
-                        this.m_gameMainCompent.bonusFlyAction( j,k );
+                        bonusIndex++;
+                        (this.m_gameMainCompent as LevelJT_MainUI_Ctrl).newBonusFlyAction( j,k,bonusIndex );
                     } else if (reel[k] == 100){
                         // 增加次数
 
@@ -199,7 +203,11 @@ export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
                 }
             }
         }
-        this.excuteListFunc();
+        
+        let delayTime = bonusIndex * 1;
+        Utils.performWithDelay(this.node,()=>{
+            this.excuteListFunc();
+        },delayTime)
     }
 
     // freeGame结算
@@ -208,15 +216,15 @@ export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
         let nextAction = LevelMgr.Instance.getLevelModel().getNextAction();
         
         if (action == ActionType.FREESPIN && nextAction == ActionType.NORMAL) {
-            if (this.m_jackpotCompent && this.m_jackpotCompent.node){
+            if (this.m_jackpotCompent && this.m_jackpotCompent.node.isValid){
                 this.m_jackpotCompent.node.removeFromParent();
                 this.m_jackpotCompent.node.destroy();
-                this.m_jackpotCompent.node = null;
+                this.m_jackpotCompent = null;
             }
             
 
-            this.m_freeWinCtrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/FreeWinView","LevelJT_FreeWinCtrl",UILayer.Normal) as LevelJT_FreeWinCtrl;
-            this.m_freeWinCtrl.initUI( this.m_levelConfig );
+            // this.m_freeWinCtrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/FreeWinView","LevelJT_FreeWinCtrl",UILayer.Normal) as LevelJT_FreeWinCtrl;
+            // this.m_freeWinCtrl.initUI( this.m_levelConfig );
             Utils.performWithDelay(this.node,()=>{
                 // if (this.m_freeWinCtrl && this.m_freeWinCtrl.node){
                 //     this.m_freeWinCtrl.node.removeFromParent();
@@ -225,6 +233,15 @@ export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
                 // }
                 this.excuteListFunc();
             },1.5)
+
+            let prefab = ResMgr.Instance.getAsset("LevelJT","Prefabs/FreeWinView",Prefab);
+            if(prefab){
+                let freeWinNode = instantiate(prefab);
+                this.node.addChild(freeWinNode);
+                this.m_freeWinCtrl = freeWinNode.addComponent( LevelJT_FreeWinCtrl ) as LevelJT_FreeWinCtrl;
+                // 初始化组件
+                this.m_freeWinCtrl.initUI( this.m_levelConfig );
+            }
         }else {
             this.excuteListFunc();
         }

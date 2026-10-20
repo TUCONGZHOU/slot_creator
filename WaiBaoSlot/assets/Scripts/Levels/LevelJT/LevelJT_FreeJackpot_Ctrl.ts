@@ -1,4 +1,4 @@
-import { _decorator, Component, Label, Node } from 'cc';
+import { _decorator, Component, Label, Node, Animation } from 'cc';
 const { ccclass, property } = _decorator;
 
 import { UICtrl } from '../../Mgr/UIMgr';
@@ -45,6 +45,7 @@ export class LevelJT_FreeJackpot_Ctrl extends UICtrl {
         let str = Utils.util_formatCoins( bonusWinAmount,9 );
         this.view['Label'].getComponent(Label).string = str;
     }
+
 }
 
 

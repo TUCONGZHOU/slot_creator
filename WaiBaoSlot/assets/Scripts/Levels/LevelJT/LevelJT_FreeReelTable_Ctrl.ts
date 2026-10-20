@@ -10,11 +10,16 @@ import { LevelMgr } from '../../Mgr/LevelMgr';
 
 @ccclass('LevelJT_FreeReelTable_Ctrl')
 export class LevelJT_FreeReelTable_Ctrl extends BaseReelTable {
-    
+    public m_redBounsSoundIndex:number = 0 // 每次spin，红色bonus落地音效序号 
+    public m_goldBounsSoundIndex:number = 0 // 每次spin，红色bonus落地音效序号
+    public m_greenBounsSoundIndex:number = 0 // 每次spin，红色bonus落地音效序号
     protected initView(): void {
+        // this.m_redBounsSoundIndex = this.getCurBonusNumById( 94 );
+        // this.m_goldBounsSoundIndex = this.getCurBonusNumById( 95 );
+        // this.m_greenBounsSoundIndex = this.getCurBonusNumById( 96 );
         super.initView();
         let freeSpinInfo = LevelMgr.Instance.getLevelModel().getFreeSpinInfo();
-        this.view['FreeSpinLabel'].getComponent(Label).string = freeSpinInfo.freeSpinsLeftCount.toString()
+        this.view['317db/FreeSpinLabel'].getComponent(Label).string = freeSpinInfo.freeSpinsLeftCount.toString()
     }
 
 
@@ -29,9 +34,18 @@ export class LevelJT_FreeReelTable_Ctrl extends BaseReelTable {
     // 轮盘滚动
     public startRoll():void {
         let freeSpinInfo = LevelMgr.Instance.getLevelModel().getFreeSpinInfo();
-        this.view['FreeSpinLabel'].getComponent(Label).string = (freeSpinInfo.freeSpinsLeftCount - 1).toString()
+        this.view['317db/FreeSpinLabel'].getComponent(Label).string = (freeSpinInfo.freeSpinsLeftCount - 1).toString()
+
+        this.m_redBounsSoundIndex = 0;
+        this.m_goldBounsSoundIndex = 0;
+        this.m_greenBounsSoundIndex = 0;
 
         super.startRoll()
+    }
+
+    public resetFreeSpinNum(){
+        let freeSpinInfo = LevelMgr.Instance.getLevelModel().getFreeSpinInfo();
+        this.view['317db/FreeSpinLabel'].getComponent(Label).string = freeSpinInfo.freeSpinsLeftCount.toString()
     }
 
     public playReelStopDoneSounds():void {
@@ -77,6 +91,26 @@ export class LevelJT_FreeReelTable_Ctrl extends BaseReelTable {
         let col = meta.col;
         let row = meta.row;
         this.playSymbolLineAction( id,col,row );
+    }
+
+    public getNextBonusSoundNumById( id ){
+        if (id == 94){
+            return ++this.m_redBounsSoundIndex;
+        }else if(id == 95){
+            return ++this.m_goldBounsSoundIndex;
+        }else if(id == 96){
+            return ++this.m_greenBounsSoundIndex;
+        }
+    }
+    public getCurBonusNumById( id ){
+        let reSpinData = LevelMgr.Instance.getLevelModel().getStoredIcons();
+        let num:number = 0;
+        for (let meta of reSpinData){
+            if (meta.id == id){
+                num++;
+            }
+        }
+        return Math.min(num,5);
     }
 }
 

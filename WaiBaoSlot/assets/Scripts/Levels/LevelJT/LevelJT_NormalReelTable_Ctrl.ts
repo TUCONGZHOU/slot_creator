@@ -14,6 +14,10 @@ export class LevelJT_NormalReelTable_Ctrl extends BaseReelTable {
     public m_quickMetaBg:any[] = []; // 记录快滚
     public m_quickMeta:any[] = []; // 记录快滚
 
+    public m_redBounsSoundIndex:number = 0 // 每次spin，红色bonus落地音效序号 
+    public m_goldBounsSoundIndex:number = 0 // 每次spin，红色bonus落地音效序号
+    public m_greenBounsSoundIndex:number = 0 // 每次spin，红色bonus落地音效序号
+
     start() {
         super.start();
     }
@@ -78,6 +82,23 @@ export class LevelJT_NormalReelTable_Ctrl extends BaseReelTable {
         let soundFile = this.m_levelConfig.SoundsFile["ReelStop"];
         SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
     }
+
+    public startRoll():void {
+        this.m_redBounsSoundIndex = 0;
+        this.m_goldBounsSoundIndex = 0;
+        this.m_greenBounsSoundIndex = 0;
+        super.startRoll();
+    }
+    public getNextBonusSoundNumById( id ){
+        if (id == 94){
+            return ++this.m_redBounsSoundIndex;
+        }else if(id == 95){
+            return ++this.m_goldBounsSoundIndex;
+        }else if(id == 96){
+            return ++this.m_greenBounsSoundIndex;
+        }
+    }
+
 }
 
 

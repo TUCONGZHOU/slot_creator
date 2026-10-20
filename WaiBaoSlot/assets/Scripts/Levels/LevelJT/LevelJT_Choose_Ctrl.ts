@@ -8,11 +8,13 @@ import { Utils } from '../../Util/Utils';
 import { GlEventMgr } from '../../Mgr/GlEventMgr';
 import { EventName } from '../../Mgr/EventName';
 import { ResMgr } from '../../Mgr/ResMgr';
+import { SoundMgr } from '../../Mgr/SoundMgr';
 
 @ccclass('LevelJT_Choose_Ctrl')
 export class LevelJT_Choose_Ctrl extends UICtrl {
     private m_chooseMark:boolean = false;
     private m_winMul = 0;
+    public m_levelConfig:LevelConfig = null;
 
     start() {
 
@@ -32,7 +34,7 @@ export class LevelJT_Choose_Ctrl extends UICtrl {
         this.addButtonClick("317_108", this, this.sendChoose108);
         this.addButtonClick("317_98", this, this.sendChoose98);
         this.addButtonClick("317_88", this, this.sendChoose88);
-        this.addButtonClick("317_topup", this, this.sendChooseBonus);
+        this.addButtonClick("317_topup", this, this.sendChooseReSpin);
     }
     public showOther(bool:boolean){
         this.view["SpriteSplash"].active = bool;
@@ -44,7 +46,7 @@ export class LevelJT_Choose_Ctrl extends UICtrl {
         this.view["317_128"].active = bool;
         this.view["317_topup"].active = bool;
     }
-    public flyAddMult(addMult:number,bonusData:any[],worldPos:Vec3,flyTime:number){
+    public flyAddMult(addMult:number,bonusData:any[],worldPos:Vec3,flyTime:number,index:number){
         // 收集
         let prefab:Prefab = ResMgr.Instance.getAsset('LevelJT',"Prefabs/Socre_linghting_red",Prefab);
         let bonusNode = instantiate(prefab);
@@ -78,13 +80,19 @@ export class LevelJT_Choose_Ctrl extends UICtrl {
             })
         );
         tween(bonusNode).sequence(...anims).start();
+
+        let soundFile = this.m_levelConfig.SoundsFile["RedBonusToButtom" + (index + 1)];
+        SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
     }
     public showAll(){
+        let soundFile = this.m_levelConfig.SoundsFile["ChooseLayerBg"];
+        SoundMgr.Instance.playBGM( this.m_levelConfig.BundleName,soundFile );
         this.showOther( true )
     }
     
-    public initUI():void{
-        
+    public initUI(levelConfig:LevelConfig):void{
+        this.m_levelConfig = levelConfig
+        SoundMgr.Instance.stopBGM();
     }
     public sendChoose128(button: Button){
         this.sendChooseFree( button )
@@ -107,6 +115,7 @@ export class LevelJT_Choose_Ctrl extends UICtrl {
         if (this.m_chooseMark) {
             return;
         }
+        this.playClickSound();
         this.m_chooseMark = true;
         this.resetZOrder(button);
         this.showFrameLight(button);
@@ -114,10 +123,11 @@ export class LevelJT_Choose_Ctrl extends UICtrl {
         // LevelMgr.Instance.requestSpin();
         this.closeUi()
     }
-    public sendChooseBonus(button: Button): void {
+    public sendChooseReSpin(button: Button): void {
         if (this.m_chooseMark) {
             return;
         }
+        this.playClickSound();
         this.m_chooseMark = true;
         this.resetZOrder(button);
         this.showFrameLight(button);
@@ -134,6 +144,9 @@ export class LevelJT_Choose_Ctrl extends UICtrl {
         this.view['317_88'].setSiblingIndex(1)
         this.view['317_topup'].setSiblingIndex(1)
         this.view['SpriteSplash'].setSiblingIndex(10)
+        this.view['skeleton'].setSiblingIndex(11)
+        this.view['317each_wins'].setSiblingIndex(12)
+        this.view['Label'].setSiblingIndex(13)
         button.node.setSiblingIndex(15)
     }
     public showFrameLight(button: Button){
@@ -141,10 +154,15 @@ export class LevelJT_Choose_Ctrl extends UICtrl {
         let pos:Vec3 = button.node.getPosition()
         this.view['317_bonuscard'].setPosition( pos )
     }
+    public playClickSound(){
+        let soundFile = this.m_levelConfig.SoundsFile["ChooseLayerClick"];
+        SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+    }
     public closeUi(){
         Utils.performWithDelay(this.node,()=>{
             UIMgr.Instance.closeUi("LevelJT_Choose_Ctrl");
             GlEventMgr.Instance.emit(EventName.ExcuteSlotFunction);
+            SoundMgr.Instance.stopBGM();
         },3)
     }
 }

@@ -48,6 +48,11 @@
 			},
 			{
 				"Multiple": 0.5,
+				"row": 0,
+				"col": 4
+			},
+			{
+				"Multiple": 0.5,
 				"row": 1,
 				"col": 4
 			}
