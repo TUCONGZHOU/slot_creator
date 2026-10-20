@@ -137,12 +137,12 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
             this.collectJinOrGreenBonus(0,newGreenBounsData,0,()=>{
                 this.excuteListFunc();
                 this.resetGreenCollectLb();
-            })
-        })
+            },"green")
+        },"gold")
 
         // this.excuteListFunc();
     }
-    public collectJinOrGreenBonus(newIndex:number, newData:any[],index:number, callBack:Function){
+    public collectJinOrGreenBonus(newIndex:number, newData:any[],index:number, callBack:Function,color:string = "gold"){
         if (newIndex >= newData.length){
             if (callBack){
                 callBack()
@@ -157,7 +157,7 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
         }
         this.m_gameMainCompent.reSpinBonusFlyAction(data.Multiple,oriData.col,oriData.row,data.col,data.row,()=>{
             this.collectJinOrGreenBonus(newIndex,newData,index,callBack)
-        })
+        },index,color)
     }
 
     // 显示连线

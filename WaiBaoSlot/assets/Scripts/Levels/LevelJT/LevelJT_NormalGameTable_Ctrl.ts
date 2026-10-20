@@ -137,26 +137,32 @@ export class LevelJT_NormalGameTable_Ctrl extends BaseGameTable {
             return
         }
 
-        let compent = UIMgr.Instance.showUi(this.m_abName,"Prefabs/ChooseLayer","LevelJT_Choose_Ctrl",UILayer.Popup) as LevelJT_Choose_Ctrl;
-        compent.initUI();
-        // 
-        let delayTime = 0.5
-        let flyTime = 0.15
-        for (let i = 0; i < num; i++){
-            let reelUnitCompent = this.m_reelTableCompent[0].getReelUnitCompent(bonusData[i].col)
-            // let symbolNode = reelUnitCompent.get
-            let worldPos = reelUnitCompent.getSymbolWorldPos(bonusData[i].row)
-            let storeData = LevelMgr.Instance.getLevelModel().getStoredCoin( 0,bonusData[i].col,bonusData[i].row );
-            let multiple = storeData.Multiple;
-            // let labelNode = this.m_reelTableCompent:cloneBonusLebel()
-            Utils.performWithDelay(this.node,()=>{
-                compent.flyAddMult(multiple,bonusData,worldPos,flyTime)
-            },i*delayTime)
+        let soundFile = this.m_levelConfig.SoundsFile["CollectBonusToFeature"];
+        if (soundFile){
+            SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile ); 
         }
         Utils.performWithDelay(this.node,()=>{
-            compent.showAll()
-        },delayTime * num + delayTime + flyTime )
-
+            let compent = UIMgr.Instance.showUi(this.m_abName,"Prefabs/ChooseLayer","LevelJT_Choose_Ctrl",UILayer.Popup) as LevelJT_Choose_Ctrl;
+            compent.initUI(this.m_levelConfig);
+            // 
+            let delayTime = 0.5
+            let flyTime = 0.15
+            for (let i = 0; i < num; i++){
+                let index = i
+                let reelUnitCompent = this.m_reelTableCompent[0].getReelUnitCompent(bonusData[i].col)
+                // let symbolNode = reelUnitCompent.get
+                let worldPos = reelUnitCompent.getSymbolWorldPos(bonusData[i].row)
+                let storeData = LevelMgr.Instance.getLevelModel().getStoredCoin( 0,bonusData[i].col,bonusData[i].row );
+                let multiple = storeData.Multiple;
+                // let labelNode = this.m_reelTableCompent:cloneBonusLebel()
+                Utils.performWithDelay(this.node,()=>{
+                    compent.flyAddMult(multiple,bonusData,worldPos,flyTime,index)
+                },i*delayTime)
+            }
+            Utils.performWithDelay(this.node,()=>{
+                compent.showAll()
+            },delayTime * num + delayTime + flyTime )
+        },2 )
     }
     // 触发freespin
     public enterOtherGame() {
@@ -201,7 +207,10 @@ export class LevelJT_NormalGameTable_Ctrl extends BaseGameTable {
                 }
             }
         }
-        this.excuteListFunc();
+        let delayTime = wildData.length > 0 ? 1:0
+        Utils.performWithDelay(this.node,()=>{
+            this.excuteListFunc();
+        },delayTime)
     }
 }
 

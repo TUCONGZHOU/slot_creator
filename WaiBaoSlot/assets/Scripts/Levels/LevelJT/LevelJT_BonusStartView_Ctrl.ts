@@ -150,7 +150,7 @@ export class LevelJT_BonusStartView_Ctrl extends UICtrl {
             // },0.3); 
 
             // bonus出现音效
-            let soundFile = this.m_levelConfig.SoundsFile["Bonus"];
+            let soundFile = this.m_levelConfig.SoundsFile["JackpotHit"];
             if (soundFile){
                 SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile ); 
             }
@@ -290,6 +290,15 @@ export class LevelJT_BonusStartView_Ctrl extends UICtrl {
 
     }
     public closeUI(){
+        SoundMgr.Instance.stopBGM();
+        let soundFile = this.m_levelConfig.SoundsFile["NormalBg"];
+        let action = LevelMgr.Instance.getLevelModel().getAction();
+        if (action == ActionType.RESPIN){
+            soundFile = this.m_levelConfig.SoundsFile["ReSpinBg"];
+        }else if(action == ActionType.FREESPIN){
+            soundFile = this.m_levelConfig.SoundsFile["FreeSpinBg"];
+        }
+        SoundMgr.Instance.playBGM( this.m_levelConfig.BundleName,soundFile );
         this.node.removeFromParent();
         this.node.destroy();
     }

@@ -15,6 +15,7 @@ import { LevelJT_FreeJackpot_Ctrl } from './LevelJT_FreeJackpot_Ctrl';
 import { UILayer, UIMgr } from '../../Mgr/UIMgr';
 import { LevelJT_FreeWinCtrl } from './LevelJT_FreeWinCtrl';
 import { LevelJT_GameModel } from './LevelJT_GameModel';
+import { LevelJT_MainUI_Ctrl } from './LevelJT_MainUI_Ctrl';
 
 @ccclass('LevelJT_FreeGameTable_Ctrl')
 export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
@@ -184,6 +185,7 @@ export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
         }
         let reelData = LevelMgr.Instance.getLevelModel().getSpinReelData();
         let bonusData = [];
+        let bonusIndex:number = 0;
         for (let i = 0; i < reelData.length; i++){
             let table = reelData[i]
             for (let j = 0;j < table.length; j++){
@@ -192,7 +194,8 @@ export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
                     if (reel[k] == 94 || reel[k] == 95 || reel[k] == 96 ){
                         bonusData.push({row:k,col:j,id:reel[k]})
                         // 播放spine动画
-                        this.m_gameMainCompent.bonusFlyAction( j,k );
+                        bonusIndex++;
+                        (this.m_gameMainCompent as LevelJT_MainUI_Ctrl).newBonusFlyAction( j,k,bonusIndex );
                     } else if (reel[k] == 100){
                         // 增加次数
 
@@ -200,7 +203,11 @@ export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
                 }
             }
         }
-        this.excuteListFunc();
+        
+        let delayTime = bonusIndex * 1;
+        Utils.performWithDelay(this.node,()=>{
+            this.excuteListFunc();
+        },delayTime)
     }
 
     // freeGame结算

@@ -5,6 +5,9 @@ import { BaseMutilReelUnit } from '../../GameBase/BaseMutilReelUnit';
 import { BaseReelUnit } from '../../GameBase/BaseReelUnit';
 import { Utils } from '../../Util/Utils';
 import { LevelJT_Symbol_Ctrl } from './LevelJT_Symbol_Ctrl';
+import { LevelJT_ReSpinGameTable_Ctrl } from './LevelJT_ReSpinGameTable_Ctrl';
+import { LevelJT_FreeReelTable_Ctrl } from './LevelJT_FreeReelTable_Ctrl';
+import { LevelJT_ReSpinReelTable_Ctrl } from './LevelJT_ReSpinReelTable_Ctrl';
 
 @ccclass('LevelJT_RespinReelUnit_Ctrl')
 export class LevelJT_RespinReelUnit_Ctrl extends BaseMutilReelUnit {
@@ -49,6 +52,9 @@ export class LevelJT_RespinReelUnit_Ctrl extends BaseMutilReelUnit {
             let symbolCompent = symbolNode.getComponent( this.m_levelConfig.BundleName +"_Symbol_Ctrl" ) as LevelJT_Symbol_Ctrl;
             symbolCompent.addBonusNum( addMult );
         }
+    }
+    public getNextBonusSoundNumById( id ){
+        return (this.m_reelTableCompent as LevelJT_ReSpinReelTable_Ctrl).getNextBonusSoundNumById( id )
     }
 }
 

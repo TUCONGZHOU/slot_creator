@@ -15,7 +15,14 @@ import { ActionType } from '../../InterFace/LevelConfig';
 @ccclass('LevelJT_ReSpinReelTable_Ctrl')
 export class LevelJT_ReSpinReelTable_Ctrl extends BaseReelTable {
     public m_reelUnitCompent:(LevelJT_RespinReelUnit_Ctrl) [] = [];
+
+    public m_redBounsSoundIndex:number = 0 // 每次spin，红色bonus落地音效序号 
+    public m_goldBounsSoundIndex:number = 0 // 每次spin，红色bonus落地音效序号
+    public m_greenBounsSoundIndex:number = 0 // 每次spin，红色bonus落地音效序号
     protected initView(): void {
+        this.m_redBounsSoundIndex = this.getCurBonusNumById( 94 );
+        this.m_goldBounsSoundIndex = this.getCurBonusNumById( 95 );
+        this.m_greenBounsSoundIndex = this.getCurBonusNumById( 96 );
         super.initView();
     }
 
@@ -52,11 +59,37 @@ export class LevelJT_ReSpinReelTable_Ctrl extends BaseReelTable {
         let compent = this.getReelUnitCompent( col ) as LevelJT_RespinReelUnit_Ctrl;
         compent.bonusGrowUpAction(row,addMult);
 
-        // 数字滚动的音效
-        let soundFile1 = this.m_levelConfig.SoundsFile["CoinIncrease"];
-        if (soundFile1){
-            SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile1,1,false );
+        // // 数字滚动的音效
+        // let soundFile1 = this.m_levelConfig.SoundsFile["CoinIncrease"];
+        // if (soundFile1){
+        //     SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile1,1,false );
+        // }
+    }
+
+    // public startRoll():void {
+    //     this.m_redBounsSoundIndex = 0;
+    //     this.m_goldBounsSoundIndex = 0;
+    //     this.m_greenBounsSoundIndex = 0;
+    //     super.startRoll();
+    // }
+    public getNextBonusSoundNumById( id ){
+        if (id == 94){
+            return ++this.m_redBounsSoundIndex;
+        }else if(id == 95){
+            return ++this.m_goldBounsSoundIndex;
+        }else if(id == 96){
+            return ++this.m_greenBounsSoundIndex;
         }
+    }
+    public getCurBonusNumById( id ){
+        let reSpinData = LevelMgr.Instance.getLevelModel().getStoredIcons();
+        let num:number = 0;
+        for (let meta of reSpinData){
+            if (meta.id == id){
+                num++;
+            }
+        }
+        return Math.min(num,5);
     }
 }
 

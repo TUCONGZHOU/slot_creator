@@ -102,9 +102,10 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
     public enterBonus():void{
         // this.view['SpineWan'].active = false
         // 播放音效
-        let soundFile = this.m_levelConfig.SoundsFile["EnterFreeSpin"];
+        SoundMgr.Instance.stopBGM();
+        let soundFile = this.m_levelConfig.SoundsFile["BonusBg"];
         if (soundFile){
-            SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile ); 
+            SoundMgr.Instance.playBGM( this.m_levelConfig.BundleName,soundFile ); 
         }
         // 显示bonus界面
         // let bonusSpinCtrl:LevelJT_BonusStartView_Ctrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/BonusView","LevelJT_BonusStartView_Ctrl",UILayer.Normal) as LevelJT_BonusStartView_Ctrl;
@@ -116,6 +117,7 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
             const compent:LevelJT_BonusStartView_Ctrl = bonusNode.addComponent( LevelJT_BonusStartView_Ctrl ) as LevelJT_BonusStartView_Ctrl;
             compent.initUI( this.m_levelConfig );
         }
+        
     }
     // 进入respin（修复崩溃 + 修复TS报错版本）
     public async enterReSpin(): Promise<void> {
@@ -183,6 +185,11 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
 
             let spine = piaoNode.getChildByName("all_xfj_sj").getComponent(sp.Skeleton);
             spine.setAnimation(0, "5_88fei", false);
+            let soundFile = this.m_levelConfig.SoundsFile["wildFly"];
+            if (soundFile){
+                SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+            }
+
             spine.setCompleteListener((entry: sp.spine.TrackEntry) => {
                 spine.setCompleteListener(null); // 清除监听器
             });
@@ -199,10 +206,10 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
             // 3. 结束后移除
             .call(() => {
                 // 音效
-                let soundFile = this.m_levelConfig.SoundsFile["TreeGlow"];
-                if (soundFile){
-                    SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
-                }
+                // let soundFile = this.m_levelConfig.SoundsFile["TreeGlow"];
+                // if (soundFile){
+                //     SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+                // }
                 // 播放spine动画
                 let spine = this.view["SpineWan/315_tree"].getComponent(sp.Skeleton);
                 spine.setAnimation(0, "Game4-wan-guang", false);
@@ -220,7 +227,7 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
         }
     }
     // freeGame飞行bouns
-    public bonusFlyAction( col:number,row:number ){
+    public newBonusFlyAction( col:number,row:number,bonusIndex:number ){
         // 播放spine动画
         let piaoPrefab = ResMgr.Instance.getAsset(this.m_abName,"Prefabs/FreeCollect",Prefab);
         if(piaoPrefab){
@@ -241,6 +248,10 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
             spine.setCompleteListener((entry: sp.spine.TrackEntry) => {
                 spine.setCompleteListener(null); // 清除监听器
             });
+            let soundFile = this.m_levelConfig.SoundsFile["goldBonusFly" + bonusIndex];
+            if (soundFile){
+                SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+            }
             tween(piaoNode)
             .parallel(
                 // 1. 上升
@@ -271,7 +282,7 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
         }
     }
     // reSpinGame飞行bouns
-    public reSpinBonusFlyAction( mulit:number,col:number,row:number,endCol:number,endRow:number,callBack:Function ){
+    public reSpinBonusFlyAction( mulit:number,col:number,row:number,endCol:number,endRow:number,callBack:Function,collectIndex:number,bonusColor:string ){
         
         // 播放spine动画
         let func = ()=>{
@@ -296,6 +307,21 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
                 spine.setCompleteListener((entry: sp.spine.TrackEntry) => {
                     spine.setCompleteListener(null); // 清除监听器
                 });
+                // let soundFile = this.m_levelConfig.SoundsFile["goldBonusFly" + collectIndex];
+                // if (bonusColor == "gold"){
+                //     soundFile = this.m_levelConfig.SoundsFile["goldBonusFly" + collectIndex];
+                // }else if (bonusColor == "green"){
+                //     soundFile = this.m_levelConfig.SoundsFile["greenBonusFly" + collectIndex];
+                // }
+                let soundFile = this.m_levelConfig.SoundsFile["redBounsFly" + collectIndex];
+                if (bonusColor == "gold"){
+                    soundFile = this.m_levelConfig.SoundsFile["redBounsFly" + collectIndex];
+                }else if (bonusColor == "green"){
+                    soundFile = this.m_levelConfig.SoundsFile["redBounsFly" + collectIndex];
+                }
+                if (soundFile){
+                    SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+                }
                 tween(piaoNode)
                 .parallel(
                     // 1. 上升
