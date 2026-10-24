@@ -1,4 +1,4 @@
-import { _decorator, Component, Node,Animation } from 'cc';
+import { _decorator, Component, Node,Animation, tween } from 'cc';
 const { ccclass, property } = _decorator;
 
 import { UICtrl, UIMgr } from '../../Mgr/UIMgr';
@@ -19,6 +19,26 @@ export class LevelJT_ReSpinView_Ctrl extends UICtrl {
         // 播放动画
         // let animation = this.view["315_FG_FreeStart"].getComponent(Animation);
         // animation.play("freespinview");
+        tween(this.node)
+        .delay(1.5)
+        .call(()=>{
+            // 移除当前轮盘
+            this.m_mainCtrl.removeGameTable();
+            // 添加freespin的轮盘
+            this.m_mainCtrl.addRespinGameTableUI();
+            // 恢复点击
+            GlEventMgr.Instance.emit( EventName.RecoverSpinBtn )
+            // 发送消息
+            // GlEventMgr.Instance.emit(EventName.ClearWinAmount);
+            // 改变bg
+            GlEventMgr.Instance.emit(EventName.ChangeBg,false);
+        })
+        .delay(0.5)
+        .call(()=>{
+            // 关闭freespin界面
+            UIMgr.Instance.closeUi("LevelJT_ReSpinView_Ctrl");
+        })
+        .start()
     }
 
     update(deltaTime: number) {
@@ -37,7 +57,7 @@ export class LevelJT_ReSpinView_Ctrl extends UICtrl {
         // 恢复点击
         GlEventMgr.Instance.emit( EventName.RecoverSpinBtn )
         // 发送消息
-        GlEventMgr.Instance.emit(EventName.ClearWinAmount);
+        // GlEventMgr.Instance.emit(EventName.ClearWinAmount);
         // 改变bg
         GlEventMgr.Instance.emit(EventName.ChangeBg,false);
         // 发送消息 开始滚动

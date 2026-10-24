@@ -453,7 +453,7 @@
       "__expectedType__": "sp.SkeletonData"
     },
     "defaultSkin": "default",
-    "defaultAnimation": "<None>",
+    "defaultAnimation": "Game4-wan-idle",
     "_premultipliedAlpha": true,
     "_timeScale": 1,
     "_preCacheMode": 0,

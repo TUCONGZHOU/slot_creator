@@ -1,0 +1,78 @@
+{
+"skeleton": {
+	"hash": "f/RMf/4VUGgiQ9S3YQ/MtEspUyM",
+	"spine": "3.8.99",
+	"x": -656.16,
+	"y": -388.1,
+	"width": 1315.35,
+	"height": 782.57,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "mubu", "parent": "root", "color": "1aff00ff" },
+	{ "name": "MB-1", "parent": "mubu", "y": 25.38, "color": "dfff00ff" }
+],
+"slots": [
+	{ "name": "cc", "bone": "root" },
+	{ "name": "MB-1", "bone": "MB-1", "attachment": "MB-1" },
+	{ "name": "g", "bone": "mubu", "attachment": "g", "blend": "screen" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"MB-1": {
+				"MB-1": { "scaleX": 1.0253, "scaleY": 1.0253, "width": 1280, "height": 720 },
+				"MB-2": { "width": 1280, "height": 720 }
+			},
+			"cc": {
+				"cc": {
+					"type": "clipping",
+					"end": "cc",
+					"vertexCount": 4,
+					"vertices": [ -659.28, 369.63, 655.35, 372.06, 657.78, -373.55, -656.85, -369.09 ],
+					"color": "ce3a3aff"
+				}
+			},
+			"g": {
+				"g": { "x": 1.68, "y": -264.6, "width": 1315, "height": 247 }
+			}
+		}
+	}
+],
+"animations": {
+	"Game4-mubu": {
+		"slots": {
+			"MB-1": {
+				"color": [
+					{ "time": 1.6667, "color": "ffffffff" },
+					{ "time": 2.3333, "color": "ffffff00" }
+				]
+			},
+			"cc": {
+				"attachment": [
+					{ "name": "cc" }
+				]
+			}
+		},
+		"bones": {
+			"mubu": {
+				"translate": [
+					{ "y": 758.16 },
+					{ "time": 2, "y": -680.34 }
+				]
+			},
+			"MB-1": {
+				"translate": [
+					{ "y": 315.91 }
+				],
+				"scale": [
+					{ "y": 1.915 }
+				]
+			}
+		}
+	}
+}
+}

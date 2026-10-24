@@ -279,7 +279,7 @@
 		"Prefabs/BonusNode",
 		"Prefabs/JockpotTitle",
 		"Prefabs/ChooseLayer",
-		"Prefabs/FreeSpinView",
+		"Prefabs/ChangeSpinView",
 		"Prefabs/FreeJockpotTitle",
 		"Prefabs/NormalCollect",
 		"Prefabs/FreeCollect",

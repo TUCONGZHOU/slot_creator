@@ -153,6 +153,7 @@ export class LevelJT_Choose_Ctrl extends UICtrl {
         this.view['317_bonuscard'].active = true
         let pos:Vec3 = button.node.getPosition()
         this.view['317_bonuscard'].setPosition( pos )
+        this.view['317_bonuscard'].setSiblingIndex(100)
     }
     public playClickSound(){
         let soundFile = this.m_levelConfig.SoundsFile["ChooseLayerClick"];
