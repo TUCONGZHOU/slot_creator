@@ -51,10 +51,10 @@
 	"jackpots":[310689,78466,64456,35151],
 	"lastAction": "RESPIN",
 	"respin": {
-		"reSpinsTotalCount": 3,
-		"reSpinCurCount": 3
+		"reSpinsTotalCount": 6,
+		"reSpinCurCount": 6
 	},
-	"respinReels": [[[7,8,94],[7,8,94],[94,94,94],[94,94,4],[94,1,2]]],
+	"respinReels": [[[100,8,94],[7,8,94],[94,94,94],[94,94,4],[94,1,2]]],
 	"winAmount": 0,
 	"nextAction": "RESPIN",
 	"betList": [10000,20000,50000,1000000],

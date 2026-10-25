@@ -37,6 +37,16 @@ export class LevelJT_ReSpinNum_Ctrl extends UICtrl {
         this.view['ReNum'].getComponent(Label).string = num.toString();
     }
 
+    public addNum( num:number ){
+        let str = this.view['ReNum'].getComponent(Label).string
+        let showNum = Number(str) + num;
+        this.view['ReNum'].getComponent(Label).string = showNum.toString();
+    }
+    public subNum(){
+        let str = this.view['ReNum'].getComponent(Label).string
+        let showNum = Number(str) - 1;
+        this.view['ReNum'].getComponent(Label).string = showNum.toString();
+    }
 }
 
 

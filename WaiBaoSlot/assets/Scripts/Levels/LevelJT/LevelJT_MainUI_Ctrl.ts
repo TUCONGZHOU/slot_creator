@@ -384,6 +384,10 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
             func();
         }
     }
+
+    public showPayInfo():void{
+        UIMgr.Instance.showUi("LevelJT","Prefabs/PayTable","LevelJT_PayTable_Ctrl",UILayer.Normal);
+    }
 }
 
 
