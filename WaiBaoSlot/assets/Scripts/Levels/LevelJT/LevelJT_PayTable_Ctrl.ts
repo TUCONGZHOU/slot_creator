@@ -49,7 +49,7 @@ export class LevelJT_PayTable_Ctrl extends UICtrl {
 
     public closeUI(button: Button): void {
         // 关闭界面
-        UIMgr.Instance.closeUi("LevelCK_PayTable_Ctrl");
+        UIMgr.Instance.closeUi("LevelJT_PayTable_Ctrl");
     }
 }
 
