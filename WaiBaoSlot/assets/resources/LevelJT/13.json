@@ -56,8 +56,8 @@
 	"jackpots":[310689,78466,64456,35151],
 	"lastAction": "RESPIN",
 	"respin": {
-		"reSpinsTotalCount": 3,
-		"reSpinCurCount": 2
+		"reSpinsTotalCount": 6,
+		"reSpinCurCount": 4
 	},
 	"respinReels": [[[7,8,94],[7,8,94],[94,94,94],[94,94,4],[94,1,94]]],
 	"winAmount": 0,

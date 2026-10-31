@@ -372,7 +372,8 @@ export class UIMgr extends Component {
                 // 2. 挂载 UITransform 组件（UI 节点必须有该组件）
                 const uiTransform = layerNode.addComponent(UITransform);
                 // 3. 配置 UITransform 组件的属性（可选）
-                uiTransform.setContentSize(768, 1370); // 设置节点宽 200，高 100
+                // uiTransform.setContentSize(768, 1370); // 设置节点宽 200，高 100
+                uiTransform.setContentSize(1370, 768);
                 uiTransform.anchorPoint = new Vec2(0.5, 0.5); // 锚点居中
 
                 if (uiTransform) {
@@ -404,7 +405,8 @@ export class UIMgr extends Component {
             // 2. 挂载 UITransform 组件（UI 节点必须有该组件）
             const uiTransform = layerNode.addComponent(UITransform);
             // 3. 配置 UITransform 组件的属性（可选）
-            uiTransform.setContentSize(768, 1370); // 设置节点宽 200，高 100
+            // uiTransform.setContentSize(768, 1370); // 设置节点宽 200，高 100
+            uiTransform.setContentSize(1370, 768);
             uiTransform.anchorPoint = new Vec2(0.5, 0.5); // 锚点居中
 
             // if (uiTransform) {

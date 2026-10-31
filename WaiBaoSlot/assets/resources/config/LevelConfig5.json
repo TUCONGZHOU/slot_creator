@@ -32,7 +32,7 @@
 	},
 	"SymbolLineAction":{
 		"0":"Game4-shuzi9","1":"Game4-shuzi10","2":"Game4-j","3":"Game4-q","4":"Game4-k","5":"Game4-a","6":"Game4-yu","7":"Game4-wg","8":"Game4-hu","9":"Game4-fh","10":"Game4-fh",
-		"90":"Game4-fubi","92":"Game4-bftao","94":"Game4-fubi","95":"Game4-jinbi2","96":"Game4-jinbi2","100":"Game4-spin"
+		"90":"Game4-fubi","92":"Game4-bftao","94":"Game4-fubi","95":"Game4-jinbi2","96":"Game4-jinbi2","100":"Game4-spin-idle"
 	},
 	"SymbolIdleAction":{
 		"0":"Game4-shuzi9-idle","1":"Game4-shuzi10-idle","2":"Game4-j-idle","3":"Game4-q-idle","4":"Game4-k-idle","5":"Game4-a-idle","6":"Game4-yu-idle","7":"Game4-wg-idle","8":"Game4-hu-idle","9":"Game4-fh-idle","10":"Game4-fh-idle",
@@ -204,6 +204,7 @@
 		"MinorBonus":"Sounds/minor_bonus",
 		"MiniBonus":"Sounds/mini_bonus",
 		"BonusWin":"Sounds/win11",
+		"ReSpinAddNum":"Sounds/free_spins_sound",
 		"wildFly":"Sounds/Bat_flying_reel_stop_softer",
 
 		"RedBonusToButtom1":"Sounds/red_coin_to_bottom_1",
@@ -279,7 +280,7 @@
 		"Prefabs/BonusNode",
 		"Prefabs/JockpotTitle",
 		"Prefabs/ChooseLayer",
-		"Prefabs/FreeSpinView",
+		"Prefabs/ChangeSpinView",
 		"Prefabs/FreeJockpotTitle",
 		"Prefabs/NormalCollect",
 		"Prefabs/FreeCollect",
@@ -289,12 +290,21 @@
 		"Prefabs/ReSpinNum",
 		"Prefabs/ReSpinWinView",
 		"Prefabs/BonusView",
-		"Prefabs/BonusOverView"
+		"Prefabs/BonusOverView",
+		"Prefabs/PayTable"
 	],
 	"SpriteFrame":[
 		
 	],
 	"SpinJson":[
+		"LevelJT/10",
+		"LevelJT/11",
+		"LevelJT/12",
+		"LevelJT/13",
+		"LevelJT/14",
+		"LevelJT/15",
+		"LevelJT/16",
+		"LevelJT/17",
 		"LevelJT/1",
 		"LevelJT/2",
 		"LevelJT/3",
@@ -304,14 +314,7 @@
 		"LevelJT/7",
 		"LevelJT/8",
 		"LevelJT/9",
-		"LevelJT/10",
-		"LevelJT/11",
-		"LevelJT/12",
-		"LevelJT/13",
-		"LevelJT/14",
-		"LevelJT/15",
-		"LevelJT/16",
-		"LevelJT/17",
+		
 		"LevelJT/18",
 		"LevelJT/19",
 		"LevelJT/20",

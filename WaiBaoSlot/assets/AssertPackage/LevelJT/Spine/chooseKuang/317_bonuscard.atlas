@@ -1,153 +1,153 @@
 
 317_bonuscard.png
-size: 1164,1164
+size: 2048,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 card/SAF_Rays
-  rotate: false
-  xy: 2, 755
+  rotate: true
+  xy: 2, 292
   size: 729, 407
   orig: 729, 407
   offset: 0, 0
   index: -1
 tiaoxuelie/kuangstar_00010
   rotate: true
-  xy: 733, 822
-  size: 340, 134
+  xy: 312, 148
+  size: 142, 73
   orig: 340, 134
-  offset: 0, 0
+  offset: 4, 23
   index: -1
 tiaoxuelie/kuangstar_00014
   rotate: true
-  xy: 733, 480
-  size: 340, 134
+  xy: 224, 7
+  size: 283, 86
   orig: 340, 134
-  offset: 0, 0
+  offset: 4, 16
   index: -1
 tiaoxuelie/kuangstar_00020
   rotate: true
-  xy: 2, 413
-  size: 340, 134
+  xy: 116, 2
+  size: 288, 106
   orig: 340, 134
-  offset: 0, 0
+  offset: 4, 9
   index: -1
 tiaoxuelie/kuangstar_00027
   rotate: true
-  xy: 138, 413
-  size: 340, 134
+  xy: 2, 2
+  size: 288, 112
   orig: 340, 134
-  offset: 0, 0
+  offset: 7, 3
   index: -1
 tiaoxuelie/kuangstar_00033
   rotate: true
-  xy: 274, 413
-  size: 340, 134
+  xy: 647, 363
+  size: 328, 118
   orig: 340, 134
-  offset: 0, 0
+  offset: 3, 0
   index: -1
 tiaoxuelie/kuangstar_00040
   rotate: true
-  xy: 410, 413
-  size: 340, 134
+  xy: 641, 693
+  size: 328, 119
   orig: 340, 134
-  offset: 0, 0
+  offset: 2, 1
   index: -1
 tiaoxuelie/kuangstar_00047
   rotate: false
-  xy: 546, 344
-  size: 340, 134
+  xy: 651, 41
+  size: 328, 123
   orig: 340, 134
-  offset: 0, 0
+  offset: 0, 1
   index: -1
 tiaoxuelie/kuangstar_00053
-  rotate: false
-  xy: 2, 277
-  size: 340, 134
+  rotate: true
+  xy: 990, 711
+  size: 310, 117
   orig: 340, 134
-  offset: 0, 0
+  offset: 9, 3
   index: -1
 tiaoxuelie/kuangstar_00060
   rotate: true
-  xy: 344, 71
-  size: 340, 134
+  xy: 411, 353
+  size: 332, 120
   orig: 340, 134
-  offset: 0, 0
+  offset: 2, 0
   index: -1
 tiaoxuelie/kuangstar_00066
-  rotate: false
-  xy: 2, 141
-  size: 340, 134
+  rotate: true
+  xy: 521, 690
+  size: 331, 118
   orig: 340, 134
-  offset: 0, 0
+  offset: 2, 1
   index: -1
 tiaoxuelie/kuangstar_00073
   rotate: false
-  xy: 2, 5
-  size: 340, 134
+  xy: 387, 166
+  size: 334, 124
   orig: 340, 134
-  offset: 0, 0
+  offset: 2, 1
   index: -1
 tiaoxuelie/kuangstar_00080
-  rotate: true
-  xy: 869, 822
-  size: 340, 134
+  rotate: false
+  xy: 312, 22
+  size: 337, 124
   orig: 340, 134
-  offset: 0, 0
+  offset: 0, 1
   index: -1
 tiaoxuelie/kuangstar_00086
   rotate: true
-  xy: 869, 480
-  size: 340, 134
+  xy: 411, 687
+  size: 334, 108
   orig: 340, 134
-  offset: 0, 0
+  offset: 5, 15
   index: -1
 tiaoxuelie/kuangstar_00093
   rotate: true
-  xy: 888, 138
-  size: 340, 134
+  xy: 767, 376
+  size: 319, 115
   orig: 340, 134
-  offset: 0, 0
+  offset: 3, 13
   index: -1
 tiaoxuelie/kuangstar_00099
-  rotate: false
-  xy: 480, 208
-  size: 340, 134
+  rotate: true
+  xy: 884, 390
+  size: 311, 107
   orig: 340, 134
-  offset: 0, 0
+  offset: 12, 9
   index: -1
 tiaoxuelie/kuangstar_00106
-  rotate: false
-  xy: 480, 72
-  size: 340, 134
+  rotate: true
+  xy: 879, 703
+  size: 318, 109
   orig: 340, 134
-  offset: 0, 0
+  offset: 16, 5
   index: -1
 tiaoxuelie/kuangstar_00113
-  rotate: false
-  xy: 822, 2
-  size: 340, 134
+  rotate: true
+  xy: 533, 357
+  size: 331, 112
   orig: 340, 134
-  offset: 0, 0
+  offset: 8, 7
   index: -1
 tiaoxuelie/kuangstar_00123
   rotate: true
-  xy: 1005, 822
-  size: 340, 134
+  xy: 762, 697
+  size: 324, 115
   orig: 340, 134
-  offset: 0, 0
+  offset: 10, 8
   index: -1
 tiaoxuelie/kuangstar_00129
-  rotate: true
-  xy: 1005, 480
-  size: 340, 134
+  rotate: false
+  xy: 723, 239
+  size: 306, 122
   orig: 340, 134
-  offset: 0, 0
+  offset: 29, 4
   index: -1
 tiaoxuelie/kuangstar_00136
   rotate: true
-  xy: 1024, 138
-  size: 340, 134
+  xy: 411, 303
+  size: 48, 47
   orig: 340, 134
-  offset: 0, 0
+  offset: 292, 27
   index: -1

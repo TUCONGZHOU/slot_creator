@@ -1,4 +1,4 @@
-import { _decorator, Component, Node,instantiate, Prefab, tween, sp, Vec3 } from 'cc';
+import { _decorator, Component, Node,instantiate, Prefab, tween, sp, Vec3, Skeleton } from 'cc';
 const { ccclass, property } = _decorator;
 
 import { BaseGameTable } from '../../GameBase/BaseGameTable';
@@ -75,7 +75,8 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
 
     public startRoll():void{
         super.startRoll();
-        this.m_respinNumCtrl.startRollSetNumScale();
+        // this.m_respinNumCtrl.startRollSetNumScale();
+        this.m_respinNumCtrl.subNum();
     }
     public stopRoll( isQuickStop:boolean ):void{
         super.stopRoll(isQuickStop);
@@ -85,6 +86,7 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
     }
 
     public initLogicFunc() {
+        this.m_ListFunc.push( this.addCollectNum.bind(this) ); // -- 增加收集数
         this.m_ListFunc.push( this.resetCollectNum.bind(this) ); // -- 重置收集数量
         this.m_ListFunc.push( this.checkCollectJinOrGreen.bind(this) ); // -- 金色绿色收集表现
         this.m_ListFunc.push( this.slotLineAction.bind(this) ); // -- 显示连线
@@ -92,6 +94,37 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
         this.m_ListFunc.push( this.showReSpinOverLayer.bind(this) );  // -- 显示结算界面
         this.m_ListFunc.push( this.showBigWin.bind(this) );     // -- 显示大赢
         this.m_ListFunc.push( this.enterOtherGame.bind(this) );     // -- 触发normal
+    }
+    public addCollectNum(){
+        let reelData = LevelMgr.Instance.getLevelModel().getSpinReelData();
+        let bonusIndex:number = 0;
+        let flagShow = false
+        for (let i = 0; i < reelData.length; i++){
+            let table = reelData[i]
+            for (let j = 0;j < table.length; j++){
+                let reel = table[j]
+                for (let k = 0;k < reel.length; k++){
+                    if (reel[k] == 100){
+                        // 增加次数
+                        let symble = this.getSymbolNode(0,j,k);
+                        let compent = symble.getComponent(LevelJT_Symbol_Ctrl);
+                        compent.playSymbolAction("Game4-spin",false,()=>{
+                            if (!flagShow){
+                                flagShow = true;
+                                // this.m_respinNumCtrl.addNum(1);
+                                this.m_respinNumCtrl.showReSpinNum();
+                                this.excuteListFunc();
+                            }
+                        })
+                        let soundFile = this.m_levelConfig.SoundsFile["ReSpinAddNum"];
+                        if (soundFile){
+                            SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+                        }
+                    }
+                }
+            }
+        }
+        
     }
     public resetCollectNum(){
         this.resetJackpotTitle()
@@ -102,6 +135,7 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
             this.m_reSpinJackpot.resetJackpotTitle();
         }
     }
+
     public checkCollectJinOrGreen(){
         let action = LevelMgr.Instance.getLevelModel().getAction();
         if (action != 'RESPIN'){

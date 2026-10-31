@@ -4,7 +4,7 @@ const { ccclass, property } = _decorator;
 import { BaseGameMain } from '../../GameBase/BaseGameMain';
 import { LevelMgr } from '../../Mgr/LevelMgr';
 import { ActionType } from '../../InterFace/LevelConfig';
-import { LevelJT_FreeSpinView_Ctrl } from './LevelJT_FreeSpinView_Ctrl';
+import { LevelJT_ChangeSpinView_Ctrl } from './LevelJT_ChangeSpinView_Ctrl';
 import { SoundMgr } from '../../Mgr/SoundMgr';
 import { UIMgr,UILayer } from '../../Mgr/UIMgr';
 import { GlEventMgr } from '../../Mgr/GlEventMgr';
@@ -55,7 +55,7 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
 
         const anims: Array<ReturnType<typeof tween>> = [];
         // 要播放scatter的动画 
-        let freeSpinCtrl:LevelJT_FreeSpinView_Ctrl = null;
+        let changeSpinViewCtrl:LevelJT_ChangeSpinView_Ctrl = null;
         // anims.push(
         //     tween(this.node).delay(1)
         // );
@@ -75,9 +75,9 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
         // );
         anims.push(
             tween(this.node).call(()=>{
-                // 显示freespin界面
-                freeSpinCtrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/FreeSpinView","LevelJT_FreeSpinView_Ctrl",UILayer.Normal) as LevelJT_FreeSpinView_Ctrl;
-                freeSpinCtrl.initUI( this.m_levelConfig,this );
+                // 显示轮盘切换界面
+                changeSpinViewCtrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/ChangeSpinView","LevelJT_ChangeSpinView_Ctrl",UILayer.Normal) as LevelJT_ChangeSpinView_Ctrl;
+                changeSpinViewCtrl.initUI( this.m_levelConfig,this,"FREESPIN" );
             })
         );
 
@@ -86,17 +86,24 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
 
     // 进入normal
     public enterNormal():void{
-        // 移除当前轮盘
-        this.removeGameTable();
+        // // 移除当前轮盘
+        // this.removeGameTable();
+        // this.view['SpineWan'].active = true
+        // // 添加normal的轮盘
+        // this.addNormalGameTableUI();
+        // // 恢复点击
+        // GlEventMgr.Instance.emit( EventName.RecoverSpinBtn )
+        // // 发送消息
+        // // GlEventMgr.Instance.emit(EventName.ClearWinAmount);
+        // // 改变bg
+        // GlEventMgr.Instance.emit(EventName.ChangeBg,true);
+
+        // 显示轮盘切换界面
+        let changeSpinViewCtrl:LevelJT_ChangeSpinView_Ctrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/ChangeSpinView","LevelJT_ChangeSpinView_Ctrl",UILayer.Normal) as LevelJT_ChangeSpinView_Ctrl;
+        changeSpinViewCtrl.initUI( this.m_levelConfig,this,"NORMAL" );
+    }
+    public otherUIChangeToNomal():void{
         this.view['SpineWan'].active = true
-        // 添加normal的轮盘
-        this.addNormalGameTableUI();
-        // 恢复点击
-        GlEventMgr.Instance.emit( EventName.RecoverSpinBtn )
-        // 发送消息
-        GlEventMgr.Instance.emit(EventName.ClearWinAmount);
-        // 改变bg
-        GlEventMgr.Instance.emit(EventName.ChangeBg,true);
     }
 
     public enterBonus():void{
@@ -127,7 +134,7 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
 
             const anims: Array<ReturnType<typeof tween>> = [];
             // 要播放scatter的动画 
-            let freeSpinCtrl:LevelJT_ReSpinView_Ctrl = null;
+            let changeSpinViewCtrl:LevelJT_ChangeSpinView_Ctrl = null;
             // anims.push(
             //     tween(this.node).delay(1)
             // );
@@ -147,9 +154,9 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
             // );
             anims.push(
                 tween(this.node).call(()=>{
-                    // 显示freespin界面
-                    freeSpinCtrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/ReSpinView","LevelJT_ReSpinView_Ctrl",UILayer.Normal) as LevelJT_ReSpinView_Ctrl;
-                    freeSpinCtrl.initUI( this.m_levelConfig,this );
+                    // 显示轮盘切换界面
+                    changeSpinViewCtrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/ChangeSpinView","LevelJT_ChangeSpinView_Ctrl",UILayer.Normal) as LevelJT_ChangeSpinView_Ctrl;
+                    changeSpinViewCtrl.initUI( this.m_levelConfig,this,"RESPIN" );
                 })
             );
 
@@ -184,7 +191,7 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
             let destPos = this.view["SpineWan"].getPosition();
 
             let spine = piaoNode.getChildByName("all_xfj_sj").getComponent(sp.Skeleton);
-            spine.setAnimation(0, "5_88fei", false);
+            spine.setAnimation(0, "Game4-fly-bianfu", false);
             let soundFile = this.m_levelConfig.SoundsFile["wildFly"];
             if (soundFile){
                 SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
@@ -376,6 +383,10 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
         }else{
             func();
         }
+    }
+
+    public showPayInfo():void{
+        UIMgr.Instance.showUi("LevelJT","Prefabs/PayTable","LevelJT_PayTable_Ctrl",UILayer.Normal);
     }
 }
 
