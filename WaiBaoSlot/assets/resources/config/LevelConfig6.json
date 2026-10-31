@@ -30,7 +30,7 @@
 	},
 	"SymbolIdleAction":{
 		"0":"Game2-J-idle","1":"Game2-Q-idle","2":"Game2-K-idle","3":"Game2-A-idle","4":"Game3-gj-idle","5":"Game3-km-idle","6":"Gmane3-kc-idle",
-		"7":"Game2-maolv-idle","8":"Game3-idle","94":"Game3-bianpao2","90":"Game3-small-idle","92":"Game3-jingeda-idle","96":"Game3-bianpao2"	
+		"7":"Gmae3-maolv-idle","8":"Game3-idle","94":"Game3-bianpao2","90":"Game3-small-idle","92":"Game3-jingeda-idle","96":"Game3-bianpao2"	
 	},
 	"SymbolStopAction":{
 		"0":"","1":"","2":"","3":"","4":"","5":"","6":"","7":"","8":"","94":"Game3-bianpao2","90":"","92":"","96":"Game3-bianpao2"
@@ -118,7 +118,28 @@
 		"Prefabs/Wheel",
 		"Prefabs/CoinFly",
 		"Prefabs/GuangBao",
-		"Prefabs/LaoTouEnter"
+		"Prefabs/LaoTouEnter",
+		"Prefabs/Bonus1_1",
+		"Prefabs/Bonus1_2",
+		"Prefabs/Bonus1_3",
+		"Prefabs/Bonus2_2",
+		"Prefabs/Bonus2_3",
+		"Prefabs/Bonus3_2",
+		"Prefabs/Bonus3_3",
+		"Prefabs/Bonus4_2",
+		"Prefabs/Bonus4_3",
+		"Prefabs/Bonus5_2",
+		"Prefabs/Bonus5_3",
+		"Prefabs/BonusSpine1_2",
+		"Prefabs/BonusSpine1_3",
+		"Prefabs/BonusSpine2_2",
+		"Prefabs/BonusSpine2_3",
+		"Prefabs/BonusSpine3_2",
+		"Prefabs/BonusSpine3_3",
+		"Prefabs/BonusSpine4_2",
+		"Prefabs/BonusSpine4_3",
+		"Prefabs/BonusSpine5_2",
+		"Prefabs/BonusSpine5_3"
 	],
 	"SpriteFrame":[
 		
@@ -127,6 +148,7 @@
 		"LevelEM/1",
 		"LevelEM/2",
 		"LevelEM/3",
-		"LevelEM/4"
+		"LevelEM/4",
+		"LevelEM/5"
 	]
 }

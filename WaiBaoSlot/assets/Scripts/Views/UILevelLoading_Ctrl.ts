@@ -215,6 +215,9 @@ export class UILevelLoading_Ctrl extends UICtrl {
         else if(abName == "LevelJT"){
             UIMgr.Instance.showUi(abName,"Prefabs/MainUI","LevelJT_MainUI_Ctrl",UILayer.Normal,targetNode);
         }
+        else if(abName == "LevelEM"){
+            UIMgr.Instance.showUi(abName,"Prefabs/MainUI","LevelEM_MainUI_Ctrl",UILayer.Normal,targetNode);
+        }
         
         // // 加载GameTopNode
         // UIMgr.Instance.showUi("GameMain","Prefabs/GameTopNode","GameTopNode_Ctrl",UILayer.Normal);

@@ -1,0 +1,35 @@
+{
+	"bet": 1000,
+	"lines": [
+		
+	],
+	"action": "NORMAL",
+	"storedIcons": [
+	],
+	"jackpots": [10000,20000,30000,40000],
+	"lastAction": "NORMAL",
+	"winAmount": 1000,
+	"nextAction": "RESPIN",
+	"betList": [10000,20000,50000,1000000],
+	"collectLeftCount":0,
+	"collectRightCount":0,
+	"collectAction":{
+		"left":[],
+		"right":[]
+	},
+	
+	"respinReels": [[[0,1,2],[4,94,94],[3,94,94],[94,2,94],[94,94,94]]],
+	"respin": {
+		"reSpinsTotalCount": 5,
+		"reSpinCurCount": 3,
+		"birdTrigger":[
+			{"row":2,"col":1},
+			{"row":1,"col":4}
+		],
+		"reelUnit":[
+			{"row":1,"col":1,"width":2,"height":2},
+			{"row":0,"col":4,"width":1,"height":3}
+		]
+	},
+	"reels": [[[0,1,2],[4,94,7],[3,94,94],[1,2,3],[94,8,94]]]
+}

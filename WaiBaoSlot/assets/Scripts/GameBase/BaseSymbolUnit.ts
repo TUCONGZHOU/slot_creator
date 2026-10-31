@@ -130,7 +130,7 @@ export class BaseSymbolUnit extends UICtrl {
 
         if ( this.m_config.actype == "spine" ){
             // -- 播放spine动画
-            let spineNode = this.m_meta.node.getChildByName("skeleton")
+            let spineNode = this.m_meta.node.getChildByName("skeleton");
             let spine = spineNode.getComponent(sp.Skeleton) as sp.Skeleton;
             if (spine) {
                 // 用这这个接口

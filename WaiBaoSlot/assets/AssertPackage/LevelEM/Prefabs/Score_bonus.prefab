@@ -161,11 +161,11 @@
       "a": 255
     },
     "_skeletonData": {
-      "__uuid__": "c05f1b53-8961-45e0-8652-7c9cb1be858f",
+      "__uuid__": "c1705e80-09d2-4ed8-8c58-55c668d84072",
       "__expectedType__": "sp.SkeletonData"
     },
     "defaultSkin": "default",
-    "defaultAnimation": "Game3-bianpao2",
+    "defaultAnimation": "",
     "_premultipliedAlpha": true,
     "_timeScale": 1,
     "_preCacheMode": 0,

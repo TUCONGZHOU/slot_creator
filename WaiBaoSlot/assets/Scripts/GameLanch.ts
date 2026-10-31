@@ -52,7 +52,7 @@ export class GameLanch extends Component {
             this.node.addChild( prefabNode );
             // 添加组件
             let compent:UILevelLoading_Ctrl = prefabNode.addComponent("UILevelLoading_Ctrl") as UILevelLoading_Ctrl;
-            compent.initLoading("config/LevelConfig4");
+            compent.initLoading("config/LevelConfig6");
         });
     }
 
