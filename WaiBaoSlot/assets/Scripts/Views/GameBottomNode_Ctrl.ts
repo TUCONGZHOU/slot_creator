@@ -8,6 +8,7 @@ import { UILayer } from '../Mgr/UIMgr';
 import { Utils } from '../Util/Utils';
 import { PlayerMgr } from '../Mgr/PlayerMgr';
 import { ActionType } from '../InterFace/LevelConfig';
+import { ScreenManager } from '../Mgr/ScreenManager';
 
 const { ccclass, property } = _decorator;
 
@@ -71,17 +72,27 @@ export class GameBottomNode_Ctrl extends UICtrl {
         // 初始化坐标
         this.m_labelPosition = this.view["lb_win"].position.clone();
 
-        const uiRoot = this.node; // 所有页面的父节点
-        const visibleSize = view.getVisibleSize();
-        // const designW = 768;
-        const designW = 1370;
-        // 计算当前实际可见设计宽度
-        const scaleX = visibleSize.width / designW;
-        uiRoot.scale.set(scaleX, scaleX, 1);
+        // const uiRoot = this.node; // 所有页面的父节点
+        // const visibleSize = view.getVisibleSize();
+        // let designW = 768;
+        // if (ScreenManager.instance.getCurScreenValue() == true){
+        //     //const designW = 768;
+        // }else{
+        //     designW = 1370;
+        // }
+        
+        // // 计算当前实际可见设计宽度
+        // const scaleX = visibleSize.width / designW;
+        // uiRoot.scale.set(scaleX, scaleX, 1);
 
-        // 设置位置
-        let posY = (visibleSize.height - 1370) / 2
-        uiRoot.setPosition(new Vec3(0,-posY,0));
+        // // 设置位置
+        // let posY = (visibleSize.height - 1370) / 2
+        // if (ScreenManager.instance.getCurScreenValue() == true){
+            
+        // }else{
+        //     posY = (visibleSize.height - 768) / 2
+        // }
+        // uiRoot.setPosition(new Vec3(0,-posY,0));
     }
 
     start() {

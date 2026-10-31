@@ -156,7 +156,13 @@ export class CKGameCenter extends Component {
             return;
         }
     }
-    
+
+    protected onDestroy(): void {
+        if (CKGameCenter.Instance === this) {
+            CKGameCenter.Instance = null;
+        }
+    }
+
     start() {
         this.m_action = ActionType.NORMAL;
         this.m_nextAction = ActionType.NORMAL;

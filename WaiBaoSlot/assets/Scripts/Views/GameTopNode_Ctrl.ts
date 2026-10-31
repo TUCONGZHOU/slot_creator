@@ -7,6 +7,7 @@ import { Utils } from '../Util/Utils';
 import { GlEventMgr } from '../Mgr/GlEventMgr';
 import { EventName } from '../Mgr/EventName';
 import { LevelMgr } from '../Mgr/LevelMgr';
+import { GameManager } from '../Mgr/GameManager';
 
 @ccclass('GameTopNode_Ctrl')
 export class GameTopNode_Ctrl extends UICtrl {
@@ -16,6 +17,8 @@ export class GameTopNode_Ctrl extends UICtrl {
         GlEventMgr.Instance.on(EventName.ShowAmount, this.addCoin, this);
         // -- 刷新金币 RefreshTopCoinUI
         GlEventMgr.Instance.on(EventName.RefreshTopCoinUI, this.setCoinUI, this);
+
+        this.addButtonClick("btnHome", this, ()=> this.changeBackToLobby());
     }
     start() {
         this.setCoinUI();
@@ -65,6 +68,10 @@ export class GameTopNode_Ctrl extends UICtrl {
             PlayerMgr.Instance.addCoin( winAmount );
             this.setCoinUI();
         }
+    }
+
+    public changeBackToLobby(){
+        GameManager.instance.changeToLobbyScene()
     }
 }
 

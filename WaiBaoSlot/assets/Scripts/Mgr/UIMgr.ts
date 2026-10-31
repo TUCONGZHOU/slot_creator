@@ -2,6 +2,7 @@ import { _decorator, Component, Node, Vec2,Button, instantiate, Prefab, NodeEven
 import { ResMgr } from './ResMgr';
 import { GlEventMgr } from './GlEventMgr';
 import { SoundMgr } from "./SoundMgr";
+import { ScreenManager } from './ScreenManager';
 
 const { ccclass, property } = _decorator;
 
@@ -74,7 +75,11 @@ export abstract class UICtrl extends Component {
         // ✅ 包装一层：先播音效，再执行原回调
         const wrappedFunc = (...args: any[]) => {
             // 播放一个默认音效
-            SoundMgr.Instance.playSound( "GameMain","Sounds/btnClick" );
+            try {
+                if (SoundMgr.Instance) SoundMgr.Instance.playSound("GameMain","Sounds/btnClick");
+            } catch(e) {
+                console.warn("playSound 失败:", e);
+            }
             func.apply(caller, args);
         };
 
@@ -288,6 +293,15 @@ export abstract class UICtrl extends Component {
     }
 
     update(deltaTime: number) {}
+
+    /**
+     * 
+     * @returns 界面是否竖屏
+     * 界面可能需要重写方法
+     */
+    public isPortrait(){
+        return false;
+    }
 }
 
 
@@ -372,8 +386,11 @@ export class UIMgr extends Component {
                 // 2. 挂载 UITransform 组件（UI 节点必须有该组件）
                 const uiTransform = layerNode.addComponent(UITransform);
                 // 3. 配置 UITransform 组件的属性（可选）
-                // uiTransform.setContentSize(768, 1370); // 设置节点宽 200，高 100
-                uiTransform.setContentSize(1370, 768);
+                if (ScreenManager.instance.getCurScreenValue() == true){
+                    uiTransform.setContentSize(768, 1370); // 设置节点宽 200，高 100
+                }else{
+                    uiTransform.setContentSize(1370, 768);
+                }
                 uiTransform.anchorPoint = new Vec2(0.5, 0.5); // 锚点居中
 
                 if (uiTransform) {
@@ -405,8 +422,11 @@ export class UIMgr extends Component {
             // 2. 挂载 UITransform 组件（UI 节点必须有该组件）
             const uiTransform = layerNode.addComponent(UITransform);
             // 3. 配置 UITransform 组件的属性（可选）
-            // uiTransform.setContentSize(768, 1370); // 设置节点宽 200，高 100
-            uiTransform.setContentSize(1370, 768);
+            if (ScreenManager.instance.getCurScreenValue() == true){
+                uiTransform.setContentSize(768, 1370); // 设置节点宽 200，高 100
+            }else{
+                uiTransform.setContentSize(1370, 768);
+            }
             uiTransform.anchorPoint = new Vec2(0.5, 0.5); // 锚点居中
 
             // if (uiTransform) {
@@ -438,25 +458,25 @@ export class UIMgr extends Component {
 
         // 先从对象池获取
         let uiNode = this._getFromPool(uiName);
-        
+
         if (!uiNode) {
             // 对象池没有，从资源加载
             const prefab = ResMgr.Instance?.getAsset(abName, resPath, Prefab);
-            
+
             if (!prefab) {
                 console.error(`[UIMgr] 加载UI预制体失败: ${abName}/${resPath}`);
                 return null;
             }
-            
+
             uiNode = instantiate(prefab);
         }
-        
+
         const targetParent = parent || this._getLayerNode(layer);
         targetParent.addChild(uiNode);
-        
+
         // 添加控制器组件
         const ctrl = uiNode.addComponent(uiName) as T;
-        
+
         // 记录UI信息
         this._uiMap.set(uiName, {
             node: uiNode,
@@ -464,9 +484,9 @@ export class UIMgr extends Component {
             layer: layer,
             prefabPath: `${abName}/${resPath}`
         });
-        
+
         console.log(`[UIMgr] 显示UI: ${uiName}, 层级: ${UILayer[layer]}`);
-        
+
         return ctrl;
     }
 

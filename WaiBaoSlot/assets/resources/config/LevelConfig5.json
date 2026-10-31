@@ -20,7 +20,7 @@
 		{ "id":94,"file":"Prefabs/Socre_linghting_red","type":"bonus","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
 		{ "id":95,"file":"Prefabs/Socre_linghting_jin","type":"bonus","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
 		{ "id":96,"file":"Prefabs/Socre_linghting_lv","type":"bonus","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" },
-		{ "id":100,"file":"Prefabs/Socre_add","type":"bonus","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" }
+		{ "id":100,"file":"Prefabs/Socre_add","type":"common","grid":1,"rstype":"Prefab","count":50,"zorder":1,"sizeType":1,"actype":"spine" }
 	],
 	"SymbolSize":{
 		"0":1,"1":1,"2":1,"3":1,"4":1,"5":1,"6":1,"7":1,"8":1,"9":1,"10":1,
@@ -297,14 +297,6 @@
 		
 	],
 	"SpinJson":[
-		"LevelJT/10",
-		"LevelJT/11",
-		"LevelJT/12",
-		"LevelJT/13",
-		"LevelJT/14",
-		"LevelJT/15",
-		"LevelJT/16",
-		"LevelJT/17",
 		"LevelJT/1",
 		"LevelJT/2",
 		"LevelJT/3",
@@ -314,7 +306,14 @@
 		"LevelJT/7",
 		"LevelJT/8",
 		"LevelJT/9",
-		
+		"LevelJT/10",
+		"LevelJT/11",
+		"LevelJT/12",
+		"LevelJT/13",
+		"LevelJT/14",
+		"LevelJT/15",
+		"LevelJT/16",
+		"LevelJT/17",
 		"LevelJT/18",
 		"LevelJT/19",
 		"LevelJT/20",

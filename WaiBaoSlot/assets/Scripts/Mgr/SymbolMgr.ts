@@ -29,6 +29,12 @@ export class SymbolMgr extends Component {
         }
     }
 
+    protected onDestroy(): void {
+        if (SymbolMgr.Instance === this) {
+            SymbolMgr.Instance = null;
+        }
+    }
+
     start() {
         // 初始化
         this.symbolMap = new Map();

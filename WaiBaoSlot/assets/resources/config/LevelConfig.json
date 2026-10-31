@@ -1,0 +1,17 @@
+{
+	"level1":{
+		"isPortrait":true
+	},
+	"level2":{
+		"isPortrait":true
+	},
+	"level3":{
+		"isPortrait":true
+	},
+	"level4":{
+		"isPortrait":true
+	},
+	"level5":{
+		"isPortrait":false
+	}
+}

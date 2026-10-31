@@ -29,9 +29,11 @@ export class LevelJT_ReSpinWinCtrl extends UICtrl {
                 Multiple += storedIcon.Multiple || 0
             }
         }
-        let bet = LevelMgr.Instance.getLevelModel().getBet();
-        let str = Utils.util_formatCoins( bet * Multiple,18 );
-        this.view['Label'].getComponent(Label).string = str;
+        // let bet = LevelMgr.Instance.getLevelModel().getBet();
+        // let str = Utils.util_formatCoins( bet * Multiple,18 );
+        // this.view['Label'].getComponent(Label).string = str;
+        const winAmount = LevelMgr.Instance.getLevelModel().getWinAmount();
+        this.view['Label'].getComponent(Label).string = Utils.util_formatCoins( winAmount,18 );
     }
     
     public initUI( levelConfig:LevelConfig ):void{

@@ -36,7 +36,7 @@ export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
     update(deltaTime: number) {
         super.update(deltaTime);
     }
-
+    
     public createOtherUI():void{
         // jsckpot
         let prefab = ResMgr.Instance.getAsset(this.m_abName,"Prefabs/FreeJockpotTitle",Prefab);
@@ -167,6 +167,9 @@ export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
         let nextAction = LevelMgr.Instance.getLevelModel().getNextAction();
         if (action == ActionType.FREESPIN && nextAction == ActionType.NORMAL) {
             this.m_curShowWinNum = 0;
+            GlEventMgr.Instance.emit(EventName.StopProgressBarAnim);
+            // 发送消息 有些轮盘需要停止大赢动画
+            GlEventMgr.Instance.emit(EventName.StopBigWinAction);
             this.m_gameMainCompent.enterNormal();
         }else {
             // 恢复点击
