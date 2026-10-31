@@ -6,6 +6,10 @@ import { BaseGameTable } from '../../GameBase/BaseGameTable';
 import { ResMgr } from '../../Mgr/ResMgr';
 import { LevelEM_Jackpot_Ctrl } from './LevelEM_Jackpot_Ctrl';
 import { LevelEM_Wheel_Ctrl } from './LevelEM_Wheel_Ctrl';
+import { LevelEM_ReSpinReelTable_Ctrl } from "./LevelEM_ReSpinReelTable_Ctrl";
+import { Utils } from '../../Util/Utils';
+import { GlEventMgr } from '../../Mgr/GlEventMgr';
+import { EventName } from '../../Mgr/EventName';
 
 @ccclass('LevelEM_ReSpinGameTable_Ctrl')
 export class LevelEM_ReSpinGameTable_Ctrl extends BaseGameTable {
@@ -56,6 +60,9 @@ export class LevelEM_ReSpinGameTable_Ctrl extends BaseGameTable {
 
     // 显示连线
     public slotLineAction():void {
+        // 显示respin次数
+        (this.getReelTableCompent(0) as LevelEM_ReSpinReelTable_Ctrl).setReSpinCountUI();
+
         this.excuteListFunc();
     }
 
@@ -69,6 +76,16 @@ export class LevelEM_ReSpinGameTable_Ctrl extends BaseGameTable {
 
     public enterOtherGame():void {
         this.excuteListFunc();
+    }
+
+    // respin刚进入的时候
+    public enterReSpinAction():void{
+        (this.getReelTableCompent(0) as LevelEM_ReSpinReelTable_Ctrl).playStartReSpinAction("Game3-bianpao-end",false);
+        
+        Utils.performWithDelay(this.node,()=>{
+            // 恢复点击
+            GlEventMgr.Instance.emit( EventName.RecoverSpinBtn )
+        },2)
     }
 }
 

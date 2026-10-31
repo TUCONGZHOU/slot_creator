@@ -656,6 +656,23 @@ export class BaseReelTable extends UICtrl {
         }
     }
 
+    public playAllBonusActionWithName( actionName:string,isLoop:boolean ):void{
+        let reelData:number[][] = LevelMgr.Instance.getLevelModel().getSpinReelData()[this.m_reelTableIndex];
+        assert( reelData != null," !! reelData is nil !! " )
+        for (let i = 0; i < this.m_reelUnitsCount; i++) {
+            let onnColData = reelData[i];
+            for (let j = 0; j < onnColData.length; j++) {
+                let symbolId = onnColData[j];
+                let config = LevelMgr.Instance.getSymbolConfig( symbolId ); 
+                if ( config.type == SymbolType.BONUS ){
+                    if ( actionName != "" ){
+                        this.playSymbolAction( i,j,actionName,isLoop,false,null );
+                    }
+                }
+            }
+        }
+    }
+
     public clearState() {
         this.m_startRollMark = false;
         this.m_stopRollMark = false;

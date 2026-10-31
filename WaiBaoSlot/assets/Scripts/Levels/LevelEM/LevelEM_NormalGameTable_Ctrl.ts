@@ -185,11 +185,8 @@ export class LevelEM_NormalGameTable_Ctrl extends BaseGameTable {
                     Utils.performWithDelay(this.node,()=>{
                         this.addLaoTouAction();
                     },5)
-
-                    // this.m_gameMainCompent.enterReSpin();
                 }
             },2)
-            //this.m_gameMainCompent.enterReSpin();
         }
         else {
             // 恢复点击
@@ -218,8 +215,6 @@ export class LevelEM_NormalGameTable_Ctrl extends BaseGameTable {
 
                         // 触发respin
                         this.m_gameMainCompent.enterReSpin();
-                        // 恢复点击
-                        // GlEventMgr.Instance.emit( EventName.RecoverSpinBtn )
                     });
                 }
             }

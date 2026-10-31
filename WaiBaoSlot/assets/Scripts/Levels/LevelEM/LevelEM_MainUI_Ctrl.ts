@@ -4,6 +4,8 @@ const { ccclass, property } = _decorator;
 import { BaseGameMain } from '../../GameBase/BaseGameMain';
 import { LevelMgr } from '../../Mgr/LevelMgr';
 import { ActionType } from '../../InterFace/LevelConfig';
+import { Utils } from '../../Util/Utils';
+import { LevelEM_ReSpinGameTable_Ctrl } from "./LevelEM_ReSpinGameTable_Ctrl";
 
 @ccclass('LevelEM_MainUI_Ctrl')
 export class LevelEM_MainUI_Ctrl extends BaseGameMain {
@@ -37,7 +39,13 @@ export class LevelEM_MainUI_Ctrl extends BaseGameMain {
         // 移除当前轮盘
         this.removeGameTable();
         // 添加respin的轮盘
+        // 这里需要手动改一下信号块的数据
         this.addRespinGameTableUI();
+        
+        // 播放进入动画
+        Utils.performWithDelay(this.node,()=>{
+            (this.m_gameTableCompent as LevelEM_ReSpinGameTable_Ctrl).enterReSpinAction();
+        },1)
     }
 }
 
