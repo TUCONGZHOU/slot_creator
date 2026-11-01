@@ -27,8 +27,8 @@
 			{"row":1,"col":4}
 		],
 		"reelUnit":[
-			{"row":1,"col":1,"width":2,"height":2},
-			{"row":0,"col":4,"width":1,"height":3}
+			{"row":1,"col":1,"width":2,"height":2,"Multiple": 30,"roll":true},
+			{"row":0,"col":4,"width":1,"height":3,"Multiple": 15,"roll":false}
 		]
 	},
 	"reels": [[[0,1,2],[4,94,7],[3,94,94],[1,2,3],[94,8,94]]]

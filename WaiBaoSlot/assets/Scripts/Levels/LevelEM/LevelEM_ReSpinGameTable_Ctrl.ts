@@ -10,6 +10,8 @@ import { LevelEM_ReSpinReelTable_Ctrl } from "./LevelEM_ReSpinReelTable_Ctrl";
 import { Utils } from '../../Util/Utils';
 import { GlEventMgr } from '../../Mgr/GlEventMgr';
 import { EventName } from '../../Mgr/EventName';
+import { LevelMgr } from '../../Mgr/LevelMgr';
+import { ActionType } from '../../InterFace/LevelConfig';
 
 @ccclass('LevelEM_ReSpinGameTable_Ctrl')
 export class LevelEM_ReSpinGameTable_Ctrl extends BaseGameTable {
@@ -63,6 +65,9 @@ export class LevelEM_ReSpinGameTable_Ctrl extends BaseGameTable {
         // 显示respin次数
         (this.getReelTableCompent(0) as LevelEM_ReSpinReelTable_Ctrl).setReSpinCountUI();
 
+        // 新的bonus
+        (this.getReelTableCompent(0) as LevelEM_ReSpinReelTable_Ctrl).createBonusSpineToReelTable();
+
         this.excuteListFunc();
     }
 
@@ -75,7 +80,18 @@ export class LevelEM_ReSpinGameTable_Ctrl extends BaseGameTable {
     }
 
     public enterOtherGame():void {
-        this.excuteListFunc();
+        // this.excuteListFunc();
+        let action = LevelMgr.Instance.getLevelModel().getAction();
+        let nextAction = LevelMgr.Instance.getLevelModel().getNextAction();
+        if (action == ActionType.RESPIN && nextAction == ActionType.RESPIN){
+            // 恢复点击
+            GlEventMgr.Instance.emit( EventName.RecoverSpinBtn )
+        }
+        else{
+            if (action == ActionType.RESPIN && nextAction == ActionType.NORMAL){
+                // 结束
+            }
+        }
     }
 
     // respin刚进入的时候

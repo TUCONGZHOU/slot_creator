@@ -130,6 +130,7 @@
 		"Prefabs/Bonus4_3",
 		"Prefabs/Bonus5_2",
 		"Prefabs/Bonus5_3",
+		"Prefabs/BonusSpine1_1",
 		"Prefabs/BonusSpine1_2",
 		"Prefabs/BonusSpine1_3",
 		"Prefabs/BonusSpine2_2",
@@ -149,6 +150,10 @@
 		"LevelEM/2",
 		"LevelEM/3",
 		"LevelEM/4",
-		"LevelEM/5"
+		"LevelEM/5",
+		"LevelEM/6",
+		"LevelEM/7",
+		"LevelEM/8",
+		"LevelEM/9"
 	]
 }

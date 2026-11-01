@@ -10,6 +10,8 @@ import { Utils } from '../../Util/Utils';
 @ccclass('LevelEM_ReSpinReelTable_Ctrl')
 export class LevelEM_ReSpinReelTable_Ctrl extends BaseReelTable {
 
+    private m_bonusNodeList:Node[][] = []; // feature层的节点
+
     start() {
         super.start();
     }
@@ -25,6 +27,9 @@ export class LevelEM_ReSpinReelTable_Ctrl extends BaseReelTable {
     public setReSpinCountUI():void {
         let respinInfo = LevelMgr.Instance.getLevelModel().getReSpin();
         this.view["FreeTimes/lb_count"].getComponent(Label).string = respinInfo.reSpinCurCount;
+        if(respinInfo.reSpinCurCount <=0){
+            this.view["FreeTimes/lb_count"].active = false;
+        }
     }
 
     
@@ -87,39 +92,100 @@ export class LevelEM_ReSpinReelTable_Ctrl extends BaseReelTable {
         },0.5)
     }
 
-    private createBonusSpineToReelTable():void{
+    public createBonusSpineToReelTable():void{
         let respinInfo = LevelMgr.Instance.getLevelModel().getReSpin();
         let reelUnit = respinInfo.reelUnit;
-
         for (let meta of reelUnit){
-            let path = this.getBonusSpinePrefabPath(meta.width,meta.height);
-            if( path != "" ){
-                let bonusPrefab = ResMgr.Instance.getAsset(this.m_abName,path,Prefab);
-                if(bonusPrefab){
-                    let bonusNode = instantiate(bonusPrefab);
-                    this.view["Node1"].addChild(bonusNode);
-                    let worldPos = this.getSymbolWorldPos( meta.col,meta.row );
-                    let localPos = new Vec3();
-                    // 将世界坐标转化为局部坐标
-                    this.view["Node1"].inverseTransformPoint(localPos,worldPos);
-                    bonusNode.position = localPos;
+            if ( this.m_bonusNodeList[meta.col] == null ){
+                this.m_bonusNodeList[meta.col] = [];
+            }
+            if (this.m_bonusNodeList[meta.col][meta.row] == null){
+                let path = this.getBonusSpinePrefabPath(meta.width,meta.height);
+                if( path != "" ){
+                    let bonusPrefab = ResMgr.Instance.getAsset(this.m_abName,path,Prefab);
+                    if(bonusPrefab){
+                        let bonusNode = instantiate(bonusPrefab);
+                        this.view["Node1"].addChild(bonusNode);
+                        let worldPos = this.getSymbolWorldPos( meta.col,meta.row );
+                        let localPos = new Vec3();
+                        // 将世界坐标转化为局部坐标
+                        this.view["Node1"].inverseTransformPoint(localPos,worldPos);
+                        bonusNode.position = localPos;
 
-                    // 播放动画
-                    let spineNode = bonusNode.getChildByName("skeleton");
-                    if(spineNode){
-                        let spine = spineNode.getComponent(sp.Skeleton);
-                        spine.setAnimation(0, "Game3-bianpao-star", false);
-                        spine.setCompleteListener((entry: sp.spine.TrackEntry) => {
-                            spine.setCompleteListener(null); // 清除监听器
-                            spine.setAnimation(0, "Game3-bianpao2", true);
-                        });
+                        this.m_bonusNodeList[meta.col][meta.row] = bonusNode;
+
+                        // 播放动画
+                        let spineNode = bonusNode.getChildByName("skeleton");
+                        if(spineNode){
+                            let spine = spineNode.getComponent(sp.Skeleton);
+                            spine.setAnimation(0, "Game3-bianpao-star", false);
+                            spine.setCompleteListener((entry: sp.spine.TrackEntry) => {
+                                spine.setCompleteListener(null); // 清除监听器
+                                spine.setAnimation(0, "Game3-bianpao2", true);
+                            });
+                        }
                     }
                 }
+            }
+            else{
+                // console.log("================> 已经存在了 col = " + meta.col + " row = " + meta.row );
             }
         }
     }
 
+    public playRespinEnd():void{
+        let respinInfo = LevelMgr.Instance.getLevelModel().getReSpin();
+        let reelUnit = respinInfo.reelUnit;
+        // 排序
+        const sortAscExtra = [...reelUnit].sort((a, b) => {
+            if (a.Multiple !== b.Multiple) {
+                return a.Multiple - b.Multiple;
+            }
+            // Multiple一样时，按col升序
+            if (a.col !== b.col) {
+                return a.col - b.col;
+            }
+            return a.row - b.row;
+        });
+
+        // 执行动画
+        const anims: Array<ReturnType<typeof tween>> = [];
+
+        for (let meta of sortAscExtra){
+            if (this.m_bonusNodeList[meta.col][meta.row]){
+                let bonusNode = this.m_bonusNodeList[meta.col][meta.row];
+                anims.push(
+                    tween(this.node).call(()=>{
+                        this.bonusChangeNumAction(meta,bonusNode);
+                    })
+                );
+                anims.push(
+                    tween(this.node).delay(2)
+                );
+            }
+        }
+
+        // 开始滚动
+    }
+
+    private bonusChangeNumAction(meta:any,bonusNode:Node):void{
+        // 播放动画
+        let spineNode = bonusNode.getChildByName("skeleton");
+        if(spineNode){
+            let spine = spineNode.getComponent(sp.Skeleton);
+            spine.setAnimation(0, "Game3-bianpao-baozha", false);
+            spine.setCompleteListener((entry: sp.spine.TrackEntry) => {
+                spine.setCompleteListener(null); // 清除监听器
+                
+                // 添加bonus
+            });
+        }
+    }
+
     private getBonusSpinePrefabPath(width:number,height:number):string{
+        if(width == 1 && height == 1){
+            return "Prefabs/BonusSpine1_1";
+        }
         if(width == 1 && height == 2){
             return "Prefabs/BonusSpine1_2";
         }
