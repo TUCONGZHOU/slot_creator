@@ -20,6 +20,9 @@ const { ccclass, property } = _decorator;
 export class GameLanch extends Component {
 
     protected onLoad(): void {
+        if (!GameManager || !GameManager.instance){
+            this.node.addComponent( GameManager );
+        }
         // 初始化一些基本模块
         this.node.addComponent( UIMgr );
         // this.node.addComponent( ResMgr );
@@ -54,7 +57,11 @@ export class GameLanch extends Component {
             // 添加组件
             let compent:UILevelLoading_Ctrl = prefabNode.addComponent("UILevelLoading_Ctrl") as UILevelLoading_Ctrl;
             // compent.initLoading("config/LevelConfig4");
-            let levelConfig = "config/LevelConfig" + GameManager.instance.getNextLevelID();
+            let levelConfig = "config/LevelConfig4";
+            if (GameManager && GameManager.instance && GameManager.instance.getNextLevelID() != 0){
+                levelConfig = "config/LevelConfig" + GameManager.instance.getNextLevelID();
+            }
+
             compent.initLoading(levelConfig);
         });
     }
