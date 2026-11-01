@@ -1,1 +1,164 @@
-{"skeleton":{"hash":"ouwNQKLqXfL7KOzA6rt9oWsqpCg","spine":"3.6.53","width":0,"height":0,"images":"./imagine/chooseboom/"},"bones":[{"name":"root"},{"name":"book","parent":"root"},{"name":"flower","parent":"root"},{"name":"money","parent":"root"},{"name":"shanzi","parent":"root"},{"name":"yuanbao","parent":"root"}],"slots":[{"name":"book","bone":"book","blend":"additive"},{"name":"flower","bone":"flower","blend":"additive"},{"name":"money","bone":"money","blend":"additive"},{"name":"shanzi","bone":"shanzi","blend":"additive"},{"name":"yuanbao","bone":"yuanbao","blend":"additive"}],"skins":{"default":{"book":{"book/book_00013":{"width":210,"height":194},"book/book_00019":{"width":210,"height":194},"book/book_00026":{"width":210,"height":194},"book/book_00032":{"width":210,"height":194},"book/book_00038":{"width":210,"height":194},"book/book_00045":{"width":210,"height":194},"book/book_00051":{"width":210,"height":194},"book/book_00057":{"width":210,"height":194}},"flower":{"flower/flower_00008":{"width":210,"height":194},"flower/flower_00016":{"width":210,"height":194},"flower/flower_00024":{"width":210,"height":194},"flower/flower_00032":{"width":210,"height":194},"flower/flower_00040":{"width":210,"height":194},"flower/flower_00047":{"width":210,"height":194},"flower/flower_00055":{"width":210,"height":194},"flower/flower_00063":{"width":210,"height":194},"flower/flower_00075":{"width":210,"height":194}},"money":{"money/money_00006":{"width":210,"height":194},"money/money_00012":{"width":210,"height":194},"money/money_00018":{"width":210,"height":194},"money/money_00024":{"width":210,"height":194},"money/money_00030":{"width":210,"height":194},"money/money_00036":{"width":210,"height":194},"money/money_00042":{"width":210,"height":194},"money/money_00048":{"width":210,"height":194},"money/money_00054":{"width":210,"height":194}},"shanzi":{"shanzi/shanzi_00022":{"width":210,"height":194},"shanzi/shanzi_00029":{"width":210,"height":194},"shanzi/shanzi_00036":{"width":210,"height":194},"shanzi/shanzi_00044":{"width":210,"height":194},"shanzi/shanzi_00051":{"width":210,"height":194},"shanzi/shanzi_00058":{"width":210,"height":194},"shanzi/shanzi_00065":{"width":210,"height":194}},"yuanbao":{"yuanbao/yuanbao_00013":{"width":210,"height":194},"yuanbao/yuanbao_00019":{"width":210,"height":194},"yuanbao/yuanbao_00026":{"width":210,"height":194},"yuanbao/yuanbao_00032":{"width":210,"height":194},"yuanbao/yuanbao_00038":{"width":210,"height":194},"yuanbao/yuanbao_00045":{"width":210,"height":194},"yuanbao/yuanbao_00051":{"width":210,"height":194},"yuanbao/yuanbao_00057":{"width":210,"height":194}}}},"animations":{"grandboom":{"slots":{"yuanbao":{"attachment":[{"time":0.2333,"name":"yuanbao/yuanbao_00013"},{"time":0.3,"name":"yuanbao/yuanbao_00019"},{"time":0.3667,"name":"yuanbao/yuanbao_00026"},{"time":0.4333,"name":"yuanbao/yuanbao_00032"},{"time":0.5,"name":"yuanbao/yuanbao_00038"},{"time":0.5667,"name":"yuanbao/yuanbao_00045"},{"time":0.6333,"name":"yuanbao/yuanbao_00051"},{"time":0.7,"name":"yuanbao/yuanbao_00057"},{"time":0.7667,"name":null}]}}},"majorboom":{"slots":{"flower":{"attachment":[{"time":0.2333,"name":"flower/flower_00008"},{"time":0.3,"name":"flower/flower_00016"},{"time":0.3667,"name":"flower/flower_00024"},{"time":0.4333,"name":"flower/flower_00032"},{"time":0.5,"name":"flower/flower_00040"},{"time":0.5667,"name":"flower/flower_00047"},{"time":0.6333,"name":"flower/flower_00055"},{"time":0.7,"name":"flower/flower_00063"},{"time":0.7667,"name":"flower/flower_00075"},{"time":0.8333,"name":null}]}}},"miniboom":{"slots":{"shanzi":{"attachment":[{"time":0.2333,"name":"shanzi/shanzi_00022"},{"time":0.3,"name":"shanzi/shanzi_00029"},{"time":0.3667,"name":"shanzi/shanzi_00036"},{"time":0.4333,"name":"shanzi/shanzi_00044"},{"time":0.5,"name":"shanzi/shanzi_00051"},{"time":0.5667,"name":"shanzi/shanzi_00058"},{"time":0.6333,"name":"shanzi/shanzi_00065"},{"time":0.7,"name":null}]}}},"minorboom":{"slots":{"book":{"attachment":[{"time":0.2333,"name":"book/book_00013"},{"time":0.3,"name":"book/book_00019"},{"time":0.3667,"name":"book/book_00026"},{"time":0.4333,"name":"book/book_00032"},{"time":0.5,"name":"book/book_00038"},{"time":0.5667,"name":"book/book_00045"},{"time":0.6333,"name":"book/book_00051"},{"time":0.7,"name":"book/book_00057"},{"time":0.7667,"name":null}]}}},"moneyboom":{"slots":{"money":{"attachment":[{"time":0.2333,"name":"money/money_00006"},{"time":0.3,"name":"money/money_00012"},{"time":0.3667,"name":"money/money_00018"},{"time":0.4333,"name":"money/money_00024"},{"time":0.5,"name":"money/money_00030"},{"time":0.5667,"name":"money/money_00036"},{"time":0.6333,"name":"money/money_00042"},{"time":0.7,"name":"money/money_00048"},{"time":0.7667,"name":"money/money_00054"},{"time":0.8333,"name":null}]}}}}}
+{
+"skeleton": { "hash": "acS+wAjhpzdn1x7tmUA6XPusBF0", "spine": "3.8.99", "images": "./解包/", "audio": "/Users/mac/Desktop/2026年34567月/1.slots老虎机/Spine/动画5/TREEofWEALTH_xyx_chooseboom" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "book", "parent": "root" },
+	{ "name": "flower", "parent": "root" },
+	{ "name": "money", "parent": "root" },
+	{ "name": "shanzi", "parent": "root" },
+	{ "name": "yuanbao", "parent": "root" }
+],
+"slots": [
+	{ "name": "book", "bone": "book", "blend": "additive" },
+	{ "name": "flower", "bone": "flower", "blend": "additive" },
+	{ "name": "money", "bone": "money", "blend": "additive" },
+	{ "name": "shanzi", "bone": "shanzi", "blend": "additive" },
+	{ "name": "yuanbao", "bone": "yuanbao", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"book": {
+				"book/book_00013": { "width": 210, "height": 194 },
+				"book/book_00019": { "width": 210, "height": 194 },
+				"book/book_00026": { "width": 210, "height": 194 },
+				"book/book_00032": { "width": 210, "height": 194 },
+				"book/book_00038": { "width": 210, "height": 194 },
+				"book/book_00045": { "width": 210, "height": 194 },
+				"book/book_00051": { "width": 210, "height": 194 },
+				"book/book_00057": { "width": 210, "height": 194 }
+			},
+			"flower": {
+				"flower/flower_00008": { "width": 210, "height": 194 },
+				"flower/flower_00016": { "width": 210, "height": 194 },
+				"flower/flower_00024": { "width": 210, "height": 194 },
+				"flower/flower_00032": { "width": 210, "height": 194 },
+				"flower/flower_00040": { "width": 210, "height": 194 },
+				"flower/flower_00047": { "width": 210, "height": 194 },
+				"flower/flower_00055": { "width": 210, "height": 194 },
+				"flower/flower_00063": { "width": 210, "height": 194 },
+				"flower/flower_00075": { "width": 210, "height": 194 }
+			},
+			"money": {
+				"money/money_00006": { "width": 210, "height": 194 },
+				"money/money_00012": { "width": 210, "height": 194 },
+				"money/money_00018": { "width": 210, "height": 194 },
+				"money/money_00024": { "width": 210, "height": 194 },
+				"money/money_00030": { "width": 210, "height": 194 },
+				"money/money_00036": { "width": 210, "height": 194 },
+				"money/money_00042": { "width": 210, "height": 194 },
+				"money/money_00048": { "width": 210, "height": 194 },
+				"money/money_00054": { "width": 210, "height": 194 }
+			},
+			"shanzi": {
+				"shanzi/shanzi_00022": { "width": 210, "height": 194 },
+				"shanzi/shanzi_00029": { "width": 210, "height": 194 },
+				"shanzi/shanzi_00036": { "width": 210, "height": 194 },
+				"shanzi/shanzi_00044": { "width": 210, "height": 194 },
+				"shanzi/shanzi_00051": { "width": 210, "height": 194 },
+				"shanzi/shanzi_00058": { "width": 210, "height": 194 },
+				"shanzi/shanzi_00065": { "width": 210, "height": 194 }
+			},
+			"yuanbao": {
+				"yuanbao/yuanbao_00013": { "width": 210, "height": 194 },
+				"yuanbao/yuanbao_00019": { "width": 210, "height": 194 },
+				"yuanbao/yuanbao_00026": { "width": 210, "height": 194 },
+				"yuanbao/yuanbao_00032": { "width": 210, "height": 194 },
+				"yuanbao/yuanbao_00038": { "width": 210, "height": 194 },
+				"yuanbao/yuanbao_00045": { "width": 210, "height": 194 },
+				"yuanbao/yuanbao_00051": { "width": 210, "height": 194 },
+				"yuanbao/yuanbao_00057": { "width": 210, "height": 194 }
+			}
+		}
+	}
+],
+"animations": {
+	"grandboom": {
+		"slots": {
+			"yuanbao": {
+				"attachment": [
+					{ "time": 0.2333, "name": "yuanbao/yuanbao_00013" },
+					{ "time": 0.3, "name": "yuanbao/yuanbao_00019" },
+					{ "time": 0.3667, "name": "yuanbao/yuanbao_00026" },
+					{ "time": 0.4333, "name": "yuanbao/yuanbao_00032" },
+					{ "time": 0.5, "name": "yuanbao/yuanbao_00038" },
+					{ "time": 0.5667, "name": "yuanbao/yuanbao_00045" },
+					{ "time": 0.6333, "name": "yuanbao/yuanbao_00051" },
+					{ "time": 0.7, "name": "yuanbao/yuanbao_00057" },
+					{ "time": 0.7667, "name": null }
+				]
+			}
+		}
+	},
+	"majorboom": {
+		"slots": {
+			"flower": {
+				"attachment": [
+					{ "time": 0.2333, "name": "flower/flower_00008" },
+					{ "time": 0.3, "name": "flower/flower_00016" },
+					{ "time": 0.3667, "name": "flower/flower_00024" },
+					{ "time": 0.4333, "name": "flower/flower_00032" },
+					{ "time": 0.5, "name": "flower/flower_00040" },
+					{ "time": 0.5667, "name": "flower/flower_00047" },
+					{ "time": 0.6333, "name": "flower/flower_00055" },
+					{ "time": 0.7, "name": "flower/flower_00063" },
+					{ "time": 0.7667, "name": "flower/flower_00075" },
+					{ "time": 0.8333, "name": null }
+				]
+			}
+		}
+	},
+	"miniboom": {
+		"slots": {
+			"shanzi": {
+				"attachment": [
+					{ "time": 0.2333, "name": "shanzi/shanzi_00022" },
+					{ "time": 0.3, "name": "shanzi/shanzi_00029" },
+					{ "time": 0.3667, "name": "shanzi/shanzi_00036" },
+					{ "time": 0.4333, "name": "shanzi/shanzi_00044" },
+					{ "time": 0.5, "name": "shanzi/shanzi_00051" },
+					{ "time": 0.5667, "name": "shanzi/shanzi_00058" },
+					{ "time": 0.6333, "name": "shanzi/shanzi_00065" },
+					{ "time": 0.7, "name": null }
+				]
+			}
+		}
+	},
+	"minorboom": {
+		"slots": {
+			"book": {
+				"attachment": [
+					{ "time": 0.2333, "name": "book/book_00013" },
+					{ "time": 0.3, "name": "book/book_00019" },
+					{ "time": 0.3667, "name": "book/book_00026" },
+					{ "time": 0.4333, "name": "book/book_00032" },
+					{ "time": 0.5, "name": "book/book_00038" },
+					{ "time": 0.5667, "name": "book/book_00045" },
+					{ "time": 0.6333, "name": "book/book_00051" },
+					{ "time": 0.7, "name": "book/book_00057" },
+					{ "time": 0.7667, "name": null }
+				]
+			}
+		}
+	},
+	"moneyboom": {
+		"slots": {
+			"money": {
+				"attachment": [
+					{ "time": 0.2333, "name": "money/money_00006" },
+					{ "time": 0.3, "name": "money/money_00012" },
+					{ "time": 0.3667, "name": "money/money_00018" },
+					{ "time": 0.4333, "name": "money/money_00024" },
+					{ "time": 0.5, "name": "money/money_00030" },
+					{ "time": 0.5667, "name": "money/money_00036" },
+					{ "time": 0.6333, "name": "money/money_00042" },
+					{ "time": 0.7, "name": "money/money_00048" },
+					{ "time": 0.7667, "name": "money/money_00054" },
+					{ "time": 0.8333, "name": null }
+				]
+			}
+		}
+	}
+}
+}

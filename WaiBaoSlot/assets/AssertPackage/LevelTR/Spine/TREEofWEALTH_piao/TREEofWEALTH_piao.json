@@ -1,1 +1,204 @@
-{"skeleton":{"hash":"PxEsx/F4Y4ObEGZ/Sdng43hKLSQ","spine":"3.6.53","width":248.12,"height":272.99,"images":"./imagine/"},"bones":[{"name":"root"},{"name":"mian","parent":"root"},{"name":"money1","parent":"mian","rotation":68.2,"x":-100.4,"y":16.16},{"name":"money2","parent":"mian","rotation":93.08,"x":-91.17,"y":-33.47},{"name":"money3","parent":"mian","rotation":54.89,"x":-38.08,"y":40.39},{"name":"money4","parent":"mian","rotation":74.32,"x":-34.62,"y":-1.15},{"name":"money5","parent":"mian","rotation":95.34,"x":-27.7,"y":-42.7},{"name":"piao1","parent":"mian","x":9.23,"y":70.39},{"name":"piao2","parent":"mian","x":47.31,"y":91.17},{"name":"piao3","parent":"mian","x":90.01,"y":108.48},{"name":"piao4","parent":"mian","x":31.16,"y":-39.24},{"name":"piao5","parent":"mian","x":62.32,"y":-8.08},{"name":"piao6","parent":"mian","x":95.78,"y":-39.24},{"name":"qian1","parent":"piao1","scaleX":1.133,"scaleY":1.133},{"name":"qian2","parent":"piao2","rotation":-25.66,"scaleX":1.133,"scaleY":1.133},{"name":"qian3","parent":"piao3","rotation":25.83,"scaleX":1.133,"scaleY":1.133},{"name":"qian4","parent":"piao4","rotation":31.61,"scaleX":1.133,"scaleY":1.133},{"name":"qian5","parent":"piao5","rotation":-21.45,"scaleX":1.133,"scaleY":1.133},{"name":"qian6","parent":"piao6","rotation":97.47,"scaleX":1.133,"scaleY":1.133},{"name":"qian7","parent":"money1","rotation":97.47,"scaleX":1.133,"scaleY":1.133},{"name":"qian8","parent":"money2","rotation":97.47,"scaleX":1.133,"scaleY":1.133},{"name":"qian9","parent":"money3","rotation":97.47,"scaleX":1.133,"scaleY":1.133},{"name":"qian10","parent":"money4","rotation":97.47,"scaleX":1.133,"scaleY":1.133},{"name":"qian11","parent":"money5","rotation":97.47,"scaleX":1.133,"scaleY":1.133},{"name":"zhui1","parent":"piao1","y":22},{"name":"zhui2","parent":"piao2","y":22},{"name":"zhui3","parent":"piao3","y":22},{"name":"zhui4","parent":"piao4","y":22},{"name":"zhui5","parent":"piao5","y":22},{"name":"zhui6","parent":"piao6","y":22}],"slots":[{"name":"qian1","bone":"qian1","attachment":"21"},{"name":"qian2","bone":"qian2","attachment":"21"},{"name":"qian3","bone":"qian3","attachment":"21"},{"name":"qian4","bone":"qian4","attachment":"21"},{"name":"qian5","bone":"qian5","attachment":"21"},{"name":"qian6","bone":"qian6","attachment":"21"},{"name":"qian7","bone":"qian7","attachment":"21"},{"name":"qian8","bone":"qian8","attachment":"21"},{"name":"qian9","bone":"qian9","attachment":"21"},{"name":"qian10","bone":"qian10","attachment":"21"},{"name":"qian11","bone":"qian11","attachment":"21"},{"name":"zhui1","bone":"zhui1","attachment":"62"},{"name":"zhui2","bone":"zhui2","attachment":"62"},{"name":"zhui3","bone":"zhui3","attachment":"62"},{"name":"zhui4","bone":"zhui4","attachment":"62"},{"name":"zhui5","bone":"zhui5","attachment":"62"},{"name":"zhui6","bone":"zhui6","attachment":"62"}],"skins":{"default":{"qian1":{"21":{"scaleX":0.44,"scaleY":0.44,"width":89,"height":89}},"qian10":{"21":{"scaleX":0.44,"scaleY":0.44,"width":89,"height":89}},"qian11":{"21":{"scaleX":0.44,"scaleY":0.44,"width":89,"height":89}},"qian2":{"21":{"scaleX":0.44,"scaleY":0.44,"width":89,"height":89}},"qian3":{"21":{"scaleX":0.44,"scaleY":0.44,"width":89,"height":89}},"qian4":{"21":{"scaleX":0.44,"scaleY":0.44,"width":89,"height":89}},"qian5":{"21":{"scaleX":0.44,"scaleY":0.44,"width":89,"height":89}},"qian6":{"21":{"scaleX":0.44,"scaleY":0.44,"width":89,"height":89}},"qian7":{"21":{"scaleX":0.44,"scaleY":0.44,"width":89,"height":89}},"qian8":{"21":{"scaleX":0.44,"scaleY":0.44,"width":89,"height":89}},"qian9":{"21":{"scaleX":0.44,"scaleY":0.44,"width":89,"height":89}},"zhui1":{"62":{"y":-70,"rotation":-89.56,"width":95,"height":28}},"zhui2":{"62":{"y":-70,"rotation":-89.56,"width":95,"height":28}},"zhui3":{"62":{"y":-70,"rotation":-89.56,"width":95,"height":28}},"zhui4":{"62":{"y":-70,"rotation":-89.56,"width":95,"height":28}},"zhui5":{"62":{"y":-70,"rotation":-89.56,"width":95,"height":28}},"zhui6":{"62":{"y":-70,"rotation":-89.56,"width":95,"height":28}}}},"animations":{"TREE of WEALTH_piao":{"bones":{"qian1":{"scale":[{"time":0,"x":1,"y":1},{"time":0.3333,"x":1,"y":0.13},{"time":0.6667,"x":1,"y":1}]},"qian2":{"scale":[{"time":0,"x":1,"y":1},{"time":0.3333,"x":1,"y":0.13},{"time":0.6667,"x":1,"y":1}]},"qian3":{"scale":[{"time":0,"x":1,"y":1},{"time":0.3333,"x":1,"y":0.13},{"time":0.6667,"x":1,"y":1}]},"qian4":{"scale":[{"time":0,"x":1,"y":1},{"time":0.3333,"x":1,"y":0.13},{"time":0.6667,"x":1,"y":1}]},"qian5":{"scale":[{"time":0,"x":1,"y":1},{"time":0.3333,"x":1,"y":0.13},{"time":0.6667,"x":1,"y":1}]},"qian6":{"scale":[{"time":0,"x":1,"y":1},{"time":0.3333,"x":1,"y":0.13},{"time":0.6667,"x":1,"y":1}]},"qian7":{"scale":[{"time":0,"x":1,"y":1},{"time":0.3333,"x":1,"y":0.13},{"time":0.6667,"x":1,"y":1}]},"qian8":{"scale":[{"time":0,"x":1,"y":1},{"time":0.3333,"x":1,"y":0.13},{"time":0.6667,"x":1,"y":1}]},"qian9":{"scale":[{"time":0,"x":1,"y":1},{"time":0.3333,"x":1,"y":0.13},{"time":0.6667,"x":1,"y":1}]},"qian10":{"scale":[{"time":0,"x":1,"y":1},{"time":0.3333,"x":1,"y":0.13},{"time":0.6667,"x":1,"y":1}]},"qian11":{"scale":[{"time":0,"x":1,"y":1},{"time":0.3333,"x":1,"y":0.13},{"time":0.6667,"x":1,"y":1}]}}}}}
+{
+"skeleton": {
+	"hash": "zHITuN4DZxk0LYeCLDfM6hV2+6I",
+	"spine": "3.8.99",
+	"x": -127.38,
+	"y": -134.85,
+	"width": 248.04,
+	"height": 272.96,
+	"images": "./解包/",
+	"audio": "/Users/mac/Desktop/2026年34567月/1.slots老虎机/Spine/动画5/TREEofWEALTH_piao"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "mian", "parent": "root" },
+	{ "name": "money1", "parent": "mian", "rotation": 68.2, "x": -100.4, "y": 16.16 },
+	{ "name": "money2", "parent": "mian", "rotation": 93.08, "x": -91.17, "y": -33.47 },
+	{ "name": "money3", "parent": "mian", "rotation": 54.89, "x": -38.08, "y": 40.39 },
+	{ "name": "money4", "parent": "mian", "rotation": 74.32, "x": -34.62, "y": -1.15 },
+	{ "name": "money5", "parent": "mian", "rotation": 95.34, "x": -27.7, "y": -42.7 },
+	{ "name": "piao1", "parent": "mian", "x": 9.23, "y": 70.39 },
+	{ "name": "piao2", "parent": "mian", "x": 47.31, "y": 91.17 },
+	{ "name": "piao3", "parent": "mian", "x": 90.01, "y": 108.48 },
+	{ "name": "piao4", "parent": "mian", "x": 31.16, "y": -39.24 },
+	{ "name": "piao5", "parent": "mian", "x": 62.32, "y": -8.08 },
+	{ "name": "piao6", "parent": "mian", "x": 95.78, "y": -39.24 },
+	{ "name": "qian1", "parent": "piao1", "scaleX": 1.133, "scaleY": 1.133 },
+	{ "name": "qian2", "parent": "piao2", "rotation": -25.66, "scaleX": 1.133, "scaleY": 1.133 },
+	{ "name": "qian3", "parent": "piao3", "rotation": 25.83, "scaleX": 1.133, "scaleY": 1.133 },
+	{ "name": "qian4", "parent": "piao4", "rotation": 31.61, "scaleX": 1.133, "scaleY": 1.133 },
+	{ "name": "qian5", "parent": "piao5", "rotation": -21.45, "scaleX": 1.133, "scaleY": 1.133 },
+	{ "name": "qian6", "parent": "piao6", "rotation": 97.47, "scaleX": 1.133, "scaleY": 1.133 },
+	{ "name": "qian7", "parent": "money1", "rotation": 97.47, "scaleX": 1.133, "scaleY": 1.133 },
+	{ "name": "qian8", "parent": "money2", "rotation": 97.47, "scaleX": 1.133, "scaleY": 1.133 },
+	{ "name": "qian9", "parent": "money3", "rotation": 97.47, "scaleX": 1.133, "scaleY": 1.133 },
+	{ "name": "qian10", "parent": "money4", "rotation": 97.47, "scaleX": 1.133, "scaleY": 1.133 },
+	{ "name": "qian11", "parent": "money5", "rotation": 97.47, "scaleX": 1.133, "scaleY": 1.133 },
+	{ "name": "zhui1", "parent": "piao1", "y": 22 },
+	{ "name": "zhui2", "parent": "piao2", "y": 22 },
+	{ "name": "zhui3", "parent": "piao3", "y": 22 },
+	{ "name": "zhui4", "parent": "piao4", "y": 22 },
+	{ "name": "zhui5", "parent": "piao5", "y": 22 },
+	{ "name": "zhui6", "parent": "piao6", "y": 22 }
+],
+"slots": [
+	{ "name": "qian1", "bone": "qian1", "attachment": "21" },
+	{ "name": "qian2", "bone": "qian2", "attachment": "21" },
+	{ "name": "qian3", "bone": "qian3", "attachment": "21" },
+	{ "name": "qian4", "bone": "qian4", "attachment": "21" },
+	{ "name": "qian5", "bone": "qian5", "attachment": "21" },
+	{ "name": "qian6", "bone": "qian6", "attachment": "21" },
+	{ "name": "qian7", "bone": "qian7", "attachment": "21" },
+	{ "name": "qian8", "bone": "qian8", "attachment": "21" },
+	{ "name": "qian9", "bone": "qian9", "attachment": "21" },
+	{ "name": "qian10", "bone": "qian10", "attachment": "21" },
+	{ "name": "qian11", "bone": "qian11", "attachment": "21" },
+	{ "name": "zhui1", "bone": "zhui1", "attachment": "62" },
+	{ "name": "zhui2", "bone": "zhui2", "attachment": "62" },
+	{ "name": "zhui3", "bone": "zhui3", "attachment": "62" },
+	{ "name": "zhui4", "bone": "zhui4", "attachment": "62" },
+	{ "name": "zhui5", "bone": "zhui5", "attachment": "62" },
+	{ "name": "zhui6", "bone": "zhui6", "attachment": "62" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"qian1": {
+				"21": { "scaleX": 0.44, "scaleY": 0.44, "width": 89, "height": 89 }
+			},
+			"qian2": {
+				"21": { "scaleX": 0.44, "scaleY": 0.44, "width": 89, "height": 89 }
+			},
+			"qian3": {
+				"21": { "scaleX": 0.44, "scaleY": 0.44, "width": 89, "height": 89 }
+			},
+			"qian4": {
+				"21": { "scaleX": 0.44, "scaleY": 0.44, "width": 89, "height": 89 }
+			},
+			"qian5": {
+				"21": { "scaleX": 0.44, "scaleY": 0.44, "width": 89, "height": 89 }
+			},
+			"qian6": {
+				"21": { "scaleX": 0.44, "scaleY": 0.44, "width": 89, "height": 89 }
+			},
+			"qian7": {
+				"21": { "scaleX": 0.44, "scaleY": 0.44, "width": 89, "height": 89 }
+			},
+			"qian8": {
+				"21": { "scaleX": 0.44, "scaleY": 0.44, "width": 89, "height": 89 }
+			},
+			"qian9": {
+				"21": { "scaleX": 0.44, "scaleY": 0.44, "width": 89, "height": 89 }
+			},
+			"qian10": {
+				"21": { "scaleX": 0.44, "scaleY": 0.44, "width": 89, "height": 89 }
+			},
+			"qian11": {
+				"21": { "scaleX": 0.44, "scaleY": 0.44, "width": 89, "height": 89 }
+			},
+			"zhui1": {
+				"62": { "y": -70, "rotation": -89.56, "width": 95, "height": 28 }
+			},
+			"zhui2": {
+				"62": { "y": -70, "rotation": -89.56, "width": 95, "height": 28 }
+			},
+			"zhui3": {
+				"62": { "y": -70, "rotation": -89.56, "width": 95, "height": 28 }
+			},
+			"zhui4": {
+				"62": { "y": -70, "rotation": -89.56, "width": 95, "height": 28 }
+			},
+			"zhui5": {
+				"62": { "y": -70, "rotation": -89.56, "width": 95, "height": 28 }
+			},
+			"zhui6": {
+				"62": { "y": -70, "rotation": -89.56, "width": 95, "height": 28 }
+			}
+		}
+	}
+],
+"animations": {
+	"TREE of WEALTH_piao": {
+		"bones": {
+			"qian1": {
+				"scale": [
+					{},
+					{ "time": 0.3333, "y": 0.13 },
+					{ "time": 0.6667 }
+				]
+			},
+			"qian2": {
+				"scale": [
+					{},
+					{ "time": 0.3333, "y": 0.13 },
+					{ "time": 0.6667 }
+				]
+			},
+			"qian3": {
+				"scale": [
+					{},
+					{ "time": 0.3333, "y": 0.13 },
+					{ "time": 0.6667 }
+				]
+			},
+			"qian4": {
+				"scale": [
+					{},
+					{ "time": 0.3333, "y": 0.13 },
+					{ "time": 0.6667 }
+				]
+			},
+			"qian5": {
+				"scale": [
+					{},
+					{ "time": 0.3333, "y": 0.13 },
+					{ "time": 0.6667 }
+				]
+			},
+			"qian6": {
+				"scale": [
+					{},
+					{ "time": 0.3333, "y": 0.13 },
+					{ "time": 0.6667 }
+				]
+			},
+			"qian7": {
+				"scale": [
+					{},
+					{ "time": 0.3333, "y": 0.13 },
+					{ "time": 0.6667 }
+				]
+			},
+			"qian8": {
+				"scale": [
+					{},
+					{ "time": 0.3333, "y": 0.13 },
+					{ "time": 0.6667 }
+				]
+			},
+			"qian9": {
+				"scale": [
+					{},
+					{ "time": 0.3333, "y": 0.13 },
+					{ "time": 0.6667 }
+				]
+			},
+			"qian10": {
+				"scale": [
+					{},
+					{ "time": 0.3333, "y": 0.13 },
+					{ "time": 0.6667 }
+				]
+			},
+			"qian11": {
+				"scale": [
+					{},
+					{ "time": 0.3333, "y": 0.13 },
+					{ "time": 0.6667 }
+				]
+			}
+		}
+	}
+}
+}

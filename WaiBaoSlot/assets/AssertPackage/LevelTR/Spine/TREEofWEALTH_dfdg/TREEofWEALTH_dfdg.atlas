@@ -1,90 +1,90 @@
 
 TREEofWEALTH_dfdg.png
-size: 434,434
+size: 1024,256
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 dfdg/BG_SYM_WildA
   rotate: false
-  xy: 2, 2
-  size: 213, 214
+  xy: 2, 42
+  size: 212, 212
   orig: 213, 214
-  offset: 0, 0
+  offset: 1, 1
   index: -1
 dfdg/BG_SYM_WildB
   rotate: false
-  xy: 2, 218
-  size: 214, 214
+  xy: 216, 42
+  size: 212, 212
   orig: 214, 214
-  offset: 0, 0
+  offset: 1, 1
   index: -1
 dfdg/GoldSpriteDotAdd
   rotate: false
-  xy: 301, 24
+  xy: 167, 8
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 dfdg/Letter_1
   rotate: true
-  xy: 340, 147
+  xy: 44, 2
   size: 38, 39
   orig: 38, 39
   offset: 0, 0
   index: -1
 dfdg/Letter_11
   rotate: true
-  xy: 381, 147
+  xy: 126, 2
   size: 38, 39
   orig: 38, 39
   offset: 0, 0
   index: -1
 dfdg/Letter_2
   rotate: false
-  xy: 340, 187
+  xy: 430, 8
   size: 39, 39
   orig: 39, 39
   offset: 0, 0
   index: -1
 dfdg/Letter_22
   rotate: false
-  xy: 381, 187
+  xy: 471, 8
   size: 39, 39
   orig: 39, 39
   offset: 0, 0
   index: -1
 dfdg/Letter_3
   rotate: false
-  xy: 217, 18
-  size: 40, 38
+  xy: 85, 2
+  size: 39, 38
   orig: 40, 38
   offset: 0, 0
   index: -1
 dfdg/Letter_33
   rotate: false
-  xy: 259, 18
+  xy: 2, 2
   size: 40, 38
   orig: 40, 38
   offset: 0, 0
   index: -1
 dfdg/MajorFuBabySparkles_Bunch
   rotate: false
-  xy: 217, 58
+  xy: 636, 156
   size: 96, 98
   orig: 96, 98
   offset: 0, 0
   index: -1
 dfdg/Ring
-  rotate: false
-  xy: 218, 228
+  rotate: true
+  xy: 430, 49
   size: 205, 204
   orig: 205, 204
   offset: 0, 0
   index: -1
 dfdg/X3
-  rotate: false
-  xy: 218, 158
-  size: 120, 68
+  rotate: true
+  xy: 636, 50
+  size: 104, 62
   orig: 120, 68
-  offset: 0, 0
+  offset: 8, 5
   index: -1

@@ -1,33 +1,33 @@
 
 TREEofWEALTH_quan.png
-size: 408,408
+size: 512,256
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 dfdg/MajorFuBabySparkles_Bunch
-  rotate: true
-  xy: 212, 197
+  rotate: false
+  xy: 404, 3
   size: 96, 98
   orig: 96, 98
   offset: 0, 0
   index: -1
 quan/BG_SYM_Scatter_2
   rotate: false
-  xy: 2, 2
-  size: 192, 194
+  xy: 212, 20
+  size: 190, 190
   orig: 192, 194
-  offset: 0, 0
+  offset: 1, 1
   index: -1
 quan/Rays
   rotate: false
-  xy: 212, 295
-  size: 99, 111
+  xy: 404, 103
+  size: 95, 107
   orig: 99, 111
-  offset: 0, 0
+  offset: 2, 2
   index: -1
 quan/Wild_Character_Glow
   rotate: false
-  xy: 2, 198
+  xy: 2, 2
   size: 208, 208
   orig: 208, 208
   offset: 0, 0

@@ -1,27 +1,27 @@
 
 TREEofWEALTH_select.png
-size: 299,297
+size: 1024,128
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 PC_BorderGlow
   rotate: false
-  xy: 2, 152
-  size: 196, 91
+  xy: 498, 2
+  size: 194, 88
   orig: 196, 91
-  offset: 0, 0
+  offset: 1, 1
   index: -1
 PC_SymGlow
   rotate: true
-  xy: 2, 67
+  xy: 297, 7
   size: 83, 199
   orig: 83, 199
   offset: 0, 0
   index: -1
 PC_infotext_SFGlow
   rotate: false
-  xy: 2, 245
-  size: 295, 50
+  xy: 2, 42
+  size: 293, 48
   orig: 295, 50
   offset: 0, 0
   index: -1
