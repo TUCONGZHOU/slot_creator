@@ -21,6 +21,8 @@ export class LobbyView extends UICtrl {
         // this.node.addComponent( LevelMgr );
         // this.node.addComponent( SoundMgr );
         // this.node.addComponent( Utils );
+
+        GameManager.instance.setGameStartLobbyFlag(); // 启动lobbyscene的标记，主要处理兼容其他场景启动。
     }
     protected initView(): void {
         // throw new Error('Method not implemented.');

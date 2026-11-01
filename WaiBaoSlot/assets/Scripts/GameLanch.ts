@@ -13,6 +13,9 @@ import { CKGameCenter } from './Mgr/CKGameCenter';
 
 import { UILevelLoading_Ctrl } from './Views/UILevelLoading_Ctrl';
 import { GameManager } from './Mgr/GameManager';
+import { LevelConfig } from './InterFace/LevelConfig';
+import { SceneOrientation } from './Views/SceneOrientation';
+import { ScreenManager } from './Mgr/ScreenManager';
 
 const { ccclass, property } = _decorator;
 
@@ -57,12 +60,38 @@ export class GameLanch extends Component {
             // 添加组件
             let compent:UILevelLoading_Ctrl = prefabNode.addComponent("UILevelLoading_Ctrl") as UILevelLoading_Ctrl;
             // compent.initLoading("config/LevelConfig4");
-            let levelConfig = "config/LevelConfig4";
-            if (GameManager && GameManager.instance && GameManager.instance.getNextLevelID() != 0){
-                levelConfig = "config/LevelConfig" + GameManager.instance.getNextLevelID();
+            let levelID = 4;
+            let levelConfig = "config/LevelConfig" + levelID;
+            if (GameManager.instance.getGameStartLobbyFlag() == true){
+                if (GameManager && GameManager.instance && GameManager.instance.getNextLevelID() != 0){
+                    levelConfig = "config/LevelConfig" + GameManager.instance.getNextLevelID();
+                }
+                compent.initLoading(levelConfig);
+            }else{
+                let levelStr = "level" + levelID;
+                // 异步加载
+                resources.load("config/LevelConfig", JsonAsset, (err, jsonAsset: JsonAsset) => {
+                    if (err) {
+                        console.error('====>加载JSON失败:', err);
+                        return;
+                    }
+                                    
+                    const jsonData = jsonAsset.json as LevelConfig;
+                    let levelInfo = jsonData[levelStr];
+                    let compentSceneOrientation = this.node.getComponent(SceneOrientation);
+                    if (levelInfo && compentSceneOrientation){
+                        let isPortrait = levelInfo.isPortrait || false;
+                        ScreenManager.instance.add("",isPortrait)
+                    }
+                    compent.initLoading(levelConfig);
+                });
             }
+            
 
-            compent.initLoading(levelConfig);
+                
+
+
+            
         });
     }
 

@@ -14,6 +14,7 @@ export enum SceneType {
     LEVEL  = 1,
 }
 
+
 @ccclass('GameManager')
 export class GameManager extends Component {
     // 单例实例
@@ -22,6 +23,8 @@ export class GameManager extends Component {
     public static get instance(): GameManager {
         return GameManager._instance;
     }
+
+    public m_gameStartLobby = false; // 是否从lobby启动 // 
 
 
     private m_nextLevelId = 0;
@@ -57,7 +60,12 @@ export class GameManager extends Component {
     start() {
         console.log('GameManager 初始化完成');
     }
-
+    public setGameStartLobbyFlag(){
+        this.m_gameStartLobby = true;
+    }
+    public getGameStartLobbyFlag(){
+        return this.m_gameStartLobby;
+    }
     // 示例业务方法
     public setNextLevelID( levelID: number) {
         this.m_nextLevelId = levelID;

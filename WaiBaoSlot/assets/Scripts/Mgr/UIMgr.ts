@@ -3,6 +3,7 @@ import { ResMgr } from './ResMgr';
 import { GlEventMgr } from './GlEventMgr';
 import { SoundMgr } from "./SoundMgr";
 import { ScreenManager } from './ScreenManager';
+import { GameManager } from './GameManager';
 
 const { ccclass, property } = _decorator;
 
@@ -386,7 +387,9 @@ export class UIMgr extends Component {
                 // 2. 挂载 UITransform 组件（UI 节点必须有该组件）
                 const uiTransform = layerNode.addComponent(UITransform);
                 // 3. 配置 UITransform 组件的属性（可选）
-                if (ScreenManager.instance.getCurScreenValue() == true){
+                if (GameManager.instance.getGameStartLobbyFlag() == false){
+                    // 没有从lobby场景进入游戏
+                }else if (ScreenManager.instance.getCurScreenValue() == true){
                     uiTransform.setContentSize(768, 1370); // 设置节点宽 200，高 100
                 }else{
                     uiTransform.setContentSize(1370, 768);
