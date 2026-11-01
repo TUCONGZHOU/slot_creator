@@ -72,10 +72,16 @@ export class ResMgr extends Component {
         console.log(`====>[ResMgr]: 开始预加载，共 ${this.totalAb} 个AB包，${this.totalUrls} 个资源`);
 
         for (const key in resPkg) {
-            this.loadAssetsBundle(key, () => {
+            this.loadAssetsBundle(key, (success: boolean) => {
                 this.nowAb++;
-                console.log(`====>[ResMgr]: AB包加载进度 ${this.nowAb}/${this.totalAb}`);
-                
+                if (!success) {
+                    // bundle 加载失败，把它的资源数从 totalUrls 里扣掉，避免永远等不到
+                    const failed = resPkg[key];
+                    if (failed.urls) this.totalUrls -= failed.urls.length;
+                    if (failed.sounds) this.totalUrls -= failed.sounds.length;
+                    if (failed.sprites) this.totalUrls -= failed.sprites.length;
+                    console.error(`[ResMgr] bundle ${key} 加载失败，已跳过其 ${this.totalUrls} 个待加载资源`);
+                }
                 if (this.nowAb === this.totalAb) {
                     this.loadAssetsInAssetsBundle(resPkg);
                 }
@@ -101,16 +107,17 @@ export class ResMgr extends Component {
     /**
      * 加载AB包
      */
-    private loadAssetsBundle(abName: string, endFunc: () => void): void {
+    private loadAssetsBundle(abName: string, endFunc: (success: boolean) => void): void {
         assetManager.loadBundle(abName, (err, bundle) => {
             if (err !== null) {
-                console.error(`====>[ResMgr]: Load AssetsBundle Error: ${abName}, error: ${err.message}`);
+                console.error(`[ResMgr] Load Bundle Error: ${abName}, ${err.message}`);
                 this.abBunds.set(abName, null as any);
+                endFunc(false);
             } else {
-                console.log(`====>[ResMgr]: Load AssetsBundle Success: ${abName}`);
+                console.log(`[ResMgr] Load Bundle OK: ${abName}`);
                 this.abBunds.set(abName, bundle);
+                endFunc(true);
             }
-            endFunc();
         });
     }
 

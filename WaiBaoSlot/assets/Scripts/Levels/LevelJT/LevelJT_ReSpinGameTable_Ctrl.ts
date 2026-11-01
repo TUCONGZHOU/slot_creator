@@ -99,12 +99,14 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
         let reelData = LevelMgr.Instance.getLevelModel().getSpinReelData();
         let bonusIndex:number = 0;
         let flagShow = false
+        let showAddSymbol = false;
         for (let i = 0; i < reelData.length; i++){
             let table = reelData[i]
             for (let j = 0;j < table.length; j++){
                 let reel = table[j]
                 for (let k = 0;k < reel.length; k++){
                     if (reel[k] == 100){
+                        showAddSymbol = true;
                         // 增加次数
                         let symble = this.getSymbolNode(0,j,k);
                         let compent = symble.getComponent(LevelJT_Symbol_Ctrl);
@@ -124,7 +126,9 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
                 }
             }
         }
-        
+        if (!showAddSymbol){
+            this.excuteListFunc();
+        }
     }
     public resetCollectNum(){
         this.resetJackpotTitle()
@@ -189,7 +193,7 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
         if (index >= this.m_storedIcons.length){
             newIndex++;
         }
-        this.m_gameMainCompent.reSpinBonusFlyAction(data.Multiple,oriData.col,oriData.row,data.col,data.row,()=>{
+        this.m_gameMainCompent.reSpinBonusFlyAction(oriData.Multiple,oriData.col,oriData.row,data.col,data.row,()=>{
             this.collectJinOrGreenBonus(newIndex,newData,index,callBack)
         },index,color)
     }
@@ -367,7 +371,11 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
         let action = LevelMgr.Instance.getLevelModel().getAction();
         let nextAction = LevelMgr.Instance.getLevelModel().getNextAction();
         if (action == ActionType.RESPIN && nextAction == ActionType.NORMAL) {
-            GlEventMgr.Instance.emit(EventName.ShowAmount);
+            // GlEventMgr.Instance.emit(EventName.ShowAmount);
+            GlEventMgr.Instance.emit(EventName.StopProgressBarAnim);
+            // 发送消息 有些轮盘需要停止大赢动画
+            GlEventMgr.Instance.emit(EventName.StopBigWinAction);
+
             this.m_gameMainCompent.enterNormal();
         }else {
             // 恢复点击

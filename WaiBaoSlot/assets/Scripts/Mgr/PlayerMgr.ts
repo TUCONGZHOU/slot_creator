@@ -28,6 +28,12 @@ export class PlayerMgr extends Component {
         }
     }
 
+    protected onDestroy(): void {
+        if (PlayerMgr.Instance === this) {
+            PlayerMgr.Instance = null;
+        }
+    }
+
     start() {
         this.m_bet = 1000;
         this.m_betIndex = 0;

@@ -33,8 +33,8 @@ export class LevelJT_FreeWinCtrl extends UICtrl {
         this.view['LabelBonusCoins'].getComponent(Label).string = str;
 
         let winAmount = (LevelMgr.Instance.getLevelModel() as LevelJT_GameModel).getWinAmount();
-        let allStr = Utils.util_formatCoins( bonusWinAmount + winAmount,18 );
-        this.view['Label'].getComponent(Label).string = str;
+        let allStr = Utils.util_formatCoins( winAmount,18 );
+        this.view['Label'].getComponent(Label).string = allStr;
 
         let winCount = LevelMgr.Instance.getLevelModel().getWinAmount();
         let soundFile = this.m_levelConfig.SoundsFile["Congrats"];

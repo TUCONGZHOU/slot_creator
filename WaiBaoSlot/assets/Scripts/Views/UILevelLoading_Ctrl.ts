@@ -15,6 +15,8 @@ import { GameTopNode_Ctrl } from './GameTopNode_Ctrl';
 import { GameBottomNode_Ctrl } from './GameBottomNode_Ctrl';
 import { LevelTR_MainUI_Ctrl } from '../Levels/LevelTR/LevelTR_MainUI_Ctrl';
 import { LevelWF_MainUI_Ctrl } from '../Levels/LevelWF/LevelWF_MainUI_Ctrl';
+import { ScreenManager } from '../Mgr/ScreenManager';
+import { GameManager } from '../Mgr/GameManager';
 
 @ccclass('UILevelLoading_Ctrl')
 export class UILevelLoading_Ctrl extends UICtrl {
@@ -226,6 +228,8 @@ export class UILevelLoading_Ctrl extends UICtrl {
         // UIMgr.Instance.showUi("GameMain","Prefabs/GameBottomNode","GameBottomNode_Ctrl",UILayer.Normal);
         this.initBottomNode();
 
+        GameManager.instance.setLastBundleName(abName);
+
         // 移除自己
         this.node.destroy();
     }
@@ -234,8 +238,11 @@ export class UILevelLoading_Ctrl extends UICtrl {
 
         // 加载GameTopNode
         const targetNode = find("Canvas/TopNode"); 
-        // UIMgr.Instance.showUi("GameMain","Prefabs/GameTopNode","GameTopNode_Ctrl",UILayer.Normal,targetNode);
-        UIMgr.Instance.showUi("GameMain","Prefabs/GameTopNodeL","GameTopNode_Ctrl",UILayer.Normal,targetNode);
+        if (ScreenManager.instance.getCurScreenValue() == true){
+            UIMgr.Instance.showUi("GameMain","Prefabs/GameTopNode","GameTopNode_Ctrl",UILayer.Normal,targetNode);
+        }else{
+            UIMgr.Instance.showUi("GameMain","Prefabs/GameTopNodeL","GameTopNode_Ctrl",UILayer.Normal,targetNode);
+        }
 
         // const uiTopRoot = targetNode;
         // const visibleSize = view.getVisibleSize();
@@ -248,8 +255,11 @@ export class UILevelLoading_Ctrl extends UICtrl {
     public initBottomNode():void{
         // 加载GameTopNode
         const targetNode = find("Canvas/BottomNode"); 
-        // UIMgr.Instance.showUi("GameMain","Prefabs/GameBottomNode","GameBottomNode_Ctrl",UILayer.Normal,targetNode);
-        UIMgr.Instance.showUi("GameMain","Prefabs/GameBottomNodeL","GameBottomNode_Ctrl",UILayer.Normal,targetNode);
+        if (ScreenManager.instance.getCurScreenValue() == true){
+            UIMgr.Instance.showUi("GameMain","Prefabs/GameBottomNode","GameBottomNode_Ctrl",UILayer.Normal,targetNode);
+        }else{
+            UIMgr.Instance.showUi("GameMain","Prefabs/GameBottomNodeL","GameBottomNode_Ctrl",UILayer.Normal,targetNode);
+        }
 
         // const uiBottomRoot = targetNode;
         // const visibleSize = view.getVisibleSize();

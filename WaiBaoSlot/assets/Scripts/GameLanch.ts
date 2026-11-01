@@ -12,6 +12,7 @@ import { Utils } from './Util/Utils';
 import { CKGameCenter } from './Mgr/CKGameCenter';
 
 import { UILevelLoading_Ctrl } from './Views/UILevelLoading_Ctrl';
+import { GameManager } from './Mgr/GameManager';
 
 const { ccclass, property } = _decorator;
 
@@ -21,11 +22,11 @@ export class GameLanch extends Component {
     protected onLoad(): void {
         // 初始化一些基本模块
         this.node.addComponent( UIMgr );
-        this.node.addComponent( ResMgr );
-        this.node.addComponent( GlEventMgr );
-        this.node.addComponent( LevelMgr );
-        this.node.addComponent( SoundMgr );
-        this.node.addComponent( Utils );
+        // this.node.addComponent( ResMgr );
+        // this.node.addComponent( GlEventMgr );
+        // this.node.addComponent( LevelMgr );
+        // this.node.addComponent( SoundMgr );
+        // this.node.addComponent( Utils );
         this.node.addComponent( CKGameCenter );
     }
 
@@ -52,7 +53,9 @@ export class GameLanch extends Component {
             this.node.addChild( prefabNode );
             // 添加组件
             let compent:UILevelLoading_Ctrl = prefabNode.addComponent("UILevelLoading_Ctrl") as UILevelLoading_Ctrl;
-            compent.initLoading("config/LevelConfig6");
+            // compent.initLoading("config/LevelConfig4");
+            let levelConfig = "config/LevelConfig" + GameManager.instance.getNextLevelID();
+            compent.initLoading(levelConfig);
         });
     }
 

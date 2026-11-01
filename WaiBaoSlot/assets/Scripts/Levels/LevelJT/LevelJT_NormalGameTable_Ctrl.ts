@@ -30,6 +30,14 @@ export class LevelJT_NormalGameTable_Ctrl extends BaseGameTable {
         super.update(deltaTime);
     }
 
+    public startRoll():void{
+        super.startRoll();
+        let action = LevelMgr.Instance.getLevelModel().getNextAction();
+        if ( action == ActionType.NORMAL ){
+            GlEventMgr.Instance.emit(EventName.ClearWinAmount);
+        }
+    }
+
     public createOtherUI():void{
         let prefab = ResMgr.Instance.getAsset(this.m_abName,"Prefabs/JockpotTitle",Prefab);
         if(prefab){
