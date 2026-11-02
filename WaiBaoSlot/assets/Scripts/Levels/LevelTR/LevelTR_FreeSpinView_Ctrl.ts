@@ -1,4 +1,4 @@
-import { _decorator, Component, Node,Animation } from 'cc';
+import { _decorator, Component, Node, Animation } from 'cc';
 const { ccclass, property } = _decorator;
 
 import { UICtrl, UIMgr } from '../../Mgr/UIMgr';
@@ -10,7 +10,7 @@ import { EventName } from '../../Mgr/EventName';
 @ccclass('LevelTR_FreeSpinView_Ctrl')
 export class LevelTR_FreeSpinView_Ctrl extends UICtrl {
 
-    private m_mainCtrl:LevelTR_MainUI_Ctrl = null;
+    private m_mainCtrl: LevelTR_MainUI_Ctrl = null;
     protected initView(): void {
         this.addButtonClick("SpriteSplash", this, this.clickFreeView);
     }
@@ -22,24 +22,24 @@ export class LevelTR_FreeSpinView_Ctrl extends UICtrl {
     }
 
     update(deltaTime: number) {
-        
+
     }
 
-    public initUI(levelConfig:LevelConfig,mainCtrl:LevelTR_MainUI_Ctrl){
+    public initUI(levelConfig: LevelConfig, mainCtrl: LevelTR_MainUI_Ctrl) {
         this.m_mainCtrl = mainCtrl;
     }
 
-    public clickFreeView():void {
+    public clickFreeView(): void {
         // 移除当前轮盘
         this.m_mainCtrl.removeGameTable();
         // 添加freespin的轮盘
         this.m_mainCtrl.addFreeSpinGameTableUI();
         // 恢复点击
-        GlEventMgr.Instance.emit( EventName.RecoverSpinBtn )
+        GlEventMgr.Instance.emit(EventName.RecoverSpinBtn)
         // 发送消息
         GlEventMgr.Instance.emit(EventName.ClearWinAmount);
         // 改变bg
-        GlEventMgr.Instance.emit(EventName.ChangeBg,false);
+        GlEventMgr.Instance.emit(EventName.ChangeBg, false);
         // 发送消息 开始滚动
         GlEventMgr.Instance.emit(EventName.StartSpinBtn);
 
@@ -51,7 +51,7 @@ export class LevelTR_FreeSpinView_Ctrl extends UICtrl {
     protected onDestroy(): void {
         // 清理对主控制器的引用
         this.m_mainCtrl = null;
-        
+
         // 调用父类方法
         super.onDestroy();
     }

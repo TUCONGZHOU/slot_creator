@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, Prefab,assetManager,JsonAsset,resources,instantiate } from 'cc';
+import { _decorator, Component, Node, Prefab, assetManager, JsonAsset, resources, instantiate } from 'cc';
 
 import { ResMgr } from './Mgr/ResMgr';
 import { UIMgr } from './Mgr/UIMgr';
@@ -21,13 +21,13 @@ export class GameLanch extends Component {
 
     protected onLoad(): void {
         // 初始化一些基本模块
-        this.node.addComponent( UIMgr );
+        this.node.addComponent(UIMgr);
         // this.node.addComponent( ResMgr );
         // this.node.addComponent( GlEventMgr );
         // this.node.addComponent( LevelMgr );
         // this.node.addComponent( SoundMgr );
         // this.node.addComponent( Utils );
-        this.node.addComponent( CKGameCenter );
+        this.node.addComponent(CKGameCenter);
     }
 
     start() {
@@ -35,11 +35,11 @@ export class GameLanch extends Component {
 
 
         // 更新完毕之后 加载基本模块
-        this.node.addComponent( SymbolMgr );
-        this.node.addComponent( PlayerMgr );
+        this.node.addComponent(SymbolMgr);
+        this.node.addComponent(PlayerMgr);
 
         // 加载游戏的Loading
-        resources.load("Main/Prefabs/UILevelLoading",Prefab,(err,prefab:Prefab)=>{
+        resources.load("Main/Prefabs/UILevelLoading", Prefab, (err, prefab: Prefab) => {
             if (err) {
                 console.error('加载Main/Prefabs/UILevelLoading预制体失败失败:', err);
                 return;
@@ -50,17 +50,17 @@ export class GameLanch extends Component {
                 console.error('UILevelLoading预制体实例化失败');
                 return;
             }
-            this.node.addChild( prefabNode );
+            this.node.addChild(prefabNode);
             // 添加组件
-            let compent:UILevelLoading_Ctrl = prefabNode.addComponent("UILevelLoading_Ctrl") as UILevelLoading_Ctrl;
-            // compent.initLoading("config/LevelConfig4");
-            let levelConfig = "config/LevelConfig" + GameManager.instance.getNextLevelID();
+            let compent: UILevelLoading_Ctrl = prefabNode.addComponent("UILevelLoading_Ctrl") as UILevelLoading_Ctrl;
+            // 只保留 LevelTR，固定读取 LevelConfig3
+            let levelConfig = "config/LevelConfig3";
             compent.initLoading(levelConfig);
         });
     }
 
     update(deltaTime: number) {
-        
+
     }
 }
 

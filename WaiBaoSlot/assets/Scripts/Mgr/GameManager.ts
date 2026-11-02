@@ -27,7 +27,7 @@ export class GameManager extends Component {
     private m_nextLevelId = 0;
     private m_curLevelId = 0;
     private m_lastLevelId = 0;
-    private m_nextSceneType;
+    private m_nextSceneType: SceneType = SceneType.LOBBY;
     private m_curSceneType = SceneType.LOBBY;
     private m_lastBundleName: string = "";
 
@@ -99,7 +99,7 @@ export class GameManager extends Component {
 
     public changeToLobbyScene(){
         this.setNextSceneType(SceneType.LOBBY);
-        this.changeSceneByType(false);
+        this.changeSceneByType();
     }
     public changeToNewLevelSceneById( levelID: number,isPortrait:boolean ){
         this.setNextLevelID( levelID );
@@ -113,20 +113,24 @@ export class GameManager extends Component {
                 assetManager.removeBundle(bundle);
             }
         }
-        this.changeSceneByType(isPortrait);
+        // isPortrait 保留以兼容调用方，当前项目只用竖屏场景
+        this.changeSceneByType();
     }
-    public changeSceneByType(isPortrait:boolean = false){
+    public changeSceneByType(){
         if (this.getNextSceneType() == SceneType.LOBBY){
             director.loadScene('LobbyScene', (err)=>{
                 if(err) DebugLog.log("GameManager", "LobbyScene 加载失败: "+err);
                 else DebugLog.log("GameManager", "LobbyScene 加载成功");
             });
         }else if(this.getNextSceneType() == SceneType.LEVEL){
-            let sceneName = isPortrait ? 'MainScceneP' : 'MainSccene';
+            // 项目只保留竖屏主场景，横屏的 MainSccene 已移除
+            let sceneName = 'MainScceneP';
             director.loadScene(sceneName, (err)=>{
                 if(err) DebugLog.log("GameManager", `${sceneName} 加载失败: ${err}`);
                 else DebugLog.log("GameManager", `${sceneName} 加载成功`);
             });
+        }else{
+            DebugLog.log("GameManager", "未知的场景类型: " + this.m_nextSceneType);
         }
     }
     

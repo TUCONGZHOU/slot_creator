@@ -15,7 +15,7 @@ export class LobbyView extends UICtrl {
     public onLoad(): void {
         super.onLoad();
         // 初始化一些基本模块
-        this.node.addComponent( UIMgr );
+        this.node.addComponent(UIMgr);
         // this.node.addComponent( ResMgr );
         // this.node.addComponent( GlEventMgr );
         // this.node.addComponent( LevelMgr );
@@ -23,20 +23,18 @@ export class LobbyView extends UICtrl {
         // this.node.addComponent( Utils );
     }
     protected initView(): void {
-        // throw new Error('Method not implemented.');
-        for( let i = 1; i <= 5; i++ ){
-            this.addButtonClick("level" + i, this, ()=> this.chooseLevel(i));
-        }
+        // 场景中已移除选关按钮，由 start() 自动进入关卡
     }
     start() {
-        
+        // 自动进入 LevelTR，跳过选关
+        this.chooseLevel(3);
     }
 
     update(deltaTime: number) {
-        
+
     }
 
-    public chooseLevel( levelId:number ){
+    public chooseLevel(levelId: number) {
         let levelConfig = "config/LevelConfig";
         let levelStr = "level" + levelId;
         // 异步加载
@@ -45,15 +43,15 @@ export class LobbyView extends UICtrl {
                 console.error('====>加载JSON失败:', err);
                 return;
             }
-                            
+
             const jsonData = jsonAsset.json as LevelConfig;
             let levelInfo = jsonData[levelStr]
-            if (levelInfo){
+            if (levelInfo) {
                 let isPortrait = levelInfo.isPortrait || false;
-                GameManager.instance.changeToNewLevelSceneById(levelId,isPortrait);
+                GameManager.instance.changeToNewLevelSceneById(levelId, isPortrait);
             }
         });
-        
+
     }
 }
 

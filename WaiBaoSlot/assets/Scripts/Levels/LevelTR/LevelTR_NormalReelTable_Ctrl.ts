@@ -27,51 +27,51 @@ export class LevelTR_NormalReelTable_Ctrl extends BaseReelTable {
         super.update(deltaTime);
     }
 
-    public addQuickEffect( col:number ):void {
+    public addQuickEffect(col: number): void {
 
     }
 
-    public removeQuickEffect( col:number ):void {
+    public removeQuickEffect(col: number): void {
 
     }
 
     // 重写基类
-    public checkNeedQuickRoll( viewSymbolData:number[][],col:number ):any {
+    public checkNeedQuickRoll(viewSymbolData: number[][], col: number): any {
         let hasCount = 0;
-        for( let i = 0; i < col; i++ ){
-            if ( this.hasScatterSymbol(viewSymbolData[i]) ){
+        for (let i = 0; i < col; i++) {
+            if (this.hasScatterSymbol(viewSymbolData[i])) {
                 hasCount = hasCount + 1;
             }
         }
-        let result:any = {}
+        let result: any = {}
         result.needQuickRoll = false; // 是否需要快滚
         result.scatterCount = hasCount;
 
         // 播放Scatter音效
-        if (hasCount == 2){
+        if (hasCount == 2) {
             let soundFile = this.m_levelConfig.SoundsFile["Scatter"];
-            SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+            SoundMgr.Instance.playSound(this.m_levelConfig.BundleName, soundFile);
         }
 
         return result;
     }
 
     // 播放wild飞行动画
-    public wildFlyAction( col:number,row:number ){
-        this.m_gameTableCompent.wildFlyAction(col,row);
+    public wildFlyAction(col: number, row: number) {
+        this.m_gameTableCompent.wildFlyAction(col, row);
     }
 
-    public playReelStopDoneSounds():void {
+    public playReelStopDoneSounds(): void {
         let soundFile = this.m_levelConfig.SoundsFile["ReelStop"];
-        SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+        SoundMgr.Instance.playSound(this.m_levelConfig.BundleName, soundFile);
     }
 
     // 重写基类
-    public playLineAction( tableLine:any ):void {
-        if ( tableLine.length == 0 ){
+    public playLineAction(tableLine: any): void {
+        if (tableLine.length == 0) {
             return;
         }
-        
+
         // -- 先显示所有连线
         if (this.m_lineTween) {
             this.m_lineTween.stop();
@@ -83,41 +83,41 @@ export class LevelTR_NormalReelTable_Ctrl extends BaseReelTable {
         if (action == ActionType.FREESPIN && nextAction == ActionType.NORMAL) {
             // 只播放一遍
             this.m_lineTween = tween(this.m_effectNode)
-            .call(()=>{
-                for( let lineData of tableLine ){
-                    this.playLineAndEffectAction( lineData )
-                }
-            })
-            .delay(2)
-            .call(()=>{
-                // 清除特效层
-                this.clearEffect();
-            })
-            .start();
-        }else {
+                .call(() => {
+                    for (let lineData of tableLine) {
+                        this.playLineAndEffectAction(lineData)
+                    }
+                })
+                .delay(2)
+                .call(() => {
+                    // 清除特效层
+                    this.clearEffect();
+                })
+                .start();
+        } else {
             this.m_lineTween = tween(this.m_effectNode)
-            .call(()=>{
-                for( let lineData of tableLine ){
-                    this.playLineAndEffectAction( lineData )
-                }
-            })
-            .delay(2)
-            .call(()=>{
-                // 清除特效层
-                this.clearEffect();
-            })
-            .union() // 把前面一串动画打包成一个整体
-            .repeatForever()
-            .start();
+                .call(() => {
+                    for (let lineData of tableLine) {
+                        this.playLineAndEffectAction(lineData)
+                    }
+                })
+                .delay(2)
+                .call(() => {
+                    // 清除特效层
+                    this.clearEffect();
+                })
+                .union() // 把前面一串动画打包成一个整体
+                .repeatForever()
+                .start();
         }
     }
 
     // 重写基类
-    public addPaoMaDengEffect( meta:any ){
+    public addPaoMaDengEffect(meta: any) {
         let id = meta.id;
         let col = meta.col;
         let row = meta.row;
-        this.playSymbolLineAction( id,col,row );
+        this.playSymbolLineAction(id, col, row);
     }
 }
 

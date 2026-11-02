@@ -1,31 +1,28 @@
 
 
-import { _decorator, Component, Node,resources,JsonAsset,Prefab, ProgressBar,find,view,Vec3,screen } from 'cc';
+import { _decorator, Component, Node, resources, JsonAsset, Prefab, ProgressBar, find, view, Vec3, screen } from 'cc';
 const { ccclass, property } = _decorator;
 
-import { UICtrl,UIMgr } from '../Mgr/UIMgr';
+import { UICtrl, UIMgr } from '../Mgr/UIMgr';
 import { ResMgr } from '../Mgr/ResMgr';
 import { SymbolMgr } from "../Mgr/SymbolMgr";
 import { LevelMgr } from '../Mgr/LevelMgr';
 import { LevelConfig } from '../InterFace/LevelConfig';
-import { LevelF_MainUI_Ctrl } from '../Levels/LevelF/LevelF_MainUI_Ctrl';
 import { UILayer } from '../Mgr/UIMgr';
-import { LevelCK_MainUI_Ctrl } from '../Levels/LevelCK/LevelCK_MainUI_Ctrl';
 import { GameTopNode_Ctrl } from './GameTopNode_Ctrl';
 import { GameBottomNode_Ctrl } from './GameBottomNode_Ctrl';
 import { LevelTR_MainUI_Ctrl } from '../Levels/LevelTR/LevelTR_MainUI_Ctrl';
-import { LevelWF_MainUI_Ctrl } from '../Levels/LevelWF/LevelWF_MainUI_Ctrl';
 import { ScreenManager } from '../Mgr/ScreenManager';
 import { GameManager } from '../Mgr/GameManager';
 
 @ccclass('UILevelLoading_Ctrl')
 export class UILevelLoading_Ctrl extends UICtrl {
-    
+
     private progressBar: ProgressBar = null;
 
-     /**
-     * 初始化视图
-     */
+    /**
+    * 初始化视图
+    */
     protected initView(): void {
         // 初始化进度条
         const progressBarNode = this.view["ProgressBar"];
@@ -42,82 +39,82 @@ export class UILevelLoading_Ctrl extends UICtrl {
     }
 
     start() {
-        
+
     }
 
 
-    public initLoading(jsonPath:string):void{
+    public initLoading(jsonPath: string): void {
         // 异步加载
         resources.load(jsonPath, JsonAsset, (err, jsonAsset: JsonAsset) => {
             if (err) {
                 console.error('====>加载JSON失败:', err);
                 return;
             }
-            
-            const jsonData = jsonAsset.json as LevelConfig;
-            LevelMgr.Instance.setLevelConfigAndModel( jsonData );
 
-            
-            this.loadRes( jsonData );
+            const jsonData = jsonAsset.json as LevelConfig;
+            LevelMgr.Instance.setLevelConfigAndModel(jsonData);
+
+
+            this.loadRes(jsonData);
         });
     }
 
-    private loadRes( jsonData:LevelConfig ):void{
+    private loadRes(jsonData: LevelConfig): void {
         // 要初始化的ab包的名字
         let abName = jsonData.BundleName;
         // 要添加的预制体
-        let prefabs:string[] = [];
+        let prefabs: string[] = [];
         // 主界面
-        if ( jsonData.MainPrefabs !== "" ){
+        if (jsonData.MainPrefabs !== "") {
             prefabs.push(jsonData.MainPrefabs);
         }
         // 背景
-        if ( jsonData.BgPrefabs !== "" && jsonData.BgPrefabs != undefined ){
+        if (jsonData.BgPrefabs !== "" && jsonData.BgPrefabs != undefined) {
             prefabs.push(jsonData.BgPrefabs);
         }
         // 普通轮盘
-        if ( jsonData.GameTable.NormalGameTable !== null && jsonData.GameTable.NormalGameTable != undefined ){
+        if (jsonData.GameTable.NormalGameTable !== null && jsonData.GameTable.NormalGameTable != undefined) {
             prefabs.push(jsonData.GameTable.NormalGameTable.Prefabs);
         }
         // RespinGameTable
-        if ( jsonData.GameTable.RespinGameTable !== null && jsonData.GameTable.RespinGameTable != undefined ){
+        if (jsonData.GameTable.RespinGameTable !== null && jsonData.GameTable.RespinGameTable != undefined) {
             prefabs.push(jsonData.GameTable.RespinGameTable.Prefabs);
         }
-        if ( jsonData.GameTable.RespinGameTable2 !== null && jsonData.GameTable.RespinGameTable2 != undefined ){
+        if (jsonData.GameTable.RespinGameTable2 !== null && jsonData.GameTable.RespinGameTable2 != undefined) {
             prefabs.push(jsonData.GameTable.RespinGameTable2.Prefabs);
         }
         // FreeSpinGameTable
-        if ( jsonData.GameTable.FreeSpinGameTable !== null && jsonData.GameTable.FreeSpinGameTable != undefined ){
+        if (jsonData.GameTable.FreeSpinGameTable !== null && jsonData.GameTable.FreeSpinGameTable != undefined) {
             prefabs.push(jsonData.GameTable.FreeSpinGameTable.Prefabs);
         }
 
         // ReelTable
-        if ( jsonData.ReelTable.NormalReelTable !== null && jsonData.ReelTable.NormalReelTable != undefined ){
+        if (jsonData.ReelTable.NormalReelTable !== null && jsonData.ReelTable.NormalReelTable != undefined) {
             prefabs.push(jsonData.ReelTable.NormalReelTable.Prefabs);
         }
-        if ( jsonData.ReelTable.RespinReelTable !== null && jsonData.ReelTable.RespinReelTable != undefined ){
+        if (jsonData.ReelTable.RespinReelTable !== null && jsonData.ReelTable.RespinReelTable != undefined) {
             prefabs.push(jsonData.ReelTable.RespinReelTable.Prefabs);
         }
-        if ( jsonData.ReelTable.FreeSpinReelTable !== null && jsonData.ReelTable.FreeSpinReelTable != undefined ){
+        if (jsonData.ReelTable.FreeSpinReelTable !== null && jsonData.ReelTable.FreeSpinReelTable != undefined) {
             prefabs.push(jsonData.ReelTable.FreeSpinReelTable.Prefabs);
         }
 
         // 其他的预制体
-        for( const value of jsonData.OtherPrefabs ){
-            prefabs.push( value );
+        for (const value of jsonData.OtherPrefabs) {
+            prefabs.push(value);
         }
 
 
         // 信号快
         let symbol = jsonData.Symbol;
         for (const key in symbol) {
-            prefabs.push( symbol[key].file );
+            prefabs.push(symbol[key].file);
         }
 
         // 特效
         let effect = jsonData.Effect;
-        for( const value of effect ){
-            prefabs.push( value.file );
+        for (const value of effect) {
+            prefabs.push(value.file);
         }
 
         // 封装一个resPkg 
@@ -127,7 +124,7 @@ export class UILevelLoading_Ctrl extends UICtrl {
         // resPkg[abName].assetType = Prefab; // 预制体
         resPkg[abName].urls = [];
         for (const key in prefabs) {
-            resPkg[abName].urls.push( prefabs[key] );
+            resPkg[abName].urls.push(prefabs[key]);
         }
         resPkg[abName].sounds = []; // 音效
         // for...in 遍历 键值对
@@ -135,17 +132,17 @@ export class UILevelLoading_Ctrl extends UICtrl {
             // 确保只遍历对象自身的属性
             if (jsonData.SoundsFile.hasOwnProperty(key)) {
                 const value = jsonData.SoundsFile[key];
-                resPkg[abName].sounds.push( value );
+                resPkg[abName].sounds.push(value);
             }
         }
         // 连线音效 SoundsLineFile
         for (const value of jsonData.SoundsLineFile) {
-            resPkg[abName].sounds.push( value );
+            resPkg[abName].sounds.push(value);
         }
 
         resPkg[abName].sprites = []; // 音效
         for (const value of jsonData.SpriteFrame) {
-            resPkg[abName].sprites.push( value );
+            resPkg[abName].sprites.push(value);
         }
 
         // GameMain的ab包
@@ -167,60 +164,47 @@ export class UILevelLoading_Ctrl extends UICtrl {
             "Sounds/btnClick"
         ];
         resPkg["GameMain"].sprites = [
-            
+
         ];
 
-        ResMgr.Instance.preLoadResPkg(resPkg,( curNum:number,totalNUm:number)=>{
+        ResMgr.Instance.preLoadResPkg(resPkg, (curNum: number, totalNUm: number) => {
             const progress = curNum / totalNUm;
             // 显示加载进度
             this.progressBar.progress = progress * 0.5; // 包的加载给50%
-        },()=>{
+        }, () => {
             // 创建缓存信号块
-            SymbolMgr.Instance.initSymbolCache( jsonData,(curNum:number,totalNUm:number)=>{
+            SymbolMgr.Instance.initSymbolCache(jsonData, (curNum: number, totalNUm: number) => {
                 // 显示加载进度
                 const progress = (curNum / totalNUm) * 0.5;
                 this.progressBar.progress = 0.5 + progress
-            },()=>{
+            }, () => {
                 // 加载调试数据 然后进入关卡
-                this.loadTestSpinData( jsonData );
-            } );
-        });
-    }
-
-    // 这里加载调试数据
-    public loadTestSpinData( levelConfig:any ){
-        let spinJsonPath:string[] = levelConfig.SpinJson;
-        // 读取测试数据
-        LevelMgr.Instance.loadTestSpinData( spinJsonPath,()=>{
-            // 读取default.json的初始化数据
-            LevelMgr.Instance.requestEnterGame(1,levelConfig.BundleName,()=>{
-                this.enterLevelGame( levelConfig.BundleName );
+                this.loadTestSpinData(jsonData);
             });
         });
     }
 
-    public enterLevelGame( abName:string ){
+    // 这里加载调试数据
+    public loadTestSpinData(levelConfig: any) {
+        // 测试数据已内置在 LevelTR_MockData.ts 中，不再需要配置里的 SpinJson 路径
+        // 读取测试数据
+        LevelMgr.Instance.loadTestSpinData([], () => {
+            // 读取default.json的初始化数据
+            LevelMgr.Instance.requestEnterGame(1, levelConfig.BundleName, () => {
+                this.enterLevelGame(levelConfig.BundleName);
+            });
+        });
+    }
+
+    public enterLevelGame(abName: string) {
         // 游戏主体
-        const targetNode = find("Canvas/MiddleNode"); 
+        const targetNode = find("Canvas/MiddleNode");
         // 加载完毕 进入关卡 创建游戏的主界面
-        if (abName == "LevelF"){
-            UIMgr.Instance.showUi(abName,"Prefabs/MainUI","LevelF_MainUI_Ctrl",UILayer.Normal,targetNode);
-        }else if(abName == "LevelCK"){
-            UIMgr.Instance.showUi(abName,"Prefabs/MainUI","LevelCK_MainUI_Ctrl",UILayer.Normal,targetNode);
+        // 只保留 LevelTR
+        if (abName == "LevelTR") {
+            UIMgr.Instance.showUi(abName, "Prefabs/MainUI", "LevelTR_MainUI_Ctrl", UILayer.Normal, targetNode);
         }
-        else if(abName == "LevelTR"){
-            UIMgr.Instance.showUi(abName,"Prefabs/MainUI","LevelTR_MainUI_Ctrl",UILayer.Normal,targetNode);
-        }
-        else if(abName == "LevelWF"){
-            UIMgr.Instance.showUi(abName,"Prefabs/MainUI","LevelWF_MainUI_Ctrl",UILayer.Normal,targetNode);
-        }
-        else if(abName == "LevelJT"){
-            UIMgr.Instance.showUi(abName,"Prefabs/MainUI","LevelJT_MainUI_Ctrl",UILayer.Normal,targetNode);
-        }
-        else if(abName == "LevelEM"){
-            UIMgr.Instance.showUi(abName,"Prefabs/MainUI","LevelEM_MainUI_Ctrl",UILayer.Normal,targetNode);
-        }
-        
+
         // // 加载GameTopNode
         // UIMgr.Instance.showUi("GameMain","Prefabs/GameTopNode","GameTopNode_Ctrl",UILayer.Normal);
         this.initTopNode();
@@ -234,14 +218,14 @@ export class UILevelLoading_Ctrl extends UICtrl {
         this.node.destroy();
     }
 
-    public initTopNode():void{
+    public initTopNode(): void {
 
         // 加载GameTopNode
-        const targetNode = find("Canvas/TopNode"); 
-        if (ScreenManager.instance.getCurScreenValue() == true){
-            UIMgr.Instance.showUi("GameMain","Prefabs/GameTopNode","GameTopNode_Ctrl",UILayer.Normal,targetNode);
-        }else{
-            UIMgr.Instance.showUi("GameMain","Prefabs/GameTopNodeL","GameTopNode_Ctrl",UILayer.Normal,targetNode);
+        const targetNode = find("Canvas/TopNode");
+        if (ScreenManager.instance.getCurScreenValue() == true) {
+            UIMgr.Instance.showUi("GameMain", "Prefabs/GameTopNode", "GameTopNode_Ctrl", UILayer.Normal, targetNode);
+        } else {
+            UIMgr.Instance.showUi("GameMain", "Prefabs/GameTopNodeL", "GameTopNode_Ctrl", UILayer.Normal, targetNode);
         }
 
         // const uiTopRoot = targetNode;
@@ -252,13 +236,13 @@ export class UILevelLoading_Ctrl extends UICtrl {
         // uiTopRoot.setScale(new Vec3(scaleX, scaleX, 1));
     }
 
-    public initBottomNode():void{
+    public initBottomNode(): void {
         // 加载GameTopNode
-        const targetNode = find("Canvas/BottomNode"); 
-        if (ScreenManager.instance.getCurScreenValue() == true){
-            UIMgr.Instance.showUi("GameMain","Prefabs/GameBottomNode","GameBottomNode_Ctrl",UILayer.Normal,targetNode);
-        }else{
-            UIMgr.Instance.showUi("GameMain","Prefabs/GameBottomNodeL","GameBottomNode_Ctrl",UILayer.Normal,targetNode);
+        const targetNode = find("Canvas/BottomNode");
+        if (ScreenManager.instance.getCurScreenValue() == true) {
+            UIMgr.Instance.showUi("GameMain", "Prefabs/GameBottomNode", "GameBottomNode_Ctrl", UILayer.Normal, targetNode);
+        } else {
+            UIMgr.Instance.showUi("GameMain", "Prefabs/GameBottomNodeL", "GameBottomNode_Ctrl", UILayer.Normal, targetNode);
         }
 
         // const uiBottomRoot = targetNode;
@@ -270,7 +254,7 @@ export class UILevelLoading_Ctrl extends UICtrl {
     }
 
     update(deltaTime: number) {
-        
+
     }
 
     /**

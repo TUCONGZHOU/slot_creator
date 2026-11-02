@@ -33,19 +33,19 @@ type reSpinData = {
 
 
 type JsonResult = {
-    bet:number;// 当前的投注金额
-    betList:number[];// 可选的投注金额列表
-    jackpots:number[];// jackpot数据
+    bet: number;// 当前的投注金额
+    betList: number[];// 可选的投注金额列表
+    jackpots: number[];// jackpot数据
     lastAction: string, // 上一个action
     action: string, // 当前的action
     nextAction: string, // 下一个action
     reels: number[][][], // 轮盘数据
-    lines:TableLineMeta[], // 连线数据
-    storedIcons:StoredIconMeta[][], // bonus数据
-    freespin:freespinData, // 免费旋转数据
-    freeSpinReels:number[][][], // 免费旋转的轮盘数据
-    respin:reSpinData, // respin数据
-    respinReels:number[][][], // respin的轮盘数据
+    lines: TableLineMeta[], // 连线数据
+    storedIcons: StoredIconMeta[][], // bonus数据
+    freespin: freespinData, // 免费旋转数据
+    freeSpinReels: number[][][], // 免费旋转的轮盘数据
+    respin: reSpinData, // respin数据
+    respinReels: number[][][], // respin的轮盘数据
     winAmount: number // 赢钱金额
 }
 
@@ -53,65 +53,65 @@ type JsonResult = {
 @ccclass('CKGameCenter')
 export class CKGameCenter extends Component {
 
-    public static Instance:CKGameCenter = null;
+    public static Instance: CKGameCenter = null;
 
     private m_action = ""; // 当前的action
     private m_nextAction = ""; // 下一个action
     private m_lastAction = ""; // 上一个action
 
-    private reel1:number[] = [3,5,6,7,8,90,92,94,1,2,3,4,5,6,7,90,92,94,0,1,2,3,5,6,7,8,90,92,94,1,2,3,4,5,6,7,90,92,94,0];
-    private reel2:number[] = [92,94,0,1,2,3,4,6,7,8,90,92,94,0,2,3,4,5,6,7,8,92,94,0,1,2,3,4,6,7,8,90,92,94,0,2,3,4,5,6];
-    private reel3:number[] = [0,2,3,4,5,6,7,8,92,94,0,1,2,3,4,6,7,8,90,92,94,0,2,3,4,5,6,7,8,92,94,0,1,2,3,4,6,7,8,90];
-    private reel4:number[] = [1,2,3,4,6,7,8,90,92,94,0,2,3,4,5,6,7,8,92,94,0,1,2,3,4,6,7,8,90,92,94,0,1,3,4,5,6,7,8,90];
-    private reel5:number[] = [0,1,2,3,4,6,7,8,90,92,94,0,1,3,4,5,6,7,8,90,94,0,1,2,3,4,5,7,8,90,92,94,0,1,3,4,5,6,7,8];
+    private reel1: number[] = [3, 5, 6, 7, 8, 90, 92, 94, 1, 2, 3, 4, 5, 6, 7, 90, 92, 94, 0, 1, 2, 3, 5, 6, 7, 8, 90, 92, 94, 1, 2, 3, 4, 5, 6, 7, 90, 92, 94, 0];
+    private reel2: number[] = [92, 94, 0, 1, 2, 3, 4, 6, 7, 8, 90, 92, 94, 0, 2, 3, 4, 5, 6, 7, 8, 92, 94, 0, 1, 2, 3, 4, 6, 7, 8, 90, 92, 94, 0, 2, 3, 4, 5, 6];
+    private reel3: number[] = [0, 2, 3, 4, 5, 6, 7, 8, 92, 94, 0, 1, 2, 3, 4, 6, 7, 8, 90, 92, 94, 0, 2, 3, 4, 5, 6, 7, 8, 92, 94, 0, 1, 2, 3, 4, 6, 7, 8, 90];
+    private reel4: number[] = [1, 2, 3, 4, 6, 7, 8, 90, 92, 94, 0, 2, 3, 4, 5, 6, 7, 8, 92, 94, 0, 1, 2, 3, 4, 6, 7, 8, 90, 92, 94, 0, 1, 3, 4, 5, 6, 7, 8, 90];
+    private reel5: number[] = [0, 1, 2, 3, 4, 6, 7, 8, 90, 92, 94, 0, 1, 3, 4, 5, 6, 7, 8, 90, 94, 0, 1, 2, 3, 4, 5, 7, 8, 90, 92, 94, 0, 1, 3, 4, 5, 6, 7, 8];
 
-    private freereel1:number[] = [3,5,6,7,8,1,2,3,4,5,6,7,0,1,2,3,5,6,7,8,1,2,3,4,5,6,7,0,0,2,5,8,6];
-    private freereel2:number[] = [0,0,1,2,3,4,6,7,8,1,0,2,3,4,5,6,7,8,2,0,1,2,3,4,6,7,8,3,0,2,3,4,5,6];
-    private freereel3:number[] = [0,2,3,4,5,6,7,8,8,0,1,2,3,4,6,7,8,0,0,2,3,4,5,6,7,8,6,0,1,2,3,4,6,7,8];
-    private freereel4:number[] = [1,2,3,4,6,7,8,1,2,0,2,3,4,5,6,7,8,8,0,1,2,3,4,6,7,8,5,8,0,1,3,4,5,6,7,8,6];
-    private freereel5:number[] = [0,1,2,3,4,6,7,8,6,8,0,1,3,4,5,6,7,8,6,0,1,2,3,4,5,7,8,5,3,0,1,3,4,5,6,7,8];
+    private freereel1: number[] = [3, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 0, 0, 2, 5, 8, 6];
+    private freereel2: number[] = [0, 0, 1, 2, 3, 4, 6, 7, 8, 1, 0, 2, 3, 4, 5, 6, 7, 8, 2, 0, 1, 2, 3, 4, 6, 7, 8, 3, 0, 2, 3, 4, 5, 6];
+    private freereel3: number[] = [0, 2, 3, 4, 5, 6, 7, 8, 8, 0, 1, 2, 3, 4, 6, 7, 8, 0, 0, 2, 3, 4, 5, 6, 7, 8, 6, 0, 1, 2, 3, 4, 6, 7, 8];
+    private freereel4: number[] = [1, 2, 3, 4, 6, 7, 8, 1, 2, 0, 2, 3, 4, 5, 6, 7, 8, 8, 0, 1, 2, 3, 4, 6, 7, 8, 5, 8, 0, 1, 3, 4, 5, 6, 7, 8, 6];
+    private freereel5: number[] = [0, 1, 2, 3, 4, 6, 7, 8, 6, 8, 0, 1, 3, 4, 5, 6, 7, 8, 6, 0, 1, 2, 3, 4, 5, 7, 8, 5, 3, 0, 1, 3, 4, 5, 6, 7, 8];
 
-    private respinreel1:number[] = [1,2,2,3,4,5,6,7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,1,2,3,4,5,6,7,8];
-    private respinreel2:number[] = [0,1,2,3,4,5,5,6,7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,2,3,4,4,5,6,7];
-    private respinreel3:number[] = [94,0,1,2,3,4,5,6,7,8,94,0,1,2,2,3,4,5,6,7,8,94,0,1,2,3,4,5,6,7];
-    private respinreel4:number[] = [7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,2,2,3,4,5,6,7,8,94,0,1,2,3,4,5];
-    private respinreel5:number[] = [2,3,4,5,6,7,8,94,0,1,2,3,4,5,6,7,8,94,0,1,1,2,3,4,5,6,7,8,94,0];
+    private respinreel1: number[] = [1, 2, 2, 3, 4, 5, 6, 7, 8, 94, 0, 1, 2, 3, 4, 5, 6, 7, 8, 94, 0, 1, 1, 2, 3, 4, 5, 6, 7, 8];
+    private respinreel2: number[] = [0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 94, 0, 1, 2, 3, 4, 5, 6, 7, 8, 94, 0, 1, 2, 3, 4, 4, 5, 6, 7];
+    private respinreel3: number[] = [94, 0, 1, 2, 3, 4, 5, 6, 7, 8, 94, 0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 94, 0, 1, 2, 3, 4, 5, 6, 7];
+    private respinreel4: number[] = [7, 8, 94, 0, 1, 2, 3, 4, 5, 6, 7, 8, 94, 0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 94, 0, 1, 2, 3, 4, 5];
+    private respinreel5: number[] = [2, 3, 4, 5, 6, 7, 8, 94, 0, 1, 2, 3, 4, 5, 6, 7, 8, 94, 0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 94, 0];
 
-    private line_parten:number[][] = [
-        [1,1,1,1,1],
-        [2,2,2,2,2],
-        [0,0,0,0,0],
-        [2,1,0,1,2],
-        [0,1,2,1,0],
-        [1,2,2,2,1],
-        [1,0,0,0,1],
-        [2,2,1,0,0],
-        [0,0,1,2,2],
-        [1,2,1,2,1],
-        [1,0,1,0,1],
-        [2,1,1,1,0],
-        [0,1,1,1,2],
-        [1,1,2,1,0],
-        [1,1,0,1,2],
-        [2,1,2,1,2],
-        [0,1,0,1,0],
-        [2,2,0,2,2],
-        [0,0,2,0,0],
-        [1,2,0,2,1],
-        [1,0,2,0,1],
-        [2,0,2,0,2],
-        [0,2,0,2,0],
-        [2,0,0,0,2],
-        [0,2,2,2,0],
-        [2,0,1,0,2],
-        [0,2,1,2,0],
-        [1,1,0,1,1],
-        [1,1,2,1,1],
-        [2,0,2,1,1]
+    private line_parten: number[][] = [
+        [1, 1, 1, 1, 1],
+        [2, 2, 2, 2, 2],
+        [0, 0, 0, 0, 0],
+        [2, 1, 0, 1, 2],
+        [0, 1, 2, 1, 0],
+        [1, 2, 2, 2, 1],
+        [1, 0, 0, 0, 1],
+        [2, 2, 1, 0, 0],
+        [0, 0, 1, 2, 2],
+        [1, 2, 1, 2, 1],
+        [1, 0, 1, 0, 1],
+        [2, 1, 1, 1, 0],
+        [0, 1, 1, 1, 2],
+        [1, 1, 2, 1, 0],
+        [1, 1, 0, 1, 2],
+        [2, 1, 2, 1, 2],
+        [0, 1, 0, 1, 0],
+        [2, 2, 0, 2, 2],
+        [0, 0, 2, 0, 0],
+        [1, 2, 0, 2, 1],
+        [1, 0, 2, 0, 1],
+        [2, 0, 2, 0, 2],
+        [0, 2, 0, 2, 0],
+        [2, 0, 0, 0, 2],
+        [0, 2, 2, 2, 0],
+        [2, 0, 1, 0, 2],
+        [0, 2, 1, 2, 0],
+        [1, 1, 0, 1, 1],
+        [1, 1, 2, 1, 1],
+        [2, 0, 2, 1, 1]
     ];
-    
 
-    private line_bet:Record<number, BetTuple> = {
+
+    private line_bet: Record<number, BetTuple> = {
         0: [40, 75, 150],
         1: [30, 50, 90],
         2: [20, 40, 75],
@@ -124,15 +124,15 @@ export class CKGameCenter extends Component {
         92: [5, 10, 15]
     };
 
-    private normalReel:number[][] = [this.reel1,this.reel2,this.reel3,this.reel4,this.reel5];
-    private freeReel:number[][] = [this.freereel1,this.freereel2,this.freereel3,this.freereel4,this.freereel5];
+    private normalReel: number[][] = [this.reel1, this.reel2, this.reel3, this.reel4, this.reel5];
+    private freeReel: number[][] = [this.freereel1, this.freereel2, this.freereel3, this.freereel4, this.freereel5];
 
-    private paramRow      = 3          //-- 行数
-    private paramCol      = 5          //-- 列数
-    private bonusId       = 94         //-- bonusId
-    private bounsId2      = 95         //-- bonusId2
-    private scatterId     = 90         //-- scatterId
-    private bonusMultiple = [0.5,1,1.5,2,3,4.5,5,8,10 ]; //--bonus要显示的倍数
+    private paramRow = 3          //-- 行数
+    private paramCol = 5          //-- 列数
+    private bonusId = 94         //-- bonusId
+    private bounsId2 = 95         //-- bonusId2
+    private scatterId = 90         //-- scatterId
+    private bonusMultiple = [0.5, 1, 1.5, 2, 3, 4.5, 5, 8, 10]; //--bonus要显示的倍数
     private wildId = 92;
     private freeSpinTotalCount = 10; // 免费旋转次数
     private freeSpinCurrentCount = 0; // 当前免费旋转次数
@@ -140,18 +140,18 @@ export class CKGameCenter extends Component {
 
     private reSpinsTotalCount = 3; // respin的总次数
     private reSpinCurCount = 0; // 当前respin次数
-    private respinRowCount:number[] = [3,4,5,6,7]; // respin模式的行数配置
+    private respinRowCount: number[] = [3, 4, 5, 6, 7]; // respin模式的行数配置
 
-    private tempNormalReelData:number[][][] = []; // 临时的正常轮盘数据
-    private tempStoreIconsData:StoredIconMeta[][] = []; // 临时的bonus数据
+    private tempNormalReelData: number[][][] = []; // 临时的正常轮盘数据
+    private tempStoreIconsData: StoredIconMeta[][] = []; // 临时的bonus数据
 
-    private tempReSpinReelData:number[][][] = []; // 临时的respin轮盘数据
+    private tempReSpinReelData: number[][][] = []; // 临时的respin轮盘数据
 
     protected onLoad(): void {
-        if( CKGameCenter.Instance === null ){
+        if (CKGameCenter.Instance === null) {
             CKGameCenter.Instance = this;
         }
-        else{
+        else {
             this.destroy();
             return;
         }
@@ -170,7 +170,7 @@ export class CKGameCenter extends Component {
     }
 
     update(deltaTime: number) {
-        
+
     }
 
     private random(min: number, max: number): number {
@@ -182,15 +182,14 @@ export class CKGameCenter extends Component {
     }
 
     /* ================= 轮盘 ================= */
-    private getReelColData(reel: number[]): number[] 
-    {
+    private getReelColData(reel: number[]): number[] {
         const start = this.random(0, reel.length - 1);
         const result: number[] = [];
 
         for (let i = 0; i < this.paramRow; i++) {
             let idx = start + i;
             if (idx >= reel.length) idx -= reel.length;
-                result.push(reel[idx]);
+            result.push(reel[idx]);
         }
         return result;
     }
@@ -201,14 +200,14 @@ export class CKGameCenter extends Component {
 
     // 方法1 强制进入freespin的情况下 生成一个Normal轮盘数据 满足至少3个scatter
     private createForceFreeSpinReelData(): number[][][] {
-        let reels:number[][][] = [[]]; // 多轮盘的结构
-        let reelsData:number[][] = reels[0]; // 填充第一个轮盘的数据
+        let reels: number[][][] = [[]]; // 多轮盘的结构
+        let reelsData: number[][] = reels[0]; // 填充第一个轮盘的数据
         for (let i = 0; i < this.paramCol; i++) {
             const reelData = this.getReelColData(this.freeReel[i]);
             reelsData.push(reelData);
         }
         // 随机找出要生成scatter的3列位置 列的位置不能重复
-        let scatterMapCol = new Map<number,boolean>();
+        let scatterMapCol = new Map<number, boolean>();
         while (scatterMapCol.size < 3) {
             let col = this.random(0, this.paramCol - 1);
             if (!scatterMapCol.has(col)) {
@@ -223,26 +222,26 @@ export class CKGameCenter extends Component {
         return reels;
     }
     // 方法2 生成连线数据
-    private getReelsLines(reelsData: number[][]):TableLineMeta[] {
-        let lines:TableLineMeta[] = [];
+    private getReelsLines(reelsData: number[][]): TableLineMeta[] {
+        let lines: TableLineMeta[] = [];
 
-        let tableLine:TableLineMeta = [];
+        let tableLine: TableLineMeta = [];
 
         for (const line of this.line_parten) {
             const tempLineSymbol: OneLineMeta = [];
-            let one_line:OneLineMeta = [];
+            let one_line: OneLineMeta = [];
 
             for (let col = 0; col < this.paramCol; col++) {
                 const row = line[col];
                 let symbolId = reelsData[col][row];
-                assert( symbolId != null," !! symbolId is null !! col = " + col + " row = " + row + " !! " );
+                assert(symbolId != null, " !! symbolId is null !! col = " + col + " row = " + row + " !! ");
 
-                let meta:LineSymbolMeta = {} as LineSymbolMeta;
+                let meta: LineSymbolMeta = {} as LineSymbolMeta;
                 meta.id = symbolId;
                 meta.col = col;
                 meta.row = row;
 
-                tempLineSymbol.push( meta );
+                tempLineSymbol.push(meta);
             }
 
             let orgId = -1;
@@ -255,20 +254,20 @@ export class CKGameCenter extends Component {
 
             if (orgId === this.bonusId || orgId === this.scatterId) {
                 // -- bonus和scatter不参与连线
-            }else{
+            } else {
                 if (orgId === -1) {
                     // -- 全是wild
                     // tableLine.push(tempLineSymbol);
-                    for( let i = 0; i < this.paramCol; i++ ){
-                        let meta:LineSymbolMeta = {} as LineSymbolMeta;
+                    for (let i = 0; i < this.paramCol; i++) {
+                        let meta: LineSymbolMeta = {} as LineSymbolMeta;
                         meta.id = tempLineSymbol[i].id;
                         meta.col = tempLineSymbol[i].col;
                         meta.row = tempLineSymbol[i].row;
-                        one_line.push( meta );
+                        one_line.push(meta);
                     }
                     tableLine.push(one_line);
                 }
-                else{
+                else {
                     // -- 检查是否满足
                     let isOk1 = false;
                     let isOk2 = false;
@@ -277,47 +276,47 @@ export class CKGameCenter extends Component {
                     let isOk5 = false;
                     let lianNum = 0;
                     // -- 第一行
-                    if ((tempLineSymbol[0].id == orgId) || ( tempLineSymbol[0].id == this.wildId )){
+                    if ((tempLineSymbol[0].id == orgId) || (tempLineSymbol[0].id == this.wildId)) {
                         isOk1 = true;
                     }
                     // 第二行
-                    if( isOk1 ){
-                        if ((tempLineSymbol[1].id == orgId) || ( tempLineSymbol[1].id == this.wildId )){
+                    if (isOk1) {
+                        if ((tempLineSymbol[1].id == orgId) || (tempLineSymbol[1].id == this.wildId)) {
                             isOk2 = true;
-                        } 
+                        }
                     }
                     // 三连
-                    if( isOk2 ){
-                        if ((tempLineSymbol[2].id == orgId) || ( tempLineSymbol[2].id == this.wildId )){
+                    if (isOk2) {
+                        if ((tempLineSymbol[2].id == orgId) || (tempLineSymbol[2].id == this.wildId)) {
                             isOk3 = true;
                             lianNum = 3;
                         }
                     }
                     // 四连
-                    if( isOk3 ){
-                        if ((tempLineSymbol[3].id == orgId) || ( tempLineSymbol[3].id == this.wildId )){
+                    if (isOk3) {
+                        if ((tempLineSymbol[3].id == orgId) || (tempLineSymbol[3].id == this.wildId)) {
                             isOk4 = true;
                             lianNum = 4;
                         }
                     }
                     // 五连
-                    if( isOk4 ){
-                        if ((tempLineSymbol[4].id == orgId) || ( tempLineSymbol[4].id == this.wildId )){
+                    if (isOk4) {
+                        if ((tempLineSymbol[4].id == orgId) || (tempLineSymbol[4].id == this.wildId)) {
                             isOk5 = true;
                             lianNum = 5;
                         }
                     }
 
-                    if( lianNum > 0 ){
-                        for( let i = 0; i < lianNum; i++ ){
-                            let meta:LineSymbolMeta = {} as LineSymbolMeta;
+                    if (lianNum > 0) {
+                        for (let i = 0; i < lianNum; i++) {
+                            let meta: LineSymbolMeta = {} as LineSymbolMeta;
                             meta.id = tempLineSymbol[i].id;
                             meta.col = tempLineSymbol[i].col;
                             meta.row = tempLineSymbol[i].row;
-                            one_line.push( meta );
+                            one_line.push(meta);
                         }
-                        let isSameLineExists = this.checkLineExists( tableLine, one_line );
-                        if( !isSameLineExists ){
+                        let isSameLineExists = this.checkLineExists(tableLine, one_line);
+                        if (!isSameLineExists) {
                             tableLine.push(one_line);
                         }
                     }
@@ -330,8 +329,8 @@ export class CKGameCenter extends Component {
     }
     // 方法3 生成storedIcons数据
     private getStoredIcons(reelsData: number[][]): StoredIconMeta[][] {
-        let storedIcons:StoredIconMeta[][] = [[]];
-        let storedIconReelOnes:StoredIconMeta[] = storedIcons[0]; // 第一个轮盘的bonus数据
+        let storedIcons: StoredIconMeta[][] = [[]];
+        let storedIconReelOnes: StoredIconMeta[] = storedIcons[0]; // 第一个轮盘的bonus数据
         for (let i = 0; i < this.paramCol; i++) {
             const reelData = reelsData[i];
             reelData.forEach((id, row) => {
@@ -347,9 +346,9 @@ export class CKGameCenter extends Component {
         return storedIcons;
     }
     // 方法4 生成Normal轮盘
-    private createNormalReelData():number[][][] {
-        let reels:number[][][] = [[]]; // 多轮盘的结构
-        let reelsData:number[][] = reels[0]; // 填充第一个轮盘的数据
+    private createNormalReelData(): number[][][] {
+        let reels: number[][][] = [[]]; // 多轮盘的结构
+        let reelsData: number[][] = reels[0]; // 填充第一个轮盘的数据
         for (let i = 0; i < this.paramCol; i++) {
             const reelData = this.getReelColData(this.normalReel[i]);
             reelsData.push(reelData);
@@ -357,13 +356,13 @@ export class CKGameCenter extends Component {
         return reels;
     }
     // 方法5 计算赢钱金额
-    private calTotalWinAmount( lines:TableLineMeta ):number{
-        let totalWinAmount = 0; 
+    private calTotalWinAmount(lines: TableLineMeta): number {
+        let totalWinAmount = 0;
         let totalBet = 0;
         for (const line of lines) {
-            let symbolId:number = -1;
-            for( let i = 1; i < line.length; i++ ){
-                if( line[i].id !== this.wildId ){
+            let symbolId: number = -1;
+            for (let i = 1; i < line.length; i++) {
+                if (line[i].id !== this.wildId) {
                     symbolId = line[i].id;
                     break;
                 }
@@ -388,7 +387,7 @@ export class CKGameCenter extends Component {
         return totalWinAmount;
     }
     // 方法6 检查轮盘是否需要从Normal进入FreeSpin
-    private checkInFreeSpin( reelsData:number[][] ):boolean{
+    private checkInFreeSpin(reelsData: number[][]): boolean {
         let count = 0
         for (let col = 0; col < this.paramCol; col++) {
             let reelData = reelsData[col]
@@ -404,8 +403,8 @@ export class CKGameCenter extends Component {
     }
     // 方法7 生成FreeSpin轮盘
     private createFreeSpinReelData(): number[][][] {
-        let reels:number[][][] = [[]]; // 多轮盘的结构
-        let reelsData:number[][] = reels[0]; // 填充第一个轮盘的数据
+        let reels: number[][][] = [[]]; // 多轮盘的结构
+        let reelsData: number[][] = reels[0]; // 填充第一个轮盘的数据
         for (let i = 0; i < this.paramCol; i++) {
             const reelData = this.getReelColData(this.freeReel[i]);
             reelsData.push(reelData);
@@ -413,26 +412,26 @@ export class CKGameCenter extends Component {
         return reels;
     }
     // 方法8 初始化respin轮盘数据
-    private initReSpinReelData( normalReelsData: number[][] ):number[][][]{
-        let reSpinReel:number[][][] = [[]];
+    private initReSpinReelData(normalReelsData: number[][]): number[][][] {
+        let reSpinReel: number[][][] = [[]];
         // 先给第0层的每一列创建空数组
         for (let col = 0; col < this.paramCol; col++) {
             reSpinReel[0][col] = [];
         }
 
-        for( let col = 0; col < this.paramCol; col++ ){
+        for (let col = 0; col < this.paramCol; col++) {
             let reelData = normalReelsData[col];
-            for( let row = 0; row < this.respinRowCount[col]; row++ ){
-                if( row < this.paramRow ){
+            for (let row = 0; row < this.respinRowCount[col]; row++) {
+                if (row < this.paramRow) {
                     let symbolId = reelData[row];
-                    if ( symbolId === this.bonusId ){
+                    if (symbolId === this.bonusId) {
                         reSpinReel[0][col][row] = this.bonusId;
                     }
-                    else{
+                    else {
                         reSpinReel[0][col][row] = this.bounsId2;
                     }
                 }
-                else{
+                else {
                     reSpinReel[0][col][row] = this.bounsId2;
                 }
             }
@@ -440,12 +439,12 @@ export class CKGameCenter extends Component {
         return reSpinReel;
     }
     // 方法9 检查一下当前的线存在不
-    private checkLineExists( tableLine:TableLineMeta, oneLine:OneLineMeta ):boolean{
+    private checkLineExists(tableLine: TableLineMeta, oneLine: OneLineMeta): boolean {
         for (const line of tableLine) {
-            if( line.length === oneLine.length ){
+            if (line.length === oneLine.length) {
                 let isSame = true;
-                for( let i = 0; i < line.length; i++ ){
-                    if( line[i].id == oneLine[i].id && line[i].col == oneLine[i].col && line[i].row == oneLine[i].row ){
+                for (let i = 0; i < line.length; i++) {
+                    if (line[i].id == oneLine[i].id && line[i].col == oneLine[i].col && line[i].row == oneLine[i].row) {
                         // -- 这个位置的 id col row 都一样
                     }
                     else {
@@ -453,7 +452,7 @@ export class CKGameCenter extends Component {
                         break;
                     }
                 }
-                if( isSame ){
+                if (isSame) {
                     return true;
                 }
             }
@@ -461,7 +460,7 @@ export class CKGameCenter extends Component {
         return false;
     }
     // 方法10 根据概率是否进入freespin
-    private forceInStartFreeSpin():boolean{
+    private forceInStartFreeSpin(): boolean {
         let coin = PlayerMgr.Instance.getCoin();
         if (coin < 5000) {
             // 50%的概率进入freespin
@@ -470,7 +469,7 @@ export class CKGameCenter extends Component {
                 return true;
             }
         }
-        else{
+        else {
             // 5%的概率进入freespin
             let rand = this.random(1, 100);
             if (rand <= 5) {
@@ -478,23 +477,23 @@ export class CKGameCenter extends Component {
             }
         }
         return false;
-        
+
         // return false; // -- 测试代码 先固定进入freespin
         // return true; // -- 测试代码 先固定进入freespin
     }
     // 方法11 继续生成respin数据
-    private jixuCreateReSpinData():boolean{
+    private jixuCreateReSpinData(): boolean {
         let isNew = false;
         let reelsData = this.tempReSpinReelData[0];
-        for( let col = 0; col < this.paramCol; col++ ){
+        for (let col = 0; col < this.paramCol; col++) {
             let reelData = reelsData[col];
-            for( let row = 0; row < this.respinRowCount[col]; row++ ){
+            for (let row = 0; row < this.respinRowCount[col]; row++) {
                 let symbolId = reelData[row];
-                if ( symbolId !== this.bonusId ){
+                if (symbolId !== this.bonusId) {
                     // 根据概率生成 bonusId 
                     let rand = this.random(1, 100);
                     // 5%的概率生成bonusId
-                    if( rand <= 5 ){
+                    if (rand <= 5) {
                         reelsData[col][row] = this.bonusId;
                         isNew = true;
                     }
@@ -504,21 +503,21 @@ export class CKGameCenter extends Component {
         return isNew;
     }
     // 方法12 根据respin的结果 生成 storedIcons
-    private createReSpinStoredIcons( reelsData: number[][] ):StoredIconMeta[][]{
-        let storedIcons:StoredIconMeta[][] = [[]];
-        for( let col = 0; col < this.paramCol; col++ ){
+    private createReSpinStoredIcons(reelsData: number[][]): StoredIconMeta[][] {
+        let storedIcons: StoredIconMeta[][] = [[]];
+        for (let col = 0; col < this.paramCol; col++) {
             let reelData = reelsData[col];
-            for( let row = 0; row < this.respinRowCount[col]; row++ ){
+            for (let row = 0; row < this.respinRowCount[col]; row++) {
                 let symbolId = reelData[row];
                 if (symbolId === this.bonusId) {
-                    storedIcons[0].push({ col:col, row:row, Multiple:this.getMultiple() });
+                    storedIcons[0].push({ col: col, row: row, Multiple: this.getMultiple() });
                 }
             }
         }
         return storedIcons;
     }
     // 方法13 检查是否满足进入respin的条件 只要有5个bonus就进入respin
-    private checkInReSpin( reelsData:number[][] ):boolean{
+    private checkInReSpin(reelsData: number[][]): boolean {
         let count = 0
         for (let col = 0; col < this.paramCol; col++) {
             let reelData = reelsData[col]
@@ -533,8 +532,8 @@ export class CKGameCenter extends Component {
     }
     // 方法14 强制进入respin的情况下 生成一个Normal轮盘数据 满足至少5个bonusId
     private createForceReSpinReelData(): number[][][] {
-        let reels:number[][][] = [[]]; // 多轮盘的结构
-        let reelsData:number[][] = reels[0]; // 填充第一个轮盘的数据
+        let reels: number[][][] = [[]]; // 多轮盘的结构
+        let reelsData: number[][] = reels[0]; // 填充第一个轮盘的数据
         for (let i = 0; i < this.paramCol; i++) {
             const reelData = this.getReelColData(this.normalReel[i]);
             reelsData.push(reelData);
@@ -553,7 +552,7 @@ export class CKGameCenter extends Component {
     }
 
     // 方法15 根据概率是否进入freespin
-    private forceInStartReSpin():boolean{
+    private forceInStartReSpin(): boolean {
         let coin = PlayerMgr.Instance.getCoin();
         if (coin < 5000) {
             // 50%的概率进入freespin
@@ -562,7 +561,7 @@ export class CKGameCenter extends Component {
                 return true;
             }
         }
-        else{
+        else {
             // 5%的概率进入freespin
             let rand = this.random(1, 100);
             if (rand <= 5) {
@@ -576,9 +575,9 @@ export class CKGameCenter extends Component {
     }
 
     // 方法16 计算respin的赢钱金额
-    private calReSpinWinAmount( storedIcons:StoredIconMeta[][] ):number{
+    private calReSpinWinAmount(storedIcons: StoredIconMeta[][]): number {
         let totalWinAmount = 0;
-        let storeIcon:StoredIconMeta[] = storedIcons[0];
+        let storeIcon: StoredIconMeta[] = storedIcons[0];
         for (const icon of storeIcon) {
             totalWinAmount += PlayerMgr.Instance.getBet() * icon.Multiple;
         }
@@ -601,16 +600,16 @@ export class CKGameCenter extends Component {
             winAmount: number, // 赢钱金额
         }
     */
-    public calResultData():any{
-        let jsonResult:JsonResult = {} as JsonResult;
+    public calResultData(): any {
+        let jsonResult: JsonResult = {} as JsonResult;
         jsonResult.bet = PlayerMgr.Instance.getBet();
         jsonResult.betList = PlayerMgr.Instance.getBetList();
         jsonResult.jackpots = PlayerMgr.Instance.getJackpots();
 
-        if ( this.m_action === ActionType.NORMAL ){
+        if (this.m_action === ActionType.NORMAL) {
             // 1:强制进入freespin
             let forceFreeSpin = this.forceInStartFreeSpin();
-            if( forceFreeSpin ){
+            if (forceFreeSpin) {
                 // 设置action的状态
                 jsonResult.lastAction = this.m_lastAction;
                 jsonResult.action = this.m_action;
@@ -624,8 +623,8 @@ export class CKGameCenter extends Component {
                 // 生成赢钱数据
                 jsonResult.winAmount = this.calTotalWinAmount(jsonResult.lines[0]);
                 // 需要临时记录 等freespin结束后再恢复正常轮盘数据
-                this.tempNormalReelData = this.deepClone( jsonResult.reels );
-                this.tempStoreIconsData = this.deepClone( jsonResult.storedIcons );
+                this.tempNormalReelData = this.deepClone(jsonResult.reels);
+                this.tempStoreIconsData = this.deepClone(jsonResult.storedIcons);
                 // 初始化次数
                 jsonResult.freespin = {} as freespinData;
                 jsonResult.freespin.freeSpinNewCount = this.freeSpinTotalCount;
@@ -643,7 +642,7 @@ export class CKGameCenter extends Component {
 
             // 2:强制进入respin
             let forceReSpin = this.forceInStartReSpin();
-            if( forceReSpin ){
+            if (forceReSpin) {
                 // 设置action的状态
                 jsonResult.lastAction = this.m_lastAction;
                 jsonResult.action = this.m_action;
@@ -658,8 +657,8 @@ export class CKGameCenter extends Component {
                 jsonResult.winAmount = this.calTotalWinAmount(jsonResult.lines[0]);
 
                 // 需要临时记录 等reSpin结束后再恢复正常轮盘数据
-                this.tempNormalReelData = this.deepClone( jsonResult.reels );
-                this.tempStoreIconsData = this.deepClone( jsonResult.storedIcons );
+                this.tempNormalReelData = this.deepClone(jsonResult.reels);
+                this.tempStoreIconsData = this.deepClone(jsonResult.storedIcons);
 
                 // 初始化次数
                 this.reSpinCurCount = this.reSpinsTotalCount;
@@ -668,7 +667,7 @@ export class CKGameCenter extends Component {
                 jsonResult.respin.reSpinCurCount = this.reSpinCurCount;
 
                 // 初始化reSpin的轮盘数据
-                jsonResult.respinReels = this.initReSpinReelData( jsonResult.reels[0] );
+                jsonResult.respinReels = this.initReSpinReelData(jsonResult.reels[0]);
                 // 临时记录
                 this.tempReSpinReelData = this.deepClone(jsonResult.respinReels);
 
@@ -695,14 +694,14 @@ export class CKGameCenter extends Component {
             jsonResult.winAmount = this.calTotalWinAmount(jsonResult.lines[0]);
 
             // 这里需要检查是否进入freespin
-            let inFreeGame = this.checkInFreeSpin( jsonResult.reels[0] );
-            if( inFreeGame ){
+            let inFreeGame = this.checkInFreeSpin(jsonResult.reels[0]);
+            if (inFreeGame) {
                 this.m_nextAction = ActionType.FREESPIN;
                 jsonResult.nextAction = this.m_nextAction;
 
                 // 需要临时记录 等freespin结束后再恢复正常轮盘数据
-                this.tempNormalReelData = this.deepClone( jsonResult.reels );
-                this.tempStoreIconsData = this.deepClone( jsonResult.storedIcons );
+                this.tempNormalReelData = this.deepClone(jsonResult.reels);
+                this.tempStoreIconsData = this.deepClone(jsonResult.storedIcons);
                 // 初始化次数
                 jsonResult.freespin = {} as freespinData;
                 jsonResult.freespin.freeSpinNewCount = this.freeSpinTotalCount;
@@ -719,14 +718,14 @@ export class CKGameCenter extends Component {
             }
 
             // 检查是否进入reSpin
-            let inReSpin = this.checkInReSpin( jsonResult.reels[0] );
-            if( inReSpin ){
+            let inReSpin = this.checkInReSpin(jsonResult.reels[0]);
+            if (inReSpin) {
                 this.m_nextAction = ActionType.RESPIN;
                 jsonResult.nextAction = this.m_nextAction;
 
                 // 需要临时记录 等reSpin结束后再恢复正常轮盘数据
-                this.tempNormalReelData = this.deepClone( jsonResult.reels );
-                this.tempStoreIconsData = this.deepClone( jsonResult.storedIcons );
+                this.tempNormalReelData = this.deepClone(jsonResult.reels);
+                this.tempStoreIconsData = this.deepClone(jsonResult.storedIcons);
 
                 // 初始化次数
                 this.reSpinCurCount = this.reSpinsTotalCount;
@@ -735,14 +734,14 @@ export class CKGameCenter extends Component {
                 jsonResult.respin.reSpinCurCount = this.reSpinCurCount;
 
                 // 初始化reSpin的轮盘数据
-                jsonResult.respinReels = this.initReSpinReelData( jsonResult.reels[0] );
+                jsonResult.respinReels = this.initReSpinReelData(jsonResult.reels[0]);
                 // 临时记录
                 this.tempReSpinReelData = this.deepClone(jsonResult.respinReels);
 
                 // 改变状态
                 this.m_action = ActionType.RESPIN;
                 this.m_lastAction = ActionType.NORMAL;
-                
+
                 return jsonResult;
             }
 
@@ -750,8 +749,8 @@ export class CKGameCenter extends Component {
             return jsonResult;
         }
 
-        if( this.m_action === ActionType.FREESPIN ){
-            if( this.freeSpinCurrentCount > 1 ){
+        if (this.m_action === ActionType.FREESPIN) {
+            if (this.freeSpinCurrentCount > 1) {
                 this.m_lastAction = ActionType.FREESPIN;
                 this.m_action = ActionType.FREESPIN;
 
@@ -779,7 +778,7 @@ export class CKGameCenter extends Component {
                 // 记录临时赢钱
                 this.freeSpinTotalWinAmount = jsonResult.winAmount;
             }
-            else{
+            else {
                 this.m_lastAction = ActionType.FREESPIN;
                 this.m_action = ActionType.FREESPIN;
                 this.m_nextAction = ActionType.NORMAL;
@@ -815,8 +814,8 @@ export class CKGameCenter extends Component {
             return jsonResult;
         }
 
-        if( this.m_action === ActionType.RESPIN ){
-            if( this.reSpinCurCount >= 1 ){
+        if (this.m_action === ActionType.RESPIN) {
+            if (this.reSpinCurCount >= 1) {
                 // 继续respin
                 this.m_lastAction = ActionType.RESPIN;
                 this.m_action = ActionType.RESPIN;
@@ -833,26 +832,26 @@ export class CKGameCenter extends Component {
                 // respin轮盘数据
                 jsonResult.respinReels = this.deepClone(this.tempReSpinReelData);
                 // storeicons数据 根据最新的轮盘数据重新生成
-                jsonResult.storedIcons = this.createReSpinStoredIcons( this.tempReSpinReelData[0] );
+                jsonResult.storedIcons = this.createReSpinStoredIcons(this.tempReSpinReelData[0]);
 
                 // respin的数据
                 jsonResult.respin = {} as reSpinData;
 
-                if ( isNew ){
+                if (isNew) {
                     this.reSpinCurCount = this.reSpinsTotalCount;
                     jsonResult.respin.reSpinsTotalCount = this.reSpinsTotalCount;
                     jsonResult.respin.reSpinCurCount = this.reSpinCurCount;
-                }else{
+                } else {
                     this.reSpinCurCount = this.reSpinCurCount - 1;
                     jsonResult.respin.reSpinsTotalCount = this.reSpinsTotalCount;
                     jsonResult.respin.reSpinCurCount = this.reSpinCurCount;
 
-                    if( this.reSpinCurCount <= 0 ){
+                    if (this.reSpinCurCount <= 0) {
                         jsonResult.action = this.m_action;
                         jsonResult.nextAction = ActionType.NORMAL;
 
                         // 赢钱金额
-                        jsonResult.winAmount = this.calReSpinWinAmount( jsonResult.storedIcons );
+                        jsonResult.winAmount = this.calReSpinWinAmount(jsonResult.storedIcons);
 
                         // respin结束 恢复正常轮盘数据
                         this.m_lastAction = ActionType.RESPIN;
