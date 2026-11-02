@@ -1,0 +1,91 @@
+{
+"skeleton": { "hash": "NQYYX2gz0BOCYdAzFgz9Qp0D3GM", "spine": "3.8.99", "images": "/Users/mac/Desktop/2026年34567月/1.slots老虎机/Spine/动画5/TREEofWEALTH_money/解包", "audio": "/Users/mac/Desktop/2026年34567月/1.slots老虎机/Spine/动画5/TREEofWEALTH_money" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "money", "parent": "root", "y": 235.31 },
+	{ "name": "1", "parent": "money", "scaleX": 1.42, "scaleY": 1.42 }
+],
+"slots": [
+	{ "name": "1", "bone": "1" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"1": {
+				"money/money_00002": { "width": 438, "height": 329 },
+				"money/money_00005": { "width": 438, "height": 329 },
+				"money/money_00008": { "width": 438, "height": 329 },
+				"money/money_00011": { "width": 438, "height": 329 },
+				"money/money_00014": { "width": 438, "height": 329 },
+				"money/money_00017": { "width": 438, "height": 329 },
+				"money/money_00020": { "width": 438, "height": 329 },
+				"money/money_00023": { "width": 438, "height": 329 },
+				"money/money_00026": { "width": 438, "height": 329 },
+				"money/money_00029": { "width": 438, "height": 329 },
+				"money/money_00032": { "width": 438, "height": 329 },
+				"money/money_00035": { "width": 438, "height": 329 },
+				"money/money_00038": { "width": 438, "height": 329 },
+				"money/money_00041": { "width": 438, "height": 329 },
+				"money/money_00044": { "width": 438, "height": 329 },
+				"money/money_00047": { "width": 438, "height": 329 },
+				"money/money_00050": { "width": 438, "height": 329 },
+				"money/money_00053": { "width": 438, "height": 329 },
+				"money/money_00056": { "width": 438, "height": 329 },
+				"money/money_00059": { "width": 438, "height": 329 },
+				"money/money_00062": { "width": 438, "height": 329 },
+				"money/money_00065": { "width": 438, "height": 329 },
+				"money/money_00068": { "width": 438, "height": 329 },
+				"money/money_00071": { "width": 438, "height": 329 },
+				"money/money_00074": { "width": 438, "height": 329 },
+				"money/money_00077": { "width": 438, "height": 329 },
+				"money/money_00080": { "width": 438, "height": 329 },
+				"money/money_00083": { "width": 438, "height": 329 },
+				"money/money_00086": { "width": 438, "height": 329 },
+				"money/money_00089": { "width": 438, "height": 329 }
+			}
+		}
+	}
+],
+"animations": {
+	"TREE of WEALTH_money": {
+		"slots": {
+			"1": {
+				"attachment": [
+					{ "name": "money/money_00002" },
+					{ "time": 0.0333, "name": "money/money_00005" },
+					{ "time": 0.1, "name": "money/money_00008" },
+					{ "time": 0.1333, "name": "money/money_00011" },
+					{ "time": 0.1667, "name": "money/money_00014" },
+					{ "time": 0.2333, "name": "money/money_00017" },
+					{ "time": 0.2667, "name": "money/money_00020" },
+					{ "time": 0.3, "name": "money/money_00023" },
+					{ "time": 0.3667, "name": "money/money_00026" },
+					{ "time": 0.4, "name": "money/money_00029" },
+					{ "time": 0.4333, "name": "money/money_00032" },
+					{ "time": 0.5, "name": "money/money_00035" },
+					{ "time": 0.5333, "name": "money/money_00038" },
+					{ "time": 0.5667, "name": "money/money_00041" },
+					{ "time": 0.6333, "name": "money/money_00044" },
+					{ "time": 0.6667, "name": "money/money_00047" },
+					{ "time": 0.7, "name": "money/money_00050" },
+					{ "time": 0.7667, "name": "money/money_00053" },
+					{ "time": 0.8, "name": "money/money_00056" },
+					{ "time": 0.8333, "name": "money/money_00059" },
+					{ "time": 0.9, "name": "money/money_00062" },
+					{ "time": 0.9333, "name": "money/money_00065" },
+					{ "time": 0.9667, "name": "money/money_00068" },
+					{ "time": 1.0333, "name": "money/money_00071" },
+					{ "time": 1.0667, "name": "money/money_00074" },
+					{ "time": 1.1, "name": "money/money_00077" },
+					{ "time": 1.1667, "name": "money/money_00080" },
+					{ "time": 1.2, "name": "money/money_00083" },
+					{ "time": 1.2333, "name": "money/money_00086" },
+					{ "time": 1.3, "name": "money/money_00089" },
+					{ "time": 1.3333, "name": null }
+				]
+			}
+		}
+	}
+}
+}
