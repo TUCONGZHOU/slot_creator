@@ -21,7 +21,7 @@ export class LevelJT_Choose_Ctrl extends UICtrl {
     }
 
     update(deltaTime: number) {
-        
+
     }
 
     protected initView(): void {
@@ -76,7 +76,9 @@ export class LevelJT_Choose_Ctrl extends UICtrl {
                 this.view["Label"].getComponent(Label).string = this.m_winMul.toString();
 
                 bonusNode.active = false;
-                bonusNode.destroy();
+                this.scheduleOnce(()=>{
+                    bonusNode.destroy();
+                },0.1)
             })
         );
         tween(bonusNode).sequence(...anims).start();
@@ -89,7 +91,7 @@ export class LevelJT_Choose_Ctrl extends UICtrl {
         SoundMgr.Instance.playBGM( this.m_levelConfig.BundleName,soundFile );
         this.showOther( true )
     }
-    
+
     public initUI(levelConfig:LevelConfig):void{
         this.m_levelConfig = levelConfig
         SoundMgr.Instance.stopBGM();
@@ -161,9 +163,12 @@ export class LevelJT_Choose_Ctrl extends UICtrl {
     }
     public closeUi(){
         Utils.performWithDelay(this.node,()=>{
-            UIMgr.Instance.closeUi("LevelJT_Choose_Ctrl");
             GlEventMgr.Instance.emit(EventName.ExcuteSlotFunction);
             SoundMgr.Instance.stopBGM();
+            this.node.active = false;
+            this.scheduleOnce(()=>{
+                UIMgr.Instance.closeUi("LevelJT_Choose_Ctrl");
+            },0.1)
         },3)
     }
 }

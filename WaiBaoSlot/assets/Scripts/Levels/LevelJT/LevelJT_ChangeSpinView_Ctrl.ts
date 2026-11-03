@@ -14,14 +14,10 @@ export class LevelJT_ChangeSpinView_Ctrl extends UICtrl {
     private m_mainCtrl:LevelJT_MainUI_Ctrl = null;
     private m_nextType:string = ""
     protected initView(): void {
-        // this.addButtonClick("SpriteSplash", this, this.clickFreeView);
+
     }
 
     start() {
-        // 播放动画
-        // let animation = this.view["skeleton"].getComponent(Skeleton);
-        // animation.play("ChangeSpinView");
-
         tween(this.node)
         .delay(1.5)
         .call(()=>{
@@ -36,29 +32,24 @@ export class LevelJT_ChangeSpinView_Ctrl extends UICtrl {
             }else if(this.m_nextType == "RESPIN"){
                 this.m_mainCtrl.addRespinGameTableUI();
             }
-            
+
             // 恢复点击
             GlEventMgr.Instance.emit( EventName.RecoverSpinBtn )
-            // 发送消息
-            // GlEventMgr.Instance.emit(EventName.ClearWinAmount);
-            // 发送消息 开始滚动
-            // GlEventMgr.Instance.emit(EventName.StartSpinBtn);
-            // 改变bg
             GlEventMgr.Instance.emit(EventName.ChangeBg,false);
         })
         .delay(0.5)
         .call(()=>{
-            // 关闭freespin界面
-            UIMgr.Instance.closeUi("LevelJT_ChangeSpinView_Ctrl");
+            this.node.active = false;
+            this.scheduleOnce(()=>{
+                UIMgr.Instance.closeUi("LevelJT_ChangeSpinView_Ctrl");
+            },0.1)
         })
         .start()
     }
 
     update(deltaTime: number) {
-        
-    }
 
-    
+    }
 
     public initUI(levelConfig:LevelConfig,mainCtrl:LevelJT_MainUI_Ctrl,nextType:string){
         this.m_mainCtrl = mainCtrl;
@@ -92,5 +83,3 @@ export class LevelJT_ChangeSpinView_Ctrl extends UICtrl {
         super.onDestroy();
     }
 }
-
-

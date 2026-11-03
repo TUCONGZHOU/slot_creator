@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node,instantiate,Prefab,assert,director } from 'cc';
+import { _decorator, Component, Node,instantiate,Prefab,assert,director,sp } from 'cc';
 import { UIMgr,UICtrl } from '../Mgr/UIMgr';
 import { SymbolMgr } from '../Mgr/SymbolMgr';
 import { ResMgr } from '../Mgr/ResMgr';
@@ -101,18 +101,16 @@ export class BaseGameMain extends UICtrl {
 
     public removeGameTable():void{
         if( this.m_gameTable !== null ){
-            // this.m_gameTable.removeFromParent();
-            // this.m_gameTableCompent = null;
-            
-            // // 使用组件自带的 scheduleOnce，确保与当前组件生命周期绑定
-            // this.scheduleOnce(() => {
-            //     if (this.m_gameTable && this.m_gameTable.isValid) {
-            //         this.m_gameTable.destroy();
-            //     }
-            //     this.m_gameTable = null;
-            // }, 0); // 延迟一帧销毁
-
-            this.m_gameTable.destroy();
+            this.m_gameTable.active = false;
+            let lastGameTable = this.m_gameTable
+            this.m_gameTable = null;
+            this.scheduleOnce(() => {
+                if (lastGameTable && lastGameTable.isValid) {
+                    lastGameTable.destroy();
+                }
+                lastGameTable = null;
+            }, 0);
+            // this.m_gameTable.destroy();
         }
     }
 

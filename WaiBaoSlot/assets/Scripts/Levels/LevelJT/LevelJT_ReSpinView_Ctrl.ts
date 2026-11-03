@@ -36,7 +36,9 @@ export class LevelJT_ReSpinView_Ctrl extends UICtrl {
         .delay(0.5)
         .call(()=>{
             // 关闭freespin界面
-            UIMgr.Instance.closeUi("LevelJT_ReSpinView_Ctrl");
+            this.scheduleOnce(()=>{
+                UIMgr.Instance.closeUi("LevelJT_ReSpinView_Ctrl");
+            },0.1)
         })
         .start()
     }

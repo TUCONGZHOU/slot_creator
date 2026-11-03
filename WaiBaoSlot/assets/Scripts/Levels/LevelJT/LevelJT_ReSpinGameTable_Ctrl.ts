@@ -216,31 +216,50 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
             this.m_reSpinNumNode.destroy();
 
             // 执行动画
-            const anims: Array<ReturnType<typeof tween>> = [];
+            // const anims: Array<ReturnType<typeof tween>> = [];
             
-            anims.push(
-                tween(this.node).call(()=>{
-                    let storeIcons = LevelMgr.Instance.getLevelModel().getStoredIcons();
-                    let storeData = storeIcons[0];
-                    for( const value of storeData ){
-                        let symbolNode = this.getSymbolNode(0,value.col,value.row);
-                        if (symbolNode){
-                            let startSymbolId = LevelMgr.Instance.getLevelModel().getSymbolId( 0,value.col,value.row);
-                            let stopActionName = this.m_levelConfig.SymbolStopAction[startSymbolId.toString()];
-                            symbolNode.getComponent(LevelJT_Symbol_Ctrl).playSymbolAction(stopActionName,false,null);
-                        }
+            // anims.push(
+            //     tween(this.node).call(()=>{
+            //         let storeIcons = LevelMgr.Instance.getLevelModel().getStoredIcons();
+            //         let storeData = storeIcons[0];
+            //         for( const value of storeData ){
+            //             let symbolNode = this.getSymbolNode(0,value.col,value.row);
+            //             if (symbolNode){
+            //                 let startSymbolId = LevelMgr.Instance.getLevelModel().getSymbolId( 0,value.col,value.row);
+            //                 let stopActionName = this.m_levelConfig.SymbolStopAction[startSymbolId.toString()];
+            //                 symbolNode.getComponent(LevelJT_Symbol_Ctrl).playSymbolAction(stopActionName,false,null);
+            //             }
+            //         }
+            //     })
+            // );
+            // anims.push(
+            //     tween(this.node).delay(1)
+            // );
+            // anims.push(
+            //     tween(this.node).call(()=>{
+            //         this.excuteListFunc();
+            //     })
+            // );
+            // tween(this.node).sequence(...anims).start();
+
+            tween(this.node)
+            .call(()=>{
+                let storeIcons = LevelMgr.Instance.getLevelModel().getStoredIcons();
+                let storeData = storeIcons[0];
+                for( const value of storeData ){
+                    let symbolNode = this.getSymbolNode(0,value.col,value.row);
+                    if (symbolNode){
+                        let startSymbolId = LevelMgr.Instance.getLevelModel().getSymbolId( 0,value.col,value.row);
+                        let stopActionName = this.m_levelConfig.SymbolStopAction[startSymbolId.toString()];
+                        symbolNode.getComponent(LevelJT_Symbol_Ctrl).playSymbolAction(stopActionName,false,null);
                     }
-                })
-            );
-            anims.push(
-                tween(this.node).delay(1)
-            );
-            anims.push(
-                tween(this.node).call(()=>{
-                    this.excuteListFunc();
-                })
-            );
-            tween(this.node).sequence(...anims).start();
+                }
+            })
+            .delay(1)
+            .call(()=>{
+                this.excuteListFunc();
+            })
+            .start();
         }
         else {
             this.excuteListFunc();
@@ -251,49 +270,84 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
         let nextAction = LevelMgr.Instance.getLevelModel().getNextAction();
         if (action == ActionType.RESPIN && nextAction == ActionType.NORMAL) {
             // 显示freespin结束的界面
-            const anims: Array<ReturnType<typeof tween>> = [];
+            // const anims: Array<ReturnType<typeof tween>> = [];
             
-            anims.push(
-                tween(this.node).delay(0.5)
-            );
-            anims.push(
-                tween(this.node).call(()=>{
-                    // -- 音效
-                    let winCount = LevelMgr.Instance.getLevelModel().getWinAmount();
-                    let soundFile = this.m_levelConfig.SoundsFile["Congrats"];
-                    if (soundFile && winCount > 0){
-                        SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
-                    }
-                    // 显示freespin界面
-                    // this.m_reSpinWinCtrl = UIMgr.Instance.showUi("LevelJT","Prefabs/ReSpinWinView","LevelJT_ReSpinWinCtrl",UILayer.Normal) as LevelJT_ReSpinWinCtrl;
-                    // this.m_reSpinWinCtrl.initUI(this.m_levelConfig);
+            // anims.push(
+            //     tween(this.node).delay(0.5)
+            // );
+            // anims.push(
+            //     tween(this.node).call(()=>{
+            //         // -- 音效
+            //         let winCount = LevelMgr.Instance.getLevelModel().getWinAmount();
+            //         let soundFile = this.m_levelConfig.SoundsFile["Congrats"];
+            //         if (soundFile && winCount > 0){
+            //             SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+            //         }
+            //         // 显示freespin界面
+            //         // this.m_reSpinWinCtrl = UIMgr.Instance.showUi("LevelJT","Prefabs/ReSpinWinView","LevelJT_ReSpinWinCtrl",UILayer.Normal) as LevelJT_ReSpinWinCtrl;
+            //         // this.m_reSpinWinCtrl.initUI(this.m_levelConfig);
 
-                    let prefab = ResMgr.Instance.getAsset("LevelJT","Prefabs/ReSpinWinView",Prefab);
-                    if(prefab){
-                        let freeWinNode = instantiate(prefab);
-                        this.node.addChild(freeWinNode);
-                        this.m_reSpinWinCtrl = freeWinNode.addComponent( LevelJT_ReSpinWinCtrl ) as LevelJT_ReSpinWinCtrl;
-                        // 初始化组件
-                        this.m_reSpinWinCtrl.initUI( this.m_levelConfig );
-                    }
-                })
-            );
-            anims.push(
-                tween(this.node).delay(2)
-            );
-            anims.push(
-                tween(this.node).call(()=>{
-                    // // 关闭freespin界面
-                    // UIMgr.Instance.closeUi("LevelJT_ReSpinWinCtrl");
-                    // // 播放音效
-                    // let soundFile = this.m_levelConfig.SoundsFile["FreeSpinOver"];
-                    // if (soundFile){
-                    //     SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
-                    // }
-                    this.excuteListFunc();
-                })
-            );
-            tween(this.node).sequence(...anims).start();
+            //         let prefab = ResMgr.Instance.getAsset("LevelJT","Prefabs/ReSpinWinView",Prefab);
+            //         if(prefab){
+            //             let freeWinNode = instantiate(prefab);
+            //             this.node.addChild(freeWinNode);
+            //             this.m_reSpinWinCtrl = freeWinNode.addComponent( LevelJT_ReSpinWinCtrl ) as LevelJT_ReSpinWinCtrl;
+            //             // 初始化组件
+            //             this.m_reSpinWinCtrl.initUI( this.m_levelConfig );
+            //         }
+            //     })
+            // );
+            // anims.push(
+            //     tween(this.node).delay(2)
+            // );
+            // anims.push(
+            //     tween(this.node).call(()=>{
+            //         // // 关闭freespin界面
+            //         // UIMgr.Instance.closeUi("LevelJT_ReSpinWinCtrl");
+            //         // // 播放音效
+            //         // let soundFile = this.m_levelConfig.SoundsFile["FreeSpinOver"];
+            //         // if (soundFile){
+            //         //     SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+            //         // }
+            //         this.excuteListFunc();
+            //     })
+            // );
+            // tween(this.node).sequence(...anims).start();
+
+            tween(this.node)
+            .delay(0.5)
+            .call(()=>{
+                // -- 音效
+                let winCount = LevelMgr.Instance.getLevelModel().getWinAmount();
+                let soundFile = this.m_levelConfig.SoundsFile["Congrats"];
+                if (soundFile && winCount > 0){
+                    SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+                }
+                // 显示freespin界面
+                // this.m_reSpinWinCtrl = UIMgr.Instance.showUi("LevelJT","Prefabs/ReSpinWinView","LevelJT_ReSpinWinCtrl",UILayer.Normal) as LevelJT_ReSpinWinCtrl;
+                // this.m_reSpinWinCtrl.initUI(this.m_levelConfig);
+
+                let prefab = ResMgr.Instance.getAsset("LevelJT","Prefabs/ReSpinWinView",Prefab);
+                if(prefab){
+                    let freeWinNode = instantiate(prefab);
+                    this.node.addChild(freeWinNode);
+                    this.m_reSpinWinCtrl = freeWinNode.addComponent( LevelJT_ReSpinWinCtrl ) as LevelJT_ReSpinWinCtrl;
+                    // 初始化组件
+                    this.m_reSpinWinCtrl.initUI( this.m_levelConfig );
+                }
+            })
+            .delay(2)
+            .call(()=>{
+                // // 关闭freespin界面
+                // UIMgr.Instance.closeUi("LevelJT_ReSpinWinCtrl");
+                // // 播放音效
+                // let soundFile = this.m_levelConfig.SoundsFile["FreeSpinOver"];
+                // if (soundFile){
+                //     SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+                // }
+                this.excuteListFunc();
+            })
+            .start();
         }else {
             this.excuteListFunc();
         }
@@ -318,7 +372,9 @@ export class LevelJT_ReSpinGameTable_Ctrl extends BaseGameTable {
                 .to(1,{ position:destPos })
                 .call(()=>{
                     this.m_reSpinWinNumCtrl.setWinNum( multiple );
-                    liziNode.destroy()
+                    this.scheduleOnce(()=>{
+                        liziNode.destroy()
+                    },0.1)
                 })
                 .start()
         }

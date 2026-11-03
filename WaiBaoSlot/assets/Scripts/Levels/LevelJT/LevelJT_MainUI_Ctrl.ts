@@ -54,34 +54,24 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
         // this.view['SpineWan'].active = false
 
         const anims: Array<ReturnType<typeof tween>> = [];
-        // 要播放scatter的动画 
+        // 要播放scatter的动画
         let changeSpinViewCtrl:LevelJT_ChangeSpinView_Ctrl = null;
-        // anims.push(
-        //     tween(this.node).delay(1)
-        // );
-        anims.push(
-            tween(this.node).call(()=>{
-                this.m_gameTableCompent.stopGameTableLineAction();
-                this.m_gameTableCompent.getReelTableCompent(0).playAllScatterAction();
-                // -- 音效
-                let soundFile = this.m_levelConfig.SoundsFile["EnterFreeSpin"];
-                if (soundFile){
-                    SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
-                }
-            })
-        );
-        // anims.push(
-        //     tween(this.node).delay(2)
-        // );
-        anims.push(
-            tween(this.node).call(()=>{
-                // 显示轮盘切换界面
-                changeSpinViewCtrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/ChangeSpinView","LevelJT_ChangeSpinView_Ctrl",UILayer.Normal) as LevelJT_ChangeSpinView_Ctrl;
-                changeSpinViewCtrl.initUI( this.m_levelConfig,this,"FREESPIN" );
-            })
-        );
 
-        tween(this.node).sequence(...anims).start();
+        tween(this.node).call(()=>{
+            this.m_gameTableCompent.stopGameTableLineAction();
+            this.m_gameTableCompent.getReelTableCompent(0).playAllScatterAction();
+            // -- 音效
+            let soundFile = this.m_levelConfig.SoundsFile["EnterFreeSpin"];
+            if (soundFile){
+                SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+            }
+        })
+        .call(()=>{
+            // 显示轮盘切换界面
+            changeSpinViewCtrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/ChangeSpinView","LevelJT_ChangeSpinView_Ctrl",UILayer.Normal) as LevelJT_ChangeSpinView_Ctrl;
+            changeSpinViewCtrl.initUI( this.m_levelConfig,this,"FREESPIN" );
+        })
+        .start();
     }
 
     // 进入normal
@@ -138,29 +128,46 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
             // anims.push(
             //     tween(this.node).delay(1)
             // );
-            anims.push(
-                tween(this.node).call(()=>{
-                    this.m_gameTableCompent.stopGameTableLineAction();
-                    // this.m_gameTableCompent.getReelTableCompent(0).playAllScatterAction();
-                    // -- 音效
-                    let soundFile = this.m_levelConfig.SoundsFile["EnterFreeSpin"];
-                    if (soundFile){
-                        SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
-                    }
-                })
-            );
             // anims.push(
-            //     tween(this.node).delay(2)
+            //     tween(this.node).call(()=>{
+            //         this.m_gameTableCompent.stopGameTableLineAction();
+            //         // this.m_gameTableCompent.getReelTableCompent(0).playAllScatterAction();
+            //         // -- 音效
+            //         let soundFile = this.m_levelConfig.SoundsFile["EnterFreeSpin"];
+            //         if (soundFile){
+            //             SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+            //         }
+            //     })
             // );
-            anims.push(
-                tween(this.node).call(()=>{
-                    // 显示轮盘切换界面
-                    changeSpinViewCtrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/ChangeSpinView","LevelJT_ChangeSpinView_Ctrl",UILayer.Normal) as LevelJT_ChangeSpinView_Ctrl;
-                    changeSpinViewCtrl.initUI( this.m_levelConfig,this,"RESPIN" );
-                })
-            );
+            // // anims.push(
+            // //     tween(this.node).delay(2)
+            // // );
+            // anims.push(
+            //     tween(this.node).call(()=>{
+            //         // 显示轮盘切换界面
+            //         changeSpinViewCtrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/ChangeSpinView","LevelJT_ChangeSpinView_Ctrl",UILayer.Normal) as LevelJT_ChangeSpinView_Ctrl;
+            //         changeSpinViewCtrl.initUI( this.m_levelConfig,this,"RESPIN" );
+            //     })
+            // );
 
-            tween(this.node).sequence(...anims).start();
+            // tween(this.node).sequence(...anims).start();
+
+            tween(this.node)
+            .call(()=>{
+                this.m_gameTableCompent.stopGameTableLineAction();
+                // this.m_gameTableCompent.getReelTableCompent(0).playAllScatterAction();
+                // -- 音效
+                let soundFile = this.m_levelConfig.SoundsFile["EnterFreeSpin"];
+                if (soundFile){
+                    SoundMgr.Instance.playSound( this.m_levelConfig.BundleName,soundFile );
+                }
+            })
+            .call(()=>{
+                // 显示轮盘切换界面
+                changeSpinViewCtrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/ChangeSpinView","LevelJT_ChangeSpinView_Ctrl",UILayer.Normal) as LevelJT_ChangeSpinView_Ctrl;
+                changeSpinViewCtrl.initUI( this.m_levelConfig,this,"RESPIN" );
+            })
+            .start();
 
         } catch (err) {
             console.error("enterReSpin执行异常:", err);
@@ -226,8 +233,13 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
                 });
 
                 if (piaoNode.isValid) {
-                    piaoNode.removeFromParent();
-                    piaoNode.destroy();
+                    piaoNode.active = false;
+                    this.scheduleOnce(() => {
+                        if (piaoNode.isValid) {
+                            piaoNode.removeFromParent();
+                            piaoNode.destroy();
+                        }
+                    }, 0.1);
                 }
             })
             .start();
@@ -281,8 +293,13 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
                 }
 
                 if (piaoNode.isValid) {
-                    piaoNode.removeFromParent();
-                    piaoNode.destroy();
+                    piaoNode.active = false;
+                    this.scheduleOnce(() => {
+                        if (piaoNode.isValid) {
+                            piaoNode.removeFromParent();
+                            piaoNode.destroy();
+                        }
+                    }, 0.1);
                 }
             })
             .start();
@@ -363,8 +380,13 @@ export class LevelJT_MainUI_Ctrl extends BaseGameMain {
                     }
 
                     if (piaoNode.isValid) {
-                        piaoNode.removeFromParent();
-                        piaoNode.destroy();
+                        piaoNode.active = false;
+                        this.scheduleOnce(() => {
+                            if (piaoNode.isValid) {
+                                piaoNode.removeFromParent();
+                                piaoNode.destroy();
+                            }
+                        }, 0.1);
                     }
                 })
                 .start();

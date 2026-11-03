@@ -1,4 +1,4 @@
-import { _decorator, assetManager, Component, director, Node } from 'cc';
+import { _decorator, assetManager, Component, director, Node, sp } from 'cc';
 import { SoundMgr } from './SoundMgr';
 import { ResMgr } from './ResMgr';
 import { UIMgr } from './UIMgr';
@@ -6,7 +6,6 @@ import { GlEventMgr } from './GlEventMgr';
 import { LevelMgr } from './LevelMgr';
 import { Utils } from '../Util/Utils';
 import { ScreenManager } from './ScreenManager';
-import { DebugLog } from '../Util/DebugLog';
 const { ccclass, property } = _decorator;
 
 export enum SceneType {
@@ -107,33 +106,47 @@ export class GameManager extends Component {
 
     public changeToLobbyScene(){
         this.setNextSceneType(SceneType.LOBBY);
+        // 切场景前，清空所有 spine 组件的 skeletonData，防止 native use-after-free
+        this.clearAllSpineData();
         this.changeSceneByType(false);
     }
+
+    private clearAllSpineData(): void {
+        const scene = director.getScene();
+        if (!scene) return;
+        const skeletons = scene.getComponentsInChildren(sp.Skeleton);
+        for (let i = 0; i < skeletons.length; i++) {
+            try {
+                (skeletons[i] as any).skeletonData = null;
+            } catch (e) {}
+        }
+    }
+
     public changeToNewLevelSceneById( levelID: number,isPortrait:boolean ){
         this.setNextLevelID( levelID );
         this.setNextSceneType(SceneType.LEVEL);
-        // 从 Lobby 进关卡时，先移除旧关卡 bundle，强制重新加载 spine 资源
+        // 从 Lobby 进关卡时，释放旧关卡 bundle，强制重新加载 spine 资源
         const oldBundle = this.m_lastBundleName;
         if (oldBundle && oldBundle !== "GameMain") {
-            console.log(`[GameManager] 进关卡前移除旧 bundle: ${oldBundle}`);
             const bundle = assetManager.getBundle(oldBundle);
             if (bundle) {
+                bundle.releaseAll();
                 assetManager.removeBundle(bundle);
             }
         }
         this.changeSceneByType(isPortrait);
     }
     public changeSceneByType(isPortrait:boolean = false){
+        SoundMgr.Instance.stopBGM();
         if (this.getNextSceneType() == SceneType.LOBBY){
             director.loadScene('LobbyScene', (err)=>{
-                if(err) DebugLog.log("GameManager", "LobbyScene 加载失败: "+err);
-                else DebugLog.log("GameManager", "LobbyScene 加载成功");
+                if(err) console.error("LobbyScene 加载失败: "+err);
             });
         }else if(this.getNextSceneType() == SceneType.LEVEL){
+            LevelMgr.Instance.resetLevelTestValue();
             let sceneName = isPortrait ? 'MainScceneP' : 'MainSccene';
             director.loadScene(sceneName, (err)=>{
-                if(err) DebugLog.log("GameManager", `${sceneName} 加载失败: ${err}`);
-                else DebugLog.log("GameManager", `${sceneName} 加载成功`);
+                if(err) console.error(`${sceneName} 加载失败: ${err}`);
             });
         }
     }
