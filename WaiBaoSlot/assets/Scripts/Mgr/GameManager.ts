@@ -34,8 +34,6 @@ export class GameManager extends Component {
     private m_lastBundleName: string = "";
 
     onLoad() {
-        console.log('GameManager onLoad==================');
-
         // —— 关键：保证全游戏只有一份 ——
         if (GameManager._instance && GameManager._instance !== this) {
             // 第二次进入时，把重复的那个节点销毁掉
@@ -59,9 +57,7 @@ export class GameManager extends Component {
     }
 
     start() {
-        console.log('GameManager 初始化完成==start==================');
-        console.log('MainScceneP==竖屏关卡场景==================', 'MainSccene==横屏关卡场景==================')
-
+        console.log('GameManager 初始化完成');
     }
     public setGameStartLobbyFlag() {
         this.m_gameStartLobby = true;
@@ -114,6 +110,18 @@ export class GameManager extends Component {
         this.clearAllSpineData();
         this.changeSceneByType(false);
     }
+
+    private clearAllSpineData(): void {
+        const scene = director.getScene();
+        if (!scene) return;
+        const skeletons = scene.getComponentsInChildren(sp.Skeleton);
+        for (let i = 0; i < skeletons.length; i++) {
+            try {
+                (skeletons[i] as any).skeletonData = null;
+            } catch (e) { }
+        }
+    }
+
     public changeToNewLevelSceneById(levelID: number, isPortrait: boolean) {
         this.setNextLevelID(levelID);
         this.setNextSceneType(SceneType.LEVEL);
@@ -129,16 +137,16 @@ export class GameManager extends Component {
         this.changeSceneByType(isPortrait);
     }
     public changeSceneByType(isPortrait: boolean = false) {
+        SoundMgr.Instance.stopBGM();
         if (this.getNextSceneType() == SceneType.LOBBY) {
             director.loadScene('LobbyScene', (err) => {
-                if (err) DebugLog.log("GameManager", "LobbyScene 加载失败: " + err);
-                else DebugLog.log("GameManager", "LobbyScene 加载成功");
+                if (err) console.error("LobbyScene 加载失败: " + err);
             });
         } else if (this.getNextSceneType() == SceneType.LEVEL) {
+            LevelMgr.Instance.resetLevelTestValue();
             let sceneName = isPortrait ? 'MainScceneP' : 'MainSccene';
             director.loadScene(sceneName, (err) => {
-                if (err) DebugLog.log("GameManager", `${sceneName} 加载失败: ${err}`);
-                else DebugLog.log("GameManager", `${sceneName} 加载成功`);
+                if (err) console.error(`${sceneName} 加载失败: ${err}`);
             });
         }
     }
