@@ -37,6 +37,16 @@ export class LevelMgr extends Component {
         }
     }
 
+    // 每次切换场景进入关卡时重置一下数据，避免test数据错乱引起的报错
+    public resetLevelTestValue(){
+        this.m_levelConfig = {} as LevelConfig;
+        this.m_gameMode = null;
+        this.m_levelId = -1;
+        this.m_testSpinJsonData = [];
+        this.m_testSpinIndex = 0;
+        this.m_testNowSpinIndex = 0;
+    }
+
     start() {
 
     }

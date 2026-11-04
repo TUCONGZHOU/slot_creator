@@ -220,20 +220,14 @@ export class LevelJT_FreeGameTable_Ctrl extends BaseGameTable {
         
         if (action == ActionType.FREESPIN && nextAction == ActionType.NORMAL) {
             if (this.m_jackpotCompent && this.m_jackpotCompent.node.isValid){
-                this.m_jackpotCompent.node.removeFromParent();
-                this.m_jackpotCompent.node.destroy();
-                this.m_jackpotCompent = null;
+                this.m_jackpotCompent.node.active = false;
+                // this.m_jackpotCompent.node.removeFromParent();
+                // this.m_jackpotCompent.node.destroy();
+                // this.m_jackpotCompent = null;
+
             }
             
-
-            // this.m_freeWinCtrl = UIMgr.Instance.showUi(this.m_abName,"Prefabs/FreeWinView","LevelJT_FreeWinCtrl",UILayer.Normal) as LevelJT_FreeWinCtrl;
-            // this.m_freeWinCtrl.initUI( this.m_levelConfig );
             Utils.performWithDelay(this.node,()=>{
-                // if (this.m_freeWinCtrl && this.m_freeWinCtrl.node){
-                //     this.m_freeWinCtrl.node.removeFromParent();
-                //     this.m_freeWinCtrl.node.destroy();
-                //     this.m_freeWinCtrl = null;
-                // }
                 this.excuteListFunc();
             },1.5)
 

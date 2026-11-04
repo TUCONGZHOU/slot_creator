@@ -165,7 +165,7 @@
       "__expectedType__": "sp.SkeletonData"
     },
     "defaultSkin": "default",
-    "defaultAnimation": "Game4-fly-bianfu",
+    "defaultAnimation": "",
     "_premultipliedAlpha": true,
     "_timeScale": 1,
     "_preCacheMode": 0,
@@ -192,8 +192,6 @@
       "__id__": 0
     },
     "fileId": "deSdi7Y+ZMZKEsuw5KkUxb",
-    "instance": null,
-    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {

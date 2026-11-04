@@ -1,4 +1,6 @@
 
+import { _decorator, Component, Node, instantiate, Prefab, assert, director, sp } from 'cc';
+import { UIMgr, UICtrl } from '../Mgr/UIMgr';
 import { _decorator, Component, Node, instantiate, Prefab, assert, director } from 'cc';
 import { UIMgr, UICtrl } from '../Mgr/UIMgr';
 import { SymbolMgr } from '../Mgr/SymbolMgr';
