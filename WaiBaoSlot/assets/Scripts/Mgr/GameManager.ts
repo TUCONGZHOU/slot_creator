@@ -11,7 +11,7 @@ const { ccclass, property } = _decorator;
 
 export enum SceneType {
     LOBBY = 0,
-    LEVEL  = 1,
+    LEVEL = 1,
 }
 
 
@@ -35,6 +35,8 @@ export class GameManager extends Component {
     private m_lastBundleName: string = "";
 
     onLoad() {
+        console.log('GameManager onLoad==================');
+
         // —— 关键：保证全游戏只有一份 ——
         if (GameManager._instance && GameManager._instance !== this) {
             // 第二次进入时，把重复的那个节点销毁掉
@@ -47,70 +49,72 @@ export class GameManager extends Component {
         // 注意：这个节点必须在场景层级的"根节点"上，否则 API 无效
         director.addPersistRootNode(this.node);
 
-        this.node.addComponent( ScreenManager );
+        this.node.addComponent(ScreenManager);
         // this.node.addComponent( UIMgr );
-        this.node.addComponent( ResMgr );
-        this.node.addComponent( GlEventMgr );
-        this.node.addComponent( LevelMgr );
-        this.node.addComponent( SoundMgr );
-        this.node.addComponent( Utils );
-        
+        this.node.addComponent(ResMgr);
+        this.node.addComponent(GlEventMgr);
+        this.node.addComponent(LevelMgr);
+        this.node.addComponent(SoundMgr);
+        this.node.addComponent(Utils);
+
     }
 
     start() {
-        console.log('GameManager 初始化完成');
+        console.log('GameManager 初始化完成==start==================');
+        console.log('MainScceneP==竖屏关卡场景==================', 'MainSccene==横屏关卡场景==================')
+
     }
-    public setGameStartLobbyFlag(){
+    public setGameStartLobbyFlag() {
         this.m_gameStartLobby = true;
     }
-    public getGameStartLobbyFlag(){
+    public getGameStartLobbyFlag() {
         return this.m_gameStartLobby;
     }
     // 示例业务方法
-    public setNextLevelID( levelID: number) {
+    public setNextLevelID(levelID: number) {
         this.m_nextLevelId = levelID;
     }
-    public getNextLevelID(){
+    public getNextLevelID() {
         return this.m_nextLevelId;
     }
-    public setCurLevelID( levelID: number) {
+    public setCurLevelID(levelID: number) {
         this.m_curLevelId = levelID;
     }
-    public getCurLevelID(){
+    public getCurLevelID() {
         return this.m_curLevelId;
     }
-    public setLastLevelID( levelID: number) {
+    public setLastLevelID(levelID: number) {
         this.m_lastLevelId = levelID;
     }
-    public getLastLevelID(){
+    public getLastLevelID() {
         return this.m_lastLevelId;
     }
-    public setNextSceneType( type:SceneType ){
+    public setNextSceneType(type: SceneType) {
         this.m_nextSceneType = type;
     }
-    public getNextSceneType(){
+    public getNextSceneType() {
         return this.m_nextSceneType;
     }
-    public setCurSceneType( type:SceneType ){
+    public setCurSceneType(type: SceneType) {
         this.m_curSceneType = type;
     }
-    public getCurSceneType(){
+    public getCurSceneType() {
         return this.m_curSceneType;
     }
-    public setLastBundleName( name:string ){
+    public setLastBundleName(name: string) {
         this.m_lastBundleName = name;
     }
-    public getLastBundleName(){
+    public getLastBundleName() {
         return this.m_lastBundleName;
     }
 
 
-    public changeToLobbyScene(){
+    public changeToLobbyScene() {
         this.setNextSceneType(SceneType.LOBBY);
         this.changeSceneByType(false);
     }
-    public changeToNewLevelSceneById( levelID: number,isPortrait:boolean ){
-        this.setNextLevelID( levelID );
+    public changeToNewLevelSceneById(levelID: number, isPortrait: boolean) {
+        this.setNextLevelID(levelID);
         this.setNextSceneType(SceneType.LEVEL);
         // 从 Lobby 进关卡时，先移除旧关卡 bundle，强制重新加载 spine 资源
         const oldBundle = this.m_lastBundleName;
@@ -123,20 +127,20 @@ export class GameManager extends Component {
         }
         this.changeSceneByType(isPortrait);
     }
-    public changeSceneByType(isPortrait:boolean = false){
-        if (this.getNextSceneType() == SceneType.LOBBY){
-            director.loadScene('LobbyScene', (err)=>{
-                if(err) DebugLog.log("GameManager", "LobbyScene 加载失败: "+err);
+    public changeSceneByType(isPortrait: boolean = false) {
+        if (this.getNextSceneType() == SceneType.LOBBY) {
+            director.loadScene('LobbyScene', (err) => {
+                if (err) DebugLog.log("GameManager", "LobbyScene 加载失败: " + err);
                 else DebugLog.log("GameManager", "LobbyScene 加载成功");
             });
-        }else if(this.getNextSceneType() == SceneType.LEVEL){
+        } else if (this.getNextSceneType() == SceneType.LEVEL) {
             let sceneName = isPortrait ? 'MainScceneP' : 'MainSccene';
-            director.loadScene(sceneName, (err)=>{
-                if(err) DebugLog.log("GameManager", `${sceneName} 加载失败: ${err}`);
+            director.loadScene(sceneName, (err) => {
+                if (err) DebugLog.log("GameManager", `${sceneName} 加载失败: ${err}`);
                 else DebugLog.log("GameManager", `${sceneName} 加载成功`);
             });
         }
     }
-    
+
 
 }

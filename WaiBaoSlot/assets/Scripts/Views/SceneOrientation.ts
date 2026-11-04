@@ -9,8 +9,8 @@ export class SceneOrientation extends Component {
     // true=竖版场景 false=横版场景
     @property({ tooltip: "勾选为竖屏场景" })
     isPortrait: boolean = false;
-    @property({tooltip:"界面名"})
-    layer_name:string = ""
+    @property({ tooltip: "界面名" })
+    layer_name: string = ""
 
     private screenData = null
 
@@ -20,15 +20,15 @@ export class SceneOrientation extends Component {
         this.scheduleOnce(() => {
             this.resetScreen(this.isPortrait);
         }, 0.1);
-        this.screenData = ScreenManager.instance.add(this.layer_name,this.isPortrait)
+        this.screenData = ScreenManager.instance.add(this.layer_name, this.isPortrait)
     }
-    resetIsPortrait(){
-        if (this.node.getComponent(UICtrl)){
+    resetIsPortrait() {
+        if (this.node.getComponent(UICtrl)) {
             this.isPortrait = this.node.getComponent(UICtrl).isPortrait();
         }
     }
-    
-    resetScreen(isPortrait:boolean){
+
+    resetScreen(isPortrait: boolean) {
         if (isPortrait) {
             view.setDesignResolutionSize(768, 1375, ResolutionPolicy.FIXED_WIDTH);
             view.setOrientation(macro.ORIENTATION_PORTRAIT);
@@ -37,7 +37,7 @@ export class SceneOrientation extends Component {
             view.setOrientation(macro.ORIENTATION_LANDSCAPE);
         }
 
-        if(sys.platform === sys.Platform.ANDROID){
+        if (sys.platform === sys.Platform.ANDROID) {
             if (isPortrait) {
                 native.reflection.callStaticMethod(
                     "com/cocos/game/AppActivity",
@@ -51,19 +51,19 @@ export class SceneOrientation extends Component {
                     "()V"
                 );
             }
-        }else if(sys.platform === sys.Platform.IOS){
+        } else if (sys.platform === sys.Platform.IOS) {
             // ios
-            
-        }else if(sys.platform === sys.Platform.WIN32){
+
+        } else if (sys.platform === sys.Platform.WIN32) {
             // windows
 
-        }else if(sys.platform === sys.Platform.MACOS){
+        } else if (sys.platform === sys.Platform.MACOS) {
             // mac
-            
-        }else if(sys.platform === sys.Platform.WECHAT_GAME){
+
+        } else if (sys.platform === sys.Platform.WECHAT_GAME) {
             // 微信
-            
-        }else if(sys.platform === sys.Platform.DESKTOP_BROWSER ){
+
+        } else if (sys.platform === sys.Platform.DESKTOP_BROWSER) {
             // // 网页
             // if (isPortrait) {
             //     // 竖屏配置 720*1280
@@ -90,17 +90,17 @@ export class SceneOrientation extends Component {
         //     }
         // }
     }
-    onDestroy(){
+    onDestroy() {
         this.removeScreenOrientation();
     }
-    checkIsLast(){
-        return ScreenManager.instance.checkIsLast( this.screenData.id )
+    checkIsLast() {
+        return ScreenManager.instance.checkIsLast(this.screenData.id)
     }
-    testrot(){
+    testrot() {
         this.resetScreen(!this.isPortrait)
     }
-    removeScreenOrientation(){
-        ScreenManager.instance.removeById( this.screenData.id );
+    removeScreenOrientation() {
+        ScreenManager.instance.removeById(this.screenData.id);
         // 不在 onDestroy 里切分辨率，由新场景的 onLoad 负责切
     }
 }

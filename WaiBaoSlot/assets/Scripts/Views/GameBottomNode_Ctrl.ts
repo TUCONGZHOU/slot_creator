@@ -1,4 +1,4 @@
-import { _decorator, Component, Node,Label,Tween,tween,Vec3, ProgressBar,view } from 'cc';
+import { _decorator, Component, Node, Label, Tween, tween, Vec3, ProgressBar, view } from 'cc';
 import { UICtrl, UIMgr } from '../Mgr/UIMgr';
 import { GlEventMgr } from '../Mgr/GlEventMgr';
 import { EventName } from '../Mgr/EventName';
@@ -25,7 +25,7 @@ export class GameBottomNode_Ctrl extends UICtrl {
 
     private m_labelScale: ReturnType<typeof tween> | null = null; // label缩放动画
 
-    private m_labelPosition:Vec3 = new Vec3(0,0,0);
+    private m_labelPosition: Vec3 = new Vec3(0, 0, 0);
 
     /**
      * 初始化视图 - 在这里进行所有初始化操作
@@ -34,7 +34,7 @@ export class GameBottomNode_Ctrl extends UICtrl {
         // 添加SpinBtn
         const parentNode = this.view["spinBtnNode"];
         if (parentNode) {
-            UIMgr.Instance?.showUi("GameMain", "Prefabs/SpinBtnP", "SpinBtnP_Ctrl",UILayer.Normal, parentNode);
+            UIMgr.Instance?.showUi("GameMain", "Prefabs/SpinBtnP", "SpinBtnP_Ctrl", UILayer.Normal, parentNode);
         } else {
             console.warn("[GameBottomNode_Ctrl] 未找到 spinBtnNode 节点");
         }
@@ -80,7 +80,7 @@ export class GameBottomNode_Ctrl extends UICtrl {
         // }else{
         //     designW = 1370;
         // }
-        
+
         // // 计算当前实际可见设计宽度
         // const scaleX = visibleSize.width / designW;
         // uiRoot.scale.set(scaleX, scaleX, 1);
@@ -88,7 +88,7 @@ export class GameBottomNode_Ctrl extends UICtrl {
         // // 设置位置
         // let posY = (visibleSize.height - 1370) / 2
         // if (ScreenManager.instance.getCurScreenValue() == true){
-            
+
         // }else{
         //     posY = (visibleSize.height - 768) / 2
         // }
@@ -101,13 +101,13 @@ export class GameBottomNode_Ctrl extends UICtrl {
         this.view["ProgressBar"].active = false;
     }
 
-    update(deltaTime: number) {}
+    update(deltaTime: number) { }
 
     // 增加bet
     public clickAddBet(): void {
         let action = LevelMgr.Instance.getLevelModel().getAction();
         let nextAction = LevelMgr.Instance.getLevelModel().getNextAction();
-        if (action == ActionType.NORMAL && nextAction == ActionType.NORMAL){
+        if (action == ActionType.NORMAL && nextAction == ActionType.NORMAL) {
             PlayerMgr.Instance.addBetIndex();
             this.setBetUI();
         }
@@ -116,7 +116,7 @@ export class GameBottomNode_Ctrl extends UICtrl {
     public clickReduceBet(): void {
         let action = LevelMgr.Instance.getLevelModel().getAction();
         let nextAction = LevelMgr.Instance.getLevelModel().getNextAction();
-        if (action == ActionType.NORMAL && nextAction == ActionType.NORMAL){
+        if (action == ActionType.NORMAL && nextAction == ActionType.NORMAL) {
             PlayerMgr.Instance.reduceBetIndex();
             this.setBetUI();
         }
@@ -126,7 +126,7 @@ export class GameBottomNode_Ctrl extends UICtrl {
         const bet = PlayerMgr.Instance.getBet();
         const betLabel = this.view["bottom_bg2/lb_bet"].getComponent(Label);
         if (betLabel) {
-            betLabel.string = Utils.util_formatCoins(bet,6);
+            betLabel.string = Utils.util_formatCoins(bet, 6);
         }
     }
 
@@ -155,14 +155,13 @@ export class GameBottomNode_Ctrl extends UICtrl {
         this.setAmountLabel(winAmount);
     }
 
-    private refreshWinUI(scaleAction:boolean):void {
+    private refreshWinUI(scaleAction: boolean): void {
         let winAmount = LevelMgr.Instance.getLevelModel().getWinAmount();
-        if (winAmount > this.m_winAmount)
-        {
+        if (winAmount > this.m_winAmount) {
             // 增加金币滚动
-            this.startScroll( this.m_winAmount,winAmount,0.5 );
+            this.startScroll(this.m_winAmount, winAmount, 0.5);
             // label的scaleAction
-            if (scaleAction){
+            if (scaleAction) {
                 this.labelWinScaleAction();
             }
         }
@@ -199,7 +198,7 @@ export class GameBottomNode_Ctrl extends UICtrl {
     }
 
     // 金币label的动画
-    public labelWinScaleAction():void {
+    public labelWinScaleAction(): void {
         this.stopLableScale();
 
         const node = this.view["lb_win"];
@@ -207,29 +206,29 @@ export class GameBottomNode_Ctrl extends UICtrl {
         let pos = this.m_labelPosition;
 
         this.m_labelScale = tween(node)
-        .to(0.5, { 
-            position: new Vec3(pos.x, pos.y + 30, pos.z), 
-            scale: new Vec3(2, 2, 2)
-        },{ easing: 'sineOut' })
-        .delay(0.2)
-        // 2. 缩放到1.8
-        .to(1, { scale: new Vec3(1.8, 1.8, 1.8) })
-        // 缩放到2
-        .to(1, { scale: new Vec3(2, 2, 2) })
-        // 缩放到1.8
-        .to(1, { scale: new Vec3(1.8, 1.8, 1.8) })
-        // 缩放到2
-        .to(1, { scale: new Vec3(2, 2, 2) })
-        // 3. 下移100像素 + 缩放回1倍（同时）
-        .to(0.5, {
-            position: new Vec3(pos.x, pos.y, pos.z),
-            scale: new Vec3(1, 1, 1)
-        }, { easing: 'sineIn' })
-        .delay(1)
-        .union() // 把前面一串动画打包成一个整体
-        // 无限循环
-        .repeatForever()
-        .start();
+            .to(0.5, {
+                position: new Vec3(pos.x, pos.y + 30, pos.z),
+                scale: new Vec3(2, 2, 2)
+            }, { easing: 'sineOut' })
+            .delay(0.2)
+            // 2. 缩放到1.8
+            .to(1, { scale: new Vec3(1.8, 1.8, 1.8) })
+            // 缩放到2
+            .to(1, { scale: new Vec3(2, 2, 2) })
+            // 缩放到1.8
+            .to(1, { scale: new Vec3(1.8, 1.8, 1.8) })
+            // 缩放到2
+            .to(1, { scale: new Vec3(2, 2, 2) })
+            // 3. 下移100像素 + 缩放回1倍（同时）
+            .to(0.5, {
+                position: new Vec3(pos.x, pos.y, pos.z),
+                scale: new Vec3(1, 1, 1)
+            }, { easing: 'sineIn' })
+            .delay(1)
+            .union() // 把前面一串动画打包成一个整体
+            // 无限循环
+            .repeatForever()
+            .start();
     }
 
 
@@ -253,7 +252,7 @@ export class GameBottomNode_Ctrl extends UICtrl {
             this._tween.stop();
         }
 
-        if (startValue == endValue){
+        if (startValue == endValue) {
             return;
         }
 
@@ -263,24 +262,24 @@ export class GameBottomNode_Ctrl extends UICtrl {
 
         // 创建动画对象
         const animTarget = { value: startValue };
-        
+
         // 执行缓动动画
         this._tween = tween(animTarget)
-        .to(duration, { value: endValue }, {
-            easing: 'sineOut', // 平滑缓动效果（结尾减速）
-            onUpdate: () => {
-                // 逐帧更新数字
-                this._currentValue = Math.round(animTarget.value);
+            .to(duration, { value: endValue }, {
+                easing: 'sineOut', // 平滑缓动效果（结尾减速）
+                onUpdate: () => {
+                    // 逐帧更新数字
+                    this._currentValue = Math.round(animTarget.value);
+                    this.targetLabel.string = this._formatNumber(this._currentValue);
+                }
+            })
+            .call(() => {
+                // 动画结束强制修正为最终值
+                this._currentValue = endValue;
+                this.m_winAmount = endValue; // 设置
                 this.targetLabel.string = this._formatNumber(this._currentValue);
-            }
-        })
-        .call(() => {
-            // 动画结束强制修正为最终值
-            this._currentValue = endValue;
-            this.m_winAmount = endValue; // 设置
-            this.targetLabel.string = this._formatNumber(this._currentValue);
-        })
-        .start();
+            })
+            .start();
     }
 
     /**
@@ -290,7 +289,7 @@ export class GameBottomNode_Ctrl extends UICtrl {
      * @param duration 动画时长（秒）
      * @param msgType 消息类型
      */
-    public startProgressBarAnim( from: number, to: number, duration: number, msgType: string|null ):void {
+    public startProgressBarAnim(from: number, to: number, duration: number, msgType: string | null): void {
         const progressBar = this.view["ProgressBar"].getComponent(ProgressBar);
         if (!progressBar) {
             console.warn('未找到 ProgressBar 节点！');
@@ -313,7 +312,7 @@ export class GameBottomNode_Ctrl extends UICtrl {
     }
 
     // 停止进度条动画
-    public stopProgressBarAnim():void { 
+    public stopProgressBarAnim(): void {
         const progressBar = this.view["ProgressBar"].getComponent(ProgressBar);
         if (progressBar) {
             Tween.stopAllByTarget(progressBar);
@@ -335,7 +334,7 @@ export class GameBottomNode_Ctrl extends UICtrl {
      * 格式化数字（整数显示，可自行修改）
      */
     private _formatNumber(num: number): string {
-        let coin = Utils.util_formatCoins( num,9 );
+        let coin = Utils.util_formatCoins(num, 9);
         return coin.toString();
     }
 
@@ -359,7 +358,7 @@ export class GameBottomNode_Ctrl extends UICtrl {
         }
     }
 
-    public showPayInfo():void{
+    public showPayInfo(): void {
         GlEventMgr.Instance.emit(EventName.ShowPayInfo);
     }
 

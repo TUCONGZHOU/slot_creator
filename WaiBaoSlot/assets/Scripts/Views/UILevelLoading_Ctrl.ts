@@ -158,7 +158,6 @@ export class UILevelLoading_Ctrl extends UICtrl {
             "Prefabs/GameTopNodeL",
             "Prefabs/SpinBtnP",
             "Prefabs/BigWin_P",
-            "Prefabs/CoinCollectNode",
             "Prefabs/GetCoin",
         ];
         resPkg["GameMain"].sounds = [
