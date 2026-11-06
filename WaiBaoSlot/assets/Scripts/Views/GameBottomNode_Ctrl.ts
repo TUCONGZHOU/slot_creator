@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Label, Tween, tween, Vec3, ProgressBar, view } from 'cc';
+import { _decorator, Component, Node, Label, Button, Tween, tween, Vec3, ProgressBar, view } from 'cc';
 import { UICtrl, UIMgr } from '../Mgr/UIMgr';
 import { GlEventMgr } from '../Mgr/GlEventMgr';
 import { EventName } from '../Mgr/EventName';
@@ -59,6 +59,10 @@ export class GameBottomNode_Ctrl extends UICtrl {
         this.addButtonClick("bottom_bg2/btnAddBet", this, this.clickAddBet);
         this.addButtonClick("bottom_bg2/btnReduceBet", this, this.clickReduceBet);
 
+        // -- 转轴旋转期间禁用 bet 加减按钮，旋转结束再恢复
+        GlEventMgr.Instance.on(EventName.StartRoll, this.onSpinStart, this);
+        GlEventMgr.Instance.on(EventName.RecoverSpinBtn, this.onSpinEnd, this);
+
         this.addButtonClick("btn_info", this, this.showPayInfo);
     }
 
@@ -102,6 +106,27 @@ export class GameBottomNode_Ctrl extends UICtrl {
     }
 
     update(deltaTime: number) { }
+
+    // 开始旋转：禁用 bet 按钮
+    private onSpinStart(): void {
+        this.setBetBtnEnable(false);
+    }
+
+    // 旋转结束：恢复 bet 按钮
+    private onSpinEnd(): void {
+        this.setBetBtnEnable(true);
+    }
+
+    // 设置 bet 加减按钮是否可点击
+    private setBetBtnEnable(enable: boolean): void {
+        const paths = ["bottom_bg2/btnAddBet", "bottom_bg2/btnReduceBet"];
+        for (const path of paths) {
+            const node = this.view[path];
+            if (!node) continue;
+            const button = node.getComponent(Button);
+            if (button) button.interactable = enable;
+        }
+    }
 
     // 增加bet
     public clickAddBet(): void {

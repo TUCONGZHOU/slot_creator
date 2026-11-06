@@ -2866,7 +2866,7 @@
         "__id__": 150
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 156
@@ -3773,8 +3773,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
+      "width": 602,
+      "height": -602
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

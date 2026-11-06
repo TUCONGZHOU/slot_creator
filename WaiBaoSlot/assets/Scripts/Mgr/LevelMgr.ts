@@ -1,4 +1,4 @@
-import { _decorator, Component, Node,resources,JsonAsset,assert,native,sys } from 'cc';
+import { _decorator, Component, Node, resources, JsonAsset, assert, native, sys } from 'cc';
 const { ccclass, property } = _decorator;
 
 import { BaseGameModel } from '../GameBase/BaseGameModel';
@@ -15,30 +15,30 @@ import { LevelEM_GameModel } from '../Levels/LevelEM/LevelEM_GameModel';
 @ccclass('LevelMgr') // 关卡的Manager 用于请求数据
 export class LevelMgr extends Component {
 
-    public static Instance:LevelMgr = null;
+    public static Instance: LevelMgr = null;
 
-    private m_levelConfig:LevelConfig = {} as LevelConfig;
-    private m_gameMode:BaseGameModel = null;
-    private m_levelId:number = -1;
+    private m_levelConfig: LevelConfig = {} as LevelConfig;
+    private m_gameMode: BaseGameModel = null;
+    private m_levelId: number = -1;
 
-    private m_testSpinJsonData:Record<string,any>[] = [];
+    private m_testSpinJsonData: Record<string, any>[] = [];
 
     // 本地代码测试相关
-    private m_testSpinIndex:number = 0;
-    private m_testNowSpinIndex:number = 0;
+    private m_testSpinIndex: number = 0;
+    private m_testNowSpinIndex: number = 0;
 
     protected onLoad(): void {
-        if( LevelMgr.Instance === null ){
+        if (LevelMgr.Instance === null) {
             LevelMgr.Instance = this;
         }
-        else{
+        else {
             this.destroy();
             return;
         }
     }
 
     // 每次切换场景进入关卡时重置一下数据，避免test数据错乱引起的报错
-    public resetLevelTestValue(){
+    public resetLevelTestValue() {
         this.m_levelConfig = {} as LevelConfig;
         this.m_gameMode = null;
         this.m_levelId = -1;
@@ -52,20 +52,20 @@ export class LevelMgr extends Component {
     }
 
     update(deltaTime: number) {
-        
+
     }
 
     // 解析关卡的配置数据
-    public setLevelConfigAndModel( levelConfig:LevelConfig ){
+    public setLevelConfigAndModel(levelConfig: LevelConfig) {
         this.m_levelConfig = levelConfig;
         // 创建model
-        this.m_gameMode = this.crearteGameMode( this.m_levelConfig.BundleName );
-        this.m_gameMode.setLevelConfig( levelConfig );
+        this.m_gameMode = this.crearteGameMode(this.m_levelConfig.BundleName);
+        this.m_gameMode.setLevelConfig(levelConfig);
     }
 
     // 加载测试的spin数据
-    public loadTestSpinData( spinJsonPath:string[],endFunc:Function ):void{
-        if (this.m_testSpinIndex < spinJsonPath.length){
+    public loadTestSpinData(spinJsonPath: string[], endFunc: Function): void {
+        if (this.m_testSpinIndex < spinJsonPath.length) {
             let path = spinJsonPath[this.m_testSpinIndex];
             resources.load(path, JsonAsset, (err, jsonAsset: JsonAsset) => {
                 if (err) {
@@ -73,21 +73,21 @@ export class LevelMgr extends Component {
                     return;
                 }
                 const jsonData = jsonAsset.json;
-                this.m_testSpinJsonData.push( jsonData );
+                this.m_testSpinJsonData.push(jsonData);
                 this.m_testSpinIndex = this.m_testSpinIndex + 1;
                 // 递归调用
-                this.loadTestSpinData( spinJsonPath,endFunc );
+                this.loadTestSpinData(spinJsonPath, endFunc);
             });
-        }else {
+        } else {
             console.log("===============> 加载所有的测试json完毕 ")
-            if(endFunc){
+            if (endFunc) {
                 endFunc()
             }
         }
     }
 
     // -- 请求进入关卡的数据
-    public requestEnterGame( levelId:number,levelName:string,callFunc:Function ):void{
+    public requestEnterGame(levelId: number, levelName: string, callFunc: Function): void {
         // 发送请求 目前这里用读取json的方式来模拟 <这里是模拟>
         let jsonPath = levelName + "/default";
         this.m_levelId = levelId;
@@ -101,7 +101,7 @@ export class LevelMgr extends Component {
             const jsonData = jsonAsset.json;
             this.m_gameMode.parseEnterGameData(jsonData);
 
-            if(callFunc){
+            if (callFunc) {
                 callFunc();
             }
         });
@@ -110,7 +110,7 @@ export class LevelMgr extends Component {
     }
 
     // -- spin请求
-    public requestSpin():void{
+    public requestSpin(): void {
         let levelId = this.m_levelId;
         let userId = PlayerMgr.Instance.getUserId();
 
@@ -122,14 +122,14 @@ export class LevelMgr extends Component {
         }, 0.5);
     }
 
-    public responseSpin():void{
+    public responseSpin(): void {
         let data = this.m_testSpinJsonData[this.m_testNowSpinIndex];
         this.m_testNowSpinIndex = this.m_testNowSpinIndex + 1;
-        console.log("===============> 当前第%d个Spin数据 ",this.m_testNowSpinIndex)
-        if ( this.m_testNowSpinIndex >= this.m_testSpinJsonData.length ){
+        console.log("===============> 当前第%d个Spin数据 ", this.m_testNowSpinIndex)
+        if (this.m_testNowSpinIndex >= this.m_testSpinJsonData.length) {
             this.m_testNowSpinIndex = 0;
         }
-        this.m_gameMode.parseSpinData( data );
+        this.m_gameMode.parseSpinData(data);
 
         // let data = CKGameCenter.Instance.calResultData();
         // // console.log("===============> 模拟服务器返回的数据 ",data)
@@ -139,47 +139,47 @@ export class LevelMgr extends Component {
 
 
 
-    public initGameModel( levelConfig:LevelConfig ):void{
+    public initGameModel(levelConfig: LevelConfig): void {
         this.m_levelConfig = levelConfig;
         // 创建model
-        this.m_gameMode = this.crearteGameMode( this.m_levelConfig.BundleName );
-        this.m_gameMode.setLevelConfig( levelConfig );
+        this.m_gameMode = this.crearteGameMode(this.m_levelConfig.BundleName);
+        this.m_gameMode.setLevelConfig(levelConfig);
     }
 
-    public getLevelConfig():LevelConfig{
+    public getLevelConfig(): LevelConfig {
         return this.m_levelConfig
     }
 
-    public getLevelModel():BaseGameModel{
+    public getLevelModel(): BaseGameModel {
         return this.m_gameMode;
     }
 
-    public getSymbolConfig( symbolId:number ){
-        for( const config of this.m_levelConfig.Symbol ){
-            if (config.id == symbolId ){
+    public getSymbolConfig(symbolId: number) {
+        for (const config of this.m_levelConfig.Symbol) {
+            if (config.id == symbolId) {
                 return config;
             }
         }
-        assert( false," !! 没有找到配置 id = " + symbolId + " !! " );
+        assert(false, " !! 没有找到配置 id = " + symbolId + " !! ");
     }
 
-    private crearteGameMode( levelName:string ):BaseGameModel{
-        if(levelName == "LevelCK"){
+    private crearteGameMode(levelName: string): BaseGameModel {
+        if (levelName == "LevelCK") {
             return new LevelCK_GameModel();
         }
-        else if(levelName == "LevelF"){
+        else if (levelName == "LevelF") {
             return new LevelF_GameModel();
         }
-        else if(levelName == "LevelTR"){
+        else if (levelName == "LevelTR") {
             return new LevelTR_GameModel();
         }
-        else if(levelName == "LevelWF"){
+        else if (levelName == "LevelWF") {
             return new LevelWF_GameModel();
         }
-        else if(levelName == "LevelEM"){
+        else if (levelName == "LevelEM") {
             return new LevelEM_GameModel();
         }
-        else if(levelName == "LevelJT"){
+        else if (levelName == "LevelJT") {
             return new LevelJT_GameModel();
         }
     }

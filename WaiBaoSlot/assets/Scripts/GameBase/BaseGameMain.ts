@@ -42,7 +42,7 @@ export class BaseGameMain extends UICtrl {
     }
 
     start() {
-        console.log('BaseGameMain====================');
+        console.log('BaseGameMain====================运行');
 
         this.m_levelConfig = LevelMgr.Instance.getLevelConfig();
         this.m_abName = this.m_levelConfig.BundleName;
@@ -157,11 +157,20 @@ export class BaseGameMain extends UICtrl {
 
     // 加载普通轮盘
     public addNormalGameTableUI(): void {
+        console.log('加载普通轮盘');
+
         assert(this.view["NormalGame"] != null, "主界面中必须有NormalGame节点");
         if (this.view["NormalGame"]) {
-            this.addGameTableUI(this.m_levelConfig.GameTable.NormalGameTable, this.view["NormalGame"]);
             // 加载轮盘信号块
             let viewSymbolData = LevelMgr.Instance.getLevelModel().getReelData();
+            console.log(
+                "【转轴渲染】开始创建轮盘",
+                "关卡:" + this.m_levelConfig.BundleName,
+                "表:" + this.m_levelConfig.GameTable.NormalGameTable.Prefabs,
+                "轴配置:" + JSON.stringify(this.m_levelConfig.GameTable.NormalGameTable.ReelTables),
+                "盘面数据:" + JSON.stringify(viewSymbolData)
+            );
+            this.addGameTableUI(this.m_levelConfig.GameTable.NormalGameTable, this.view["NormalGame"]);
             this.m_gameTableCompent.loadGameTableUI(viewSymbolData);
 
             SoundMgr.Instance.stopBGM();

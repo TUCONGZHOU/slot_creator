@@ -18,7 +18,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('LevelCK_MainUI_Ctrl')
 export class LevelCK_MainUI_Ctrl extends BaseGameMain {
-    
+
     protected initView(): void {
         super.initView();
     }
@@ -33,51 +33,51 @@ export class LevelCK_MainUI_Ctrl extends BaseGameMain {
     }
 
     // -- 刚进入游戏 根据状态切换轮盘
-    public changeGameTableByEnter():void{
+    public changeGameTableByEnter(): void {
         // 调用基类
         super.changeGameTableByEnter();
 
         let action = LevelMgr.Instance.getLevelModel().getAction();
         let nextAction = LevelMgr.Instance.getLevelModel().getNextAction();
-        if (action == ActionType.NORMAL){
+        if (action == ActionType.NORMAL) {
             // 根据数据显示轮盘上的信号块 显示Normal轮盘 
             this.addNormalGameTableUI();
-            if (nextAction == ActionType.FREESPIN){
+            if (nextAction == ActionType.FREESPIN) {
                 //  让SpinBtn按钮不能点击
-                GlEventMgr.Instance.emit( EventName.EnabledSpinBtn,false )
-                Utils.performWithDelay(this.node,()=>{
+                GlEventMgr.Instance.emit(EventName.EnabledSpinBtn, false)
+                Utils.performWithDelay(this.node, () => {
                     // 触发freespin的界面和轮盘切换
                     this.enterFreeSpin();
-                },1)
-            }else if (nextAction == ActionType.RESPIN){
+                }, 1)
+            } else if (nextAction == ActionType.RESPIN) {
                 //  让SpinBtn按钮不能点击
-                GlEventMgr.Instance.emit( EventName.EnabledSpinBtn,false )
-                Utils.performWithDelay(this.node,()=>{
+                GlEventMgr.Instance.emit(EventName.EnabledSpinBtn, false)
+                Utils.performWithDelay(this.node, () => {
                     // 触发respin的界面和轮盘切换
                     this.enterReSpin();
-                },1)
+                }, 1)
             }
         }
-        else if (action == ActionType.FREESPIN){
+        else if (action == ActionType.FREESPIN) {
             // 显示freespin的轮盘
             this.addFreeSpinGameTableUI();
-            if (nextAction == ActionType.NORMAL){
+            if (nextAction == ActionType.NORMAL) {
                 //  让SpinBtn按钮不能点击
-                GlEventMgr.Instance.emit( EventName.EnabledSpinBtn,false )
-                Utils.performWithDelay(this.node,()=>{
+                GlEventMgr.Instance.emit(EventName.EnabledSpinBtn, false)
+                Utils.performWithDelay(this.node, () => {
                     // 触发normal的界面和轮盘切换
                     this.enterNormal();
-                },1)
+                }, 1)
             }
         }
-        else if (action == ActionType.RESPIN){
+        else if (action == ActionType.RESPIN) {
             // 显示respin的轮盘
             this.addRespinGameTableUI();
-            if (nextAction == ActionType.NORMAL){
-                Utils.performWithDelay(this.node,()=>{
+            if (nextAction == ActionType.NORMAL) {
+                Utils.performWithDelay(this.node, () => {
                     // 触发normal的界面和轮盘切换
                     this.enterNormal();
-                },1)
+                }, 1)
             }
         }
     }
@@ -247,11 +247,11 @@ export class LevelCK_MainUI_Ctrl extends BaseGameMain {
     //     tween(this.node).sequence(...anims).start();
     // }
 
-    public async enterFreeSpin():Promise<void>{
+    public async enterFreeSpin(): Promise<void> {
         // 要播放scatter的动画 
-        let freeSpinCtrl:LevelCK_FreeSpinView_Ctrl = null;
-        
-        try{
+        let freeSpinCtrl: LevelCK_FreeSpinView_Ctrl = null;
+
+        try {
             // 1. 延时1秒
             await this.delay(1);
             // 2. 停止线动画 + 播放scatter动画 + 播放音效
@@ -290,7 +290,7 @@ export class LevelCK_MainUI_Ctrl extends BaseGameMain {
             GlEventMgr.Instance.emit(EventName.RecoverSpinBtn);
             GlEventMgr.Instance.emit(EventName.ClearWinAmount);
         }
-        catch(err){
+        catch (err) {
             console.error("enterReSpin执行异常:", err);
             throw err; // 向外抛出异常，与原 reject 行为一致
         }
@@ -445,8 +445,8 @@ export class LevelCK_MainUI_Ctrl extends BaseGameMain {
 
     }
 
-    public showPayInfo():void{
-        UIMgr.Instance.showUi("LevelCK","Prefabs/PayTable","LevelCK_PayTable_Ctrl",UILayer.Normal);
+    public showPayInfo(): void {
+        UIMgr.Instance.showUi("LevelCK", "Prefabs/PayTable", "LevelCK_PayTable_Ctrl", UILayer.Normal);
     }
 }
 
