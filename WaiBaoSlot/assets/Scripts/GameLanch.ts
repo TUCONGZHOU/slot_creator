@@ -60,8 +60,8 @@ export class GameLanch extends Component {
             this.node.addChild(prefabNode);
             // 添加组件
             let compent: UILevelLoading_Ctrl = prefabNode.addComponent("UILevelLoading_Ctrl") as UILevelLoading_Ctrl;
-            // compent.initLoading("config/LevelConfig4");
-            let levelID = 4;
+            // 直接启动时默认进入关卡3
+            let levelID = 3;
             let levelConfig = "config/LevelConfig" + levelID;
             if (GameManager.instance.getGameStartLobbyFlag() == true) {
                 if (GameManager && GameManager.instance && GameManager.instance.getNextLevelID() != 0) {

@@ -8,13 +8,9 @@ import { ResMgr } from '../Mgr/ResMgr';
 import { SymbolMgr } from "../Mgr/SymbolMgr";
 import { LevelMgr } from '../Mgr/LevelMgr';
 import { LevelConfig } from '../InterFace/LevelConfig';
-import { LevelF_MainUI_Ctrl } from '../Levels/LevelF/LevelF_MainUI_Ctrl';
 import { UILayer } from '../Mgr/UIMgr';
-import { LevelCK_MainUI_Ctrl } from '../Levels/LevelCK/LevelCK_MainUI_Ctrl';
 import { GameTopNode_Ctrl } from './GameTopNode_Ctrl';
 import { GameBottomNode_Ctrl } from './GameBottomNode_Ctrl';
-import { LevelTR_MainUI_Ctrl } from '../Levels/LevelTR/LevelTR_MainUI_Ctrl';
-import { LevelWF_MainUI_Ctrl } from '../Levels/LevelWF/LevelWF_MainUI_Ctrl';
 import { ScreenManager } from '../Mgr/ScreenManager';
 import { GameManager } from '../Mgr/GameManager';
 
@@ -202,22 +198,14 @@ export class UILevelLoading_Ctrl extends UICtrl {
         // 游戏主体
         const targetNode = find("Canvas/MiddleNode");
         // 加载完毕 进入关卡 创建游戏的主界面
-        if (abName == "LevelF") {
-            UIMgr.Instance.showUi(abName, "Prefabs/MainUI", "LevelF_MainUI_Ctrl", UILayer.Normal, targetNode);
-        } else if (abName == "LevelCK") {
-            UIMgr.Instance.showUi(abName, "Prefabs/MainUI", "LevelCK_MainUI_Ctrl", UILayer.Normal, targetNode);
-        }
-        else if (abName == "LevelTR") {
+        if (abName == "LevelTR") {
             UIMgr.Instance.showUi(abName, "Prefabs/MainUI", "LevelTR_MainUI_Ctrl", UILayer.Normal, targetNode);
-        }
-        else if (abName == "LevelWF") {
-            UIMgr.Instance.showUi(abName, "Prefabs/MainUI", "LevelWF_MainUI_Ctrl", UILayer.Normal, targetNode);
         }
         else if (abName == "LevelJT") {
             UIMgr.Instance.showUi(abName, "Prefabs/MainUI", "LevelJT_MainUI_Ctrl", UILayer.Normal, targetNode);
         }
-        else if (abName == "LevelEM") {
-            UIMgr.Instance.showUi(abName, "Prefabs/MainUI", "LevelEM_MainUI_Ctrl", UILayer.Normal, targetNode);
+        else {
+            console.warn("[UILevelLoading_Ctrl] 未知关卡:", abName);
         }
 
         // // 加载GameTopNode

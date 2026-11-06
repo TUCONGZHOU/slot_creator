@@ -2,15 +2,11 @@ import { _decorator, Component, Node, resources, JsonAsset, assert, native, sys 
 const { ccclass, property } = _decorator;
 
 import { BaseGameModel } from '../GameBase/BaseGameModel';
-import { LevelCK_GameModel } from '../Levels/LevelCK/LevelCK_GameModel';
-import { LevelF_GameModel } from '../Levels/LevelF/LevelF_GameModel';
 import { LevelTR_GameModel } from '../Levels/LevelTR/LevelTR_GameModel';
-import { LevelWF_GameModel } from '../Levels/LevelWF/LevelWF_GameModel';
 import { LevelJT_GameModel } from '../Levels/LevelJT/LevelJT_GameModel';
 import { LevelConfig } from '../InterFace/LevelConfig';
 import { PlayerMgr } from './PlayerMgr';
 import { CKGameCenter } from './CKGameCenter';
-import { LevelEM_GameModel } from '../Levels/LevelEM/LevelEM_GameModel';
 
 @ccclass('LevelMgr') // 关卡的Manager 用于请求数据
 export class LevelMgr extends Component {
@@ -164,23 +160,15 @@ export class LevelMgr extends Component {
     }
 
     private crearteGameMode(levelName: string): BaseGameModel {
-        if (levelName == "LevelCK") {
-            return new LevelCK_GameModel();
-        }
-        else if (levelName == "LevelF") {
-            return new LevelF_GameModel();
-        }
-        else if (levelName == "LevelTR") {
+        if (levelName == "LevelTR") {
             return new LevelTR_GameModel();
-        }
-        else if (levelName == "LevelWF") {
-            return new LevelWF_GameModel();
-        }
-        else if (levelName == "LevelEM") {
-            return new LevelEM_GameModel();
         }
         else if (levelName == "LevelJT") {
             return new LevelJT_GameModel();
+        }
+        else {
+            console.warn("[LevelMgr] 未知关卡:", levelName);
+            return new BaseGameModel();
         }
     }
 }

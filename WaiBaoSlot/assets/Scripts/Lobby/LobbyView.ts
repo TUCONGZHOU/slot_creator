@@ -1,4 +1,4 @@
-import { _decorator, Component, director, JsonAsset, native, Node, resources } from 'cc';
+import { _decorator, Component, director, JsonAsset, native, resources } from 'cc';
 const { ccclass, property } = _decorator;
 
 import { UICtrl, UIMgr } from '../Mgr/UIMgr';
@@ -25,9 +25,10 @@ export class LobbyView extends UICtrl {
         GameManager.instance.setGameStartLobbyFlag(); // 启动lobbyscene的标记，主要处理兼容其他场景启动。
     }
     protected initView(): void {
-        // throw new Error('Method not implemented.');
-        for (let i = 1; i <= 5; i++) {
-            this.addButtonClick("level" + i, this, () => this.chooseLevel(i));
+        // 仅保留关卡3和关卡5（其他关卡节点已从场景中删除）
+        const keepLevels = [3, 5];
+        for (const levelId of keepLevels) {
+            this.addButtonClick("level" + levelId, this, () => this.chooseLevel(levelId));
         }
     }
     start() {
