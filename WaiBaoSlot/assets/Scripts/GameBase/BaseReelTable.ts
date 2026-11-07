@@ -2,7 +2,7 @@ import { _decorator, Component, Node, tween, Tween, Vec3, AnimationClip, Animati
 import { UIMgr, UICtrl } from '../Mgr/UIMgr';
 import { BaseReelUnit } from './BaseReelUnit';
 import { BaseGameTable } from './BaseGameTable';
-import { LevelConfig, ReelTableConfig, ReelUnitConfig, SymbolType, ActionType } from '../InterFace/LevelConfig';
+import { LevelConfig, ReelTableConfig, ReelUnitConfig, SymbolType, ActionType, SymbolViewType } from '../InterFace/LevelConfig';
 import { LevelMgr } from "../Mgr/LevelMgr";
 import { SymbolMgr } from '../Mgr/SymbolMgr';
 import { BaseSymbolUnit } from './BaseSymbolUnit';
@@ -371,6 +371,8 @@ export class BaseReelTable extends UICtrl {
 
         this.m_stopDoneNum = this.m_stopDoneNum + 1;
         if (this.m_stopDoneNum >= this.m_reelUnitsCount) {
+            // 调试：停稳后打印盘面并校验与服务器数据是否一致
+            this.debugCheckStopReelData();
             this.clearState();
             // 当所有滚轴停止完毕
             this.m_gameTableCompent.oneReelTableStopDone();
@@ -401,6 +403,71 @@ export class BaseReelTable extends UICtrl {
                     compent.stopRoll(this.m_reelViewData[nextIndex], false);
                 }
             }
+        }
+    }
+
+    /*
+        调试：所有滚轴停稳后调用
+        1. 打印服务器下发的盘面数据（期望）
+        2. 从每条轴的 RootNode 里读出当前可视区实际显示的图标 id（实际）
+        3. 逐格对比，不一致的格子高亮警告
+    */
+    public debugCheckStopReelData(): void {
+        const expectData: number[][] = LevelMgr.Instance.getLevelModel().getSpinReelData()[this.m_reelTableIndex];
+        if (expectData == null) {
+            console.warn("【盘面校验】表" + this.m_reelTableIndex + " 服务器数据为空，跳过校验");
+            return;
+        }
+        // 读出每条轴可视区实际显示的 id（row 0 → row N，即 下 → 上）
+        const actualData: number[][] = [];
+        for (let col = 0; col < this.m_reelUnitsCount; col++) {
+            const compent = this.getReelUnitCompent(col);
+            const cells: { row: number, id: number }[] = [];
+            for (const child of compent.m_rootNode.children) {
+                const symbolCompent = child.getComponent(this.m_levelConfig.BundleName + "_Symbol_Ctrl") as BaseSymbolUnit;
+                if (!symbolCompent) continue;
+                const data = symbolCompent.getData();
+                if (data && data.posType == SymbolViewType.View) {
+                    cells.push({ row: data.row, id: data.id });
+                }
+            }
+            cells.sort((a, b) => a.row - b.row);
+            actualData.push(cells.map(c => c.id));
+        }
+        // 逐格对比
+        let mismatch: string[] = [];
+        for (let col = 0; col < expectData.length; col++) {
+            const expectCol = expectData[col];
+            const actualCol = actualData[col] || [];
+            if (expectCol.length !== actualCol.length) {
+                mismatch.push("列" + col + " 行数不一致 期望" + expectCol.length + "行 实际" + actualCol.length + "行");
+                continue;
+            }
+            for (let row = 0; row < expectCol.length; row++) {
+                if (expectCol[row] !== actualCol[row]) {
+                    mismatch.push("列" + col + " 行" + row + " 期望:" + expectCol[row] + " 实际:" + actualCol[row]);
+                }
+            }
+        }
+        // 打印：按"上→下"的视觉顺序输出，方便和屏幕对照
+        const visual = (data: number[][]): string => {
+            if (data.length == 0) return "(空)";
+            const rows = data[0].length;
+            const lines: string[] = [];
+            for (let r = rows - 1; r >= 0; r--) {
+                lines.push(data.map(col => String(col[r]).padStart(4)).join(""));
+            }
+            return "\n" + lines.join("\n");
+        };
+        console.log(
+            "【盘面校验】表" + this.m_reelTableIndex + " 停稳盘面（上→下）",
+            "\n服务器期望:" + visual(expectData),
+            "\n实际显示:" + visual(actualData)
+        );
+        if (mismatch.length > 0) {
+            console.warn("【盘面校验】发现 " + mismatch.length + " 处不一致:\n" + mismatch.join("\n"));
+        } else {
+            console.log("【盘面校验】一致：实际显示与服务器数据完全匹配");
         }
     }
 

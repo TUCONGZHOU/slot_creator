@@ -195,6 +195,7 @@ export class UILevelLoading_Ctrl extends UICtrl {
     }
 
     public enterLevelGame(abName: string) {
+        console.log('进入游戏???')
         // 游戏主体
         const targetNode = find("Canvas/MiddleNode");
         // 加载完毕 进入关卡 创建游戏的主界面

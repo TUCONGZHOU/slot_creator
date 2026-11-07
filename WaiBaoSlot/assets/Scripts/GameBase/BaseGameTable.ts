@@ -40,7 +40,7 @@ export class BaseGameTable extends UICtrl {
     }
 
     start() {
-        console.log('BaseGameTable=====================运行');
+        console.log('BaseGameTable=====================运行===========');
     }
 
     update(deltaTime: number) {
@@ -132,6 +132,8 @@ export class BaseGameTable extends UICtrl {
 
     // 轮盘滚动
     public startRoll(): void {
+        console.log('轮盘滚动==startRoll');
+
         if (this.m_startRollMark) {
             assert(false, "error 不知道从哪里点击过来了");
             return;

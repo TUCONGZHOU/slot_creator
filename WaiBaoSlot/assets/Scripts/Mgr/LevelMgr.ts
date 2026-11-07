@@ -44,6 +44,7 @@ export class LevelMgr extends Component {
     }
 
     start() {
+        console.log('哪里执行了LevelMgr.ts 脚本???');
 
     }
 
@@ -84,8 +85,10 @@ export class LevelMgr extends Component {
 
     // -- 请求进入关卡的数据
     public requestEnterGame(levelId: number, levelName: string, callFunc: Function): void {
+        console.log('请求进入关卡的数据======requestEnterGame')
         // 发送请求 目前这里用读取json的方式来模拟 <这里是模拟>
         let jsonPath = levelName + "/default";
+        // let jsonPath = levelName + "/1";
         this.m_levelId = levelId;
         resources.load(jsonPath, JsonAsset, (err, jsonAsset: JsonAsset) => {
             if (err) {

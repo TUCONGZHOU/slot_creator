@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Vec3, AnimationClip, Animation, assert, sp, UIOpacity, tween, Prefab, instantiate } from 'cc';
+import { _decorator, Component, Node, Vec3, AnimationClip, Animation, assert, sp, UIOpacity, tween, Prefab, instantiate, Label, Color, director } from 'cc';
 
 import { UIMgr, UICtrl } from '../Mgr/UIMgr';
 import { SymbolMgr } from '../Mgr/SymbolMgr';
@@ -9,6 +9,23 @@ import { ResMgr } from "../Mgr/ResMgr";
 import { LevelConfig, ReelTableConfig, ReelUnitConfig, SymbolConfig, SymbolRollData, SymbolViewType } from '../InterFace/LevelConfig';
 
 const { ccclass, property } = _decorator;
+
+/** 调试：图标 id 标签的节点名与总开关（运行时按 D 键切换显示/隐藏） */
+const DEBUG_ID_LABEL_NAME = "debug_id";
+let s_showSymbolId = true;
+
+/** 切换所有图标 id 标签的显示/隐藏，返回切换后的状态 */
+export function toggleSymbolIdLabel(): boolean {
+    s_showSymbolId = !s_showSymbolId;
+    const labels = director.getScene().getComponentsInChildren(Label);
+    for (const label of labels) {
+        if (label.node.name === DEBUG_ID_LABEL_NAME) {
+            label.node.active = s_showSymbolId;
+        }
+    }
+    console.warn("【调试标签】图标 id 显示: " + (s_showSymbolId ? "开" : "关"));
+    return s_showSymbolId;
+}
 
 @ccclass('BaseSymbolUnit')
 export class BaseSymbolUnit extends UICtrl {
@@ -88,6 +105,20 @@ export class BaseSymbolUnit extends UICtrl {
             );
             // 渐隐的组件
             this.resetOpacity();
+            // 调试：在图标上面显示 id（加在图标之后，渲染在最上层；按 D 键可整体开关）
+            if (!this.node.getChildByName(DEBUG_ID_LABEL_NAME)) {
+                let idNode = new Node(DEBUG_ID_LABEL_NAME);
+                idNode.layer = this.node.layer;
+                let idLabel = idNode.addComponent(Label);
+                idLabel.string = String(data.id);
+                idLabel.fontSize = 50;
+                idLabel.lineHeight = 54;
+                idLabel.isBold = true;
+                idLabel.color = Color.WHITE;
+                idNode.setPosition(0, 0, 0);
+                idNode.active = s_showSymbolId;
+                this.node.addChild(idNode);
+            }
             // 子类从写
             this.loadLogicDataUI(data);
         }

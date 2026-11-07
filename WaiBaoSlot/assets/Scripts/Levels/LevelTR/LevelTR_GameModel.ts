@@ -7,20 +7,22 @@ import { EventName } from '../../Mgr/EventName';
 import { ActionType } from '../../InterFace/LevelConfig';
 
 export class LevelTR_GameModel extends BaseGameModel {
-    private m_collect:any = null;
+    private m_collect: any = null;
 
-    public parseData( data:any ):void{
-        super.parseData( data );
+    public parseData(data: any): void {
+        super.parseData(data);
+        console.log('LevelTR_GameModel在这里继承了BaseGameModel!!!!!!!!!!!!!!!!!!!!');
+
     }
 
     // 重写基类
-    public noticeEventToView():void {
+    public noticeEventToView(): void {
         let action = this.getAction();
         let nextAction = this.getNextAction();
 
-        if(action == ActionType.BONUS){
+        if (action == ActionType.BONUS) {
             GlEventMgr.Instance.emit(EventName.View_LevelSpin_bonus);
-        }else {
+        } else {
             GlEventMgr.Instance.emit(EventName.View_LevelSpin_responese);
         }
     }

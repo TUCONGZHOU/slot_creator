@@ -73,7 +73,7 @@ export class SpinBtnP_Ctrl extends UICtrl {
         // -- 发送消息 开始滚动
         GlEventMgr.Instance.emit(EventName.StartRoll);
         // -- 请求数据
-        // LevelMgr.Instance.requestSpin();
+        LevelMgr.Instance.requestSpin();
     }
 
     // 点击停止按钮

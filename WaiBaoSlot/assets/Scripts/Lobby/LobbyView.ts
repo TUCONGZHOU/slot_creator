@@ -34,9 +34,9 @@ export class LobbyView extends UICtrl {
     start() {
         console.log('游戏大厅场景==================')
         if (GameManager.instance.getLastBundleName() === "") {
-            // setTimeout(() => {
-            //     this.chooseLevel(3);   // 想进第几关就改这里的数字
-            // }, 2000)
+            setTimeout(() => {
+                this.chooseLevel(3);   // 想进第几关就改这里的数字
+            }, 2000)
         }
 
     }
@@ -47,6 +47,7 @@ export class LobbyView extends UICtrl {
 
     public chooseLevel(levelId: number) {
         console.log(levelId, 'levelId');
+        console.log(levelId)
 
         let levelConfig = "config/LevelConfig";
         let levelStr = "level" + levelId;

@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, instantiate, Prefab, assert, director, sp } from 'cc';
+import { _decorator, Component, Node, instantiate, Prefab, assert, director, sp, input, Input, KeyCode, EventKeyboard } from 'cc';
 import { UIMgr, UICtrl } from '../Mgr/UIMgr';
 // import { _decorator, Component, Node, instantiate, Prefab, assert, director } from 'cc';
 // import { UIMgr, UICtrl } from '../Mgr/UIMgr';
@@ -9,6 +9,7 @@ import { EventName } from '../Mgr/EventName';
 import { GlEventMgr } from '../Mgr/GlEventMgr';
 import { LevelMgr } from '../Mgr/LevelMgr';
 import { BaseGameTable } from './BaseGameTable';
+import { toggleSymbolIdLabel } from './BaseSymbolUnit';
 import { LevelConfig, GameTableConfig } from '../InterFace/LevelConfig';
 import { SoundMgr } from '../Mgr/SoundMgr';
 
@@ -28,7 +29,7 @@ export class BaseGameMain extends UICtrl {
      * 初始化视图
      */
     protected initView(): void {
-        // 开始滚动
+        // 开始滚动 StartRoll
         GlEventMgr.Instance.on(EventName.StartRoll, this.startRoll, this);
         // 停止滚动
         GlEventMgr.Instance.on(EventName.StopRoll, this.stopRoll, this);
@@ -37,6 +38,7 @@ export class BaseGameMain extends UICtrl {
     }
 
     onDestroy() {
+        input.off(Input.EventType.KEY_DOWN, this.onDebugKeyDown, this);
         // 调用父类onDestroy，处理其他清理工作
         super.onDestroy();
     }
@@ -47,7 +49,18 @@ export class BaseGameMain extends UICtrl {
         this.m_levelConfig = LevelMgr.Instance.getLevelConfig();
         this.m_abName = this.m_levelConfig.BundleName;
         this.addBgUI();
+
+        // 调试：按 D 键切换所有图标 id 标签的显示/隐藏
+        input.on(Input.EventType.KEY_DOWN, this.onDebugKeyDown, this);
+
+        // =====================================================================
         this.changeGameTableByEnter();
+    }
+
+    private onDebugKeyDown(event: EventKeyboard): void {
+        if (event.keyCode === KeyCode.KEY_D) {
+            toggleSymbolIdLabel();
+        }
     }
 
     update(deltaTime: number) {
@@ -57,7 +70,7 @@ export class BaseGameMain extends UICtrl {
     // -------------- 子类可能需要重写的接口 -------------------- //
     // 轮盘切换 子类必须重写的接口
     public changeGameTableByEnter(): void {
-
+        console.log('changeGameTableByEnter??????')
     }
 
     public enterNormal(): void {
@@ -95,6 +108,8 @@ export class BaseGameMain extends UICtrl {
 
     // 当前的GameTable滚动
     public startRoll(): void {
+        console.log('监听的开始滚动事件 EventName.StartRoll');
+
         this.m_gameTableCompent.startRoll();
     }
 

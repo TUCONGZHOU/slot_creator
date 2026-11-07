@@ -4,6 +4,24 @@ import { ActionType, LevelConfig } from '../InterFace/LevelConfig';
 import { GlEventMgr } from '../Mgr/GlEventMgr';
 import { EventName } from '../Mgr/EventName';
 
+/**
+ * 调试：固定进场盘面（改这里就能直接看到设置的盘面）
+ * 结构：reels[表][列][行]；关卡3/关卡5 都是 1张表 × 5列 × 3行，形状通用
+ * 每列里第0个数字显示在最下面一行，依次往上排
+ * id 必须存在于对应关卡的 Symbol 表：
+ *   关卡3(LevelTR) 可用 0~10、90、92、93
+ *   关卡5(LevelJT) 可用 0~10、90、92、94、95、96、100（没有93）
+ * 设为 null 恢复使用服务器(default.json)数据
+ */
+const DEBUG_FIXED_REELS: number[][][] | null = [
+    [
+        [0, 0, 0],
+        [1, 1, 1],
+        [2, 2, 2],
+        [3, 3, 3],
+        [1, 3, 1],
+    ],
+];
 
 export class BaseGameModel {
     public m_spinData: any = null;           // 当前spin的数据
@@ -29,6 +47,11 @@ export class BaseGameModel {
     public parseEnterGameData(data: any): void {
         // console.log("=========> 开始解析进入关卡的数据");
         this.parseData(data);
+        // 调试：固定盘面只覆盖进场数据，不影响 spin 结果
+        if (DEBUG_FIXED_REELS) {
+            this.m_reelsData = DEBUG_FIXED_REELS;
+            console.warn("【调试盘面】进场盘面已被固定数组覆盖:", JSON.stringify(DEBUG_FIXED_REELS));
+        }
     }
 
     public parseSpinData(spinData: any): void {
@@ -47,6 +70,8 @@ export class BaseGameModel {
     }
 
     public parseData(data: any): void {
+        console.log(data, 'jsonData================');
+
         this.m_bet = data.bet;
         this.m_betList = data.betList;
         this.m_lastAction = data.lastAction;
